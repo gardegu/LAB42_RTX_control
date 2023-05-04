@@ -5,6 +5,14 @@ void Camera::init_interfaces(){
 }
 
 void Camera::init_camera(){
+
+}
+
+void Camera::timer_callback(){
+
+}
+
+void Camera::test(){
     //The following code is just a test and won't be used in the project
     cv::Mat img_test = cv::imread("testLab42.png");
 
@@ -40,9 +48,6 @@ void Camera::init_camera(){
     /*Warning : Hue (H) values are divided by 2 in OpenCv (from 0 to 179 rather than
      * from 0 to 360 in theory)
      */
-    double Hmin = 0, Hmax = 179;
-    double Smin = 0, Smax = 255;
-    double Vmin = 0, Vmax = 255;
 
     cv::Mat hsv_img;
     cv::cvtColor(resized_img,hsv_img,cv::COLOR_BGR2HSV);
@@ -54,17 +59,62 @@ void Camera::init_camera(){
     cv::inRange(hsv_img, lower_bound, upper_bound, bin_hsv_img);
 
     cv::imshow("Binary HSV image", bin_hsv_img);
+
+    /*
+    std::vector<cv::Mat> hsv_planes;
+    cv::split(hsv_img, hsv_planes);
+    cv::Mat hue_img = hsv_planes[0];
+    cv::Mat saturation_img = hsv_planes[1];
+    cv::Mat value_img = hsv_planes[2];
+    cv::imshow("Hue img",hue_img);
+    cv::imshow("Saturation img",saturation_img);
+    cv::imshow("Value img",value_img);
+
+    cv::Mat saturation_thresh_img;
+    cv::threshold(saturation_img, saturation_thresh_img, 0.9 * 255, 255, cv::THRESH_BINARY);
+    cv::Mat mask;
+    cv::bitwise_not(saturation_thresh_img, mask);
+
+    cv::Mat img_j;
+    cv::bitwise_and(hue_img, mask, img_j);
+
+    cv::Mat img_binary;
+    cv::threshold(img_j, img_binary, 0.1 * 60, 255, cv::THRESH_BINARY);
+    cv::imshow("test",img_binary);
+    */
+
+
+
     int k = cv::waitKey(0);
     if(k == 'q'){
         cv::destroyAllWindows();
     }
-
-
-
 }
 
-void Camera::timer_callback(){
+void Camera::binFeed(){
+    cv::VideoCapture cap(-1);
+    if (!cap.isOpened()) {
+        std::cout << "Unable to connect to camera." << std::endl;
+    }
+    while(true){
+        cv::Mat frame;
+        cap.read(frame);
+        //cv::imshow("Camera Feed", frame);
 
+        cv::Mat hsv_img;
+        cv::cvtColor(frame,hsv_img,cv::COLOR_BGR2HSV);
+
+        cv::Scalar lower_bound = cv::Scalar(20,100,100);
+        cv::Scalar upper_bound = cv::Scalar(60,255,255);
+
+        cv::Mat bin_hsv_img;
+        cv::inRange(hsv_img, lower_bound, upper_bound, bin_hsv_img);
+
+        cv::imshow("Binary HSV camera feed", bin_hsv_img);
+        if(cv::waitKey(30)=='q'){
+            break;
+        }
+    }
 }
 
 int main(int argc, char * argv[]){
