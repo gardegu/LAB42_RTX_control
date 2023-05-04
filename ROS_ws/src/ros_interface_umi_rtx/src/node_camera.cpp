@@ -37,7 +37,7 @@ void Camera::init_camera(){
     cv::Mat struc = cv::getStructuringElement(cv::MORPH_RECT, cv::Size(3, 3));
 
     cv::Mat opened_img;
-    cv::morphologyEx(binary_img, opened_img, cv::MORPH_OPEN, struc,cv::Point(-1,-1), 1);
+    cv::morphologyEx(binary_img, opened_img, cv::MORPH_OPEN, struc,cv::Point(-1,-1), 2);
     cv::imshow("Opened binary image",opened_img);
 
     int k = cv::waitKey(0);
