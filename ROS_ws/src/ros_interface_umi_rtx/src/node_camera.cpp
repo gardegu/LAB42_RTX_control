@@ -6,25 +6,33 @@ void Camera::init_interfaces(){
 
 void Camera::init_camera(){
     //The following code is just a test and won't be used in the project
-    Mat img_test = imread("testLab42.jpg");
+    cv::Mat img_test = cv::imread("testLab42.jpg");
     if(img_test.empty()){
         std::cout << "Could not read the image" << std::endl;
+        std::cout << "ici" << std::endl;
     }
-    Size displaySize(600,800);
-    Mat resized_img_test;
-    resize(img_test,resized_img_test,displaySize);
-    imshow("Test image",resized_img_test);
-    int k = waitKey(0);
+    cv::Size displaySize(600,800);
+    cv::Mat resized_img_test;
+    cv::resize(img_test,resized_img_test,displaySize);
+    cv::imshow("Test image",resized_img_test);
+    /*int k = cv::waitKey(0);
     if(k == 'q'){
-        destroyAllWindows();
-    }
-    Mat gray_img = cvtColor(resized_img_test,COLOR_BGR2GRAY);
-    imshow("Gray test image",gray_img);
-    k = waitKey(0);
+        cv::destroyAllWindows();
+    }*/
+    cv::Mat gray_img;
+    cv::cvtColor(resized_img_test,gray_img,cv::COLOR_BGR2GRAY);
+    cv::imshow("Gray test image",gray_img);
+    /*k = cv::waitKey(0);
     if(k == 'q'){
-        destroyAllWindows();
+        cv::destroyAllWindows();
+    }*/
+    cv::Mat binary_img;
+    cv::threshold(gray_img, binary_img, 0, 255, cv::THRESH_BINARY | cv::THRESH_OTSU);
+    cv::imshow("Binary image", binary_img);
+    int k = cv::waitKey(0);
+    if(k == 'q'){
+        cv::destroyAllWindows();
     }
-
 
 }
 

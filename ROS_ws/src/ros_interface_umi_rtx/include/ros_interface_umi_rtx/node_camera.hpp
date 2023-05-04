@@ -12,7 +12,6 @@
 #include <chrono>
 using namespace std::chrono_literals;
 using namespace std::placeholders;
-using namespace cv;
 
 class Camera : public rclcpp::Node{
 public:
