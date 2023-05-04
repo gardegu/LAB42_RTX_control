@@ -23,6 +23,43 @@ find_package(sensor_msgs REQUIRED)
 find_package(OpenCV REQUIRED)
 find_package(cv_bridge REQUIRED)
 
+
+ ##################################### Node camera
+ add_executable(nodeCamera
+ src/node_camera.cpp
+ )
+ 
+ ament_target_dependencies(nodeCamera
+ rclcpp
+ sensor_msgs
+ OpenCV
+ cv_bridge
+ )
+
+ target_link_libraries(nodeCamera "${cpp_typesupport_target}")
+ target_include_directories(nodeCamera PUBLIC
+$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+$<INSTALL_INTERFACE:include>)
+ 
+
+ ##################################### Node Arm
+add_executable(nodeArm
+ src/node_arm.cpp
+ )
+ 
+ ament_target_dependencies(nodeArm
+ rclcpp
+ std_msgs
+ )
+ 
+ target_link_libraries(nodeArm "${cpp_typesupport_target}")
+ target_include_directories(nodeArm PUBLIC
+$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+$<INSTALL_INTERFACE:include>)
+ 
+ #####################################
+
+
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
   # the following line skips the linter which checks for copyrights
@@ -34,41 +71,7 @@ if(BUILD_TESTING)
   ament_lint_auto_find_test_dependencies()
 endif()
 
-
- ##################################### Node camera
- add_executable(nodeCamera
- src/node_camera.cpp
- )
- 
- ament_target_dependencies(nodeCamera
- "rclcpp"
- "sensor_msgs"
- "OpenCV"
- "cv_bridge"
- )
- 
- target_include_directories(nodeCamera PUBLIC
-$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
-$<INSTALL_INTERFACE:include>)
- 
- install(TARGETS nodeCamera
- DESTINATION lib/${PROJECT_NAME})
-
-
- ##################################### Node Arm
-add_executable(nodeArm
- src/node_arm.cpp
- )
- 
- ament_target_dependencies(nodeArm
- "rclcpp"
- )
- 
- target_include_directories(nodeArm PUBLIC
-$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
-$<INSTALL_INTERFACE:include>)
- 
- install(TARGETS nodeArm
- DESTINATION lib/${PROJECT_NAME})
+install(TARGETS nodeCamera nodeArm
+DESTINATION lib/${PROJECT_NAME})
 
 ament_package()
