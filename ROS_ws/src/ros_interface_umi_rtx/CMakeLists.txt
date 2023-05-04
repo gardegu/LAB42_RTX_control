@@ -36,8 +36,7 @@ endif()
 
 
  ##################################### Node camera
-
-add_executable(nodeCamera
+ add_executable(nodeCamera
  src/node_camera.cpp
  )
  
@@ -53,6 +52,23 @@ $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
 $<INSTALL_INTERFACE:include>)
  
  install(TARGETS nodeCamera
+ DESTINATION lib/${PROJECT_NAME})
+
+
+ ##################################### Node Arm
+add_executable(nodeArm
+ src/node_arm.cpp
+ )
+ 
+ ament_target_dependencies(nodeArm
+ "rclcpp"
+ )
+ 
+ target_include_directories(nodeArm PUBLIC
+$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+$<INSTALL_INTERFACE:include>)
+ 
+ install(TARGETS nodeArm
  DESTINATION lib/${PROJECT_NAME})
 
 ament_package()

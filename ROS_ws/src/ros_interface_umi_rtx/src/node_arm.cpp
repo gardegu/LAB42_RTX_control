@@ -5,10 +5,5 @@ using namespace std::placeholders;
 using namespace std;
 
 int main(int argc, char *argv[]){
-    rclcpp::init(argc,argv);
-    shared_ptr<rclcpp::Node> node = make_shared<Turret>();
-
-    rclcpp::spin(node);
-    rclcpp::shutdown();
     return EXIT_SUCCESS;
 }
