@@ -12,21 +12,12 @@ void Camera::init_camera(){
         std::cout << "Could not read the image" << std::endl;
         std::cout << "ici" << std::endl;
     }
+
     cv::Size displaySize(600,800);
     cv::Mat resized_img;
     cv::resize(img_test,resized_img,displaySize);
-    //cv::imshow("Test image",resized_img);
 
     /*
-    cv::Rect roi(130, 110,470,650); //Regio Of Interest
-    cv::Mat cropped_img = resized_img(roi);
-    //cv::imshow("Cropped image",cropped_img);
-
-    cv::Mat gray_img;
-    cv::cvtColor(cropped_img,gray_img,cv::COLOR_BGR2GRAY);
-    //cv::imshow("Gray test image",gray_img);
-    */
-
     cv::Mat gray_img;
     cv::cvtColor(resized_img,gray_img,cv::COLOR_BGR2GRAY);
 
@@ -44,6 +35,14 @@ void Camera::init_camera(){
     if(k == 'q'){
         cv::destroyAllWindows();
     }
+    */
+
+    cv::Mat hsv_img;
+    cv::cvtColor(resized_img,hsv_img,cv::COLOR_BGR2HSV);
+    /*Warning : Hue (H) values are divided by 2 in OpenCv (from 0 to 179 rather than
+     * from 0 to 360 in theory)
+     */
+
 
 }
 
