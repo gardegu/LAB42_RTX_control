@@ -1,5 +1,5 @@
-#ifndef __ARM__
-#define __ARM__
+#ifndef __NODE_ARM_H__
+#define __NODE_ARM_H__
 
 #include "rclcpp/rclcpp.hpp"
 #include "std_msgs/msg/string.hpp"

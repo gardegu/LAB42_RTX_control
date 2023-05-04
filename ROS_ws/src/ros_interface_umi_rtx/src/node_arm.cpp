@@ -1,5 +1,5 @@
-#include "rclcpp/rclcpp.hpp"
 #include "ros_interface_umi_rtx/node_arm.hpp"
+
 
 using namespace std::placeholders;
 using namespace std;
@@ -44,10 +44,14 @@ void Arm_node::set_motors(){
 }
 
 void Arm_node::get_params(){
+    int value,res;
     for (int motor=0; motor<NUMBER_OF_MOTORS; motor++){
         motors_params[motor] = {};
         for (int param=0; param<NUMBER_OF_DATA_CODES; param++){
-            int res = arm_read(motor,param,&(motors_params[motor][param]));
+            res = arm_read(motor,param,&value);
+            if (res!=-1){
+                motors_params[motor][param] = value;
+            }
         }
     }
 }
