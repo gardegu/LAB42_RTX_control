@@ -37,11 +37,28 @@ void Camera::init_camera(){
     }
     */
 
-    cv::Mat hsv_img;
-    cv::cvtColor(resized_img,hsv_img,cv::COLOR_BGR2HSV);
     /*Warning : Hue (H) values are divided by 2 in OpenCv (from 0 to 179 rather than
      * from 0 to 360 in theory)
      */
+    double Hmin = 0, Hmax = 179;
+    double Smin = 0, Smax = 255;
+    double Vmin = 0, Vmax = 255;
+
+    cv::Mat hsv_img;
+    cv::cvtColor(resized_img,hsv_img,cv::COLOR_BGR2HSV);
+
+    cv::Scalar lower_bound = cv::Scalar(20,100,100);
+    cv::Scalar upper_bound = cv::Scalar(60,255,255);
+
+    cv::Mat bin_hsv_img;
+    cv::inRange(hsv_img, lower_bound, upper_bound, bin_hsv_img);
+
+    cv::imshow("Binary HSV image", bin_hsv_img);
+    int k = cv::waitKey(0);
+    if(k == 'q'){
+        cv::destroyAllWindows();
+    }
+
 
 
 }
