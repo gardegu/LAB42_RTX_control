@@ -23,6 +23,17 @@ find_package(sensor_msgs REQUIRED)
 find_package(OpenCV REQUIRED)
 find_package(cv_bridge REQUIRED)
 
+# Ajouter le chemin du répertoire lib/ de umi-rtx/
+link_directories(${CMAKE_CURRENT_SOURCE_DIR}/../umi-rtx/lib)
+include_directories(include ${CMAKE_CURRENT_SOURCE_DIR}/../umi-rtx/include)
+
+# Créer une bibliothèque CMake à partir des fichiers d'objets statiques
+add_library(arm STATIC IMPORTED)
+set_target_properties(arm PROPERTIES IMPORTED_LOCATION ${CMAKE_CURRENT_SOURCE_DIR}/../umi-rtx/lib/libarm.a)
+
+add_library(rtx STATIC IMPORTED)
+set_target_properties(rtx PROPERTIES IMPORTED_LOCATION ${CMAKE_CURRENT_SOURCE_DIR}/../umi-rtx/lib/librtx.a)
+
 
  ##################################### Node camera
  add_executable(nodeCamera
@@ -52,10 +63,12 @@ add_executable(nodeArm
  std_msgs
  )
  
- target_link_libraries(nodeArm "${cpp_typesupport_target}")
+ target_link_libraries(nodeArm arm rtx"${cpp_typesupport_target}" )
  target_include_directories(nodeArm PUBLIC
 $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
 $<INSTALL_INTERFACE:include>)
+target_include_directories(nodeArm PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/../umi-rtx/include)
+
  
  #####################################
 
@@ -73,5 +86,9 @@ endif()
 
 install(TARGETS nodeCamera nodeArm
 DESTINATION lib/${PROJECT_NAME})
+
+install(DIRECTORY launch
+  DESTINATION share/${PROJECT_NAME}
+)
 
 ament_package()

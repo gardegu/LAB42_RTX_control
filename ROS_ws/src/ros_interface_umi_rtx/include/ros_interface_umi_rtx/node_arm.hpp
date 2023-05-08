@@ -3,8 +3,10 @@
 
 #include "rclcpp/rclcpp.hpp"
 #include "std_msgs/msg/string.hpp"
-#include "umi-rtx/include/umi-drivers/armlib.h"
-#include "umi-rtx/include/umi-drivers/rtx.h"
+// #include "umi-drivers/armlib.h"
+// #include "umi-drivers/rtx.h"
+#include "../umi-rtx/include/umi-drivers/armlib.h"
+
 
 #include <chrono>
 #include <map>
