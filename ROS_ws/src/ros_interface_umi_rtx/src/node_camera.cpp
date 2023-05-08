@@ -2,14 +2,45 @@
 
 void Camera::init_interfaces(){
     timer_ = this->create_wall_timer(loop_dt_,std::bind(&Camera::timer_callback,this));
+    image_publisher = this->create_publisher<sensor_msgs::msg::Image>("processed_image",10);
 }
 
 void Camera::init_camera(){
-
+    cap.open(0);
+    if (!cap.isOpened()) {
+        std::cout << "ERROR! Unable to open camera" << std::endl;
+    }
+    int frame_width = cap.get(cv::CAP_PROP_FRAME_WIDTH);
+    int frame_height = cap.get(cv::CAP_PROP_FRAME_HEIGHT);
+    std::cout << "init done" << std::endl;
 }
 
 void Camera::timer_callback(){
+    //int frame_width = cap.get(cv::CAP_PROP_FRAME_WIDTH);
+    //int frame_height = cap.get(cv::CAP_PROP_FRAME_HEIGHT);
+    //std::cout << frame_width << " " << frame_height << std::endl;
 
+    cap.read(frame);
+    //std::cout << "new frame" << std::endl;
+
+    cv::Mat hsv_img;
+    cv::cvtColor(frame,hsv_img,cv::COLOR_BGR2HSV);
+
+    cv::Scalar lower_bound = cv::Scalar(20,100,100);
+    cv::Scalar upper_bound = cv::Scalar(60,255,255);
+
+    cv::Mat bin_hsv_img;
+    cv::inRange(hsv_img, lower_bound, upper_bound, bin_hsv_img);
+    //std::cout << "image processed " << std::endl;
+
+    sensor_msgs::msg::Image::SharedPtr message = cv_bridge::CvImage(std_msgs::msg::Header(),"mono8",bin_hsv_img).toImageMsg();
+
+    image_publisher->publish(*message);
+
+    
+
+    //cv::imshow("Binary HSV camera feed", bin_hsv_img);
+    //cv::imshow("Feed",frame);
 }
 
 void Camera::test(){

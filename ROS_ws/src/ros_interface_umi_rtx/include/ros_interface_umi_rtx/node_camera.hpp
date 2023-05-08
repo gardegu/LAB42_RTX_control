@@ -33,7 +33,11 @@ private:
 
     rclcpp::TimerBase::SharedPtr timer_;
 
-    //cv::VideoCapture cap;
+    rclcpp::Publisher<sensor_msgs::msg::Image>::SharedPtr image_publisher;
+
+    cv::VideoCapture cap;
+    cv::Mat frame;
+
 };
 
 
