@@ -12,6 +12,7 @@ void Camera::init_interfaces(){
 
 void Camera::init_camera(){
     cap.open(0);
+
     if (!cap.isOpened()) {
         std::cout << "ERROR! Unable to open camera" << std::endl;
     }
@@ -38,6 +39,7 @@ void Camera::timer_callback(){
 
     if(contours.empty()){
         std::cout << "Cannot detect the target" << std::endl;
+
         sensor_msgs::msg::Image::SharedPtr img_msg = cv_bridge::CvImage(std_msgs::msg::Header(),"bgr8",frame).toImageMsg();
         image_publisher->publish(*img_msg);
     }
@@ -45,15 +47,18 @@ void Camera::timer_callback(){
     else{
         double maxArea = 0;
         int maxAreaIdx = -1;
+
         for (int i = 0; i < contours.size(); i++)
         {
             double area = cv::contourArea(contours[i]);
+
             if (area > maxArea)
             {
                 maxArea = area;
                 maxAreaIdx = i;
             }
         }
+
         //std::cout << "indice : " << maxAreaIdx << std::endl;
 
         geometry_msgs::msg::Point coord_msg;
@@ -67,17 +72,21 @@ void Camera::timer_callback(){
                 double cx = moments.m10 / moments.m00;
                 double cy = moments.m01 / moments.m00;
                 //std::cout << "Centroid : (" << cx << ", " << cy << ")" << std::endl;
+
                 coord_msg.x = cx;
                 coord_msg.y = cy;
                 m_cx = cx;
                 m_cy = cy;
+
                 coord_publisher->publish(coord_msg);
             }
 
             else {
                 std::cout << "Impossible centroid calculation" << std::endl;
+
                 coord_msg.x = m_cx;
                 coord_msg.y = m_cy;
+
                 coord_publisher->publish(coord_msg);
             }
         }
@@ -85,6 +94,7 @@ void Camera::timer_callback(){
         else{
             coord_msg.x = m_cx;
             coord_msg.y = m_cy;
+
             coord_publisher->publish(coord_msg);
         }
 
