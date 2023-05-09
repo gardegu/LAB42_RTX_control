@@ -18,17 +18,13 @@ public:
     Camera() : Node("control") {
         init_interfaces();
         init_camera();
-        //test();
-        //binFeed();
     };
 
 private:
     void timer_callback();
     void init_interfaces();
     void init_camera();
-    void test();
-    void binFeed();
-    
+
     std::chrono::milliseconds loop_dt_ = 40ms;
 
     rclcpp::TimerBase::SharedPtr timer_;

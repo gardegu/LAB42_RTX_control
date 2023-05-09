@@ -56,6 +56,7 @@ ROS_ws/build
 ROS_ws/dev
 ROS_ws/log
 ROS_ws/install
+ROS_ws/brouillon.cpp
 
 .vscode
 Traitement_image/
