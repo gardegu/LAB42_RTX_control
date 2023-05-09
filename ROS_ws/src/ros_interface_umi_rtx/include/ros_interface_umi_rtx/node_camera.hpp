@@ -36,6 +36,9 @@ private:
     cv::VideoCapture cap;
     cv::Mat frame;
 
+    double m_cx;
+    double m_cy;
+
 };
 
 

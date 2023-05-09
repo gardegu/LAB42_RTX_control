@@ -1,7 +1,11 @@
 #include "ros_interface_umi_rtx/node_camera.hpp"
 
 void Camera::init_interfaces(){
+    m_cx = 0;
+    m_cy = 0;
+
     timer_ = this->create_wall_timer(loop_dt_,std::bind(&Camera::timer_callback,this));
+
     image_publisher = this->create_publisher<sensor_msgs::msg::Image>("processed_image",10);
     coord_publisher = this->create_publisher<geometry_msgs::msg::Point>("target_position",10);
 }
@@ -11,9 +15,10 @@ void Camera::init_camera(){
     if (!cap.isOpened()) {
         std::cout << "ERROR! Unable to open camera" << std::endl;
     }
+
     int frame_width = cap.get(cv::CAP_PROP_FRAME_WIDTH);
     int frame_height = cap.get(cv::CAP_PROP_FRAME_HEIGHT);
-    std::cout << "init done" << std::endl;
+    //std::cout << "init done" << std::endl;
 }
 
 void Camera::timer_callback(){
@@ -33,6 +38,8 @@ void Camera::timer_callback(){
 
     if(contours.empty()){
         std::cout << "Cannot detect the target" << std::endl;
+        sensor_msgs::msg::Image::SharedPtr img_msg = cv_bridge::CvImage(std_msgs::msg::Header(),"bgr8",frame).toImageMsg();
+        image_publisher->publish(*img_msg);
     }
 
     else{
@@ -47,24 +54,43 @@ void Camera::timer_callback(){
                 maxAreaIdx = i;
             }
         }
-        cv::drawContours(frame, contours, maxAreaIdx, cv::Scalar(255, 255, 255), 2);
+        //std::cout << "indice : " << maxAreaIdx << std::endl;
 
-        sensor_msgs::msg::Image::SharedPtr message = cv_bridge::CvImage(std_msgs::msg::Header(),"bgr8",frame).toImageMsg();
-        image_publisher->publish(*message);
+        geometry_msgs::msg::Point coord_msg;
 
-        try{
+        if(maxAreaIdx > -1) {
+            cv::drawContours(frame, contours, maxAreaIdx, cv::Scalar(255, 255, 255), 2);
+
             cv::Moments moments = cv::moments(contours[maxAreaIdx]);
-            double cx = moments.m10 / moments.m00;
-            double cy = moments.m01 / moments.m00;
-            std::cout << "Centroid : (" << cx << ", " << cy << ")" << std::endl;
-        }
-        catch(const cv::Exception& e){
-            std::cout << "Centroid computation error " << e.what() << std::endl;
+
+            if (moments.m00 != 0) {
+                double cx = moments.m10 / moments.m00;
+                double cy = moments.m01 / moments.m00;
+                //std::cout << "Centroid : (" << cx << ", " << cy << ")" << std::endl;
+                coord_msg.x = cx;
+                coord_msg.y = cy;
+                m_cx = cx;
+                m_cy = cy;
+                coord_publisher->publish(coord_msg);
+            }
+
+            else {
+                std::cout << "Impossible centroid calculation" << std::endl;
+                coord_msg.x = m_cx;
+                coord_msg.y = m_cy;
+                coord_publisher->publish(coord_msg);
+            }
         }
 
+        else{
+            coord_msg.x = m_cx;
+            coord_msg.y = m_cy;
+            coord_publisher->publish(coord_msg);
+        }
+
+        sensor_msgs::msg::Image::SharedPtr img_msg = cv_bridge::CvImage(std_msgs::msg::Header(), "bgr8", frame).toImageMsg();
+        image_publisher->publish(*img_msg);
     }
-
-
 }
 
 int main(int argc, char * argv[]){
