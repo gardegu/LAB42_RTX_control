@@ -4,6 +4,7 @@
 using namespace std::placeholders;
 using namespace std;
 
+
 void Arm_node::init_interfaces(){
     timer_ = this->create_wall_timer(loop_dt_, std::bind(&Arm_node::timer_callback, this));
     subscription_commands = this->create_subscription<std_msgs::msg::String>("motor_commands",10,
@@ -12,6 +13,8 @@ void Arm_node::init_interfaces(){
 }
 
 void Arm_node::timer_callback(){
+    get_params();
+
     // Collect the parameters and publish them
     std_msgs::msg::String params;
 
@@ -50,6 +53,7 @@ void Arm_node::get_params(){
         for (int param=0; param<NUMBER_OF_DATA_CODES; param++){
             res = arm_read(motor,param,&value);
             if (res!=-1){
+                cout << value << endl;
                 motors_params[motor][param] = value;
             }
         }

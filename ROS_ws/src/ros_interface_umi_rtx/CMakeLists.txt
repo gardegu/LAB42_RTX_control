@@ -15,6 +15,7 @@ if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
   add_compile_options(-Wall -Wextra -Wpedantic)
 endif()
 
+
 # find dependencies
 find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
@@ -23,19 +24,13 @@ find_package(sensor_msgs REQUIRED)
 find_package(OpenCV REQUIRED)
 find_package(cv_bridge REQUIRED)
 
-# Ajouter le chemin du répertoire lib/ de umi-rtx/
-link_directories(${CMAKE_CURRENT_SOURCE_DIR}/../umi-rtx/lib)
-include_directories(include ${CMAKE_CURRENT_SOURCE_DIR}/../umi-rtx/include)
-
-# Créer une bibliothèque CMake à partir des fichiers d'objets statiques
-add_library(arm STATIC IMPORTED)
-set_target_properties(arm PROPERTIES IMPORTED_LOCATION ${CMAKE_CURRENT_SOURCE_DIR}/../umi-rtx/lib/libarm.a)
-
-add_library(rtx STATIC IMPORTED)
-set_target_properties(rtx PROPERTIES IMPORTED_LOCATION ${CMAKE_CURRENT_SOURCE_DIR}/../umi-rtx/lib/librtx.a)
+add_library(armcmds src/armlib/armcmds.cpp)
+target_include_directories(armcmds PUBLIC
+  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+  $<INSTALL_INTERFACE:include>)
 
 
- ##################################### Node camera
+  ##################################### Node camera
  add_executable(nodeCamera
  src/node_camera.cpp
  )
@@ -56,6 +51,9 @@ $<INSTALL_INTERFACE:include>)
  ##################################### Node Arm
 add_executable(nodeArm
  src/node_arm.cpp
+ src/armlib/armcmds.cpp
+ src/armlib/armraw.cpp
+ src/armlib/armerror.c
  )
  
  ament_target_dependencies(nodeArm
@@ -63,14 +61,14 @@ add_executable(nodeArm
  std_msgs
  )
  
- target_link_libraries(nodeArm arm rtx"${cpp_typesupport_target}" )
+ target_link_libraries(nodeArm armcmds)
+ target_link_libraries(nodeArm "${cpp_typesupport_target}" )
  target_include_directories(nodeArm PUBLIC
 $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
 $<INSTALL_INTERFACE:include>)
-target_include_directories(nodeArm PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/../umi-rtx/include)
-
  
  #####################################
+
 
 
 if(BUILD_TESTING)
@@ -86,6 +84,9 @@ endif()
 
 install(TARGETS nodeCamera nodeArm
 DESTINATION lib/${PROJECT_NAME})
+
+install(DIRECTORY include/
+  DESTINATION include)
 
 install(DIRECTORY launch
   DESTINATION share/${PROJECT_NAME}

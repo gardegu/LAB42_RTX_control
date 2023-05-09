@@ -4155,3 +4155,9 @@
 2023-05-03 16:35:13 (7) onetransaction: RTX_CMD_QUIT
 2023-05-03 16:35:13 (7) Do quit
 2023-05-03 16:35:13 (7) Closed
+2023-05-09 09:47:11 (RTXD) Restarting, listening to port 33135 on pc-massa
+2023-05-09 09:47:11 (RTXD) Couldn't open '/dev/ttyUSB0'
+
+2023-05-09 09:47:11 (RTXD) No rtx_ops found for '/dev/ttyUSB0'
+
+2023-05-09 09:47:11 (RTXD) Can not talk to RTX
