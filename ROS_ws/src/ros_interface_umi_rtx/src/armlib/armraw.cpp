@@ -53,6 +53,8 @@
 #include <sys/file.h>
 #include <netinet/in.h>
 #include <stdio.h>
+#include <cstdio>
+#include <iostream>
 #include <stdlib.h>
 #include <cstdlib>
 #include <unistd.h>
@@ -68,7 +70,7 @@
 #include "ros_interface_umi_rtx/umi-drivers/armraw.h"
 #include "ros_interface_umi_rtx/umi-drivers/comm.h"
 
-
+using namespace std;
 
 static int debug = 0;
 static int library_loaded = 0;
@@ -246,39 +248,49 @@ int arm_interrupt(int cmd,libio *rtxparams)
 {
     libio tmpio;
 
-    if ((armerrno == COMMS_NOT_INITIALISED || armerrno == LOST_CONNECTION) && cmd != RTX_CMD_INIT)
-       return -1;
+    if ((armerrno == COMMS_NOT_INITIALISED || armerrno == LOST_CONNECTION) && cmd != RTX_CMD_INIT){
+        // cout << "error not initialized" << endl;
+        return -1;
+    }
+        
 
-    if (!rtxparams)
-	rtxparams = &tmpio;
+    if (!rtxparams){
+        rtxparams = &tmpio;
+    }
 
-    if (cmd == RTX_CMD_INIT) /* change debug also when library is loaded */
-            debug = rtxparams->params[1];
+    if (cmd == RTX_CMD_INIT){ /* change debug also when library is loaded */
+        debug = rtxparams->params[1];
+    }
 
     if (!library_loaded) {
-	if (cmd == RTX_CMD_INIT) {
-	    if (downloadlib() == -1) {
-		return -1;
-	    }
-	} else {
-	    armerrno = COMMS_NOT_INITIALISED;
-	    return -1;
-	}
+        if (cmd == RTX_CMD_INIT) {
+            if (downloadlib() == -1) {
+                return -1;
+            }
+        } 
+        else {
+                armerrno = COMMS_NOT_INITIALISED;
+            return -1;
+        }
     }
     rtxparams->what = cmd;
 
-    if (debug > 3)
+    if (debug > 3){
         printf( "arm_interrupt: %s\n", rtxstrcommand(rtxparams->what));
+    }
 
-    if (_arm_raw_transaction(rtxparams) == -1)
-	return -1;
+    if (_arm_raw_transaction(rtxparams) == -1){
+	    return -1;
+    }
 
     /* preserve errno */
     if (rtxparams->what) {
-	armerrno = rtxparams->what;
-	return -1;
-    } else
-	return 0;
+	    armerrno = rtxparams->what;
+	    return -1;
+    } 
+    else {
+	    return 0;
+    }
 }
 
 /*

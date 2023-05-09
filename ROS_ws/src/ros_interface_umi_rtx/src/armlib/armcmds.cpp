@@ -43,11 +43,17 @@
  * Simple copy of rtx.pas
  */
 #include <stdio.h>
+#include <cstdio>
+#include <iostream>
+
+
 #include "ros_interface_umi_rtx/umi-drivers/ipcrt.h"
 #include "ros_interface_umi_rtx/umi-drivers/rtx.h"
 #include "ros_interface_umi_rtx/umi-drivers/comm.h"
 #include "ros_interface_umi_rtx/umi-drivers/armraw.h"
 #include "ros_interface_umi_rtx/umi-drivers/armlib.h"
+
+using namespace std; 
 
 static int arm_debug = 0;
 
@@ -184,6 +190,7 @@ int arm_read(int motor,int code,int *result)
     rtxparams.params[0] = motor;
     rtxparams.params[1] = code;
     err = arm_interrupt(RTX_CMD_READ,&rtxparams);
+    // cout << "arm_read :" << endl;
     *result = rtxparams.params[0];
     return err;
 }

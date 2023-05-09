@@ -52,8 +52,8 @@ void Arm_node::get_params(){
         motors_params[motor] = {};
         for (int param=0; param<NUMBER_OF_DATA_CODES; param++){
             res = arm_read(motor,param,&value);
+            // cout << res << endl;
             if (res!=-1){
-                cout << value << endl;
                 motors_params[motor][param] = value;
             }
         }

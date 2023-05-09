@@ -1,18 +1,25 @@
 import os
-from ament_index_python.packages import get_package_share_directory
 from launch import LaunchDescription, actions
 from launch_ros.actions import Node
 
 def generate_launch_description():
+    
+    cmd = "sudo -E env LD_LIBRARY_PATH=$LD_LIBRARY_PATH PATH=$PATH USER=$USER "\
+          "$PWD/install/ros_interface_umi_rtx/lib/ros_interface_umi_rtx/nodeArm"
+    
     nodeArm = Node(
         package='ros_interface_umi_rtx',
         namespace='',
-        executable='nodeArm',
-        name='arm_node'
+        executable='/usr/bin/zsh',
+        name='arm_node',
+        arguments=['-c', cmd],
+        output='screen'
     )
     
     return LaunchDescription([
                               nodeArm
                               ])
 
+# executable='nodeArm',
 # actions.ExecuteProcess(cmd=['ros2','bag','record','-a'],output='screen'),
+# prefix="sudo -E env PYTHONPATH=$PYTHONPATH LD_LIBRARY_PATH=$LD_LIBRARY_PATH PATH=$PATH USER=$USER"
