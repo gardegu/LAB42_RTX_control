@@ -1,8 +1,14 @@
 #!/bin/bash
 
-cd umi-rtx/bin 
-sudo ./rtxd /dev/ttyUSB0
+if [ "$SHELL" = "usr/bin/zsh" ]; then
+    source ROS_ws/install/local_setup.zsh
+else
+    source ROS_ws/install/local_setup.bash
+fi
 
-ros2 run ros_interface_umi_rtx nodeArm
+cd umi-rtx/bin; sudo ./rtxd /dev/ttyUSB2
 
-# ros2 launch ros_interface_umi_rtx arm.launch.py
+cd ../../ROS_ws/
+# ros2 run ros_interface_umi_rtx nodeArm
+
+ros2 launch ros_interface_umi_rtx arm.launch.py
