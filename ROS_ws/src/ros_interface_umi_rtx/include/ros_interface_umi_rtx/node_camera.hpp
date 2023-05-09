@@ -3,6 +3,7 @@
 
 #include "rclcpp/rclcpp.hpp"
 #include "sensor_msgs/msg/image.hpp"
+#include "geometry_msgs/msg/point.hpp"
 #include <cv_bridge/cv_bridge.h>
 #include <opencv2/opencv.hpp>
 #include <vector>
@@ -30,6 +31,7 @@ private:
     rclcpp::TimerBase::SharedPtr timer_;
 
     rclcpp::Publisher<sensor_msgs::msg::Image>::SharedPtr image_publisher;
+    rclcpp::Publisher<geometry_msgs::msg::Point>::SharedPtr coord_publisher;
 
     cv::VideoCapture cap;
     cv::Mat frame;

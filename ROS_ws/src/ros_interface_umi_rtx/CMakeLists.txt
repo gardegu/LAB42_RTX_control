@@ -23,6 +23,7 @@ find_package(std_msgs REQUIRED)
 find_package(sensor_msgs REQUIRED)
 find_package(OpenCV REQUIRED)
 find_package(cv_bridge REQUIRED)
+find_package(geometry_msgs REQUIRED)
 
 add_library(armcmds src/armlib/armcmds.cpp)
 target_include_directories(armcmds PUBLIC
@@ -40,6 +41,7 @@ target_include_directories(armcmds PUBLIC
  sensor_msgs
  OpenCV
  cv_bridge
+ geometry_msgs
  )
 
  target_link_libraries(nodeCamera "${cpp_typesupport_target}")
