@@ -39,10 +39,12 @@ void Camera::timer_callback(){
     cv::findContours(bin_hsv_img, contours, cv::RETR_EXTERNAL, cv::CHAIN_APPROX_NONE);
 
     if(contours.empty()){
-        std::cout << "Cannot detect the target" << std::endl;
+        //std::cout << "Cannot detect the target" << std::endl;
 
-        cv::line(frame,cv::Point (m_frame_width/2 - 50,m_frame_height/2),cv::Point (m_frame_width/2 + 50,m_frame_height/2),cv::Scalar(0,0,255),2);
-        cv::line(frame,cv::Point (m_frame_width/2,m_frame_height/2 - 50),cv::Point (m_frame_width/2,m_frame_height/2 + 50),cv::Scalar(0,0,255),2);
+        cv::circle(frame,cv::Point(m_frame_width-40,40),20,cv::Scalar(0,0,255),-1);
+
+        cv::line(frame,cv::Point (m_frame_width/2 - 25,m_frame_height/2),cv::Point (m_frame_width/2 + 25,m_frame_height/2),cv::Scalar(255,255,255),2);
+        cv::line(frame,cv::Point (m_frame_width/2,m_frame_height/2 - 25),cv::Point (m_frame_width/2,m_frame_height/2 + 25),cv::Scalar(255,255,255),2);
 
         sensor_msgs::msg::Image::SharedPtr img_msg = cv_bridge::CvImage(std_msgs::msg::Header(),"bgr8",frame).toImageMsg();
         image_publisher->publish(*img_msg);
@@ -91,6 +93,7 @@ void Camera::timer_callback(){
                 coord_msg.x = m_cx;
                 coord_msg.y = m_cy;
 
+                cv::circle(frame,cv::Point(m_frame_width-40,40),20,cv::Scalar(0,255,255),-1);
                 coord_publisher->publish(coord_msg);
             }
         }
@@ -102,8 +105,10 @@ void Camera::timer_callback(){
             coord_publisher->publish(coord_msg);
         }
 
-        cv::line(frame,cv::Point (m_frame_width/2 - 50,m_frame_height/2),cv::Point (m_frame_width/2 + 50,m_frame_height/2),cv::Scalar(0,255,0),2);
-        cv::line(frame,cv::Point (m_frame_width/2,m_frame_height/2 - 50),cv::Point (m_frame_width/2,m_frame_height/2 + 50),cv::Scalar(0,255,0),2);
+        cv::circle(frame,cv::Point(m_frame_width-40,40),20,cv::Scalar(0,255,0),-1);
+
+        cv::line(frame,cv::Point (m_frame_width/2 - 25,m_frame_height/2),cv::Point (m_frame_width/2 + 25,m_frame_height/2),cv::Scalar(255,255,255),2);
+        cv::line(frame,cv::Point (m_frame_width/2,m_frame_height/2 - 25),cv::Point (m_frame_width/2,m_frame_height/2 + 25),cv::Scalar(255,255,255),2);
 
         sensor_msgs::msg::Image::SharedPtr img_msg = cv_bridge::CvImage(std_msgs::msg::Header(), "bgr8", frame).toImageMsg();
         image_publisher->publish(*img_msg);
