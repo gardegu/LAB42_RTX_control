@@ -25,8 +25,13 @@ find_package(OpenCV REQUIRED)
 find_package(cv_bridge REQUIRED)
 find_package(geometry_msgs REQUIRED)
 
-add_library(armcmds src/armlib/armcmds.cpp)
+add_library(armcmds src/drivers/armlib/armcmds.cpp)
 target_include_directories(armcmds PUBLIC
+  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+  $<INSTALL_INTERFACE:include>)
+
+add_library(armraw src/drivers/armlib/armraw.cpp)
+target_include_directories(armraw PUBLIC
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
   $<INSTALL_INTERFACE:include>)
 
@@ -63,7 +68,7 @@ add_executable(nodeArm
  std_msgs
  )
  
- target_link_libraries(nodeArm armcmds)
+ target_link_libraries(nodeArm armcmds armraw)
  target_link_libraries(nodeArm "${cpp_typesupport_target}" )
  target_include_directories(nodeArm PUBLIC
 $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
