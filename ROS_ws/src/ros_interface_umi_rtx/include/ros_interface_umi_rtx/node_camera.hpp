@@ -39,6 +39,9 @@ private:
     double m_cx;
     double m_cy;
 
+    int m_frame_width;
+    int m_frame_height;
+
 };
 
 
