@@ -11,14 +11,15 @@ void Camera::init_interfaces(){
 }
 
 void Camera::init_camera(){
-    cap.open(0);
+    cap.open(0); // webcam
+    //cap.open(4) // robot's camera
 
     if (!cap.isOpened()) {
         std::cout << "ERROR! Unable to open camera" << std::endl;
     }
 
-    int frame_width = cap.get(cv::CAP_PROP_FRAME_WIDTH);
-    int frame_height = cap.get(cv::CAP_PROP_FRAME_HEIGHT);
+    m_frame_width = cap.get(cv::CAP_PROP_FRAME_WIDTH);
+    m_frame_height = cap.get(cv::CAP_PROP_FRAME_HEIGHT);
     //std::cout << "init done" << std::endl;
 }
 
@@ -39,6 +40,9 @@ void Camera::timer_callback(){
 
     if(contours.empty()){
         std::cout << "Cannot detect the target" << std::endl;
+
+        cv::line(frame,cv::Point (m_frame_width/2 - 50,m_frame_height/2),cv::Point (m_frame_width/2 + 50,m_frame_height/2),cv::Scalar(0,0,255),2);
+        cv::line(frame,cv::Point (m_frame_width/2,m_frame_height/2 - 50),cv::Point (m_frame_width/2,m_frame_height/2 + 50),cv::Scalar(0,0,255),2);
 
         sensor_msgs::msg::Image::SharedPtr img_msg = cv_bridge::CvImage(std_msgs::msg::Header(),"bgr8",frame).toImageMsg();
         image_publisher->publish(*img_msg);
@@ -97,6 +101,9 @@ void Camera::timer_callback(){
 
             coord_publisher->publish(coord_msg);
         }
+
+        cv::line(frame,cv::Point (m_frame_width/2 - 50,m_frame_height/2),cv::Point (m_frame_width/2 + 50,m_frame_height/2),cv::Scalar(0,255,0),2);
+        cv::line(frame,cv::Point (m_frame_width/2,m_frame_height/2 - 50),cv::Point (m_frame_width/2,m_frame_height/2 + 50),cv::Scalar(0,255,0),2);
 
         sensor_msgs::msg::Image::SharedPtr img_msg = cv_bridge::CvImage(std_msgs::msg::Header(), "bgr8", frame).toImageMsg();
         image_publisher->publish(*img_msg);
