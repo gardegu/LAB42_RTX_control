@@ -10,7 +10,7 @@ public:
     ForeArm(int id, Joint *parent_joint, Joint *child_joint);
     ForeArm();
     
-    const float m_length;
+    const float m_length = 0.3; // TODO : put the right length
     int m_ID;
 
     Joint* get_parentJoint() const;

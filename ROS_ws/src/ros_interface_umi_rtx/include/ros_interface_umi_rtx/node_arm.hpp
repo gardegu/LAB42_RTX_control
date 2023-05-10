@@ -3,12 +3,15 @@
 
 #include "rclcpp/rclcpp.hpp"
 #include "std_msgs/msg/string.hpp"
+
 #include "ros_interface_umi_rtx/umi-drivers/armlib.h"
 #include "ros_interface_umi_rtx/umi-drivers/rtx.h"
 #include "ros_interface_umi_rtx/umi-drivers/armraw.h"
 #include "ros_interface_umi_rtx/umi-drivers/comm.h"
 #include <ros_interface_umi_rtx/umi-drivers/rtxd.h>
 #include <ros_interface_umi_rtx/umi-drivers/comm.h>
+
+#include "ros_interface_umi_rtx/arm_parts/arm.h"
 
 #include <sys/types.h>
 #include <sys/param.h>
@@ -55,6 +58,7 @@ private:
     map<int,int> commands_motor; // Map which keeps the commands for each motor
     map<int,map<int,int>> motors_params; // Keeps in memory the parameters of the motors
 
+    Arm full_arm();
 
     rclcpp::TimerBase::SharedPtr timer_;
     rclcpp::Subscription<std_msgs::msg::String>::SharedPtr subscription_commands;

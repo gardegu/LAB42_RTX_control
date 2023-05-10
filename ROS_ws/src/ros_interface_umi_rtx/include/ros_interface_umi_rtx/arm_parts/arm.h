@@ -27,7 +27,7 @@ private:
     string mName;
     vector<Joint*> mJoints;
 
-    ForeArm FA1,FA2;
+    ForeArm FA1,FA2,FA3;
     Wrist W;
 };
 

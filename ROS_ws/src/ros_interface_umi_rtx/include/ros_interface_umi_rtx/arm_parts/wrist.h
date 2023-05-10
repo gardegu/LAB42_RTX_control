@@ -11,6 +11,8 @@ public:
 
 private:
     Joint *m_W1, *m_W2;
+
+    
 };
 
 #endif
