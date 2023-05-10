@@ -39,7 +39,7 @@ class Arm_node : public rclcpp::Node{
 public:
     Arm_node() : Node("arm_node") {
         init_interfaces();
-        arm_init_comms(0,0);
+        arm_init_comms(1,2);
     };
 
 private:

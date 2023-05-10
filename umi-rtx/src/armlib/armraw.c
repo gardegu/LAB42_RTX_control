@@ -152,6 +152,8 @@ downloadlib()
 	    goto fatal;
         }
 	fcntl(lib_socket,F_SETFD,1);
+
+
 	if (connect(lib_socket,(struct sockaddr *)&un,
 		strlen(un.sun_path)+sizeof(un.sun_family)) == -1) {
 #if 0
@@ -165,6 +167,8 @@ downloadlib()
 	    goto fatal;
 #endif
 	}
+
+    
     } else {
 	struct sockaddr_in in;
 	struct hostent *gethostbyname(), *host = gethostbyname(buf);

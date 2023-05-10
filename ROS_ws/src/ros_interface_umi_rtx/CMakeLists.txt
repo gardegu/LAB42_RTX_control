@@ -53,9 +53,9 @@ $<INSTALL_INTERFACE:include>)
  ##################################### Node Arm
 add_executable(nodeArm
  src/node_arm.cpp
- src/armlib/armcmds.cpp
- src/armlib/armraw.cpp
- src/armlib/armerror.c
+ src/drivers/armlib/armcmds.cpp
+ src/drivers/armlib/armraw.cpp
+ src/drivers/armlib/armerror.c
  )
  
  ament_target_dependencies(nodeArm

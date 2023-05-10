@@ -5,7 +5,7 @@ from launch_ros.actions import Node
 def generate_launch_description():
     
     cmd = "sudo -E env LD_LIBRARY_PATH=$LD_LIBRARY_PATH PATH=$PATH USER=$USER "\
-          "$PWD/install/ros_interface_umi_rtx/lib/ros_interface_umi_rtx/nodeArm"
+          "$PWD/ROS_ws/install/ros_interface_umi_rtx/lib/ros_interface_umi_rtx/nodeArm"
     
     nodeArm = Node(
         package='ros_interface_umi_rtx',
