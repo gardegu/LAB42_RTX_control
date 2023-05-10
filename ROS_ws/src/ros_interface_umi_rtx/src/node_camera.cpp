@@ -93,7 +93,7 @@ void Camera::timer_callback(){
                 coord_msg.x = m_cx;
                 coord_msg.y = m_cy;
 
-                cv::circle(frame,cv::Point(m_frame_width-40,40),20,cv::Scalar(0,255,255),-1);
+                cv::circle(frame,cv::Point(m_frame_width-40,40),20,cv::Scalar(100,50,100),-1);
                 coord_publisher->publish(coord_msg);
             }
         }
