@@ -11,7 +11,7 @@
 #include <ros_interface_umi_rtx/umi-drivers/rtxd.h>
 #include <ros_interface_umi_rtx/umi-drivers/comm.h>
 
-#include "ros_interface_umi_rtx/arm_parts/arm.h"
+#include <ros_interface_umi_rtx/arm_parts/arm.h>
 
 #include <sys/types.h>
 #include <sys/param.h>

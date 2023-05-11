@@ -35,6 +35,10 @@ target_include_directories(armraw PUBLIC
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
   $<INSTALL_INTERFACE:include>)
 
+  add_library(armerror src/drivers/armlib/armerror.c)
+target_include_directories(armerror PUBLIC
+  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+  $<INSTALL_INTERFACE:include>)
 
   ##################################### Node camera
  add_executable(nodeCamera
@@ -58,9 +62,11 @@ $<INSTALL_INTERFACE:include>)
  ##################################### Node Arm
 add_executable(nodeArm
  src/node_arm.cpp
+
  src/drivers/armlib/armcmds.cpp
  src/drivers/armlib/armraw.cpp
  src/drivers/armlib/armerror.c
+
  )
  
  ament_target_dependencies(nodeArm
@@ -68,7 +74,7 @@ add_executable(nodeArm
  std_msgs
  )
  
- target_link_libraries(nodeArm armcmds armraw)
+ target_link_libraries(nodeArm armcmds armraw armerror)
  target_link_libraries(nodeArm "${cpp_typesupport_target}" )
  target_include_directories(nodeArm PUBLIC
 $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>

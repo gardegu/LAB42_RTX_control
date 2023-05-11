@@ -31,3 +31,16 @@ void Arm::initArm(){
 
     W = Wrist(mJoints[3],mJoints[4]);
 }
+
+vector<int> Arm::getMotorState(int ID){
+    Joint* motor = mJoints[ID];
+
+    vector<int> res;
+
+    for (int PID=0; PID<NUMBER_OF_DATA_CODES; PID++){
+        res.push_back(motor->get_parameter(PID));
+    }
+
+    return res;
+
+}

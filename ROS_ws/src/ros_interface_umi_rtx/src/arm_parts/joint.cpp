@@ -1,5 +1,6 @@
 #include "ros_interface_umi_rtx/arm_parts/joint.h"
 
+
 using namespace std;
 
 Joint::Joint(int ID){
@@ -32,4 +33,8 @@ vector<float> Joint::getPosition() const{
 
 const string Joint::getName() const{
     return m_Name;
+}
+
+int Joint::get_parameter(int PID, int *value){
+    return arm_read(m_ID, PID, &value);
 }

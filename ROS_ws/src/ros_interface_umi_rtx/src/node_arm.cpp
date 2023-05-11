@@ -48,13 +48,13 @@ void Arm_node::set_motors(){
 
 void Arm_node::get_params(){
     int value,res;
-    for (int motor=0; motor<NUMBER_OF_MOTORS; motor++){
-        motors_params[motor] = {};
-        for (int param=0; param<NUMBER_OF_DATA_CODES; param++){
-            res = arm_read(motor,param,&value);
-            // cout << res << endl;
+    
+    for (const auto motor:full_arm.mJoints){
+        motors_params[motor.m_ID] = {};
+        for (int PID=0; PID<NUMBER_OF_DATA_CODES; PID++){
+            res = motor->get_parameter(PID, &value)
             if (res!=-1){
-                motors_params[motor][param] = value;
+                motors_params[motor][PID] = value;
             }
         }
     }

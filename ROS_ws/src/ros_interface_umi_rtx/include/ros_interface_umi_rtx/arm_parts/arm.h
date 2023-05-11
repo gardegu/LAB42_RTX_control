@@ -21,7 +21,7 @@ public:
 
     void initArm();
 
-    vector<float> getMotorState(int ID);
+    vector<int> getMotorState(int ID);
 
 private:
     string mName;

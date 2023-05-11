@@ -6,8 +6,14 @@
 
 #include "ros_interface_umi_rtx/arm_parts/forearm.h"
 
+#include "ros_interface_umi_rtx/umi-drivers/armraw.h"
+
+
 using namespace std;
 
+
+// To avoid cyclic dependency
+class ForeArm;
 class Joint {
 public:
     Joint(int ID);
@@ -27,6 +33,8 @@ public:
     const string getName() const;
 
     int m_ID;
+
+    int get_parameter(int PID, int *value);
 
 private:
     string m_Name;

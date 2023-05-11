@@ -4,6 +4,8 @@
 #include <vector>
 #include "ros_interface_umi_rtx/arm_parts/joint.h"
 
+// To avoid cyclic dependency
+class Joint;
 
 class ForeArm {
 public:
