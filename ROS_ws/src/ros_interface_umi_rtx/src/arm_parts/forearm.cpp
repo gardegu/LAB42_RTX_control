@@ -9,6 +9,9 @@ ForeArm::ForeArm(int id, Joint *parent_joint, Joint *child_joint){
     m_child_joint->setParent(this);
 }
 
+ForeArm::ForeArm(){
+}
+
 Joint* ForeArm::get_parentJoint() const {
     return m_parent_joint;
 }

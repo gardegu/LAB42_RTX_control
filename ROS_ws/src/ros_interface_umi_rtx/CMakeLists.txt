@@ -67,6 +67,10 @@ add_executable(nodeArm
  src/drivers/armlib/armraw.cpp
  src/drivers/armlib/armerror.c
 
+ src/arm_parts/arm.cpp 
+ src/arm_parts/forearm.cpp 
+ src/arm_parts/joint.cpp 
+ src/arm_parts/wrist.cpp
  )
  
  ament_target_dependencies(nodeArm
@@ -80,8 +84,22 @@ add_executable(nodeArm
 $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
 $<INSTALL_INTERFACE:include>)
  
- #####################################
-
+ ##################################### Node service Inverse Kinematics
+ add_executable(nodeInverseKinematics
+ src/node_invkin.cpp
+ )
+ 
+ ament_target_dependencies(nodeInverseKinematics
+ rclcpp
+ geometry_msgs
+ std_msgs
+ )
+ 
+ target_link_libraries(nodeInverseKinematics)
+ target_link_libraries(nodeInverseKinematics "${cpp_typesupport_target}" )
+ target_include_directories(nodeInverseKinematics PUBLIC
+$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+$<INSTALL_INTERFACE:include>)
 
 
 if(BUILD_TESTING)
@@ -95,7 +113,7 @@ if(BUILD_TESTING)
   ament_lint_auto_find_test_dependencies()
 endif()
 
-install(TARGETS nodeCamera nodeArm
+install(TARGETS nodeCamera nodeArm nodeInverseKinematics
 DESTINATION lib/${PROJECT_NAME})
 
 install(DIRECTORY include/

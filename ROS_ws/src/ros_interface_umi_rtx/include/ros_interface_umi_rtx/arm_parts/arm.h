@@ -22,10 +22,10 @@ public:
     void initArm();
 
     vector<int> getMotorState(int ID);
+    vector<Joint*> mJoints;
 
 private:
     string mName;
-    vector<Joint*> mJoints;
 
     ForeArm FA1,FA2,FA3;
     Wrist W;

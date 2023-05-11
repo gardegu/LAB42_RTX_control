@@ -50,11 +50,11 @@ void Arm_node::get_params(){
     int value,res;
     
     for (const auto motor:full_arm.mJoints){
-        motors_params[motor.m_ID] = {};
+        motors_params[motor->m_ID] = {};
         for (int PID=0; PID<NUMBER_OF_DATA_CODES; PID++){
-            res = motor->get_parameter(PID, &value)
+            res = motor->get_parameter(PID, &value);
             if (res!=-1){
-                motors_params[motor][PID] = value;
+                motors_params[motor->m_ID][PID] = value;
             }
         }
     }
@@ -63,17 +63,17 @@ void Arm_node::get_params(){
 string Arm_node::params2msg(){
     std::ostringstream oss;
 
+    oss << "{";
     for (const auto& item1 : motors_params) {
         oss << item1.first << ": {";
         for (const auto& item2 : item1.second) {
-            oss << item2.first << ":" << item2.second << "; ";
+            oss << "{" << item2.first << ":" << item2.second << "}" <<"; ";
         }
         oss << "}; ";
     }
+    oss << "}";
     std::string result = oss.str();
     result = result.substr(0, result.length() - 2);
-
-    return result;
     }
 
 int main(int argc, char *argv[]){

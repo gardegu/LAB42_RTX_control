@@ -7,6 +7,10 @@ Joint::Joint(int ID){
     m_ID = ID;
 }
 
+Joint::Joint(){
+
+}
+
 void Joint::setChild(ForeArm* child){
     Child = child;
 }
@@ -36,5 +40,17 @@ const string Joint::getName() const{
 }
 
 int Joint::get_parameter(int PID, int *value){
-    return arm_read(m_ID, PID, &value);
+    return arm_read(m_ID, PID, value);
+}
+
+void Joint::setOrientation(const float increment_angle){
+    map<int,float> conv_map = {{ELBOW,CONV_ELBOW},
+                            {SHOULDER,CONV_SHOULDER},
+                            {WRIST1,CONV_W},
+                            {WRIST2,CONV_W},
+                            {YAW,CONV_YAW}};
+    float conv_ticks_to_deg = conv_map[m_ID];
+    int increment_ticks = increment_angle/conv_ticks_to_deg;
+
+    arm_write(m_ID,NEW_POSITION,increment_ticks);
 }

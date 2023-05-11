@@ -175,4 +175,11 @@ extern char *armstrerror();
 
 #define GO_BITS_FOR(m,s) ((s) << ((m) << 1))
 
+// Define mm or ° per count
+#define CONV_ZED        0.2667
+#define CONV_SHOULDER   0.03422
+#define CONV_ELBOW      0.06844
+#define CONV_YAW        0.10267
+#define CONV_W          0.0415
+
 #endif /* _rtx_h */

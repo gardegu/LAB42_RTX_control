@@ -17,30 +17,34 @@ Joint* Arm::getJoint(int index) const{
 }
 
 void Arm::initArm(){
-    FA1.set_parentJoint(mJoints[1]);
-    FA1.set_childJoint(mJoints[0]);
+    FA1.set_parentJoint(mJoints[SHOULDER]);
+    FA1.set_childJoint(mJoints[ELBOW]);
     FA1.m_ID = 1;
 
-    FA2.set_parentJoint(mJoints[0]);
-    FA2.set_childJoint(mJoints[5]);
+    FA2.set_parentJoint(mJoints[ELBOW]);
+    FA2.set_childJoint(mJoints[YAW]);
     FA2.m_ID = 2;
 
-    FA3.set_parentJoint(mJoints[5]);
-    FA3.set_childJoint(mJoints[6]);
+    // This one is probably wrong
+    FA3.set_parentJoint(mJoints[YAW]);
+    FA3.set_childJoint(mJoints[GRIP]);
     FA3.m_ID = 3;
 
-    W = Wrist(mJoints[3],mJoints[4]);
+    W = Wrist(mJoints[WRIST1],mJoints[WRIST2]);
 }
 
 vector<int> Arm::getMotorState(int ID){
     Joint* motor = mJoints[ID];
 
-    vector<int> res;
+    vector<int> state;
+
+    int value;
 
     for (int PID=0; PID<NUMBER_OF_DATA_CODES; PID++){
-        res.push_back(motor->get_parameter(PID));
+        if (motor->get_parameter(PID,&value)){
+            state.push_back(value);
+        }
     }
-
-    return res;
+    return state;
 
 }

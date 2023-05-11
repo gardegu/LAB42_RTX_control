@@ -3,10 +3,13 @@
 
 #include <string>
 #include <vector>
+#include <map>
 
 #include "ros_interface_umi_rtx/arm_parts/forearm.h"
 
 #include "ros_interface_umi_rtx/umi-drivers/armraw.h"
+#include "ros_interface_umi_rtx/umi-drivers/armlib.h"
+#include "ros_interface_umi_rtx/umi-drivers/rtx.h"
 
 
 using namespace std;
@@ -17,6 +20,7 @@ class ForeArm;
 class Joint {
 public:
     Joint(int ID);
+    Joint();
 
     void setChild(ForeArm* child);
     void setParent(ForeArm* parent);
@@ -27,8 +31,7 @@ public:
     vector<float> getOrientation() const;
     vector<float> getPosition() const;
 
-    void setOrientation(const int increment);
-    void setPosition(const int increment);
+    void setOrientation(const float increment_angle);
 
     const string getName() const;
 
