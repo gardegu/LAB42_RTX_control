@@ -11,8 +11,9 @@ void Camera::init_interfaces(){
 }
 
 void Camera::init_camera(){
-    cap.open(0); // webcam
+    //cap.open(0); // webcam
     //cap.open(4) // robot's camera
+    cap.open(4);
 
     if (!cap.isOpened()) {
         std::cout << "ERROR! Unable to open camera" << std::endl;
