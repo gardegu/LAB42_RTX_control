@@ -55,9 +55,9 @@
 #define RTXD_LOG		"./logs/rtxlog"
 /* Full pathname, must be used from programs to sockets and locks
 #define "RTXD_SOCKET"		".ports/rtx-socket"*/
-#define RTXD_SOCKET "./umi-rtx/ports/rtx-socket"
-#define RTXD_PORTINFO		"./ports/rtx"
-#define RTXD_DOWNLOAD		"./robot/rtxdriver"
+#define RTXD_SOCKET     "./umi-rtx/ports/rtx-socket"
+#define RTXD_PORTINFO	"./ports/rtx"
+#define RTXD_DOWNLOAD	"./robot/rtxdriver"
 #define RTXD_PATH		"./bin/rtxd"
 
 typedef struct client {

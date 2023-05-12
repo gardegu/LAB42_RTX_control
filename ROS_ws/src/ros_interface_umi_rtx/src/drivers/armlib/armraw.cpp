@@ -124,10 +124,10 @@ static int downloadlib()
 	goto fatal;
     }
 
-    if (chdir(RTXD_DIR) != 0) {
-         perror("chdir failed");
-         goto fatal;
-    }
+    // if (chdir(RTXD_DIR) != 0) {
+    //      perror("chdir failed");
+    //      goto fatal;
+    // }
     pinfo = fopen(RTXD_PORTINFO,"r"); /* relative to RTX_DIR */
 
     if (pinfo)

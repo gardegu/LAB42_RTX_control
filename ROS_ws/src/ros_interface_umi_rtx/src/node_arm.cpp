@@ -10,6 +10,13 @@ void Arm_node::init_interfaces(){
     subscription_commands = this->create_subscription<std_msgs::msg::String>("motor_commands",10,
         std::bind(&Arm_node::get_commands, this, _1));
     publisher_params  = this->create_publisher<std_msgs::msg::String>("motor_params",10);
+
+    if (arm_init_comms(1,2)!=-1){
+        cout << "----------Communication initialized----------" << endl;
+    }
+    else {
+        cout << "----------Error in communication initialisation----------" << endl;
+    }
 }
 
 void Arm_node::timer_callback(){

@@ -60,3 +60,5 @@ ROS_ws/brouillon.cpp
 
 .vscode
 Traitement_image/
+
+umi-rtx/logs/rtxlog

@@ -17,7 +17,8 @@ sudo ./rtxd /dev/ttyUSB0
 cd ../..
 if [ -e ./umi-rtx/ports/rtx-socket ]; then
 # ros2 run ros_interface_umi_rtx nodeArm
+    echo "Start ROS2 interface ..."
     ros2 launch ros_interface_umi_rtx arm.launch.py
 else 
-    echo "rtx-socket file doesn't exist"
+    echo "rtx-socket file not found"
 fi
