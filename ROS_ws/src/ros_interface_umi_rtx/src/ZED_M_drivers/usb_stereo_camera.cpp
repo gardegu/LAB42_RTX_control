@@ -60,7 +60,7 @@
  *
  */
 
-#include "usb_stereo_camera.h"
+#include "ros_interface_umi_rtx/ZED_M_drivers/usb_stereo_camera.h"
 
 /**
  * @brief Convert YUYV to UYVY

@@ -62,7 +62,7 @@
 
 #include <signal.h>
 
-#include "zed_capture_node.h"
+#include "ros_interface_umi_rtx/ZED_M_drivers/zed_capture_node.h"
 
 static std::shared_ptr<ZedCameraNode>  zed_ros_node = nullptr;
 
