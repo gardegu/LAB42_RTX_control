@@ -3,7 +3,7 @@
 void InvKin_node::init_interfaces(){
     pose_subscription = this->create_subscription<geometry_msgs::msg::Point>("target_position",10,
         std::bind(&InvKin_node::get_pose, this, _1));
-    angles_publisher  = this->create_publisher<std_msgs::msg::String>("target_angles",10);
+    angles_publisher  = this->create_publisher<std_msgs::msg::String>("motor_commands",10);
 }
 
 void InvKin_node::timer_callback(){

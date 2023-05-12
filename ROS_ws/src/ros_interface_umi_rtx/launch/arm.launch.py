@@ -15,8 +15,24 @@ def generate_launch_description():
         output='screen'
     )
     
+    nodeCamera = Node(
+        package = 'ros_interface_umi_rtx',
+        namespace='',
+        executable='nodeCamera',
+        name='control',
+        output='screen'
+    )
+    
+    NodeInvKin = Node(
+        package = 'ros_interface_umi_rtx',
+        namespace='',
+        executable='nodeInverseKinematics',
+        name='inverse_kinematics',
+        output='screen'
+    )
+    
     return LaunchDescription([
-                              nodeArm
+                              nodeArm, NodeInvKin
                               ])
 
 # executable='nodeArm',
