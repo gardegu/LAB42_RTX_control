@@ -135,7 +135,7 @@ endif()
 install(TARGETS nodeCamera nodeArm nodeInverseKinematics nodeZed
 DESTINATION lib/${PROJECT_NAME})
 
-install(DIRECTORY include/
+install(DIRECTORY include
   DESTINATION include)
 
 install(DIRECTORY launch

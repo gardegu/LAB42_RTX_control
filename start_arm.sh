@@ -8,9 +8,19 @@ else
     source ROS_ws/install/local_setup.bash
 fi
 
+
 ### Launch the daemon
-cd umi-rtx/bin
-sudo ./rtxd /dev/ttyUSB0
+
+# Finds the USB port used for the arm, assumed that only one port is used
+port_usb=$(ls /dev/ttyUSB* 2>/dev/null)
+if [ -z "$port_usb" ]
+then
+  echo "Arm not connected"
+else
+  cd umi-rtx/bin
+  sudo ./rtxd $port_usb
+fi
+
 
 
 ### Launch ros_interface
