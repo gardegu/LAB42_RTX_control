@@ -9,7 +9,7 @@ def generate_launch_description():
     nodeArm = Node(
         package='ros_interface_umi_rtx',
         namespace='',
-        executable='/usr/bin/zsh',
+        executable='/usr/bin/bash',
         name='arm_node',
         arguments=['-c', cmd],
         output='screen'
