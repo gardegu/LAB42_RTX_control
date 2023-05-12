@@ -58,6 +58,15 @@ target_include_directories(armerror PUBLIC
 $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
 $<INSTALL_INTERFACE:include>)
  
+##################################### Node Zed
+add_executable(nodeZed src/ZED_M_drivers/usb_stereo_camera.cpp src/ZED_M_drivers/zed_capture_node.cpp)
+
+ament_target_dependencies(nodeZed rclcpp  cv_bridge image_transport camera_info_manager)
+
+target_link_libraries(nodeZed "${cpp_typesupport_target}")
+target_include_directories(nodeZed PUBLIC
+$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+$<INSTALL_INTERFACE:include>)
 
  ##################################### Node Arm
 add_executable(nodeArm
