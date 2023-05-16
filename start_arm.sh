@@ -19,6 +19,8 @@ then
 else
   cd umi-rtx/bin
   sudo ./rtxd $port_usb
+
+  
   ### Launch ros_interface
   cd ../..
   if [ -e ./umi-rtx/ports/rtx-socket ]; then

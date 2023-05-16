@@ -102,7 +102,7 @@ add_executable(nodeArm
  target_include_directories(nodeArm PUBLIC
 $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
 $<INSTALL_INTERFACE:include>)
- 
+
  ##################################### Node service Inverse Kinematics
  add_executable(nodeInverseKinematics
  src/node_invkin.cpp
