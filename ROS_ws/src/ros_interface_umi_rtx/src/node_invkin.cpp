@@ -1,6 +1,7 @@
 #include "ros_interface_umi_rtx/node_invkin.hpp"
 
 void InvKin_node::init_interfaces(){
+    timer_ = this->create_wall_timer(loop_dt_, std::bind(&InvKin_node::timer_callback, this));
     pose_subscription = this->create_subscription<geometry_msgs::msg::Point>("target_position",10,
         std::bind(&InvKin_node::get_pose, this, _1));
     angles_publisher  = this->create_publisher<std_msgs::msg::String>("motor_commands",10);
@@ -35,12 +36,13 @@ string InvKin_node::angles2msg(){
 }
 
 void InvKin_node::get_angles(float x, float y){
-    float L = 1; // TODO : update
+    float L = 500; // TODO : update
+
     float angle_shoulder = acos((pow(x,2)+pow(y,2)-2*pow(L,2))/pow(L,2));
-    angles[SHOULDER] = angle_shoulder;
+    angles[SHOULDER] = angle_shoulder*180/M_PI;
 
     float angle_elbow = atan2(y,x) - asin(L*sin(angle_shoulder)/sqrt(pow(x,2)+pow(y,2)));
-    angles[ELBOW] = angle_elbow;
+    angles[ELBOW] = angle_elbow*180/M_PI;
 }
 
 

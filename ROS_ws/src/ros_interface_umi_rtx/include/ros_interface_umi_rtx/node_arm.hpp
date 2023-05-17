@@ -53,7 +53,7 @@ private:
     string params2msg(); //Converts motors_params into a string to publish more easily
     
     std::chrono::milliseconds loop_dt_ = 40ms; // Timer of the node
-    map<int,int> commands_motor; // Map which keeps the commands for each motor
+    map<int,float> commands_motor; // Map which keeps the commands for each motor
     map<int,map<int,int>> motors_params; // Keeps in memory the parameters of the motors
 
     Arm full_arm;

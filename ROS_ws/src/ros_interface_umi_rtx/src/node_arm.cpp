@@ -28,21 +28,21 @@ void Arm_node::timer_callback(){
     params.data = params2msg();
 
     publisher_params->publish(params);
-
 }
 
 void Arm_node::get_commands(const std_msgs::msg::String::SharedPtr msg){
     stringstream ss(msg->data);
     string pair;
 
+    cout << "nodeArm :" << ss.str() << endl;
+
     commands_motor = {};
 
     while (getline(ss, pair, ';')) {
-
         istringstream iss(pair);
         int key;
 
-        int value;
+        float value;
         if ((iss >> key >> value)) {
             commands_motor[key] = value;
         }
@@ -50,7 +50,28 @@ void Arm_node::get_commands(const std_msgs::msg::String::SharedPtr msg){
 }
 
 void Arm_node::set_motors(){
+    map<int,float> conv_map = {{ELBOW,CONV_ELBOW},
+                               {SHOULDER,CONV_SHOULDER},
+                               {WRIST1,CONV_W},
+                               {WRIST2,CONV_W},
+                               {YAW,CONV_YAW}};
+    float conv_ticks_to_deg ;
+    
+    int key,sign_error;
+    float obj_angle,motor_angle,delta;
 
+    for (const auto& pair:commands_motor){
+        key = pair.first;
+        obj_angle = pair.second;
+
+        conv_ticks_to_deg = conv_map[key];
+        motor_angle = conv_ticks_to_deg*motors_params[key][CURRENT_POSITION];
+
+        delta = obj_angle-motor_angle;
+        sign_error = delta/abs(delta);
+
+        full_arm.mJoints[key]->setOrientation(sign_error);
+    }
 }
 
 void Arm_node::get_params(){
