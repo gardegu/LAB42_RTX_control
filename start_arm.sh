@@ -32,5 +32,8 @@ else
   fi
 fi
 
+ros2 daemon stop
+ros2 daemon start
+
 
 

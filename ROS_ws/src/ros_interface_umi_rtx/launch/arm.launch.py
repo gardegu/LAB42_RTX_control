@@ -1,7 +1,5 @@
-import os
-from launch import LaunchDescription, actions
+from launch import LaunchDescription
 from launch_ros.actions import Node
-from launch.actions import SetEnvironmentVariable, ExecuteProcess
 
 def generate_launch_description():
     
@@ -12,8 +10,10 @@ def generate_launch_description():
         namespace='',
         executable='nodeArm',
         name='arm_node',
-        output='screen'
-    )
+        output='screen',
+        prefix=["sudo -E env \"PYTHONPATH=$PYTHONPATH\" \"LD_LIBRARY_PATH=$LD_LIBRARY_PATH\" \"PATH=$PATH\" \"USER=$USER\"  bash -c "],
+        shell = True
+        )
     
     nodeCamera = Node(
         package = 'ros_interface_umi_rtx',
