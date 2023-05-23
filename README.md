@@ -17,9 +17,10 @@ To use the interface, all you have to do is :
     cd LAB42_RTX_control
     ./start_arm
 
-If you want to monitor the nodes and topics or interact with them, you have to log as root:
+If you want to monitor the nodes and topics or interact with them, you have to do is logging as root:
 
     sudo -i
+
 And then sourcing ROS:
 
     source /opt/ros/foxy/setup.bash
