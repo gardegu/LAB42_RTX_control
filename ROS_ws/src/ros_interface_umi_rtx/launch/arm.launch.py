@@ -1,7 +1,11 @@
-from launch import LaunchDescription
+from launch import LaunchDescription, actions
 from launch_ros.actions import Node
+import os
+
 
 def generate_launch_description():
+    cwd = os.getcwd()
+    os.chdir(cwd+"/logs/")
     
     nodeArm = Node(
         package='ros_interface_umi_rtx',
@@ -27,26 +31,9 @@ def generate_launch_description():
     )
     
     return LaunchDescription([
-                              nodeArm,  nodeInvKin, nodeCamera
+                              nodeArm,  nodeInvKin, nodeCamera,
+                              actions.ExecuteProcess(cmd=['ros2','bag','record','-a'],output='screen')
                               ])
 
-
-# nodeArm = Node(
-#         package='ros_interface_umi_rtx',
-#         namespace='',
-#         executable='/usr/bin/bash',
-#         name='arm_node',
-#         shell=True,
-#         arguments=['-c', cmd],
-#         output='screen'
-#     )
-
-
-# nodeArm = Node(
-#         package='ros_interface_umi_rtx',
-#         namespace='',
-#         executable='nodeArm',
-#         name='arm_node',
-#         output='screen',
-#         prefix=["sudo -E env \"PYTHONPATH=$PYTHONPATH\" \"LD_LIBRARY_PATH=$LD_LIBRARY_PATH\" \"PATH=$PATH\" \"USER=$USER\"  /bin/bash -c "]
-#     )
+## TODO : add this line in LaunchDescription to collect logs thanks to rosbag
+# actions.ExecuteProcess(cmd=['ros2','bag','record','-a'],output='screen')

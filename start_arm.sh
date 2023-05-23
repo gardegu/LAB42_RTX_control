@@ -31,7 +31,12 @@ else
   if [ -e ./umi-rtx/ports/rtx-socket ]; then
   # ros2 run ros_interface_umi_rtx nodeArm
       echo "Start ROS2 interface ..."
+
       ros2 launch ros_interface_umi_rtx arm.launch.py
+
+      ##### REMOVE NEXT LINE IF YOU WANT LOGS #####
+      rm -rf logs/*
+      #####
 
       echo "------------------"
       echo "Reboot ROS2 daemon"
