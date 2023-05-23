@@ -41,6 +41,9 @@ class Arm_node : public rclcpp::Node{
 public:
     Arm_node() : Node("arm_node") {
         init_interfaces();
+        // for (int i=0; i<full_arm.mJoints.size(); i++){
+        //     cout << full_arm.mJoints[i]->m_ID << endl;
+        // }
     };
 
 private:

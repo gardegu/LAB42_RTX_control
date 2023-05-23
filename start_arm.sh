@@ -4,22 +4,20 @@ current_dir=$(pwd)
 
 sudo -i << EOF
 
-source ~/.bashrc
 cd "$current_dir"
 
 ### sourcing ROS files
 if [ "$SHELL" = "usr/bin/zsh" ]; then
     source /opt/ros/foxy/setup.zsh
-    source ROS_ws/install/local_setup.zsh
+    source ROS_ws/install/setup.zsh
 else
     source /opt/ros/foxy/setup.bash
-    source ROS_ws/install/local_setup.bash
+    source ROS_ws/install/setup.bash
 fi
 
 
 ### Launch the daemon
 # Finds the USB port used for the arm, assumed that only one port is used
-port_usb=$(ls /dev/ttyUSB* 2>/dev/null)
 if [ -z "$(ls /dev/ttyUSB* 2>/dev/null)" ]
 then
   echo "Arm not connected"
@@ -46,8 +44,3 @@ fi
 
 exit
 EOF
-
-      # sudo -E env \"PYTHONPATH=$PYTHONPATH\" \"LD_LIBRARY_PATH=$LD_LIBRARY_PATH\" \"PATH=$PATH\" \"USER=$USER\" \"ROS_DOMAIN_ID=$ROS_DOMAIN_ID\" bash -c "source /opt/ros/foxy/setup.bash && ros2 launch ros_interface_umi_rtx arm.launch.py"
-
-
-

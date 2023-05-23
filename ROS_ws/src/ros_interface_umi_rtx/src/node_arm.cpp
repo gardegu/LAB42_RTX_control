@@ -34,7 +34,6 @@ void Arm_node::get_commands(const std_msgs::msg::String::SharedPtr msg){
     stringstream ss(msg->data);
     string pair;
 
-    cout << "nodeArm :" << ss.str() << endl;
 
     commands_motor = {};
 
@@ -76,9 +75,11 @@ void Arm_node::set_motors(){
 
 void Arm_node::get_params(){
     int value,res;
+    motors_params = {};
     
     for (const auto motor:full_arm.mJoints){
         motors_params[motor->m_ID] = {};
+        // cout << motor->m_ID << endl;
         for (int PID=0; PID<NUMBER_OF_DATA_CODES; PID++){
             res = motor->get_parameter(PID, &value);
             if (res!=-1){
@@ -86,6 +87,7 @@ void Arm_node::get_params(){
             }
         }
     }
+    // cout << "--------------" << endl;
 }
 
 string Arm_node::params2msg(){
@@ -95,13 +97,21 @@ string Arm_node::params2msg(){
     for (const auto& item1 : motors_params) {
         oss << item1.first << ": {";
         for (const auto& item2 : item1.second) {
-            oss << "{" << item2.first << ":" << item2.second << "}" <<"; ";
+            oss << "{" << item2.first << "," << item2.second << "}";
+            if (item2.first != 15){
+                oss << ",";
+            }
         }
-        oss << "}; ";
+        oss << "} ";
+        if (item1.first!=7){
+            oss << ",";
+        }
     }
     oss << "}";
     std::string result = oss.str();
+
     result = result.substr(0, result.length() - 2);
+    return result;
     }
 
 int main(int argc, char *argv[]){
