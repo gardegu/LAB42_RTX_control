@@ -38,9 +38,9 @@
 /**************************************************************************/
 #include <stdio.h>
 #include <stdlib.h>
-#include "rtx.h"
-#include "umiinit.h"
-#include "armlib.h"
+#include "ros_interface_umi_rtx/umi-drivers/rtx.h"
+#include "ros_interface_umi_rtx/robotics/umiinit.h"
+#include "ros_interface_umi_rtx/umi-drivers/armlib.h"
 
 #define STAT_TIP 1
 #define STAT_STOP 2
@@ -65,31 +65,25 @@ error_handler(int code, int address)
     }
 }
 #endif /* NEEDED */
-static int 
-hit_end_stop(int m)
-{
+static int  hit_end_stop(int m){
     int status;
 
     arm_motor_status(m,&status);
     return status & STAT_RES;
 }
 
-static void
-drive_one_motor(int mode,int motor,int state)
-{
+static void drive_one_motor(int mode,int motor,int state){
     arm_stop(DEAD_STOP);
     arm_go(mode,GO_BITS_FOR(motor,state));
 }
 
-static void
-drive_wrist(int mode,int w1_s,int w2_s)
+static void drive_wrist(int mode,int w1_s,int w2_s)
 {
     arm_stop(DEAD_STOP);
     arm_go(mode,GO_BITS_FOR(WRIST1,w1_s)|GO_BITS_FOR(WRIST2,w2_s));
 }
 
-static void
-drive_until_done(int m)
+static void drive_until_done(int m)
 {
     int status;
 
@@ -99,32 +93,28 @@ drive_until_done(int m)
     } while ((status & STAT_TIP) && armerrno == 0);
 }
 
-static void
-drive_against_end_stop(int m,int dir)
+static void drive_against_end_stop(int m,int dir)
 {
     drive_one_motor(MANUAL,m,dir);
     while (!hit_end_stop(m) && armerrno == 0)
 	;
 }
 
-static void
-drive_wrist_against_end_stop(int w1,int w2)
+static void drive_wrist_against_end_stop(int w1,int w2)
 {
     drive_wrist(MANUAL,w1,w2);
     while ((!hit_end_stop(WRIST1) || !hit_end_stop(WRIST2)) && armerrno == 0)
 	;
 }
 
-void
-umi_set_limit_position()
+void umi_set_limit_position()
 {
     int i;
     for (i = 0; i < ZEDOWN; i++)
 	arm_write(i,CURRENT_POSITION,limit[i]);
 }
 
-void
-umi_goto_init_position()
+void umi_goto_init_position()
 {
     int i;
     for (i = 0; i < ZEDOWN; i++)
@@ -132,8 +122,7 @@ umi_goto_init_position()
     arm_go(NUMERIC,0x1555);
 }
 
-void
-umi_initialise_zed()
+void umi_initialise_zed()
 {
     if (!armerrno) {
 	printf("Initialising Zed\n");
@@ -142,8 +131,7 @@ umi_initialise_zed()
     }
 }
 
-void
-umi_initialise_gripper()
+void umi_initialise_gripper()
 {
     int gforce;
     if (!armerrno) {
@@ -160,8 +148,7 @@ umi_initialise_gripper()
     }
 }
 
-static void
-move_elbow_out_a_bit()
+static void move_elbow_out_a_bit()
 {
     printf("move elbow out ..\n");
     arm_write(YAW,MAX_FORCE,0);
@@ -172,8 +159,7 @@ move_elbow_out_a_bit()
     arm_reload_pids();
 }
 
-void
-umi_initialise_wrist()
+void umi_initialise_wrist()
 {
     if (!armerrno) {
 	printf("Initialising Wrist\n");
@@ -187,8 +173,7 @@ umi_initialise_wrist()
     }
 }
 
-void
-umi_initialise_shoulder()
+void umi_initialise_shoulder()
 {
     if (!armerrno) {
 	printf("Initialising Shoulder\n");
@@ -198,8 +183,7 @@ umi_initialise_shoulder()
     }
 }
 
-void
-umi_initialise_elbow_and_yaw()
+void umi_initialise_elbow_and_yaw()
 {
     if (!armerrno) {
 	printf("Initialising Elbow and Yaw\n");

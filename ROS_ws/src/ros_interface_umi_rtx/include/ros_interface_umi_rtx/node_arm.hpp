@@ -8,9 +8,9 @@
 #include "ros_interface_umi_rtx/umi-drivers/rtx.h"
 #include "ros_interface_umi_rtx/umi-drivers/armraw.h"
 #include "ros_interface_umi_rtx/umi-drivers/comm.h"
-#include <ros_interface_umi_rtx/umi-drivers/rtxd.h>
-
-#include <ros_interface_umi_rtx/arm_parts/arm.h>
+#include "ros_interface_umi_rtx/umi-drivers/rtxd.h"
+#include "ros_interface_umi_rtx/arm_parts/arm.h"
+#include "ros_interface_umi_rtx/robotics/umi.h"
 
 #include <sys/types.h>
 #include <sys/param.h>
@@ -41,9 +41,10 @@ class Arm_node : public rclcpp::Node{
 public:
     Arm_node() : Node("arm_node") {
         init_interfaces();
-        // for (int i=0; i<full_arm.mJoints.size(); i++){
-        //     cout << full_arm.mJoints[i]->m_ID << endl;
-        // }
+        
+        // Initialize the arm
+        umi_init();
+
     };
 
 private:

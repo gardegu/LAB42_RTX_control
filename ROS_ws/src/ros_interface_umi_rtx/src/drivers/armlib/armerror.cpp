@@ -45,9 +45,7 @@
 #include <ros_interface_umi_rtx/umi-drivers/rtx.h>
 #include <stdio.h>
 
-char*
-armstrerror(err)
-int err;
+char* armstrerror(int err)
 {
     static char mess[100];
 
@@ -122,10 +120,7 @@ int err;
     }
 }
 
-int
-armperror(s)
-char *s;
-{
+int armperror(char *s) {
     if (s && *s)
 	return fprintf(stderr,"%s: %s\n",s,armstrerror(armerrno));
     else

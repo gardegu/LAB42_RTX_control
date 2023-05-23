@@ -37,7 +37,7 @@ target_include_directories(armraw PUBLIC
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
   $<INSTALL_INTERFACE:include>)
 
-  add_library(armerror src/drivers/armlib/armerror.c)
+  add_library(armerror src/drivers/armlib/armerror.cpp)
 target_include_directories(armerror PUBLIC
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
   $<INSTALL_INTERFACE:include>)
@@ -84,7 +84,9 @@ add_executable(nodeArm
 
  src/drivers/armlib/armcmds.cpp
  src/drivers/armlib/armraw.cpp
- src/drivers/armlib/armerror.c
+ src/drivers/armlib/armerror.cpp
+ src/drivers/umi/umiinit.cpp
+ src/drivers/umi/umicmds.cpp
 
  src/arm_parts/arm.cpp 
  src/arm_parts/forearm.cpp 
