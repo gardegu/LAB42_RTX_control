@@ -140,7 +140,7 @@ DESTINATION lib/${PROJECT_NAME})
 install(DIRECTORY include
   DESTINATION include)
 
-install(DIRECTORY launch
+install(DIRECTORY launch rviz urdf
   DESTINATION share/${PROJECT_NAME}
 )
 

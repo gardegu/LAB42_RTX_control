@@ -43,7 +43,7 @@ public:
         init_interfaces();
         
         // Initialize the arm
-        umi_init();
+        // umi_init();
 
     };
 

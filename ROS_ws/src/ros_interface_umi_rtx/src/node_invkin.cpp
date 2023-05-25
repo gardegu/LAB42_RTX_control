@@ -25,9 +25,9 @@ string InvKin_node::angles2msg(){
 
     ss << "{";
     for (auto it = angles.begin(); it != angles.end(); ++it) {
-        ss << it->first << ": " << it->second;
+        ss << "{" << it->first << ":" << it->second << "}";
         if (std::next(it) != angles.end()) {
-            ss << ", ";
+            ss << ";";
         }
     }
     ss << "}";

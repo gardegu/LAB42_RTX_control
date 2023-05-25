@@ -7,14 +7,8 @@ sudo -i << EOF
 cd "$current_dir"
 
 ### sourcing ROS files
-if [ "$SHELL" = "usr/bin/zsh" ]; then
-    source /opt/ros/foxy/setup.zsh
-    source ROS_ws/install/setup.zsh
-else
-    source /opt/ros/foxy/setup.bash
-    source ROS_ws/install/setup.bash
-fi
-
+source /opt/ros/foxy/setup.bash
+source ROS_ws/install/setup.bash
 
 ### Launch the daemon
 # Finds the USB port used for the arm, assumed that only one port is used
@@ -35,6 +29,7 @@ else
       ros2 launch ros_interface_umi_rtx arm.launch.py
 
       ##### REMOVE NEXT LINE IF YOU WANT LOGS #####
+      echo "Delete logs...."
       rm -rf logs/*
       #####
 
