@@ -97,6 +97,7 @@ add_executable(nodeArm
  ament_target_dependencies(nodeArm
  rclcpp
  std_msgs
+ sensor_msgs
  )
  
  target_link_libraries(nodeArm armcmds armraw armerror)
@@ -105,7 +106,7 @@ add_executable(nodeArm
 $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
 $<INSTALL_INTERFACE:include>)
 
- ##################################### Node service Inverse Kinematics
+ ##################################### Node Inverse Kinematics
  add_executable(nodeInverseKinematics
  src/node_invkin.cpp
  )
@@ -114,6 +115,7 @@ $<INSTALL_INTERFACE:include>)
  rclcpp
  geometry_msgs
  std_msgs
+ sensor_msgs
  )
  
  target_link_libraries(nodeInverseKinematics)
@@ -121,6 +123,27 @@ $<INSTALL_INTERFACE:include>)
  target_include_directories(nodeInverseKinematics PUBLIC
 $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
 $<INSTALL_INTERFACE:include>)
+
+ ##################################### Node Simulation
+ add_executable(nodeSimu
+ src/node_simu.cpp
+ )
+ 
+ ament_target_dependencies(nodeSimu
+ rclcpp
+ std_msgs
+ sensor_msgs
+ )
+ 
+ target_link_libraries(nodeSimu)
+ target_link_libraries(nodeSimu "${cpp_typesupport_target}" )
+ target_include_directories(nodeSimu PUBLIC
+$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+$<INSTALL_INTERFACE:include>)
+
+
+
+
 
 
 if(BUILD_TESTING)
@@ -134,7 +157,7 @@ if(BUILD_TESTING)
   ament_lint_auto_find_test_dependencies()
 endif()
 
-install(TARGETS nodeCamera nodeArm nodeInverseKinematics nodeZed
+install(TARGETS nodeCamera nodeArm nodeInverseKinematics nodeZed nodeSimu
 DESTINATION lib/${PROJECT_NAME})
 
 install(DIRECTORY include

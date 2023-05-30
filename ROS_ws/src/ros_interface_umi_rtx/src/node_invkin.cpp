@@ -4,45 +4,37 @@ void InvKin_node::init_interfaces(){
     timer_ = this->create_wall_timer(loop_dt_, std::bind(&InvKin_node::timer_callback, this));
     pose_subscription = this->create_subscription<geometry_msgs::msg::Point>("target_position",10,
         std::bind(&InvKin_node::get_pose, this, _1));
-    angles_publisher  = this->create_publisher<std_msgs::msg::String>("motor_commands",10);
+    angles_publisher  = this->create_publisher<sensor_msgs::msg::JointState>("motor_commands",10);
+    // angles_publisher  = this->create_publisher<sensor_msgs::msg::JointState>("joint_states",10);
 }
 
 void InvKin_node::timer_callback(){
-    std_msgs::msg::String msg_angles;
+    sensor_msgs::msg::JointState msg;
 
-    msg_angles.data = angles2msg();
+    msg.header.stamp = this->get_clock()->now();
+    msg.name = {"shoulder_updown","shoulder_joint","elbow","wrist","wrist_gripper_connection_roll","wrist_gripper_connection_pitch","gripper_left","gripper_right"};
+    msg.position = {state[ZED],state[SHOULDER],state[ELBOW],0,0,0,0,0};
 
-    angles_publisher->publish(msg_angles);
+    angles_publisher->publish(msg);
 }
 
 void InvKin_node::get_pose(const geometry_msgs::msg::Point::SharedPtr msg){
-    get_angles(msg->x,msg->y);
-    targeted_z = msg->z;
+    get_state(msg->x,msg->y,msg->z);
 }
 
-string InvKin_node::angles2msg(){
-    std::stringstream ss;
 
-    ss << "{";
-    for (auto it = angles.begin(); it != angles.end(); ++it) {
-        ss << "{" << it->first << ":" << it->second << "}";
-        if (std::next(it) != angles.end()) {
-            ss << ";";
-        }
-    }
-    ss << "}";
-
-    return ss.str();
-}
-
-void InvKin_node::get_angles(float x, float y){
+void InvKin_node::get_state(float x, float y, float z){
     float L = 500; // TODO : update
 
     float angle_shoulder = acos((pow(x,2)+pow(y,2)-2*pow(L,2))/pow(L,2));
-    angles[SHOULDER] = angle_shoulder*180/M_PI;
+    state[SHOULDER] = angle_shoulder*180/M_PI;
 
     float angle_elbow = atan2(y,x) - asin(L*sin(angle_shoulder)/sqrt(pow(x,2)+pow(y,2)));
-    angles[ELBOW] = angle_elbow*180/M_PI;
+    state[ELBOW] = angle_elbow*180/M_PI;
+
+    // targeted_z = z;
+    // state[ZED] = z;
+    state[ZED] = 0.5; // TODO : test value to change
 }
 
 

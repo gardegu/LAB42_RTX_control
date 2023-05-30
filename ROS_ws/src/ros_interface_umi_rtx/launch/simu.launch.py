@@ -5,14 +5,13 @@ from launch.substitutions import Command, LaunchConfiguration
 from launch_ros.actions import Node
 from launch_ros.substitutions import FindPackageShare
 
+from ament_index_python.packages import get_package_share_directory
+
 
 import os
 
 
 def generate_launch_description():
-    cwd = os.getcwd()
-    os.chdir(cwd+"/logs/")
-    
     pkg_share = FindPackageShare(package='ros_interface_umi_rtx').find('ros_interface_umi_rtx')
     default_rviz_config_path = os.path.join(pkg_share, 'rviz/rviz_basic_settings.rviz')
     default_urdf_model_path = os.path.join(pkg_share, 'urdf/umi_rtx.urdf')
@@ -22,7 +21,6 @@ def generate_launch_description():
     urdf_model = LaunchConfiguration('urdf_model')
     rviz_config_file = LaunchConfiguration('rviz_config_file')
     use_robot_state_pub = LaunchConfiguration('use_robot_state_pub')
-    use_rviz = LaunchConfiguration('use_rviz')
     use_sim_time = LaunchConfiguration('use_sim_time')
     
     # Declare the launch arguments  
@@ -45,11 +43,6 @@ def generate_launch_description():
         name='use_robot_state_pub',
         default_value='True',
         description='Whether to start the robot state publisher')
-    
-    declare_use_rviz_cmd = DeclareLaunchArgument(
-        name='use_rviz',
-        default_value='True',
-        description='Whether to start RVIZ')
         
     declare_use_sim_time_cmd = DeclareLaunchArgument(
         name='use_sim_time',
@@ -58,10 +51,10 @@ def generate_launch_description():
     
     # Publish the joint state values for the non-fixed joints in the URDF file.
     start_joint_state_publisher_cmd = Node(
-        condition=UnlessCondition(gui),
         package='joint_state_publisher',
         executable='joint_state_publisher',
         name='joint_state_publisher')
+        # condition=UnlessCondition(gui),
     
     # A GUI to manipulate the joint state values
     start_joint_state_publisher_gui_node = Node(
@@ -81,26 +74,17 @@ def generate_launch_description():
     
     # Launch RViz
     nodeRviz = Node(
-        condition=IfCondition(use_rviz),
         package='rviz2',
         executable='rviz2',
         name='rviz2',
         output='screen',
         arguments=['-d', rviz_config_file])
     
-    nodeArm = Node(
-        package='ros_interface_umi_rtx',
-        namespace='',
-        executable='nodeArm',
-        name='arm_node',
-        output='screen',
-    )
-    
     nodeCamera = Node(
         package = 'ros_interface_umi_rtx',
         namespace='',
         executable='nodeCamera',
-        name='control',
+        name='camera',
     )
     
     nodeInvKin = Node(
@@ -111,18 +95,27 @@ def generate_launch_description():
         output='screen'
     )
     
-    return LaunchDescription([
-                              nodeArm,  nodeInvKin, nodeCamera,
-                              actions.ExecuteProcess(cmd=['ros2','bag','record','-a'],output='screen')
-                              ])
-
+    nodeSimu = Node(
+        package = 'ros_interface_umi_rtx',
+        namespace='',
+        executable='nodeSimu',
+        name='simulation',
+        output='screen'
+    )
+    
             
-    # return LaunchDescription([declare_urdf_model_path_cmd, declare_rviz_config_file_cmd,
-    #                           declare_use_joint_state_publisher_cmd, declare_use_robot_state_pub_cmd,
-    #                           declare_use_rviz_cmd, declare_use_sim_time_cmd,
-    #                           start_joint_state_publisher_cmd, start_joint_state_publisher_gui_node,
+    return LaunchDescription([declare_rviz_config_file_cmd, declare_use_robot_state_pub_cmd,
+                              declare_use_sim_time_cmd, declare_urdf_model_path_cmd,
+                              start_robot_state_publisher_cmd,
+                              nodeInvKin, nodeCamera, nodeSimu,
+                              nodeRviz, 
+                              ])
+         
+    # return LaunchDescription([declare_rviz_config_file_cmd, declare_use_robot_state_pub_cmd,
+    #                           declare_use_sim_time_cmd, declare_urdf_model_path_cmd,
+    #                           declare_use_joint_state_publisher_cmd, start_joint_state_publisher_gui_node,
     #                           start_robot_state_publisher_cmd,
-    #                           nodeArm,  nodeInvKin, nodeCamera,
+    #                           nodeInvKin, nodeCamera,
     #                           nodeRviz, 
-    #                           actions.ExecuteProcess(cmd=['ros2','bag','record','-a'],output='screen')
     #                           ])
+        

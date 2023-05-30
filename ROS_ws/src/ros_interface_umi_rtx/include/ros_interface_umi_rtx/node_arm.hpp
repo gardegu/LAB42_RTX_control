@@ -3,6 +3,7 @@
 
 #include "rclcpp/rclcpp.hpp"
 #include "std_msgs/msg/string.hpp"
+#include "sensor_msgs/msg/joint_state.hpp"
 
 #include "ros_interface_umi_rtx/umi-drivers/armlib.h"
 #include "ros_interface_umi_rtx/umi-drivers/rtx.h"
@@ -43,14 +44,14 @@ public:
         init_interfaces();
         
         // Initialize the arm
-        // umi_init();
+        umi_init();
 
     };
 
 private:
     void timer_callback();
     void init_interfaces();
-    void get_commands(const std_msgs::msg::String::SharedPtr msg);
+    void get_commands(const sensor_msgs::msg::JointState::SharedPtr msg);
     void set_motors();
     void get_params();
 
@@ -63,7 +64,7 @@ private:
     Arm full_arm;
 
     rclcpp::TimerBase::SharedPtr timer_;
-    rclcpp::Subscription<std_msgs::msg::String>::SharedPtr subscription_commands;
+    rclcpp::Subscription<sensor_msgs::msg::JointState>::SharedPtr subscription_commands;
     rclcpp::Publisher<std_msgs::msg::String>::SharedPtr publisher_params;
 };
 

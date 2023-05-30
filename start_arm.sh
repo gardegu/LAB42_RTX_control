@@ -31,6 +31,8 @@ else
       ##### REMOVE NEXT LINE IF YOU WANT LOGS #####
       echo "Delete logs...."
       rm -rf logs/*
+      cd
+      rm -rf .ros/log/*
       #####
 
       echo "------------------"
