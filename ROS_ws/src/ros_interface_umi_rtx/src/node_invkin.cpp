@@ -38,9 +38,10 @@ void InvKin_node::get_state(float x, float y, float z){
 
     
     
-    const pinocchio::SE3 oMdes(Eigen::Matrix3d::Identity(), Eigen::Vector3d(x, y, z));
+    // const pinocchio::SE3 oMdes(Eigen::Matrix3d::Identity(), Eigen::Vector3d(x, y, z));
+    const pinocchio::SE3 oMdes(Eigen::Matrix3d::Identity(), Eigen::Vector3d(0.3, 0.2, 0.5)); // TODO put real values
     
-    // TODO : change neutral config for q
+    // TODO : change neutral config for q (not sure finally)
     Eigen::VectorXd q = pinocchio::neutral(model);
     
     J.setZero();
@@ -72,6 +73,10 @@ void InvKin_node::get_state(float x, float y, float z){
         v.noalias() = - J.transpose() * JJt.ldlt().solve(err);
         q = pinocchio::integrate(model,q,v*DT);
     }
+    // cout << "result :" << q.transpose() << endl;
+
+    state[SHOULDER] = q(1,0)*180/M_PI;
+    state[ELBOW] = q(2,0)*180/M_PI;
 }
 
 

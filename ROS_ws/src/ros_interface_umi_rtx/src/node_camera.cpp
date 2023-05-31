@@ -17,7 +17,6 @@ void Camera::init_camera(){
 
     if (!cap.isOpened()) {
         std::cout << "ERROR! Unable to open camera" << std::endl;
-        break
     }
 
     m_frame_width = cap.get(cv::CAP_PROP_FRAME_WIDTH);
