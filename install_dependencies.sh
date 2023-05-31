@@ -2,11 +2,8 @@
 
 
 # Pinocchio for the inverse kinematics
-sudo apt install -qqy lsb-release gnupg2 curl
-echo "deb [arch=amd64] http://robotpkg.openrobots.org/packages/debian/pub $(lsb_release -cs) robotpkg" | sudo tee /etc/apt/sources.list.d/robotpkg.list
-curl http://robotpkg.openrobots.org/packages/debian/robotpkg.key | sudo apt-key add -
-sudo apt update -y
-sudo apt install -qqy robotpkg-py38-pinocchio
+sudo apt install ros-foxy-pinocchio
+
 
 sudo apt install ros-foxy-xacro
 

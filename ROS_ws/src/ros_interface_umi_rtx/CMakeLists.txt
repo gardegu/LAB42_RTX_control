@@ -26,6 +26,7 @@ find_package(cv_bridge REQUIRED)
 find_package(geometry_msgs REQUIRED)
 find_package(image_transport REQUIRED)
 find_package(camera_info_manager REQUIRED)
+find_package(pinocchio REQUIRED)
 
 add_library(armcmds src/drivers/armlib/armcmds.cpp)
 target_include_directories(armcmds PUBLIC
@@ -116,6 +117,7 @@ $<INSTALL_INTERFACE:include>)
  geometry_msgs
  std_msgs
  sensor_msgs
+ pinocchio
  )
  
  target_link_libraries(nodeInverseKinematics)

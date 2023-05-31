@@ -6,6 +6,12 @@
 #include "std_msgs/msg/string.hpp"
 #include "sensor_msgs/msg/joint_state.hpp"
 
+#include "pinocchio/parsers/urdf.hpp"
+#include "pinocchio/spatial/explog.hpp"
+#include "pinocchio/algorithm/kinematics.hpp"
+#include "pinocchio/algorithm/jacobian.hpp"
+#include "pinocchio/algorithm/joint-configuration.hpp"
+
 #include "ros_interface_umi_rtx/umi-drivers/rtx.h"
 
 #include <map>
@@ -20,6 +26,9 @@ class InvKin_node : public rclcpp::Node{
 public:
     InvKin_node() : Node("inverse_kinematics") {
         init_interfaces();
+        pinocchio::urdf::buildModel("./ROS_ws/src/ros_interface_umi_rtx/urdf/umi_rtx.urdf",model);
+        data = pinocchio::Data(model);
+        J = pinocchio::Data::Matrix6x(6,model.nv);
     };
 
 private:
@@ -30,7 +39,19 @@ private:
 
     std::chrono::milliseconds loop_dt_ = 40ms; // Timer of the node
     map<int,float> state;
-    float targeted_z=0.;
+    float targeted_z;
+
+
+    // pinocchio variables and constants for inverse kinematics
+    pinocchio::Model model;
+    pinocchio::Data data;
+    const int JOINT_ID = 4;
+    const double eps  = 1e-4;
+    const int IT_MAX  = 500;
+    const double DT   = 1e-1;
+    const double damp = 1e-6;
+    pinocchio::Data::Matrix6x J;
+
 
     rclcpp::TimerBase::SharedPtr timer_;
     rclcpp::Subscription<geometry_msgs::msg::Point>::SharedPtr pose_subscription;

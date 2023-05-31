@@ -5,7 +5,6 @@ void InvKin_node::init_interfaces(){
     pose_subscription = this->create_subscription<geometry_msgs::msg::Point>("target_position",10,
         std::bind(&InvKin_node::get_pose, this, _1));
     angles_publisher  = this->create_publisher<sensor_msgs::msg::JointState>("motor_commands",10);
-    // angles_publisher  = this->create_publisher<sensor_msgs::msg::JointState>("joint_states",10);
 }
 
 void InvKin_node::timer_callback(){
@@ -24,7 +23,8 @@ void InvKin_node::get_pose(const geometry_msgs::msg::Point::SharedPtr msg){
 
 
 void InvKin_node::get_state(float x, float y, float z){
-    float L = 500; // TODO : update
+    // float L = 0.252; // TODO
+    float L = 500;
 
     float angle_shoulder = acos((pow(x,2)+pow(y,2)-2*pow(L,2))/pow(L,2));
     state[SHOULDER] = angle_shoulder*180/M_PI;
@@ -34,7 +34,44 @@ void InvKin_node::get_state(float x, float y, float z){
 
     // targeted_z = z;
     // state[ZED] = z;
-    state[ZED] = 0.5; // TODO : test value to change
+    state[ZED] = 0.5; // TODO test value to change
+
+    
+    
+    const pinocchio::SE3 oMdes(Eigen::Matrix3d::Identity(), Eigen::Vector3d(x, y, z));
+    
+    // TODO : change neutral config for q
+    Eigen::VectorXd q = pinocchio::neutral(model);
+    
+    J.setZero();
+    
+    bool success = false;
+    typedef Eigen::Matrix<double, 6, 1> Vector6d;
+    Vector6d err;
+    Eigen::VectorXd v(model.nv);
+    pinocchio::Data::Matrix6 JJt;
+    for (int i=0;;i++)
+    {
+        pinocchio::forwardKinematics(model,data,q);
+        const pinocchio::SE3 dMi = oMdes.actInv(data.oMi[JOINT_ID]);
+        err = pinocchio::log6(dMi).toVector();
+        if(err.norm() < eps)
+        {
+            success = true;
+            break;
+        }
+        if (i >= IT_MAX)
+        {
+            success = false;
+            break;
+        }
+        pinocchio::computeJointJacobian(model,data,q,JOINT_ID,J);
+        
+        JJt.noalias() = J * J.transpose();
+        JJt.diagonal().array() += damp;
+        v.noalias() = - J.transpose() * JJt.ldlt().solve(err);
+        q = pinocchio::integrate(model,q,v*DT);
+    }
 }
 
 

@@ -144,7 +144,7 @@ void Simu_node::get_commands(const sensor_msgs::msg::JointState::SharedPtr msg){
 
         map<string, double> *joint = &free_joints[name];
 
-        (*joint)["position"] = min(max(msg->position[i]*M_PI/180,joint["min"]),joint["max"]);
+        (*joint)["position"] = min(max(msg->position[i]*M_PI/180,(*joint)["min"]),(*joint)["max"]);
     }
 }
 
