@@ -17,6 +17,7 @@
 #include <map>
 #include <math.h>
 #include <vector>
+#include <cmath>
 
 using namespace std::chrono_literals;
 using namespace std::placeholders;
@@ -37,6 +38,8 @@ private:
     void get_pose(const geometry_msgs::msg::Point::SharedPtr msg);
     void get_state(float x, float y, float z);
 
+    void correct_angle(double &angle); // Put angle in [-pi,pi]
+
     std::chrono::milliseconds loop_dt_ = 40ms; // Timer of the node
     map<int,float> state;
     float targeted_z;
@@ -45,11 +48,11 @@ private:
     // pinocchio variables and constants for inverse kinematics
     pinocchio::Model model;
     pinocchio::Data data;
-    const int JOINT_ID = 4;
+    const int JOINT_ID = 5;
     const double eps  = 1e-4;
     const int IT_MAX  = 1000;
     const double DT   = 1e-1;
-    const double damp = 1e-6;
+    const double damp = 1e-12;
     pinocchio::Data::Matrix6x J;
 
 
