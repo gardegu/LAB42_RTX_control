@@ -36,7 +36,7 @@ private:
     void init_interfaces();
     void timer_callback();
     void get_pose(const geometry_msgs::msg::Point::SharedPtr msg);
-    void get_state(float x, float y, float z);
+    void get_state(double x, double y, double z);
 
     void correct_angle(Eigen::VectorXd &q); // Put angles in [-pi,pi]
 

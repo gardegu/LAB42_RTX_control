@@ -22,26 +22,41 @@ void InvKin_node::get_pose(const geometry_msgs::msg::Point::SharedPtr msg){
 }
 
 
-void InvKin_node::get_state(float x, float y, float z){    
+void InvKin_node::get_state(double x, double y, double z){    
+
+    double angle=atan2(y,x);
     
+    Eigen::Matrix3d rot;
+    rot << cos(angle),-sin(angle),0,
+           sin(angle), cos(angle),0,
+           0         , 0         ,1;
+
+
+    Eigen::Vector3d pos(x,y,z);
+    // Eigen::Vector3d pos(0.2,-0.2,-0.5);
+
+
     // const pinocchio::SE3 oMdes(Eigen::Matrix3d::Identity(), Eigen::Vector3d(x, y, z));
-    const pinocchio::SE3 oMdes(Eigen::Matrix3d::Identity(), Eigen::Vector3d(0.5, 0.5, 0.5)); // TODO put real values
+    const pinocchio::SE3 oMdes(rot, pos); 
 
     // TODO : change neutral config for q (not sure finally)
     Eigen::VectorXd q = pinocchio::neutral(model);
     
     J.setZero();
-    
+
     bool success = false;
     typedef Eigen::Matrix<double, 6, 1> Vector6d;
     Vector6d err;
     Eigen::VectorXd v(model.nv);
     pinocchio::Data::Matrix6 JJt;
+    
+
     for (int i=0;;i++)
     {
         pinocchio::forwardKinematics(model,data,q);
         const pinocchio::SE3 dMi = oMdes.actInv(data.oMi[JOINT_ID]);
         err = pinocchio::log6(dMi).toVector();
+
 
         if(err.norm() < eps or i>=IT_MAX)
         {
@@ -54,8 +69,9 @@ void InvKin_node::get_state(float x, float y, float z){
         JJt.diagonal().array() += damp;
         v.noalias() = - J.transpose() * JJt.ldlt().solve(err);
         q = pinocchio::integrate(model,q,v*DT);
+
+
     }
-    // cout << "before :" << q.transpose() << endl;
 
     correct_angle(q);
 
@@ -63,15 +79,12 @@ void InvKin_node::get_state(float x, float y, float z){
     state[ELBOW] = q(2,0)*180/M_PI;
     state[YAW] = q(3,0)*180/M_PI;
 
-    // cout << "after :" << q.transpose() << endl;
-    // cout << "###################" << endl;
-
 }
 
 void InvKin_node::correct_angle(Eigen::VectorXd &q){
 
     for (int i=1; i<q.size(); i++){
-        q(i,0) = fmod(q(1,0) , 2*M_PI);
+        q(i,0) = fmod(q(i,0) , 2*M_PI);
 
         if (q(i,0)>M_PI){
             q(i,0) -= 2*M_PI;
