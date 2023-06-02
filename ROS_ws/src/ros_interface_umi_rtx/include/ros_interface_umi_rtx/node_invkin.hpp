@@ -27,7 +27,7 @@ class InvKin_node : public rclcpp::Node{
 public:
     InvKin_node() : Node("inverse_kinematics") {
         init_interfaces();
-        pinocchio::urdf::buildModel("./ROS_ws/src/ros_interface_umi_rtx/urdf/umi_rtx.urdf",model);
+        pinocchio::urdf::buildModel("./ROS_ws/src/ros_interface_umi_rtx/urdf/umi_rtx.urdf",model); //TODO replace "." by ".." when real arm
         data = pinocchio::Data(model);
         J = pinocchio::Data::Matrix6x(6,model.nv);
     };
@@ -38,7 +38,7 @@ private:
     void get_pose(const geometry_msgs::msg::Point::SharedPtr msg);
     void get_state(float x, float y, float z);
 
-    void correct_angle(double &angle); // Put angle in [-pi,pi]
+    void correct_angle(Eigen::VectorXd &q); // Put angles in [-pi,pi]
 
     std::chrono::milliseconds loop_dt_ = 40ms; // Timer of the node
     map<int,float> state;

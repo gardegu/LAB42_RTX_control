@@ -22,24 +22,10 @@ void InvKin_node::get_pose(const geometry_msgs::msg::Point::SharedPtr msg){
 }
 
 
-void InvKin_node::get_state(float x, float y, float z){
-    // float L = 0.252; // TODO
-    // float L = 500;
-
-    // float angle_shoulder = acos((pow(x,2)+pow(y,2)-2*pow(L,2))/pow(L,2));
-    // state[SHOULDER] = angle_shoulder*180/M_PI;
-
-    // float angle_elbow = atan2(y,x) - asin(L*sin(angle_shoulder)/sqrt(pow(x,2)+pow(y,2)));
-    // state[ELBOW] = angle_elbow*180/M_PI;
-
-    // // targeted_z = z;
-    // // state[ZED] = z;
-    // state[ZED] = 0.5; // TODO test value to change
-
-    
+void InvKin_node::get_state(float x, float y, float z){    
     
     // const pinocchio::SE3 oMdes(Eigen::Matrix3d::Identity(), Eigen::Vector3d(x, y, z));
-    const pinocchio::SE3 oMdes(Eigen::Matrix3d::Identity(), Eigen::Vector3d(-0.3, 0.3, 0.5)); // TODO put real values
+    const pinocchio::SE3 oMdes(Eigen::Matrix3d::Identity(), Eigen::Vector3d(0.5, 0.5, 0.5)); // TODO put real values
 
     // TODO : change neutral config for q (not sure finally)
     Eigen::VectorXd q = pinocchio::neutral(model);
@@ -71,9 +57,7 @@ void InvKin_node::get_state(float x, float y, float z){
     }
     // cout << "before :" << q.transpose() << endl;
 
-    correct_angle(q(1,0));
-    correct_angle(q(2,0));
-    correct_angle(q(3,0));
+    correct_angle(q);
 
     state[SHOULDER] = q(1,0)*180/M_PI;
     state[ELBOW] = q(2,0)*180/M_PI;
@@ -84,16 +68,20 @@ void InvKin_node::get_state(float x, float y, float z){
 
 }
 
-void InvKin_node::correct_angle(double &angle){
-    angle = fmod(angle , 2*M_PI);
+void InvKin_node::correct_angle(Eigen::VectorXd &q){
 
-    if (angle>M_PI){
-        angle -= 2*M_PI;
-    }
+    for (int i=1; i<q.size(); i++){
+        q(i,0) = fmod(q(1,0) , 2*M_PI);
 
-    else if (angle<-M_PI){
-        angle += 2*M_PI;
+        if (q(i,0)>M_PI){
+            q(i,0) -= 2*M_PI;
+        }
+
+        else if (q(i,0)<-M_PI){
+            q(i,0) += 2*M_PI;
+        }
     }
+    
 }
 
 int main(int argc, char *argv[]){

@@ -63,6 +63,8 @@ private:
 
     Arm full_arm;
 
+    bool test=true;
+
     rclcpp::TimerBase::SharedPtr timer_;
     rclcpp::Subscription<sensor_msgs::msg::JointState>::SharedPtr subscription_commands;
     rclcpp::Publisher<std_msgs::msg::String>::SharedPtr publisher_params;

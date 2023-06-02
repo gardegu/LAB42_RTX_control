@@ -4,6 +4,7 @@
 #include <string>
 #include <vector>
 #include <map>
+#include <iostream>
 
 #include "ros_interface_umi_rtx/arm_parts/forearm.h"
 

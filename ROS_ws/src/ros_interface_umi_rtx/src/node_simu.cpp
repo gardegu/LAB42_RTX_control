@@ -18,7 +18,6 @@ void Simu_node::timer_callback(){
     for (int i = 0; i < joint_list.size(); i++){
         string name=joint_list[i];
         msg.name[i]=name;
-
         msg.position[i] = free_joints[name]["position"];
     }
 

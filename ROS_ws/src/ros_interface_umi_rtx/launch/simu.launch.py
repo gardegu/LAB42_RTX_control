@@ -12,6 +12,7 @@ import os
 
 
 def generate_launch_description():
+    
     pkg_share = FindPackageShare(package='ros_interface_umi_rtx').find('ros_interface_umi_rtx')
     default_rviz_config_path = os.path.join(pkg_share, 'rviz/rviz_basic_settings.rviz')
     default_urdf_model_path = os.path.join(pkg_share, 'urdf/umi_rtx.urdf')

@@ -30,6 +30,20 @@ void Arm_node::timer_callback(){
     params.data = params2msg();
 
     publisher_params->publish(params);
+
+    if (test and commands_motor.size()>0 and !umi_moving()){
+        test = false;
+        set_motors();
+        // arm_go(NUMERIC,0x1555);
+        cout << "ok" << endl;
+    }
+
+    // cout << "testing to move..." << endl;
+    // if (!umi_moving()){
+    //     cout << "GO" << endl;
+    //     set_motors();
+    //     cout << "DONE" << endl;
+    // }
 }
 
 void Arm_node::get_commands(const sensor_msgs::msg::JointState::SharedPtr msg){
@@ -54,18 +68,22 @@ void Arm_node::set_motors(){
     
     int key,sign_error;
     float obj_angle,motor_angle,delta;
-
+    
     for (const auto& pair:commands_motor){
         key = pair.first;
         obj_angle = pair.second;
+        if (key<2){
+            conv_ticks_to_deg = conv_map[key];
+            motor_angle = conv_ticks_to_deg*motors_params[key][CURRENT_POSITION];
 
-        conv_ticks_to_deg = conv_map[key];
-        motor_angle = conv_ticks_to_deg*motors_params[key][CURRENT_POSITION];
+            delta = obj_angle-motor_angle;
+            sign_error = delta/abs(delta);
 
-        delta = obj_angle-motor_angle;
-        sign_error = delta/abs(delta);
+            // full_arm.mJoints[key]->setOrientation(sign_error);
+            full_arm.mJoints[key]->setOrientation(obj_angle);
+        }
 
-        full_arm.mJoints[key]->setOrientation(sign_error);
+        
     }
 }
 
