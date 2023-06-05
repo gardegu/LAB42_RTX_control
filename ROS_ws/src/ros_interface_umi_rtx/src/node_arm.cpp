@@ -31,11 +31,10 @@ void Arm_node::timer_callback(){
 
     publisher_params->publish(params);
 
-    if (test and commands_motor.size()>0 and !umi_moving()){
-        test = false;
+    if (commands_motor.size()>0 and !umi_moving()){
         set_motors();
-        // arm_go(NUMERIC,0x1555);
-        cout << "ok" << endl;
+        arm_go(NUMERIC,0x1555);
+        // cout << "ok" << endl;
     }
 
     // cout << "testing to move..." << endl;

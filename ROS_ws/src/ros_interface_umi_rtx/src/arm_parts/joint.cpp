@@ -52,7 +52,5 @@ void Joint::setOrientation(const float increment_angle){
     float conv_ticks_to_deg = conv_map[m_ID];
     int increment_ticks = increment_angle/conv_ticks_to_deg;
 
-    cout << "ticks -> " << m_ID << " : " << increment_ticks << endl;
-    cout << "angle -> " << m_ID << " : " << increment_angle << endl;
     arm_write(m_ID,NEW_POSITION,increment_ticks);
 }

@@ -112,11 +112,11 @@ def generate_launch_description():
     )
     
     return LaunchDescription([
-                              nodeArm,  nodeInvKin, nodeCamera,
+                              nodeArm,  nodeInvKin,
                               actions.ExecuteProcess(cmd=['ros2','bag','record','-a'],output='screen')
                               ])
 
-            
+    #nodeCamera #TODO
     # return LaunchDescription([declare_urdf_model_path_cmd, declare_rviz_config_file_cmd,
     #                           declare_use_joint_state_publisher_cmd, declare_use_robot_state_pub_cmd,
     #                           declare_use_rviz_cmd, declare_use_sim_time_cmd,
