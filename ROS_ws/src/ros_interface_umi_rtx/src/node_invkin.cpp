@@ -24,27 +24,23 @@ void InvKin_node::get_pose(const geometry_msgs::msg::Point::SharedPtr msg){
 
 void InvKin_node::get_state(double x, double y, double z){    
 
+    z -= 0.455;
+
     double angle=atan2(y,x);
     
     Eigen::Matrix3d rot;
     rot << cos(angle),-sin(angle),0,
            sin(angle), cos(angle),0,
            0         , 0         ,1;
-
-
     Eigen::Vector3d pos(x,y,z);
-    // Eigen::Vector3d pos(0.2,-0.2,-0.5);
 
-
-    // const pinocchio::SE3 oMdes(Eigen::Matrix3d::Identity(), Eigen::Vector3d(x, y, z));
     const pinocchio::SE3 oMdes(rot, pos); 
 
     // TODO : change neutral config for q (not sure finally)
-    Eigen::VectorXd q = pinocchio::neutral(model);
+    q = pinocchio::neutral(model);
     
     J.setZero();
 
-    bool success = false;
     typedef Eigen::Matrix<double, 6, 1> Vector6d;
     Vector6d err;
     Eigen::VectorXd v(model.nv);
@@ -52,7 +48,7 @@ void InvKin_node::get_state(double x, double y, double z){
     
 
     for (int i=0;;i++)
-    {
+    {   
         pinocchio::forwardKinematics(model,data,q);
         const pinocchio::SE3 dMi = oMdes.actInv(data.oMi[JOINT_ID]);
         err = pinocchio::log6(dMi).toVector();
@@ -74,7 +70,8 @@ void InvKin_node::get_state(double x, double y, double z){
     }
 
     correct_angle(q);
-
+    
+    state[ZED] = q(0,0);
     state[SHOULDER] = q(1,0)*180/M_PI;
     state[ELBOW] = q(2,0)*180/M_PI;
     state[YAW] = q(3,0)*180/M_PI;

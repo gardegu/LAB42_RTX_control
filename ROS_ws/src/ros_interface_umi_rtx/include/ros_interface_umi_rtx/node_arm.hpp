@@ -58,12 +58,10 @@ private:
     string params2msg(); //Converts motors_params into a string to publish more easily
     
     std::chrono::milliseconds loop_dt_ = 40ms; // Timer of the node
-    map<int,float> commands_motor; // Map which keeps the commands for each motor
+    map<int,double> commands_motor; // Map which keeps the commands for each motor
     map<int,map<int,int>> motors_params; // Keeps in memory the parameters of the motors
 
     Arm full_arm;
-
-    bool test=true;
 
     rclcpp::TimerBase::SharedPtr timer_;
     rclcpp::Subscription<sensor_msgs::msg::JointState>::SharedPtr subscription_commands;

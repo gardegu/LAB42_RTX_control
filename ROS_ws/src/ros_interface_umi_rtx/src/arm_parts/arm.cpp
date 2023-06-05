@@ -4,9 +4,6 @@ Arm::Arm(){
     for (int id=0; id<NUMBER_OF_MOTORS; id++){
         addJoint(new Joint(id));
     }
-    // for (int i=0; i<mJoints.size(); i++){
-    //     cout << mJoints[i]->m_ID << endl;
-    // }
     initArm();
 }
 

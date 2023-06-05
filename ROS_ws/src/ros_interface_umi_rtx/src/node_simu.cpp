@@ -138,10 +138,15 @@ void Simu_node::init_urdf(){
 
 void Simu_node::get_commands(const sensor_msgs::msg::JointState::SharedPtr msg){
 
-    for (int i=0; i<msg->name.size(); i++){
-        string name = msg->name[i];
+    // Zed
+    string name = msg->name[0];
+    map<string, double> *joint = &free_joints[name];
+    (*joint)["position"] = min(max(msg->position[0],(*joint)["min"]),(*joint)["max"]);
 
-        map<string, double> *joint = &free_joints[name];
+
+    for (int i=1; i<msg->name.size(); i++){ // Revolute joints
+        name = msg->name[i];
+        joint = &free_joints[name];
 
         (*joint)["position"] = min(max(msg->position[i]*M_PI/180,(*joint)["min"]),(*joint)["max"]);
     }

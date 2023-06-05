@@ -34,24 +34,14 @@ void Arm_node::timer_callback(){
     if (commands_motor.size()>0 and !umi_moving()){
         set_motors();
         arm_go(NUMERIC,0x1555);
-        // cout << "ok" << endl;
     }
-
-    // cout << "testing to move..." << endl;
-    // if (!umi_moving()){
-    //     cout << "GO" << endl;
-    //     set_motors();
-    //     cout << "DONE" << endl;
-    // }
 }
 
 void Arm_node::get_commands(const sensor_msgs::msg::JointState::SharedPtr msg){
-    // stringstream ss(msg->data);
-    // string pair;
 
     vector<double> objective = msg->position;
 
-    commands_motor = {{ZED,objective[0]},
+    commands_motor = {{ZED,objective[0]+0.455},
                       {SHOULDER,objective[1]},
                       {ELBOW,objective[2]}};
     // TODO : add the other joints
@@ -71,15 +61,19 @@ void Arm_node::set_motors(){
     for (const auto& pair:commands_motor){
         key = pair.first;
         obj_angle = pair.second;
-        if (key<2){
-            conv_ticks_to_deg = conv_map[key];
-            motor_angle = conv_ticks_to_deg*motors_params[key][CURRENT_POSITION];
+        if (key<2){ //Shoulder and elbow
+            // conv_ticks_to_deg = conv_map[key];
+            // motor_angle = conv_ticks_to_deg*motors_params[key][CURRENT_POSITION];
 
-            delta = obj_angle-motor_angle;
-            sign_error = delta/abs(delta);
+            // delta = obj_angle-motor_angle;
+            // sign_error = delta/abs(delta);
 
             // full_arm.mJoints[key]->setOrientation(sign_error);
             full_arm.mJoints[key]->setOrientation(obj_angle);
+        }
+
+        else if (key==ZED){
+            full_arm.mJoints[ZED]->setZed(pair.second);
         }
 
         
@@ -92,7 +86,6 @@ void Arm_node::get_params(){
     
     for (const auto motor:full_arm.mJoints){
         motors_params[motor->m_ID] = {};
-        // cout << motor->m_ID << endl;
         for (int PID=0; PID<NUMBER_OF_DATA_CODES; PID++){
             res = motor->get_parameter(PID, &value);
             if (res!=-1){

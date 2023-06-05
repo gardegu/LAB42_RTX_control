@@ -33,6 +33,7 @@ public:
     vector<float> getPosition() const;
 
     void setOrientation(const float increment_angle);
+    void setZed(const float zed);
 
     const string getName() const;
 

@@ -54,3 +54,11 @@ void Joint::setOrientation(const float increment_angle){
 
     arm_write(m_ID,NEW_POSITION,increment_ticks);
 }
+
+void Joint::setZed(const float zed){
+
+    // cout << "zed :" << zed << endl;
+    int increment_ticks = -(zed)/CONV_ZED;
+    // cout << "ticks :" << increment_ticks << endl;
+    arm_write(m_ID,NEW_POSITION,increment_ticks);
+}

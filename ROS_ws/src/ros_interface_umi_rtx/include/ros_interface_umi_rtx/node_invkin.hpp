@@ -54,6 +54,7 @@ private:
     const double DT   = 1e-1;
     const double damp = 1e-12;
     pinocchio::Data::Matrix6x J;
+    Eigen::VectorXd q;
 
 
     rclcpp::TimerBase::SharedPtr timer_;
