@@ -6,6 +6,8 @@
 #include "std_msgs/msg/string.hpp"
 #include "sensor_msgs/msg/joint_state.hpp"
 
+#include <ament_index_cpp/get_package_share_directory.hpp>
+
 #include "pinocchio/parsers/urdf.hpp"
 #include "pinocchio/spatial/explog.hpp"
 #include "pinocchio/algorithm/kinematics.hpp"
@@ -27,7 +29,7 @@ class InvKin_node : public rclcpp::Node{
 public:
     InvKin_node() : Node("inverse_kinematics") {
         init_interfaces();
-        pinocchio::urdf::buildModel("../ROS_ws/src/ros_interface_umi_rtx/urdf/umi_rtx.urdf",model); //TODO replace "." by ".." when real arm
+        pinocchio::urdf::buildModel(urdf_file,model);
         data = pinocchio::Data(model);
         J = pinocchio::Data::Matrix6x(6,model.nv);
     };
@@ -44,6 +46,7 @@ private:
     map<int,float> state;
     float targeted_z;
 
+    string urdf_file = ament_index_cpp::get_package_share_directory("ros_interface_umi_rtx")+"/urdf/umi_rtx.urdf";
 
     // pinocchio variables and constants for inverse kinematics
     pinocchio::Model model;

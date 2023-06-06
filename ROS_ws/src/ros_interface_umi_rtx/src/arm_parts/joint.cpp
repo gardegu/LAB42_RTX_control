@@ -57,8 +57,12 @@ void Joint::setOrientation(const float increment_angle){
 
 void Joint::setZed(const float zed){
 
+    int ticks = -3554-zed/CONV_ZED;
+
+    // int value;
+    // arm_read(m_ID,CURRENT_POSITION,&value);
     // cout << "zed :" << zed << endl;
-    int increment_ticks = -(zed)/CONV_ZED;
-    // cout << "ticks :" << increment_ticks << endl;
-    arm_write(m_ID,NEW_POSITION,increment_ticks);
+    // cout << "ticks :" << ticks << endl;
+    // cout << "reality :" << value << endl;
+    arm_write(m_ID,NEW_POSITION,ticks);
 }

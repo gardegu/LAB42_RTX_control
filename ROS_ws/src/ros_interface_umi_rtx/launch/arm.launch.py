@@ -21,7 +21,6 @@ def generate_launch_description():
     urdf_model = LaunchConfiguration('urdf_model')
     rviz_config_file = LaunchConfiguration('rviz_config_file')
     use_robot_state_pub = LaunchConfiguration('use_robot_state_pub')
-    use_rviz = LaunchConfiguration('use_rviz')
     use_sim_time = LaunchConfiguration('use_sim_time')
     
     # Declare the launch arguments  
@@ -39,11 +38,6 @@ def generate_launch_description():
         name='use_robot_state_pub',
         default_value='True',
         description='Whether to start the robot state publisher')
-    
-    declare_use_rviz_cmd = DeclareLaunchArgument(
-        name='use_rviz',
-        default_value='True',
-        description='Whether to start RVIZ')
         
     declare_use_sim_time_cmd = DeclareLaunchArgument(
         name='use_sim_time',
@@ -61,11 +55,9 @@ def generate_launch_description():
     
     # Launch RViz
     nodeRviz = Node(
-        condition=IfCondition(use_rviz),
         package='rviz2',
         executable='rviz2',
         name='rviz2',
-        output='screen',
         arguments=['-d', rviz_config_file])
     
     nodeArm = Node(
@@ -91,9 +83,20 @@ def generate_launch_description():
         output='screen'
     )
     
+    nodeSimu = Node(
+        package = 'ros_interface_umi_rtx',
+        namespace='',
+        executable='nodeSimu',
+        name='simulation',
+        output='screen'
+    )
+    
     return LaunchDescription([
-                              nodeArm,  nodeInvKin,
-                              
+                              declare_rviz_config_file_cmd, declare_use_robot_state_pub_cmd,
+                              declare_use_sim_time_cmd, declare_urdf_model_path_cmd,
+                              start_robot_state_publisher_cmd,
+                              nodeArm, nodeInvKin,
+                              nodeSimu, nodeRviz, 
                               ])
 
     #nodeCamera, actions.ExecuteProcess(cmd=['ros2','bag','record','-a'],output='screen') #TODO

@@ -5,6 +5,8 @@
 #include "sensor_msgs/msg/joint_state.hpp"
 #include "ros_interface_umi_rtx/umi-drivers/rtx.h"
 
+#include <ament_index_cpp/get_package_share_directory.hpp>
+
 #include <map>
 #include <vector>
 #include <string>
@@ -44,6 +46,9 @@ private :
     vector<string> names;
 
     bool urdf_initialized = false;
+
+    string urdf_file = ament_index_cpp::get_package_share_directory("ros_interface_umi_rtx")+"/urdf/umi_rtx.urdf";
+
 
     rclcpp::TimerBase::SharedPtr timer_;
     rclcpp::Subscription<sensor_msgs::msg::JointState>::SharedPtr invkin_subscriber;

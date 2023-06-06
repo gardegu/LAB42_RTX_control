@@ -25,7 +25,7 @@ void Simu_node::timer_callback(){
 }
 
 void Simu_node::init_urdf(){
-    string urdf_file = "./ROS_ws/src/ros_interface_umi_rtx/urdf/umi_rtx.urdf";
+    // string urdf_file = "./ROS_ws/src/ros_interface_umi_rtx/urdf/umi_rtx.urdf";
     ifstream infp(urdf_file);
 
     if (infp.is_open()) {

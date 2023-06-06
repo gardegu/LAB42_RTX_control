@@ -41,7 +41,7 @@ void Arm_node::get_commands(const sensor_msgs::msg::JointState::SharedPtr msg){
 
     vector<double> objective = msg->position;
 
-    commands_motor = {{ZED,objective[0]+0.455},
+    commands_motor = {{ZED,objective[0]},
                       {SHOULDER,objective[1]},
                       {ELBOW,objective[2]}};
     // TODO : add the other joints

@@ -27,6 +27,8 @@ find_package(geometry_msgs REQUIRED)
 find_package(image_transport REQUIRED)
 find_package(camera_info_manager REQUIRED)
 find_package(pinocchio REQUIRED)
+find_package(ament_index_cpp REQUIRED)
+
 
 add_library(armcmds src/drivers/armlib/armcmds.cpp)
 target_include_directories(armcmds PUBLIC
@@ -118,6 +120,7 @@ $<INSTALL_INTERFACE:include>)
  std_msgs
  sensor_msgs
  pinocchio
+ ament_index_cpp
  )
  
  target_link_libraries(nodeInverseKinematics)
@@ -135,6 +138,7 @@ $<INSTALL_INTERFACE:include>)
  rclcpp
  std_msgs
  sensor_msgs
+ ament_index_cpp
  )
  
  target_link_libraries(nodeSimu)
