@@ -61,31 +61,18 @@ void Arm_node::get_pose(const geometry_msgs::msg::Point::SharedPtr msg){
 }
 
 void Arm_node::set_motors(){
-    map<int,float> conv_map = {{ELBOW,CONV_ELBOW},
-                               {SHOULDER,CONV_SHOULDER},
-                               {WRIST1,CONV_W},
-                               {WRIST2,CONV_W},
-                               {YAW,CONV_YAW}};
-    float conv_ticks_to_deg ;
     
-    int key,sign_error;
-    float obj_angle,motor_angle,delta;
+    int key;
+    float obj_angle;
     
     for (const auto& pair:commands_motor){
         key = pair.first;
         obj_angle = pair.second;
-        if (key<2){ //Shoulder and elbow
-            // conv_ticks_to_deg = conv_map[key];
-            // motor_angle = conv_ticks_to_deg*motors_params[key][CURRENT_POSITION];
-
-            // delta = obj_angle-motor_angle;
-            // sign_error = delta/abs(delta);
-
-            // full_arm.mJoints[key]->setOrientation(sign_error);
+        if (key!=ZED){ //Revolute joints
             full_arm.mJoints[key]->setOrientation(obj_angle);
         }
 
-        else if (key==ZED){
+        else{
             full_arm.mJoints[ZED]->setZed(pair.second);
         }
 

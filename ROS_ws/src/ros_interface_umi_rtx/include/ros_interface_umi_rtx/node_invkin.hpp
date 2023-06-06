@@ -20,6 +20,7 @@
 #include <math.h>
 #include <vector>
 #include <cmath>
+#include <string>
 
 using namespace std::chrono_literals;
 using namespace std::placeholders;
@@ -46,13 +47,14 @@ private:
     map<int,double> state;
 
     double last_x,last_y,last_z;
+    int ROLL=4, PITCH=5;
 
     string urdf_file = ament_index_cpp::get_package_share_directory("ros_interface_umi_rtx")+"/urdf/umi_rtx.urdf";
 
     // pinocchio variables and constants for inverse kinematics
     pinocchio::Model model;
     pinocchio::Data data;
-    const int JOINT_ID = 5;
+    const int JOINT_ID = 6;
     const double eps  = 1e-4;
     const int IT_MAX  = 1000;
     const double DT   = 1e-1;

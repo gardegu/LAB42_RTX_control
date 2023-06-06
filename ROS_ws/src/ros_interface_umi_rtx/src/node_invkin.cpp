@@ -12,7 +12,7 @@ void InvKin_node::timer_callback(){
 
     msg.header.stamp = this->get_clock()->now();
     msg.name = {"shoulder_updown","shoulder_joint","elbow","wrist","wrist_gripper_connection_roll","wrist_gripper_connection_pitch","gripper_left","gripper_right"};
-    msg.position = {state[ZED],state[SHOULDER],state[ELBOW],state[YAW],0,0,0,0};
+    msg.position = {state[ZED],state[SHOULDER],state[ELBOW],state[YAW],state[ROLL],state[PITCH],0,0};
 
     angles_publisher->publish(msg);
 }
@@ -24,23 +24,31 @@ void InvKin_node::get_pose(const geometry_msgs::msg::Point::SharedPtr msg){
 
 void InvKin_node::get_state(double x, double y, double z){    
 
-    // cout << last_x << "," << last_y << "," << last_z << endl;
-    if (x!=last_x or y!=last_y or z!=last_z){
+    if (x!=last_x or y!=last_y or z!=last_z){ // Avoid calculation when the position doesn't change
         last_x = x;
         last_y = y;
         last_z = z;
         
         z -= 0.455; // Adapt to the z-origin of the urdf file
 
-        double angle=atan2(y,x);
+        double yaw=atan2(y,x), roll=0., pitch=M_PI/2;
         
-        Eigen::Matrix3d rot;
-        rot << cos(angle),-sin(angle),0,
-               sin(angle), cos(angle),0,
-               0         , 0         ,1;
+        Eigen::Matrix3d mat_yaw, mat_roll, mat_pitch;
+        mat_yaw << cos(yaw),-sin(yaw),0,
+                   sin(yaw), cos(yaw),0,
+                   0       , 0       ,1;
+
+        mat_roll << 1, 0        ,0         ,
+                    0, cos(roll),-sin(roll),
+                    0, sin(roll), cos(roll);
+
+        mat_pitch <<  cos(pitch), 0, sin(pitch),
+                      0         , 1, 0         ,
+                     -sin(pitch), 0, cos(pitch);
+        
         Eigen::Vector3d pos(x,y,z);
 
-        const pinocchio::SE3 oMdes(rot, pos); 
+        const pinocchio::SE3 oMdes(mat_yaw*mat_pitch, pos); 
 
         q = pinocchio::neutral(model);
         if (state.size()>=4){ // Initial state = last state processed
@@ -48,9 +56,10 @@ void InvKin_node::get_state(double x, double y, double z){
             q(1,0) = state[SHOULDER]*M_PI/180;
             q(2,0) = state[ELBOW]*M_PI/180;
             q(3,0) = state[YAW]*M_PI/180;
+            // q(4,0) = state[ROLL]*M_PI/180;
+            // q(5,0) = state[PITCH]*M_PI/180;
         }
 
-        
         J.setZero();
 
         typedef Eigen::Matrix<double, 6, 1> Vector6d;
@@ -77,16 +86,18 @@ void InvKin_node::get_state(double x, double y, double z){
             JJt.diagonal().array() += damp;
             v.noalias() = - J.transpose() * JJt.ldlt().solve(err);
             q = pinocchio::integrate(model,q,v*DT);
-
-
         }
 
         correct_angle(q);
         
+        // cout << q.transpose() << endl;
+
         state[ZED] = q(0,0);
         state[SHOULDER] = q(1,0)*180/M_PI;
         state[ELBOW] = q(2,0)*180/M_PI;
         state[YAW] = q(3,0)*180/M_PI;
+        // state[ROLL] = q(4,0)*180/M_PI;
+        state[PITCH] = q(5,0)*180/M_PI;
     }
 
 }
