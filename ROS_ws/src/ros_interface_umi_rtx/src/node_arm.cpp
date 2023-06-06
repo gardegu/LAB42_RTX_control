@@ -10,6 +10,9 @@ void Arm_node::init_interfaces(){
 
     subscription_commands = this->create_subscription<sensor_msgs::msg::JointState>("motor_commands",10,
         std::bind(&Arm_node::get_commands, this, _1));
+    
+    pose_subscription = this->create_subscription<geometry_msgs::msg::Point>("target_position",10,
+        std::bind(&Arm_node::get_pose, this, _1));
 
     publisher_params  = this->create_publisher<std_msgs::msg::String>("motor_params",10);
 
@@ -31,7 +34,11 @@ void Arm_node::timer_callback(){
 
     publisher_params->publish(params);
 
-    if (commands_motor.size()>0 and !umi_moving()){
+    if (commands_motor.size()>0 and !umi_moving() and (x!=targ_x or y!=targ_y or z!=targ_z)){
+        x = targ_x;
+        y = targ_y;
+        z = targ_z;
+
         set_motors();
         arm_go(NUMERIC,0x1555);
     }
@@ -45,6 +52,12 @@ void Arm_node::get_commands(const sensor_msgs::msg::JointState::SharedPtr msg){
                       {SHOULDER,objective[1]},
                       {ELBOW,objective[2]}};
     // TODO : add the other joints
+}
+
+void Arm_node::get_pose(const geometry_msgs::msg::Point::SharedPtr msg){
+    targ_x = msg->x;
+    targ_y = msg->y;
+    targ_z = msg->z;
 }
 
 void Arm_node::set_motors(){

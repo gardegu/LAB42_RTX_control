@@ -24,57 +24,70 @@ void InvKin_node::get_pose(const geometry_msgs::msg::Point::SharedPtr msg){
 
 void InvKin_node::get_state(double x, double y, double z){    
 
-    z -= 0.455;
+    // cout << last_x << "," << last_y << "," << last_z << endl;
+    if (x!=last_x or y!=last_y or z!=last_z){
+        last_x = x;
+        last_y = y;
+        last_z = z;
+        
+        z -= 0.455; // Adapt to the z-origin of the urdf file
 
-    double angle=atan2(y,x);
-    
-    Eigen::Matrix3d rot;
-    rot << cos(angle),-sin(angle),0,
-           sin(angle), cos(angle),0,
-           0         , 0         ,1;
-    Eigen::Vector3d pos(x,y,z);
+        double angle=atan2(y,x);
+        
+        Eigen::Matrix3d rot;
+        rot << cos(angle),-sin(angle),0,
+               sin(angle), cos(angle),0,
+               0         , 0         ,1;
+        Eigen::Vector3d pos(x,y,z);
 
-    const pinocchio::SE3 oMdes(rot, pos); 
+        const pinocchio::SE3 oMdes(rot, pos); 
 
-    // TODO : change neutral config for q (not sure finally)
-    q = pinocchio::neutral(model);
-    
-    J.setZero();
-
-    typedef Eigen::Matrix<double, 6, 1> Vector6d;
-    Vector6d err;
-    Eigen::VectorXd v(model.nv);
-    pinocchio::Data::Matrix6 JJt;
-    
-
-    for (int i=0;;i++)
-    {   
-        pinocchio::forwardKinematics(model,data,q);
-        const pinocchio::SE3 dMi = oMdes.actInv(data.oMi[JOINT_ID]);
-        err = pinocchio::log6(dMi).toVector();
-
-
-        if(err.norm() < eps or i>=IT_MAX)
-        {
-            break;
+        q = pinocchio::neutral(model);
+        if (state.size()>=4){ // Initial state = last state processed
+            q(0,0) = state[ZED];
+            q(1,0) = state[SHOULDER]*M_PI/180;
+            q(2,0) = state[ELBOW]*M_PI/180;
+            q(3,0) = state[YAW]*M_PI/180;
         }
 
-        pinocchio::computeJointJacobian(model,data,q,JOINT_ID,J);
         
-        JJt.noalias() = J * J.transpose();
-        JJt.diagonal().array() += damp;
-        v.noalias() = - J.transpose() * JJt.ldlt().solve(err);
-        q = pinocchio::integrate(model,q,v*DT);
+        J.setZero();
+
+        typedef Eigen::Matrix<double, 6, 1> Vector6d;
+        Vector6d err;
+        Eigen::VectorXd v(model.nv);
+        pinocchio::Data::Matrix6 JJt;
+        
+
+        for (int i=0;;i++)
+        {   
+            pinocchio::forwardKinematics(model,data,q);
+            const pinocchio::SE3 dMi = oMdes.actInv(data.oMi[JOINT_ID]);
+            err = pinocchio::log6(dMi).toVector();
 
 
+            if(err.norm() < eps or i>=IT_MAX)
+            {
+                break;
+            }
+
+            pinocchio::computeJointJacobian(model,data,q,JOINT_ID,J);
+            
+            JJt.noalias() = J * J.transpose();
+            JJt.diagonal().array() += damp;
+            v.noalias() = - J.transpose() * JJt.ldlt().solve(err);
+            q = pinocchio::integrate(model,q,v*DT);
+
+
+        }
+
+        correct_angle(q);
+        
+        state[ZED] = q(0,0);
+        state[SHOULDER] = q(1,0)*180/M_PI;
+        state[ELBOW] = q(2,0)*180/M_PI;
+        state[YAW] = q(3,0)*180/M_PI;
     }
-
-    correct_angle(q);
-    
-    state[ZED] = q(0,0);
-    state[SHOULDER] = q(1,0)*180/M_PI;
-    state[ELBOW] = q(2,0)*180/M_PI;
-    state[YAW] = q(3,0)*180/M_PI;
 
 }
 

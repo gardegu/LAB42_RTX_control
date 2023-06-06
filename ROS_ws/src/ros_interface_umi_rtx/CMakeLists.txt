@@ -101,6 +101,8 @@ add_executable(nodeArm
  rclcpp
  std_msgs
  sensor_msgs
+ geometry_msgs
+
  )
  
  target_link_libraries(nodeArm armcmds armraw armerror)

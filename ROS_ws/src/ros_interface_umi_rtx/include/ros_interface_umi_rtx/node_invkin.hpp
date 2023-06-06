@@ -43,8 +43,9 @@ private:
     void correct_angle(Eigen::VectorXd &q); // Put angles in [-pi,pi]
 
     std::chrono::milliseconds loop_dt_ = 40ms; // Timer of the node
-    map<int,float> state;
-    float targeted_z;
+    map<int,double> state;
+
+    double last_x,last_y,last_z;
 
     string urdf_file = ament_index_cpp::get_package_share_directory("ros_interface_umi_rtx")+"/urdf/umi_rtx.urdf";
 
