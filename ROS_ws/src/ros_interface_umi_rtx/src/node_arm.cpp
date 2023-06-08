@@ -14,6 +14,9 @@ void Arm_node::init_interfaces(){
     pose_subscription = this->create_subscription<geometry_msgs::msg::Point>("target_position",10,
         std::bind(&Arm_node::get_pose, this, _1));
 
+    pitch_subscription = this->create_subscription<std_msgs::msg::Float32>("target_pitch",10,
+        std::bind(&Arm_node::get_pitch, this, _1));
+
     publisher_params  = this->create_publisher<std_msgs::msg::String>("motor_params",10);
 
     if (arm_init_comms(1,2)!=-1){
@@ -34,10 +37,11 @@ void Arm_node::timer_callback(){
 
     publisher_params->publish(params);
 
-    if (commands_motor.size()>0 and !umi_moving() and (x!=targ_x or y!=targ_y or z!=targ_z)){
+    if (commands_motor.size()>0 and !umi_moving() and (x!=targ_x or y!=targ_y or z!=targ_z or target_pitch!=last_pitch)){
         x = targ_x;
         y = targ_y;
         z = targ_z;
+        last_pitch = target_pitch;
 
         set_motors();
         arm_go(NUMERIC,0x1555);
@@ -50,7 +54,9 @@ void Arm_node::get_commands(const sensor_msgs::msg::JointState::SharedPtr msg){
 
     commands_motor = {{ZED,objective[0]},
                       {SHOULDER,objective[1]},
-                      {ELBOW,objective[2]}};
+                      {ELBOW,objective[2]},
+                      {WRIST1,objective[5]},
+                      {WRIST2,objective[5]}};
     // TODO : add the other joints
 }
 
@@ -58,6 +64,10 @@ void Arm_node::get_pose(const geometry_msgs::msg::Point::SharedPtr msg){
     targ_x = msg->x;
     targ_y = msg->y;
     targ_z = msg->z;
+}
+
+void Arm_node::get_pitch(const std_msgs::msg::Float32::SharedPtr msg){
+    target_pitch = msg->data*M_PI/180;
 }
 
 void Arm_node::set_motors(){

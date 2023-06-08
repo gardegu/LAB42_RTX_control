@@ -180,6 +180,6 @@ extern char *armstrerror();
 #define CONV_SHOULDER   0.03422
 #define CONV_ELBOW      0.06844
 #define CONV_YAW        0.10267
-#define CONV_W          0.0415
+#define CONV_W          0.07415
 
 #endif /* _rtx_h */

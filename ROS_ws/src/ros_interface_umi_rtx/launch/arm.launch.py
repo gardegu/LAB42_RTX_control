@@ -97,6 +97,7 @@ def generate_launch_description():
                               start_robot_state_publisher_cmd,
                               nodeArm, nodeInvKin,
                               nodeSimu, nodeRviz, 
+                              actions.ExecuteProcess(cmd=["../launch_rqt.sh"])
                               ])
 
     #nodeCamera, actions.ExecuteProcess(cmd=['ros2','bag','record','-a'],output='screen') #TODO
