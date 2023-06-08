@@ -16,6 +16,9 @@ void Arm_node::init_interfaces(){
 
     pitch_subscription = this->create_subscription<std_msgs::msg::Float32>("target_pitch",10,
         std::bind(&Arm_node::get_pitch, this, _1));
+    
+    grip_subscription = this->create_subscription<std_msgs::msg::Float32>("target_grip",10,
+        std::bind(&Arm_node::get_grip, this, _1));
 
     publisher_params  = this->create_publisher<std_msgs::msg::String>("motor_params",10);
 
@@ -37,14 +40,15 @@ void Arm_node::timer_callback(){
 
     publisher_params->publish(params);
 
-    if (commands_motor.size()>0 and !umi_moving() and (x!=targ_x or y!=targ_y or z!=targ_z or target_pitch!=last_pitch)){
+    if (commands_motor.size()>0 and !umi_moving() and (x!=targ_x or y!=targ_y or z!=targ_z or pitch!=target_pitch)){
         x = targ_x;
         y = targ_y;
         z = targ_z;
-        last_pitch = target_pitch;
+        pitch = target_pitch;
 
+        cout << commands_motor.size() << endl;
         set_motors();
-        arm_go(NUMERIC,0x1555);
+        // arm_go(NUMERIC,0x1555);
     }
 }
 
@@ -55,8 +59,8 @@ void Arm_node::get_commands(const sensor_msgs::msg::JointState::SharedPtr msg){
     commands_motor = {{ZED,objective[0]},
                       {SHOULDER,objective[1]},
                       {ELBOW,objective[2]},
-                      {WRIST1,objective[5]},
-                      {WRIST2,objective[5]}};
+                      {WRIST1,0.5*(objective[4]+objective[5])},
+                      {WRIST2,0.5*(objective[5]-objective[4])}};
     // TODO : add the other joints
 }
 
@@ -70,8 +74,11 @@ void Arm_node::get_pitch(const std_msgs::msg::Float32::SharedPtr msg){
     target_pitch = msg->data*M_PI/180;
 }
 
+void Arm_node::get_grip(const std_msgs::msg::Float32::SharedPtr msg){
+    commands_motor[GRIP] = msg->data;
+}
+
 void Arm_node::set_motors(){
-    
     int key;
     float obj_angle;
     
@@ -82,11 +89,13 @@ void Arm_node::set_motors(){
             full_arm.mJoints[key]->setOrientation(obj_angle);
         }
 
-        else{
+        else if (key==ZED){
             full_arm.mJoints[ZED]->setZed(pair.second);
         }
 
-        
+        else if (key==GRIP){
+            full_arm.mJoints[GRIP]->setGrip(pair.second);
+        }
     }
 }
 

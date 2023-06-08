@@ -66,3 +66,15 @@ void Joint::setZed(const float zed){
     // cout << "reality :" << value << endl;
     arm_write(m_ID,NEW_POSITION,ticks);
 }
+
+void Joint::setGrip(const float grip){
+
+    int ticks = grip/CONV_GRIP;
+
+    // int value;
+    // arm_read(m_ID,CURRENT_POSITION,&value);
+    // cout << "zed :" << zed << endl;
+    // cout << "ticks :" << ticks << endl;
+    // cout << "reality :" << value << endl;
+    arm_write(m_ID,NEW_POSITION,ticks);
+}

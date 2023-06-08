@@ -36,8 +36,17 @@ void InvKin_node::get_state(double x, double y, double z){
         last_pitch = target_pitch;
         
         z -= 0.455; // Adapt to the z-origin of the urdf file
-        double yaw=atan2(y,x), roll=0.,pitch=target_pitch;//, pitch=M_PI/2;
-        
+        double yaw=atan2(y,x), roll=0., pitch=target_pitch;
+
+        // cout << "before :" << x << "," << y << "," << z << endl;
+
+        x -= L*cos(target_pitch)*cos(yaw);
+        y -= L*cos(target_pitch)*sin(yaw);
+        z += L*sin(target_pitch);
+
+        // cout << "after :" << x << "," << y << "," << z << endl;
+        // cout << "##################" << endl;
+
         Eigen::Matrix3d mat_yaw, mat_roll, mat_pitch;
         mat_yaw << cos(yaw),-sin(yaw),0,
                    sin(yaw), cos(yaw),0,
@@ -53,7 +62,7 @@ void InvKin_node::get_state(double x, double y, double z){
         
         Eigen::Vector3d pos(x,y,z);
 
-        const pinocchio::SE3 oMdes(mat_yaw*mat_pitch, pos); 
+        const pinocchio::SE3 oMdes(mat_yaw*mat_pitch*mat_roll, pos); 
 
         q = pinocchio::neutral(model);
         if (state.size()>=4){ // Initial state = last state processed
@@ -61,8 +70,8 @@ void InvKin_node::get_state(double x, double y, double z){
             q(1,0) = state[SHOULDER]*M_PI/180;
             q(2,0) = state[ELBOW]*M_PI/180;
             q(3,0) = state[YAW]*M_PI/180;
-            // q(4,0) = state[ROLL]*M_PI/180;
-            // q(5,0) = state[PITCH]*M_PI/180;
+            q(4,0) = state[ROLL]*M_PI/180;
+            q(5,0) = state[PITCH]*M_PI/180;
         }
 
         J.setZero();
@@ -95,13 +104,11 @@ void InvKin_node::get_state(double x, double y, double z){
 
         correct_angle(q);
         
-        // cout << q.transpose() << endl;
-
         state[ZED] = q(0,0);
         state[SHOULDER] = q(1,0)*180/M_PI;
         state[ELBOW] = q(2,0)*180/M_PI;
         state[YAW] = q(3,0)*180/M_PI;
-        // state[ROLL] = q(4,0)*180/M_PI;
+        state[ROLL] = q(4,0)*180/M_PI;
         state[PITCH] = q(5,0)*180/M_PI;
     }
 

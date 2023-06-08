@@ -181,5 +181,6 @@ extern char *armstrerror();
 #define CONV_ELBOW      0.06844
 #define CONV_YAW        0.10267
 #define CONV_W          0.07415
+#define CONV_GRIP       0.07317
 
 #endif /* _rtx_h */

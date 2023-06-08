@@ -46,7 +46,7 @@ public:
         init_interfaces();
         
         // Initialize the arm
-        umi_init();
+        // umi_init();
 
     };
 
@@ -56,6 +56,7 @@ private:
     void get_commands(const sensor_msgs::msg::JointState::SharedPtr msg);
     void get_pose(const geometry_msgs::msg::Point::SharedPtr msg);
     void get_pitch(const std_msgs::msg::Float32::SharedPtr msg);
+    void get_grip(const std_msgs::msg::Float32::SharedPtr msg);
     void set_motors();
     void get_params();
 
@@ -67,12 +68,13 @@ private:
 
     Arm full_arm;
     double targ_x,targ_y,targ_z, x,y,z;
-    double target_pitch, last_pitch;
+    double target_pitch, pitch;
 
     rclcpp::TimerBase::SharedPtr timer_;
     rclcpp::Subscription<sensor_msgs::msg::JointState>::SharedPtr subscription_commands;
     rclcpp::Subscription<geometry_msgs::msg::Point>::SharedPtr pose_subscription;
     rclcpp::Subscription<std_msgs::msg::Float32>::SharedPtr pitch_subscription;
+    rclcpp::Subscription<std_msgs::msg::Float32>::SharedPtr grip_subscription;
     rclcpp::Publisher<std_msgs::msg::String>::SharedPtr publisher_params;
 };
 

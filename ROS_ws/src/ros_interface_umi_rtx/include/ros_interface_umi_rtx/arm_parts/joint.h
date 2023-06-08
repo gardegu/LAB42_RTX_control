@@ -34,6 +34,7 @@ public:
 
     void setOrientation(const float increment_angle);
     void setZed(const float zed);
+    void setGrip(const float grip);
 
     const string getName() const;
 

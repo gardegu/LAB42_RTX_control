@@ -25,3 +25,5 @@ And then sourcing ROS:
 
     source /opt/ros/foxy/setup.bash
 
+Once you started the interface, you will have to publish the position and the pitch through rqt. Positions are published on /target_position and are in meter and pitch on /target_pitch in degrees.
+
