@@ -69,7 +69,9 @@ void Joint::setZed(const float zed){
 
 void Joint::setGrip(const float grip){
 
-    int ticks = grip/CONV_GRIP;
+    // int ticks = grip/CONV_GRIP;
+
+    int ticks = -30 + ((1230.0 / 90.0 ) * grip);
 
     // int value;
     // arm_read(m_ID,CURRENT_POSITION,&value);

@@ -40,6 +40,7 @@ private:
     void timer_callback();
     void get_pose(const geometry_msgs::msg::Point::SharedPtr msg);
     void get_pitch(const std_msgs::msg::Float32::SharedPtr msg);
+    void get_roll(const std_msgs::msg::Float32::SharedPtr msg);
     void get_state(double x, double y, double z);
 
     void correct_angle(Eigen::VectorXd &q); // Put angles in [-pi,pi]
@@ -53,6 +54,7 @@ private:
     int ROLL=6, PITCH=7;
 
     double target_pitch, last_pitch;
+    double target_roll, last_roll;
 
     string urdf_file = ament_index_cpp::get_package_share_directory("ros_interface_umi_rtx")+"/urdf/umi_rtx.urdf";
 
@@ -70,7 +72,10 @@ private:
 
     rclcpp::TimerBase::SharedPtr timer_;
     rclcpp::Subscription<geometry_msgs::msg::Point>::SharedPtr pose_subscription;
+
     rclcpp::Subscription<std_msgs::msg::Float32>::SharedPtr pitch_subscription;
+    rclcpp::Subscription<std_msgs::msg::Float32>::SharedPtr roll_subscription;
+
     rclcpp::Publisher<sensor_msgs::msg::JointState>::SharedPtr angles_publisher;
 
 };

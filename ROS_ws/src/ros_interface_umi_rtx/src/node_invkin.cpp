@@ -6,6 +6,8 @@ void InvKin_node::init_interfaces(){
         std::bind(&InvKin_node::get_pose, this, _1));
     pitch_subscription = this->create_subscription<std_msgs::msg::Float32>("target_pitch",10,
         std::bind(&InvKin_node::get_pitch, this, _1));
+    roll_subscription = this->create_subscription<std_msgs::msg::Float32>("target_roll",10,
+        std::bind(&InvKin_node::get_roll, this, _1));
     angles_publisher  = this->create_publisher<sensor_msgs::msg::JointState>("motor_commands",10);
 }
 
@@ -20,23 +22,32 @@ void InvKin_node::timer_callback(){
 }
 
 void InvKin_node::get_pose(const geometry_msgs::msg::Point::SharedPtr msg){
-    get_state(msg->x,msg->y,msg->z);
+    double x,y,z;
+    x = max(-0.3,min(0.3,msg->x));
+    y = max(0.,min(0.69,msg->y));
+    z = max(0.1,min(0.7,msg->z));
+    get_state(x,y,z);
 }
 
 void InvKin_node::get_pitch(const std_msgs::msg::Float32::SharedPtr msg){
     target_pitch = msg->data*M_PI/180;
 }
 
+void InvKin_node::get_roll(const std_msgs::msg::Float32::SharedPtr msg){
+    target_roll = msg->data*M_PI/180;
+}
+
 void InvKin_node::get_state(double x, double y, double z){    
 
-    if (x!=last_x or y!=last_y or z!=last_z or target_pitch!=last_pitch){ // Avoid calculation when the position doesn't change
+    if (x!=last_x or y!=last_y or z!=last_z or target_pitch!=last_pitch or target_roll!=last_roll){ // Avoid calculation when the position doesn't change
         last_x = x;
         last_y = y;
         last_z = z;
         last_pitch = target_pitch;
+        last_roll = target_roll;
         
         z -= 0.455; // Adapt to the z-origin of the urdf file
-        double yaw=atan2(y,x), roll=0., pitch=target_pitch;
+        double yaw=atan2(y,x), roll=target_roll, pitch=target_pitch;
 
         // cout << "before :" << x << "," << y << "," << z << endl;
 

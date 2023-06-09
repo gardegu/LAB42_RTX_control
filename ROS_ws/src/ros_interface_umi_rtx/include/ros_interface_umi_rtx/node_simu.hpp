@@ -42,7 +42,6 @@ private :
     map<string,double> zeros;
 
     vector<string> joint_list;
-    vector<double> positions;
     vector<string> names;
 
     bool urdf_initialized = false;
