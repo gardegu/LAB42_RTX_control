@@ -14,9 +14,8 @@ void Simu_node::timer_callback(){
     int num_joints = joint_list.size();
     msg.position = vector<double>(num_joints,0.0);
     msg.name = vector<string>(num_joints);
-    
-    for (int i = 0; i < num_joints; i++){
 
+    for (int i = 0; i < num_joints; i++){
         string name=joint_list[i];
         msg.name[i]=name;
         msg.position[i] = free_joints[name]["position"];
@@ -130,8 +129,6 @@ void Simu_node::init_urdf(){
     else {
         cout << "Impossible d'ouvrir le fichier urdf" << endl;
     }
-
-    urdf_initialized = true;
 }
 
 

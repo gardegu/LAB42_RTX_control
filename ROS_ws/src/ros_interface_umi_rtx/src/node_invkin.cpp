@@ -49,14 +49,10 @@ void InvKin_node::get_state(double x, double y, double z){
         z -= 0.455; // Adapt to the z-origin of the urdf file
         double yaw=atan2(y,x), roll=target_roll, pitch=target_pitch;
 
-        // cout << "before :" << x << "," << y << "," << z << endl;
-
+        // Translation to put the target at the tip of the hand
         x -= L*cos(target_pitch)*cos(yaw);
         y -= L*cos(target_pitch)*sin(yaw);
         z += L*sin(target_pitch);
-
-        // cout << "after :" << x << "," << y << "," << z << endl;
-        // cout << "##################" << endl;
 
         Eigen::Matrix3d mat_yaw, mat_roll, mat_pitch;
         mat_yaw << cos(yaw),-sin(yaw),0,
@@ -114,17 +110,17 @@ void InvKin_node::get_state(double x, double y, double z){
         }
 
         correct_angle(q);
-        
         state[ZED] = q(0,0);
-        state[SHOULDER] = q(1,0)*180/M_PI;
-        state[ELBOW] = q(2,0)*180/M_PI;
-        state[YAW] = q(3,0)*180/M_PI;
-        state[ROLL] = q(4,0)*180/M_PI;
-        state[PITCH] = q(5,0)*180/M_PI;
+        state[SHOULDER] = q(1,0);
+        state[ELBOW] = q(2,0);
+        state[YAW] = q(3,0);
+        state[ROLL] = q(4,0);
+        state[PITCH] = q(5,0);
     }
 
 }
 
+// Put the angles in [-180°,180]
 void InvKin_node::correct_angle(Eigen::VectorXd &q){
 
     for (int i=1; i<q.size(); i++){
@@ -137,6 +133,7 @@ void InvKin_node::correct_angle(Eigen::VectorXd &q){
         else if (q(i,0)<-M_PI){
             q(i,0) += 2*M_PI;
         }
+        q(i,0) = q(i,0)*180/M_PI;
     }
     
 }

@@ -31,6 +31,7 @@ void Arm_node::init_interfaces(){
 }
 
 void Arm_node::timer_callback(){
+    // TODO improve time for get_params
     // get_params();
 
     // // Collect the parameters and publish them
@@ -42,7 +43,6 @@ void Arm_node::timer_callback(){
 
     if (commands_motor.size()>0 and !umi_moving() and (x!=targ_x or y!=targ_y or z!=targ_z)){
         // cout << "new target" << endl;
-
         x = targ_x;
         y = targ_y;
         z = targ_z;
@@ -61,7 +61,6 @@ void Arm_node::get_commands(const sensor_msgs::msg::JointState::SharedPtr msg){
                       {ELBOW,objective[2]},
                       {WRIST1,0.5*(objective[4]+objective[5])},
                       {WRIST2,0.5*(objective[5]-objective[4])}};
-    // TODO : add the other joints
 }
 
 void Arm_node::get_pose(const geometry_msgs::msg::Point::SharedPtr msg){
