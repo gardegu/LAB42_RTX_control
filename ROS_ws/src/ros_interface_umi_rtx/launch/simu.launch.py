@@ -80,15 +80,32 @@ def generate_launch_description():
         output='screen'
     )
     
+    # nodeCommands = Node(
+    #     package = 'ros_interface_umi_rtx',
+    #     namespace='',
+    #     executable='nodeCommands',
+    #     name='Commands',
+    #     output='screen'
+    # )
+    
+    GUI = Node(
+        package = 'ros_interface_umi_rtx',
+        namespace='',
+        executable='GUI',
+        name='qt_window',
+        output='screen'
+    )
+    
             
     return LaunchDescription([declare_rviz_config_file_cmd, declare_use_robot_state_pub_cmd,
                               declare_use_sim_time_cmd, declare_urdf_model_path_cmd,
                               start_robot_state_publisher_cmd,
                               nodeInvKin, nodeSimu,
                               nodeRviz,
-                              actions.ExecuteProcess(cmd=["rqt"])
+                              GUI,
                               ]) #TODO rajouter nodeCamera
          
+                            #   actions.ExecuteProcess(cmd=["rqt"])
     # return LaunchDescription([declare_rviz_config_file_cmd, declare_use_robot_state_pub_cmd,
     #                           declare_use_sim_time_cmd, declare_urdf_model_path_cmd,
     #                           declare_use_joint_state_publisher_cmd, start_joint_state_publisher_gui_node,

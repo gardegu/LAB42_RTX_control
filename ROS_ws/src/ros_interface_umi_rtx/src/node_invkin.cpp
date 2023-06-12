@@ -23,8 +23,8 @@ void InvKin_node::timer_callback(){
 
 void InvKin_node::get_pose(const geometry_msgs::msg::Point::SharedPtr msg){
     double x,y,z;
-    x = max(-0.3,min(0.3,msg->x));
-    y = max(0.,min(0.69,msg->y));
+    x = max(-0.6,min(0.6,msg->x));
+    y = max(0.1,min(0.69,msg->y));
     z = max(0.1,min(0.7,msg->z));
     get_state(x,y,z);
 }

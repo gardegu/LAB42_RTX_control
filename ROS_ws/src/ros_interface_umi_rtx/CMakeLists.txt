@@ -15,6 +15,11 @@ if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
   add_compile_options(-Wall -Wextra -Wpedantic)
 endif()
 
+# Requis pour utiliser Qt5 avec CMake
+set(CMAKE_AUTOMOC ON)
+set(CMAKE_AUTORCC ON)
+set(CMAKE_AUTOUIC ON)
+
 
 # find dependencies
 find_package(ament_cmake REQUIRED)
@@ -28,7 +33,9 @@ find_package(image_transport REQUIRED)
 find_package(camera_info_manager REQUIRED)
 find_package(pinocchio REQUIRED)
 find_package(ament_index_cpp REQUIRED)
+find_package(Qt5 COMPONENTS Core Widgets REQUIRED)
 
+include_directories(${Qt5Core_INCLUDE_DIRS} ${Qt5Widgets_INCLUDE_DIRS})
 
 add_library(armcmds src/drivers/armlib/armcmds.cpp)
 target_include_directories(armcmds PUBLIC
@@ -125,7 +132,6 @@ $<INSTALL_INTERFACE:include>)
  ament_index_cpp
  )
  
- target_link_libraries(nodeInverseKinematics)
  target_link_libraries(nodeInverseKinematics "${cpp_typesupport_target}" )
  target_include_directories(nodeInverseKinematics PUBLIC
 $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
@@ -143,14 +149,43 @@ $<INSTALL_INTERFACE:include>)
  ament_index_cpp
  )
  
- target_link_libraries(nodeSimu)
  target_link_libraries(nodeSimu "${cpp_typesupport_target}" )
  target_include_directories(nodeSimu PUBLIC
 $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
 $<INSTALL_INTERFACE:include>)
 
 
+#  ##################################### Node Commands
+#  add_executable(nodeCommands
+#  src/node_commands.cpp
+#  )
+ 
+#  ament_target_dependencies(nodeCommands
+#  rclcpp
+#  geometry_msgs
+#  )
+ 
+#  target_link_libraries(nodeCommands "${cpp_typesupport_target}" Qt5::Widgets Qt5::Core)
+#  target_include_directories(nodeCommands PUBLIC
+# $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+# $<INSTALL_INTERFACE:include>)
 
+ ##################################### GUI
+ add_executable(GUI
+ src/main_gui.cpp
+ src/node_commands.cpp
+ )
+ 
+ ament_target_dependencies(GUI
+ rclcpp
+ geometry_msgs
+ std_msgs
+ )
+
+ target_link_libraries(GUI "${cpp_typesupport_target}" Qt5::Widgets Qt5::Core)
+ target_include_directories(GUI PUBLIC
+$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+$<INSTALL_INTERFACE:include>)
 
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
@@ -163,11 +198,16 @@ if(BUILD_TESTING)
   ament_lint_auto_find_test_dependencies()
 endif()
 
-install(TARGETS nodeCamera nodeArm nodeInverseKinematics nodeZed nodeSimu
+install(TARGETS nodeCamera nodeArm nodeInverseKinematics nodeZed nodeSimu GUI
 DESTINATION lib/${PROJECT_NAME})
 
 install(DIRECTORY include
   DESTINATION include)
+
+# Installer les fichiers Qt5 requis
+# install(DIRECTORY ${Qt5Core_INCLUDE_DIRS}/Qt ${Qt5Widgets_INCLUDE_DIRS}/QtWidgets ${Qt5Widgets_INCLUDE_DIRS}/QtGui
+#     DESTINATION include/${PROJECT_NAME}
+# )
 
 install(DIRECTORY launch rviz urdf
   DESTINATION share/${PROJECT_NAME}
