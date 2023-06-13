@@ -64,6 +64,41 @@ MainGUI::MainGUI(const std::shared_ptr<Objective_node>& ros2_node, QWidget* pare
     QObject::connect(slider_z, &QSlider::valueChanged, spinBox_z, static_cast<void (QDoubleSpinBox::*)(double)>(&QDoubleSpinBox::setValue));
     QObject::connect(spinBox_z, static_cast<void (QDoubleSpinBox::*)(double)>(&QDoubleSpinBox::valueChanged), slider_z, &QSlider::setValue);
 
+
+    slider_x->setValue(0);
+    slider_y->setValue(60);
+    slider_z->setValue(60);
+
+
+    QLabel *label_pitch = new QLabel("Pitch :");
+    main_layout->addWidget(label_pitch,3,0);
+    QSlider* slider_pitch = new QSlider(Qt::Horizontal);
+    slider_pitch->setRange(0, 90);
+    slider_pitch->setSingleStep(1);
+    main_layout->addWidget(slider_pitch,3,1);
+    QDoubleSpinBox* spinBox_pitch = new QDoubleSpinBox;
+    spinBox_pitch->setMaximum(90);
+    spinBox_pitch->setMinimum(0);
+    spinBox_pitch->setSingleStep(1);
+    main_layout->addWidget(spinBox_pitch,3,2);
+    QObject::connect(slider_pitch, &QSlider::valueChanged, spinBox_pitch, static_cast<void (QDoubleSpinBox::*)(double)>(&QDoubleSpinBox::setValue));
+    QObject::connect(spinBox_pitch, static_cast<void (QDoubleSpinBox::*)(double)>(&QDoubleSpinBox::valueChanged), slider_pitch, &QSlider::setValue);
+
+    QLabel *label_roll = new QLabel("Roll :");
+    main_layout->addWidget(label_roll,4,0);
+    QSlider* slider_roll = new QSlider(Qt::Horizontal);
+    slider_roll->setRange(0, 90);
+    slider_roll->setSingleStep(1);
+    main_layout->addWidget(slider_roll,4,1);
+    QDoubleSpinBox* spinBox_roll = new QDoubleSpinBox;
+    spinBox_roll->setMaximum(90);
+    spinBox_roll->setMinimum(0);
+    spinBox_roll->setSingleStep(1);
+    main_layout->addWidget(spinBox_roll,4,2);
+    QObject::connect(slider_roll, &QSlider::valueChanged, spinBox_roll, static_cast<void (QDoubleSpinBox::*)(double)>(&QDoubleSpinBox::setValue));
+    QObject::connect(spinBox_roll, static_cast<void (QDoubleSpinBox::*)(double)>(&QDoubleSpinBox::valueChanged), slider_roll, &QSlider::setValue);
+
+
     QObject::connect(spinBox_x, static_cast<void (QDoubleSpinBox::*)(double)>(&QDoubleSpinBox::valueChanged), this, [=](double newValue){
         x = newValue/100;
     });
@@ -73,10 +108,15 @@ MainGUI::MainGUI(const std::shared_ptr<Objective_node>& ros2_node, QWidget* pare
     QObject::connect(spinBox_z, static_cast<void (QDoubleSpinBox::*)(double)>(&QDoubleSpinBox::valueChanged), this, [=](double newValue){
         z = newValue/100;
     });
+    QObject::connect(spinBox_pitch, static_cast<void (QDoubleSpinBox::*)(double)>(&QDoubleSpinBox::valueChanged), this, [=](double newValue){
+        pitch = newValue;
+    });
+    QObject::connect(spinBox_roll, static_cast<void (QDoubleSpinBox::*)(double)>(&QDoubleSpinBox::valueChanged), this, [=](double newValue){
+        roll = newValue;
+    });
 
-    slider_x->setValue(20);
-    slider_y->setValue(30);
-    slider_z->setValue(60);
+
+
 
     // Création du bouton pour le switch
     QPushButton* switchButton = new QPushButton(this);
@@ -137,9 +177,10 @@ int main(int argc, char* argv[])
 
     while (rclcpp::ok())
     {   
-        if (ros2_node->manual_control){
-            ros2_node->update_coords(gui_app->x,gui_app->y,gui_app->z);
-        }
+        // if (ros2_node->manual_control){
+        //     ros2_node->update_state(gui_app->x,gui_app->y,gui_app->z,gui_app->roll,gui_app->pitch);
+        // }
+        ros2_node->update_state(gui_app->x,gui_app->y,gui_app->z,gui_app->roll,gui_app->pitch);
         exec.spin_some();
         app.processEvents();
     }

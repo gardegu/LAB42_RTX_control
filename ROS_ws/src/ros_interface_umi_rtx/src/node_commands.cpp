@@ -8,9 +8,9 @@ void Objective_node::init_interfaces(){
 }
 
 void Objective_node::timer_callback(){
-    if (!manual_control){
-        Lissajou();
-    }
+    // if (!manual_control){
+    //     Lissajou();
+    // }
     // cout << manual_control << endl;
     t+=dt;
 
@@ -20,13 +20,13 @@ void Objective_node::timer_callback(){
     msg.z = z;
     objective_publisher->publish(msg);
 
-    std_msgs::msg::Float32 pitch;
-    pitch.data = pitch;
-    pitch_publisher->publish(pitch);
+    std_msgs::msg::Float32 pitch_msg;
+    pitch_msg.data = pitch;
+    pitch_publisher->publish(pitch_msg);
 
-    std_msgs::msg::Float32 roll;
-    roll.data = roll;
-    roll_publisher->publish(roll);
+    std_msgs::msg::Float32 roll_msg;
+    roll_msg.data = roll;
+    roll_publisher->publish(roll_msg);
 }
 
 void Objective_node::Lissajou(){
@@ -35,10 +35,12 @@ void Objective_node::Lissajou(){
     z = 0.3+0.2*sin(t);
 }
 
-void Objective_node::update_coords(double new_x, double new_y, double new_z){
+void Objective_node::update_state(double new_x, double new_y, double new_z, double new_roll, double new_pitch){
     x = new_x;
     y = new_y;
     z = new_z;
+    roll = new_roll;
+    pitch = new_pitch;
 }
 
 // int main(int argc, char *argv[]){

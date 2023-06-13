@@ -13,7 +13,7 @@
 #include <QPushButton>
 #include <QPalette>
 
-#include <ros_interface_umi_rtx/node_commands.hpp>
+#include "ros_interface_umi_rtx/node_commands.hpp"
 
 #include <iostream>
 
@@ -24,7 +24,7 @@ public:
     explicit MainGUI(const std::shared_ptr<Objective_node>&  ros2_node, QWidget* parent = nullptr);
     ~MainGUI() override;
 
-    double x,y,z;
+    double x,y,z,pitch=0.,roll=0.;
 
     bool manual_on = false;
 

@@ -16,6 +16,9 @@ void Arm_node::init_interfaces(){
 
     pitch_subscription = this->create_subscription<std_msgs::msg::Float32>("target_pitch",10,
         std::bind(&Arm_node::get_pitch, this, _1));
+
+    pitch_subscription = this->create_subscription<std_msgs::msg::Float32>("target_roll",10,
+        std::bind(&Arm_node::get_roll, this, _1));
     
     grip_subscription = this->create_subscription<std_msgs::msg::Float32>("target_grip",10,
         std::bind(&Arm_node::get_grip, this, _1));
@@ -41,11 +44,13 @@ void Arm_node::timer_callback(){
 
     // publisher_params->publish(params);
 
-    if (commands_motor.size()>0 and !umi_moving() and (x!=targ_x or y!=targ_y or z!=targ_z)){
+    if (commands_motor.size()>0 and !umi_moving() and (x!=targ_x or y!=targ_y or z!=targ_z or pitch!=target_pitch or roll!=target_roll)){
         // cout << "new target" << endl;
         x = targ_x;
         y = targ_y;
         z = targ_z;
+        pitch = target_pitch;
+        roll = target_roll;
 
         set_motors();
         arm_go(NUMERIC,0x1555);
@@ -59,8 +64,8 @@ void Arm_node::get_commands(const sensor_msgs::msg::JointState::SharedPtr msg){
     commands_motor = {{ZED,objective[0]},
                       {SHOULDER,objective[1]},
                       {ELBOW,objective[2]},
-                      {WRIST1,0.5*(objective[4]+objective[5])},
-                      {WRIST2,0.5*(objective[5]-objective[4])}};
+                      {WRIST1,1*(objective[4]+objective[5])},//TODO divides the angle by two actually
+                      {WRIST2,1*(objective[5]-objective[4])}};
 }
 
 void Arm_node::get_pose(const geometry_msgs::msg::Point::SharedPtr msg){
@@ -70,6 +75,10 @@ void Arm_node::get_pose(const geometry_msgs::msg::Point::SharedPtr msg){
 }
 
 void Arm_node::get_pitch(const std_msgs::msg::Float32::SharedPtr msg){
+    target_pitch = msg->data*M_PI/180;
+}
+
+void Arm_node::get_roll(const std_msgs::msg::Float32::SharedPtr msg){
     target_pitch = msg->data*M_PI/180;
 }
 

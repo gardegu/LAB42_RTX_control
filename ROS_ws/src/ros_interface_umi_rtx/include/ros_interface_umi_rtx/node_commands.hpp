@@ -25,7 +25,7 @@ public:
         init_interfaces();
     };
 
-    void update_coords(double new_x, double new_y, double new_z);
+    void update_state(double new_x, double new_y, double new_z, double new_roll, double new_pitch);
 
     bool manual_control=false;
 
@@ -41,8 +41,8 @@ private :
 
     rclcpp::TimerBase::SharedPtr timer_;
     rclcpp::Publisher<geometry_msgs::msg::Point>::SharedPtr objective_publisher;
-    rclcpp::Publisher<std_msgs::msg::Float32>::Sharedptr pitch_publisher;
-    rclcpp::Publisher<std_msgs::msg::Float32>::Sharedptr roll_publisher;
+    rclcpp::Publisher<std_msgs::msg::Float32>::SharedPtr pitch_publisher;
+    rclcpp::Publisher<std_msgs::msg::Float32>::SharedPtr roll_publisher;
     
 };
 
