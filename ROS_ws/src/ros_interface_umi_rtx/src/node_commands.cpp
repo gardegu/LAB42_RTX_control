@@ -8,10 +8,9 @@ void Objective_node::init_interfaces(){
 }
 
 void Objective_node::timer_callback(){
-    // if (!manual_control){
-    //     Lissajou();
-    // }
-    // cout << manual_control << endl;
+    if (!manual_control){
+        Lissajou();
+    }
     t+=dt;
 
     geometry_msgs::msg::Point msg;

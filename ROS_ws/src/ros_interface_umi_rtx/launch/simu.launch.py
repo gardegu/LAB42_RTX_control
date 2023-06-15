@@ -101,10 +101,10 @@ def generate_launch_description():
                               declare_use_sim_time_cmd, declare_urdf_model_path_cmd,
                               start_robot_state_publisher_cmd,
                               nodeInvKin, nodeSimu,
-                              nodeRviz,
                               GUI,
                               ]) #TODO rajouter nodeCamera
          
+                            #   nodeRviz,
                             #   actions.ExecuteProcess(cmd=["rqt"])
     # return LaunchDescription([declare_rviz_config_file_cmd, declare_use_robot_state_pub_cmd,
     #                           declare_use_sim_time_cmd, declare_urdf_model_path_cmd,

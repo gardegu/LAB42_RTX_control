@@ -15,11 +15,11 @@
   <depend>sensor_msgs</depend>
   <depend>pinocchio</depend>
   <depend>qt_gui_cpp</depend>
+  <depend>rviz2</depend>
   
   
   <exec_depend>joint_state_publisher</exec_depend>
   <exec_depend>robot_state_publisher</exec_depend>
-  <exec_depend>rviz</exec_depend>
   <exec_depend>xacro</exec_depend>
 
   <test_depend>ament_lint_auto</test_depend>

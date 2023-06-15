@@ -34,8 +34,19 @@ find_package(camera_info_manager REQUIRED)
 find_package(pinocchio REQUIRED)
 find_package(ament_index_cpp REQUIRED)
 find_package(Qt5 COMPONENTS Core Widgets REQUIRED)
+find_package(rviz_common REQUIRED)
+find_package(rviz_rendering REQUIRED)
+find_package(rviz_default_plugins REQUIRED)
+find_package(rviz_ogre_vendor REQUIRED)
 
-include_directories(${Qt5Core_INCLUDE_DIRS} ${Qt5Widgets_INCLUDE_DIRS})
+
+include_directories(
+  include
+  ${rclcpp_INCLUDE_DIRS}
+  ${rviz_common_INCLUDE_DIRS}
+  ${Qt5Core_INCLUDE_DIRS}
+  ${Qt5Widgets_INCLUDE_DIRS}
+)
 
 add_library(armcmds src/drivers/armlib/armcmds.cpp)
 target_include_directories(armcmds PUBLIC
@@ -155,34 +166,29 @@ $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
 $<INSTALL_INTERFACE:include>)
 
 
-#  ##################################### Node Commands
-#  add_executable(nodeCommands
-#  src/node_commands.cpp
-#  )
- 
-#  ament_target_dependencies(nodeCommands
-#  rclcpp
-#  geometry_msgs
-#  )
- 
-#  target_link_libraries(nodeCommands "${cpp_typesupport_target}" Qt5::Widgets Qt5::Core)
-#  target_include_directories(nodeCommands PUBLIC
-# $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
-# $<INSTALL_INTERFACE:include>)
-
  ##################################### GUI
  add_executable(GUI
  src/main_gui.cpp
  src/node_commands.cpp
- )
+)
  
  ament_target_dependencies(GUI
  rclcpp
  geometry_msgs
  std_msgs
+ ament_index_cpp
+ rviz_common
+ rviz_default_plugins
+ rviz_rendering
+ rviz_ogre_vendor
  )
 
- target_link_libraries(GUI "${cpp_typesupport_target}" Qt5::Widgets Qt5::Core)
+ target_link_libraries(GUI "${cpp_typesupport_target}" Qt5::Core
+                                                       Qt5::Widgets
+                                                       rviz_common::rviz_common
+                                                       rviz_rendering::rviz_rendering
+                                                       rviz_ogre_vendor::OgreMain
+                                                       rviz_ogre_vendor::OgreOverlay) 
  target_include_directories(GUI PUBLIC
 $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
 $<INSTALL_INTERFACE:include>)
@@ -203,11 +209,6 @@ DESTINATION lib/${PROJECT_NAME})
 
 install(DIRECTORY include
   DESTINATION include)
-
-# Installer les fichiers Qt5 requis
-# install(DIRECTORY ${Qt5Core_INCLUDE_DIRS}/Qt ${Qt5Widgets_INCLUDE_DIRS}/QtWidgets ${Qt5Widgets_INCLUDE_DIRS}/QtGui
-#     DESTINATION include/${PROJECT_NAME}
-# )
 
 install(DIRECTORY launch rviz urdf
   DESTINATION share/${PROJECT_NAME}

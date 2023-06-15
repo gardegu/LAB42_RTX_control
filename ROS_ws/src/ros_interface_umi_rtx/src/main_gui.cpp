@@ -1,100 +1,104 @@
 #include "ros_interface_umi_rtx/main_gui.hpp"
 
-
-MainGUI::MainGUI(const std::shared_ptr<Objective_node>& ros2_node, QWidget* parent)
-  : QMainWindow(parent)
-  , ros2_node(ros2_node)
+MainGUI::MainGUI(QApplication * app,
+                 const std::shared_ptr<Objective_node>& ros2_node, 
+                 rviz_common::ros_integration::RosNodeAbstractionIface::WeakPtr rviz_ros_node, 
+                 QWidget* parent)
+  : app_(app), ros2_node(ros2_node), rviz_ros_node_(rviz_ros_node), QMainWindow(parent)
 {
     main_widget = new QWidget(this);
-    main_widget->setStyleSheet("background-color: #e0e8bd;");
 
     QGridLayout* main_layout = new QGridLayout;
-    main_layout->setSpacing(20);
-    main_layout->setMargin(20);
+    main_layout->setSpacing(10);
+    main_layout->setMargin(10);
+
+    QLabel *Title = new QLabel("UMI-RTX Interface");
+    main_layout->addWidget(Title, 0,1);
 
     /// Add sliders
     QLabel *label_x = new QLabel("X coordinates :");
-    main_layout->addWidget(label_x,0,0);
+    label_x->setAlignment(Qt::AlignRight);
+    main_layout->addWidget(label_x,1,0);
     // Création du slider
     QSlider* slider_x = new QSlider(Qt::Horizontal);
-    slider_x->setRange(-60, 60); // Plage de valeurs du slider
+    slider_x->setRange(-30, 30); // Plage de valeurs du slider
     slider_x->setSingleStep(1); // Pas d'incrémentation du slider
-    main_layout->addWidget(slider_x,0,1);
+    main_layout->addWidget(slider_x,1,1);
     // Création du spin box pour afficher la valeur flottante x
     QDoubleSpinBox* spinBox_x = new QDoubleSpinBox;
-    spinBox_x->setMaximum(60);
-    spinBox_x->setMinimum(-60);
+    spinBox_x->setMaximum(30);
+    spinBox_x->setMinimum(-30);
     spinBox_x->setSingleStep(1);
-    main_layout->addWidget(spinBox_x,0,2);
+    main_layout->addWidget(spinBox_x,1,2);
     // Lier le slider et le spin box
     QObject::connect(slider_x, &QSlider::valueChanged, spinBox_x, static_cast<void (QDoubleSpinBox::*)(double)>(&QDoubleSpinBox::setValue));
     QObject::connect(spinBox_x, static_cast<void (QDoubleSpinBox::*)(double)>(&QDoubleSpinBox::valueChanged), slider_x, &QSlider::setValue);
 
 
     QLabel *label_y = new QLabel("Y coordinates :");
-    main_layout->addWidget(label_y,1,0);
+    label_y->setAlignment(Qt::AlignRight);
+    main_layout->addWidget(label_y,2,0);
     // Création du slider
     QSlider* slider_y = new QSlider(Qt::Horizontal);
     slider_y->setRange(20, 70); // Plage de valeurs du slider
     slider_y->setSingleStep(1); // Pas d'incrémentation du slider
-    main_layout->addWidget(slider_y,1,1);
+    main_layout->addWidget(slider_y,2,1);
     // Création du spin box pour afficher la valeur flottante x
     QDoubleSpinBox* spinBox_y = new QDoubleSpinBox;
     spinBox_y->setMaximum(70);
     spinBox_y->setMinimum(20);
-    main_layout->addWidget(spinBox_y,1,2);
+    main_layout->addWidget(spinBox_y,2,2);
     // Lier le slider et le spin box
     QObject::connect(slider_y, &QSlider::valueChanged, spinBox_y, static_cast<void (QDoubleSpinBox::*)(double)>(&QDoubleSpinBox::setValue));
     QObject::connect(spinBox_y, static_cast<void (QDoubleSpinBox::*)(double)>(&QDoubleSpinBox::valueChanged), slider_y, &QSlider::setValue);
 
 
     QLabel *label_z = new QLabel("Z coordinates :");
-    main_layout->addWidget(label_z,2,0);
+    label_z->setAlignment(Qt::AlignRight);
+    main_layout->addWidget(label_z,3,0);
     // Création du slider
     QSlider* slider_z = new QSlider(Qt::Horizontal);
     slider_z->setRange(10, 70); // Plage de valeurs du slider
     slider_z->setSingleStep(1); // Pas d'incrémentation du slider
-    main_layout->addWidget(slider_z,2,1);
+    main_layout->addWidget(slider_z,3,1);
     // Création du spin box pour afficher la valeur flottante x
     QDoubleSpinBox* spinBox_z = new QDoubleSpinBox;
     spinBox_z->setMaximum(70);
     spinBox_z->setMinimum(10);
-    main_layout->addWidget(spinBox_z,2,2);
+    main_layout->addWidget(spinBox_z,3,2);
     // Lier le slider et le spin box
     QObject::connect(slider_z, &QSlider::valueChanged, spinBox_z, static_cast<void (QDoubleSpinBox::*)(double)>(&QDoubleSpinBox::setValue));
     QObject::connect(spinBox_z, static_cast<void (QDoubleSpinBox::*)(double)>(&QDoubleSpinBox::valueChanged), slider_z, &QSlider::setValue);
 
 
-    slider_x->setValue(0);
-    slider_y->setValue(60);
-    slider_z->setValue(60);
-
 
     QLabel *label_pitch = new QLabel("Pitch :");
-    main_layout->addWidget(label_pitch,3,0);
+    label_pitch->setAlignment(Qt::AlignRight);
+    main_layout->addWidget(label_pitch,4,0);
     QSlider* slider_pitch = new QSlider(Qt::Horizontal);
     slider_pitch->setRange(0, 90);
     slider_pitch->setSingleStep(1);
-    main_layout->addWidget(slider_pitch,3,1);
+    main_layout->addWidget(slider_pitch,4,1);
     QDoubleSpinBox* spinBox_pitch = new QDoubleSpinBox;
     spinBox_pitch->setMaximum(90);
     spinBox_pitch->setMinimum(0);
     spinBox_pitch->setSingleStep(1);
-    main_layout->addWidget(spinBox_pitch,3,2);
+    main_layout->addWidget(spinBox_pitch,4,2);
     QObject::connect(slider_pitch, &QSlider::valueChanged, spinBox_pitch, static_cast<void (QDoubleSpinBox::*)(double)>(&QDoubleSpinBox::setValue));
     QObject::connect(spinBox_pitch, static_cast<void (QDoubleSpinBox::*)(double)>(&QDoubleSpinBox::valueChanged), slider_pitch, &QSlider::setValue);
 
     QLabel *label_roll = new QLabel("Roll :");
-    main_layout->addWidget(label_roll,4,0);
+    label_roll->setAlignment(Qt::AlignRight);
+    main_layout->addWidget(label_roll,5,0);
     QSlider* slider_roll = new QSlider(Qt::Horizontal);
     slider_roll->setRange(0, 90);
     slider_roll->setSingleStep(1);
-    main_layout->addWidget(slider_roll,4,1);
+    main_layout->addWidget(slider_roll,5,1);
     QDoubleSpinBox* spinBox_roll = new QDoubleSpinBox;
     spinBox_roll->setMaximum(90);
     spinBox_roll->setMinimum(0);
     spinBox_roll->setSingleStep(1);
-    main_layout->addWidget(spinBox_roll,4,2);
+    main_layout->addWidget(spinBox_roll,5,2);
     QObject::connect(slider_roll, &QSlider::valueChanged, spinBox_roll, static_cast<void (QDoubleSpinBox::*)(double)>(&QDoubleSpinBox::setValue));
     QObject::connect(spinBox_roll, static_cast<void (QDoubleSpinBox::*)(double)>(&QDoubleSpinBox::valueChanged), slider_roll, &QSlider::setValue);
 
@@ -115,14 +119,14 @@ MainGUI::MainGUI(const std::shared_ptr<Objective_node>& ros2_node, QWidget* pare
         roll = newValue;
     });
 
-
-
+    slider_x->setValue(0);
+    slider_y->setValue(60);
+    slider_z->setValue(60);
 
     // Création du bouton pour le switch
     QPushButton* switchButton = new QPushButton(this);
     switchButton->setCheckable(true);  // Permet de sélectionner/désélectionner le bouton
-    switchButton->setChecked(false);  // Définit l'état initial du switch (désélectionné)
-
+    switchButton->setChecked(true);  // Définit l'état initial du switch (désélectionné)
     // Personnalisation de l'apparence du switch
     switchButton->setFixedSize(120, 50);  // Définit la taille du bouton
     switchButton->setText("Manual mode");
@@ -144,14 +148,155 @@ MainGUI::MainGUI(const std::shared_ptr<Objective_node>& ros2_node, QWidget* pare
         ros2_node->manual_control = switchButton->isChecked();
     });
 
-    main_layout->addWidget(switchButton,1,3);
 
-    main_widget->setLayout(main_layout);
+    RightDockWidget = new QDockWidget("RViz2", this);
+    TopDockWidget = new QDockWidget("Switch", this);
+
+    // // Print RVIZ in the window
+    initializeRViz();
+
+    QVBoxLayout* rviz_layout = new QVBoxLayout;
+    rviz_layout->addWidget(render_panel_);
+
+
+
+    QCheckBox* switchCheckBox = new QCheckBox("Print RViz", this);
+    connect(switchCheckBox, &QCheckBox::stateChanged, this, &MainGUI::toggleRViz);
+    TopDockWidget->setTitleBarWidget(switchCheckBox);
+
+    // addDockWidget(Qt::TopDockWidgetArea, TopDockWidget);
+    // addDockWidget(Qt::RightDockWidgetArea, RightDockWidget);
+    
+    // main_layout->addWidget(switchButton,0,3);
+    // RightDockWidget->setLayout(rviz_layout);
+    // main_widget->setLayout(main_layout);
+    main_widget->setLayout(rviz_layout);
     setCentralWidget(main_widget);
+    setStyleSheet("background-color: #e0e8bd;");
+    // launchRViz();
 }
 
 MainGUI::~MainGUI()
 {
+}
+
+void MainGUI::toggleRViz(int state){
+    if (state == Qt::Checked)
+        RightDockWidget->setVisible(true);
+    else
+        RightDockWidget->setVisible(false);
+}
+
+void MainGUI::launchRViz(){
+    QString cheminRViz = "/opt/ros/foxy/bin/rviz2"; // Chemin vers l'exécutable RViz2
+    QString cheminConfig = QString::fromStdString(ament_index_cpp::get_package_share_directory("ros_interface_umi_rtx")+"/rviz/rviz_basic_settings.rviz"); // Chemin vers le fichier de configuration RViz
+
+    QStringList arguments;
+    arguments << "-d" << cheminConfig; // Spécifiez l'option "-d" suivie du chemin vers le fichier de configuration
+
+    QProcess* process = new QProcess(this);
+    process->start(cheminRViz, arguments);
+
+    // Connectez les signaux pour gérer la sortie et les erreurs de RViz
+    connect(process, &QProcess::readyReadStandardOutput, this, &MainGUI::readOutputRViz);
+    connect(process, &QProcess::readyReadStandardError, this, &MainGUI::readErrorRViz);
+    connect(process, QOverload<int, QProcess::ExitStatus>::of(&QProcess::finished), this, &MainGUI::manageEndRViz);
+}
+
+void MainGUI::readOutputRViz(){
+    QProcess* process = qobject_cast<QProcess*>(sender());
+    if (process)
+    {
+        QString sortie = process->readAllStandardOutput();
+        // Faites quelque chose avec la sortie de RViz
+    }
+}
+
+void MainGUI::readErrorRViz(){
+    QProcess* process = qobject_cast<QProcess*>(sender());
+    if (process)
+    {
+        QString erreur = process->readAllStandardError();
+        // Faites quelque chose avec l'erreur de RViz
+    }
+}
+
+void MainGUI::manageEndRViz(){
+    QProcess* process = qobject_cast<QProcess*>(sender());
+    if (process)
+    {
+        // Faites quelque chose après la fermeture de RViz (par exemple, nettoyer les ressources, mettre à jour l'interface utilisateur, etc.)
+    }
+}
+
+void MainGUI::initializeRViz()
+{
+    app_->processEvents();
+    render_panel_ = new rviz_common::RenderPanel(RightDockWidget);
+    app_->processEvents();
+    render_panel_->getRenderWindow()->initialize();
+    auto clock = rviz_ros_node_.lock()->get_raw_node()->get_clock();
+    manager_ = new rviz_common::VisualizationManager(render_panel_, rviz_ros_node_, this, clock);
+    render_panel_->initialize(manager_);
+    app_->processEvents();
+    manager_->initialize();
+
+    QString config_file = QString::fromStdString(ament_index_cpp::get_package_share_directory("ros_interface_umi_rtx")+"/rviz/rviz_basic_settings.rviz");
+
+    rviz_common::YamlConfigReader config_reader;
+    rviz_common::Config config;
+    config_reader.readFile(config, config_file);
+    
+    manager_->load(config);
+
+    manager_->startUpdate();
+}
+
+QWidget *
+MainGUI::getParentWindow()
+{
+  return this;
+}
+
+rviz_common::PanelDockWidget *
+MainGUI::addPane(const QString & name, QWidget * pane, Qt::DockWidgetArea area, bool floating)
+{
+  // TODO(mjeronimo)
+  return nullptr;
+}
+
+void
+MainGUI::setStatus(const QString & message)
+{
+  // TODO(mjeronimo)
+}
+
+void MainGUI::DisplayGrid()
+{
+  grid_ = manager_->createDisplay("rviz_default_plugins/Grid", "adjustable grid", true);
+  assert(grid_ != NULL);
+  grid_->subProp("Line Style")->setValue("Billboards");
+  grid_->subProp("Color")->setValue(QColor(Qt::yellow));
+}
+
+void MainGUI::setThickness(int thickness_percent)
+{
+  if (grid_ != NULL) {
+    grid_->subProp("Line Style")->subProp("Line Width")->setValue(thickness_percent / 100.0f);
+  }
+}
+
+void MainGUI::setCellSize(int cell_size_percent)
+{
+  if (grid_ != NULL) {
+    grid_->subProp("Cell Size")->setValue(cell_size_percent / 10.0f);
+  }
+}
+
+void MainGUI::closeEvent(QCloseEvent * event)
+{
+  QMainWindow::closeEvent(event);
+  rclcpp::shutdown();
 }
 
 static void siginthandler(int /*param*/)
@@ -165,9 +310,9 @@ int main(int argc, char* argv[])
     QApplication app(argc, argv);
 
     rclcpp::init(argc, argv);
-
+    auto ros_node_abs = std::make_shared<rviz_common::ros_integration::RosNodeAbstraction>("rviz_render_node");
     auto ros2_node = std::make_shared<Objective_node>();
-    auto gui_app = std::make_shared<MainGUI>(ros2_node);
+    auto gui_app = std::make_shared<MainGUI>(&app,ros2_node,ros_node_abs);
 
     app.processEvents();
     gui_app->show();
@@ -177,10 +322,10 @@ int main(int argc, char* argv[])
 
     while (rclcpp::ok())
     {   
-        // if (ros2_node->manual_control){
-        //     ros2_node->update_state(gui_app->x,gui_app->y,gui_app->z,gui_app->roll,gui_app->pitch);
-        // }
-        ros2_node->update_state(gui_app->x,gui_app->y,gui_app->z,gui_app->roll,gui_app->pitch);
+        if (ros2_node->manual_control){
+            ros2_node->update_state(gui_app->x,gui_app->y,gui_app->z,gui_app->roll,gui_app->pitch);
+        }
+        // ros2_node->update_state(gui_app->x,gui_app->y,gui_app->z,gui_app->roll,gui_app->pitch);
         exec.spin_some();
         app.processEvents();
     }
