@@ -80,14 +80,6 @@ def generate_launch_description():
         output='screen'
     )
     
-    # nodeCommands = Node(
-    #     package = 'ros_interface_umi_rtx',
-    #     namespace='',
-    #     executable='nodeCommands',
-    #     name='Commands',
-    #     output='screen'
-    # )
-    
     GUI = Node(
         package = 'ros_interface_umi_rtx',
         namespace='',

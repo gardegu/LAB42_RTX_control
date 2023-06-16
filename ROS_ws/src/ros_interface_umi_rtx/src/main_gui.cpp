@@ -185,12 +185,6 @@ MainGUI::~MainGUI()
 {
 }
 
-void MainGUI::toggleRViz(int state){
-    if (state == Qt::Checked)
-        RightDockWidget->setVisible(true);
-    else
-        RightDockWidget->setVisible(false);
-}
 
 void MainGUI::launchRViz(){
     QString cheminRViz = "/opt/ros/foxy/bin/rviz2"; // Chemin vers l'exécutable RViz2
@@ -273,7 +267,7 @@ int main(int argc, char* argv[])
     auto gui_app = std::make_shared<MainGUI>(&app,ros2_node,ros_node_abs);
 
     app.processEvents();
-    gui_app->show();
+    gui_app->showMaximized();
 
     rclcpp::executors::MultiThreadedExecutor exec;
     exec.add_node(ros2_node);

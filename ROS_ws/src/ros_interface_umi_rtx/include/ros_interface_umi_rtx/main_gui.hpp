@@ -78,7 +78,6 @@ private:
     void initializeRViz();
 
     void launchRViz();
-    void toggleRViz(int state);
 
 private slots:
     void closeEvent(QCloseEvent *event);
