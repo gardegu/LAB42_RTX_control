@@ -150,27 +150,12 @@ MainGUI::MainGUI(QApplication * app,
     });
     main_layout->addWidget(switchButton,0,3);
 
-
-    // RightDockWidget = new QDockWidget("RViz2", this);
-    // TopDockWidget = new QDockWidget("Switch", this);
-
     // Print RVIZ in the window
     initializeRViz();
 
     QVBoxLayout* rviz_layout = new QVBoxLayout;
     rviz_layout->addWidget(render_panel_);
 
-
-
-    // QCheckBox* switchCheckBox = new QCheckBox("Print RViz", this);
-    // connect(switchCheckBox, &QCheckBox::stateChanged, this, &MainGUI::toggleRViz);
-    // TopDockWidget->setTitleBarWidget(switchCheckBox);
-
-    // addDockWidget(Qt::TopDockWidgetArea, TopDockWidget);
-    // addDockWidget(Qt::RightDockWidgetArea, RightDockWidget);
-    
-    // RightDockWidget->setLayout(main_layout);
-    // main_widget->setLayout(main_layout);
     QHBoxLayout* glob_layout = new QHBoxLayout;
     glob_layout->addLayout(rviz_layout);
     glob_layout->addLayout(main_layout);
