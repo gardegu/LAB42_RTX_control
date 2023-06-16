@@ -28,9 +28,12 @@
 #include "rviz_common/ros_integration/ros_node_abstraction.hpp"
 #include "rviz_common/render_panel.hpp"
 #include "rviz_common/visualization_manager.hpp"
-#include "rviz_rendering/render_window.hpp"
 #include <rviz_common/config.hpp>
 #include <rviz_common/yaml_config_reader.hpp>
+#include <rviz_common/tool.hpp>
+#include <rviz_common/tool_manager.hpp>
+#include "rviz_rendering/render_window.hpp"
+#include "rviz_default_plugins/visibility_control.hpp"
 
 #include <ament_index_cpp/get_package_share_directory.hpp>
 

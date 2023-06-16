@@ -221,7 +221,11 @@ void MainGUI::initializeRViz()
     Model_ = manager_->createDisplay("rviz_default_plugins/RobotModel","RobotModel",true);
     assert(TF_ != NULL);
     assert(Model_ != NULL);
-    
+
+    Model_->setTopic(QString::fromStdString("/robot_description"),QString::fromStdString("std_msgs/msg/String"));
+
+    manager_->getToolManager()->addTool(QString::fromStdString("rviz_default_plugins/MoveCamera"));
+
     manager_->initialize();
     manager_->startUpdate();
 }
