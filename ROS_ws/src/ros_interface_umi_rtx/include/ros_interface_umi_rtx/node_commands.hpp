@@ -27,7 +27,7 @@ public:
 
     void update_state(double new_x, double new_y, double new_z, double new_roll, double new_pitch);
 
-    bool manual_control=false;
+    bool manual_control=true;
 
 private :
     void init_interfaces();

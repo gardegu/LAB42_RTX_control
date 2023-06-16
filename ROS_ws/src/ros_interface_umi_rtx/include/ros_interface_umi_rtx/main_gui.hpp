@@ -55,18 +55,13 @@ public:
 
     double x,y,z,pitch=0.,roll=0.;
 
-    bool manual_on = false;
+    bool manual_on = true;
 
     QWidget * getParentWindow() override;
     rviz_common::PanelDockWidget * addPane(const QString & name, QWidget * pane, Qt::DockWidgetArea area, bool floating) override;
     void setStatus(const QString & message) override;
 
-    void DisplayGrid();
-
 private:
-
-    void initializeRViz();
-
     const shared_ptr<Objective_node> ros2_node;
 
     QApplication* app_;
@@ -75,21 +70,17 @@ private:
     QDockWidget* TopDockWidget;
 
     rviz_common::RenderPanel * render_panel_;
-    rviz_common::Display * grid_;
+    rviz_common::Display *TF_, *Model_;
     rviz_common::VisualizationManager * manager_;
 
     rviz_common::ros_integration::RosNodeAbstractionIface::WeakPtr rviz_ros_node_;
 
+    void initializeRViz();
 
     void launchRViz();
     void toggleRViz(int state);
-    void readOutputRViz();
-    void readErrorRViz();
-    void manageEndRViz();
 
 private slots:
-    void setThickness( int thickness_percent );
-    void setCellSize( int cell_size_percent );
     void closeEvent(QCloseEvent *event);
 
 };

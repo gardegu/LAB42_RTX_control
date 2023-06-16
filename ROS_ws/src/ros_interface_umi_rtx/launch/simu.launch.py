@@ -93,7 +93,6 @@ def generate_launch_description():
         namespace='',
         executable='GUI',
         name='qt_window',
-        output='screen'
     )
     
             

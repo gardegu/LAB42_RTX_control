@@ -13,6 +13,7 @@ MainGUI::MainGUI(QApplication * app,
     main_layout->setMargin(10);
 
     QLabel *Title = new QLabel("UMI-RTX Interface");
+    Title->setAlignment(Qt::AlignHCenter);
     main_layout->addWidget(Title, 0,1);
 
     /// Add sliders
@@ -147,12 +148,13 @@ MainGUI::MainGUI(QApplication * app,
         manual_on = switchButton->isChecked();
         ros2_node->manual_control = switchButton->isChecked();
     });
+    main_layout->addWidget(switchButton,0,3);
 
 
-    RightDockWidget = new QDockWidget("RViz2", this);
-    TopDockWidget = new QDockWidget("Switch", this);
+    // RightDockWidget = new QDockWidget("RViz2", this);
+    // TopDockWidget = new QDockWidget("Switch", this);
 
-    // // Print RVIZ in the window
+    // Print RVIZ in the window
     initializeRViz();
 
     QVBoxLayout* rviz_layout = new QVBoxLayout;
@@ -160,17 +162,20 @@ MainGUI::MainGUI(QApplication * app,
 
 
 
-    QCheckBox* switchCheckBox = new QCheckBox("Print RViz", this);
-    connect(switchCheckBox, &QCheckBox::stateChanged, this, &MainGUI::toggleRViz);
-    TopDockWidget->setTitleBarWidget(switchCheckBox);
+    // QCheckBox* switchCheckBox = new QCheckBox("Print RViz", this);
+    // connect(switchCheckBox, &QCheckBox::stateChanged, this, &MainGUI::toggleRViz);
+    // TopDockWidget->setTitleBarWidget(switchCheckBox);
 
     // addDockWidget(Qt::TopDockWidgetArea, TopDockWidget);
     // addDockWidget(Qt::RightDockWidgetArea, RightDockWidget);
     
-    // main_layout->addWidget(switchButton,0,3);
-    // RightDockWidget->setLayout(rviz_layout);
+    // RightDockWidget->setLayout(main_layout);
     // main_widget->setLayout(main_layout);
-    main_widget->setLayout(rviz_layout);
+    QHBoxLayout* glob_layout = new QHBoxLayout;
+    glob_layout->addLayout(rviz_layout);
+    glob_layout->addLayout(main_layout);
+
+    main_widget->setLayout(glob_layout);
     setCentralWidget(main_widget);
     setStyleSheet("background-color: #e0e8bd;");
     // launchRViz();
@@ -197,36 +202,6 @@ void MainGUI::launchRViz(){
     QProcess* process = new QProcess(this);
     process->start(cheminRViz, arguments);
 
-    // Connectez les signaux pour gérer la sortie et les erreurs de RViz
-    connect(process, &QProcess::readyReadStandardOutput, this, &MainGUI::readOutputRViz);
-    connect(process, &QProcess::readyReadStandardError, this, &MainGUI::readErrorRViz);
-    connect(process, QOverload<int, QProcess::ExitStatus>::of(&QProcess::finished), this, &MainGUI::manageEndRViz);
-}
-
-void MainGUI::readOutputRViz(){
-    QProcess* process = qobject_cast<QProcess*>(sender());
-    if (process)
-    {
-        QString sortie = process->readAllStandardOutput();
-        // Faites quelque chose avec la sortie de RViz
-    }
-}
-
-void MainGUI::readErrorRViz(){
-    QProcess* process = qobject_cast<QProcess*>(sender());
-    if (process)
-    {
-        QString erreur = process->readAllStandardError();
-        // Faites quelque chose avec l'erreur de RViz
-    }
-}
-
-void MainGUI::manageEndRViz(){
-    QProcess* process = qobject_cast<QProcess*>(sender());
-    if (process)
-    {
-        // Faites quelque chose après la fermeture de RViz (par exemple, nettoyer les ressources, mettre à jour l'interface utilisateur, etc.)
-    }
 }
 
 void MainGUI::initializeRViz()
@@ -239,7 +214,6 @@ void MainGUI::initializeRViz()
     manager_ = new rviz_common::VisualizationManager(render_panel_, rviz_ros_node_, this, clock);
     render_panel_->initialize(manager_);
     app_->processEvents();
-    manager_->initialize();
 
     QString config_file = QString::fromStdString(ament_index_cpp::get_package_share_directory("ros_interface_umi_rtx")+"/rviz/rviz_basic_settings.rviz");
 
@@ -249,6 +223,12 @@ void MainGUI::initializeRViz()
     
     manager_->load(config);
 
+    TF_ = manager_->createDisplay("rviz_default_plugins/TF","TF",true);
+    Model_ = manager_->createDisplay("rviz_default_plugins/RobotModel","RobotModel",true);
+    assert(TF_ != NULL);
+    assert(Model_ != NULL);
+    
+    manager_->initialize();
     manager_->startUpdate();
 }
 
@@ -269,28 +249,6 @@ void
 MainGUI::setStatus(const QString & message)
 {
   // TODO(mjeronimo)
-}
-
-void MainGUI::DisplayGrid()
-{
-  grid_ = manager_->createDisplay("rviz_default_plugins/Grid", "adjustable grid", true);
-  assert(grid_ != NULL);
-  grid_->subProp("Line Style")->setValue("Billboards");
-  grid_->subProp("Color")->setValue(QColor(Qt::yellow));
-}
-
-void MainGUI::setThickness(int thickness_percent)
-{
-  if (grid_ != NULL) {
-    grid_->subProp("Line Style")->subProp("Line Width")->setValue(thickness_percent / 100.0f);
-  }
-}
-
-void MainGUI::setCellSize(int cell_size_percent)
-{
-  if (grid_ != NULL) {
-    grid_->subProp("Cell Size")->setValue(cell_size_percent / 10.0f);
-  }
 }
 
 void MainGUI::closeEvent(QCloseEvent * event)
