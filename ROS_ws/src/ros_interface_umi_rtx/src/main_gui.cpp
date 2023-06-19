@@ -156,6 +156,13 @@ MainGUI::MainGUI(QApplication * app,
     QVBoxLayout* rviz_layout = new QVBoxLayout;
     rviz_layout->addWidget(render_panel_);
 
+    videoLabel = new QLabel("");
+    capture.open(0);
+    timer = new QTimer;
+    connect(timer, SIGNAL(timeout()), this, SLOT(updateFrame()));
+    timer->start(33);
+    rviz_layout->addWidget(videoLabel);
+
     QHBoxLayout* glob_layout = new QHBoxLayout;
     glob_layout->addLayout(rviz_layout);
     glob_layout->addLayout(main_layout);
@@ -163,25 +170,13 @@ MainGUI::MainGUI(QApplication * app,
     main_widget->setLayout(glob_layout);
     setCentralWidget(main_widget);
     setStyleSheet("background-color: #e0e8bd;");
-    // launchRViz();
 }
 
 MainGUI::~MainGUI()
 {
+    // capture.release();
 }
 
-
-void MainGUI::launchRViz(){
-    QString cheminRViz = "/opt/ros/foxy/bin/rviz2"; // Chemin vers l'exécutable RViz2
-    QString cheminConfig = QString::fromStdString(ament_index_cpp::get_package_share_directory("ros_interface_umi_rtx")+"/rviz/rviz_basic_settings.rviz"); // Chemin vers le fichier de configuration RViz
-
-    QStringList arguments;
-    arguments << "-d" << cheminConfig; // Spécifiez l'option "-d" suivie du chemin vers le fichier de configuration
-
-    QProcess* process = new QProcess(this);
-    process->start(cheminRViz, arguments);
-
-}
 
 void MainGUI::initializeRViz()
 {
@@ -215,6 +210,18 @@ void MainGUI::initializeRViz()
     manager_->startUpdate();
 }
 
+void MainGUI::updateFrame()
+{
+    capture.read(*frame); // Capture d'une image du flux vidéo
+
+    // Convertir l'image OpenCV en QImage
+    *image = QImage(frame->data, frame->cols, frame->rows, frame->step, QImage::Format_RGB888).rgbSwapped();
+
+    // Afficher l'image dans le QLabel
+    videoLabel->setPixmap(QPixmap::fromImage(*image));
+    videoLabel->adjustSize(); // Ajuster la taille du QLabel pour correspondre à l'image
+}
+
 QWidget *
 MainGUI::getParentWindow()
 {
@@ -224,7 +231,6 @@ MainGUI::getParentWindow()
 rviz_common::PanelDockWidget *
 MainGUI::addPane(const QString & name, QWidget * pane, Qt::DockWidgetArea area, bool floating)
 {
-  // TODO(mjeronimo)
   return nullptr;
 }
 
@@ -247,7 +253,8 @@ static void siginthandler(int /*param*/)
 
 
 int main(int argc, char* argv[])
-{
+{   
+    QApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
     QApplication app(argc, argv);
 
     rclcpp::init(argc, argv);

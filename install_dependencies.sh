@@ -12,7 +12,7 @@ echo export PYTHONPATH=/opt/openrobots/lib/python3.8/site-packages:$PYTHONPATH >
 echo export CMAKE_PREFIX_PATH=/opt/openrobots:$CMAKE_PREFIX_PATH >> ~/.bashrc
 
 cd /opt/ros/foxy/include/rviz_common
-sudo curl -O https://github.com/ros2/rviz/blob/foxy/rviz_common/src/rviz_common/tool_manager.hpp
+sudo wget https://github.com/ros2/rviz/blob/foxy/rviz_common/src/rviz_common/tool_manager.hpp
 
 source ~/.bashrc
 

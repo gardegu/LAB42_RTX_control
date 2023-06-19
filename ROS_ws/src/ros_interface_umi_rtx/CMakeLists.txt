@@ -181,6 +181,8 @@ $<INSTALL_INTERFACE:include>)
  rviz_default_plugins
  rviz_rendering
  rviz_ogre_vendor
+ OpenCV
+ cv_bridge
  )
 
  target_link_libraries(GUI "${cpp_typesupport_target}" Qt5::Core

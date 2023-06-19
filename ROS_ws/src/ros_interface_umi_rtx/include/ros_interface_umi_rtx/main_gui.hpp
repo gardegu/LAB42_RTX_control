@@ -16,6 +16,9 @@
 #include <QProcess>
 #include <QVBoxLayout>
 #include <QCheckBox>
+#include <QTimer>
+#include <QImage>
+
 
 #include "ros_interface_umi_rtx/node_commands.hpp"
 
@@ -38,6 +41,7 @@
 #include <ament_index_cpp/get_package_share_directory.hpp>
 
 #include <iostream>
+#include <opencv2/opencv.hpp>
 
 using namespace std;
 
@@ -71,19 +75,23 @@ private:
     QWidget* main_widget;
     QDockWidget* RightDockWidget;
     QDockWidget* TopDockWidget;
+    QImage* image;
+    QLabel* videoLabel;
+    QTimer* timer;
 
     rviz_common::RenderPanel * render_panel_;
     rviz_common::Display *TF_, *Model_;
     rviz_common::VisualizationManager * manager_;
-
     rviz_common::ros_integration::RosNodeAbstractionIface::WeakPtr rviz_ros_node_;
+
+    cv::VideoCapture capture;
+    cv::Mat* frame;
 
     void initializeRViz();
 
-    void launchRViz();
-
 private slots:
     void closeEvent(QCloseEvent *event);
+    void updateFrame();
 
 };
 

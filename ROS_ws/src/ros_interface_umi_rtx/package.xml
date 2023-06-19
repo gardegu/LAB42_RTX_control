@@ -3,7 +3,7 @@
 <package format="3">
   <name>ros_interface_umi_rtx</name>
   <version>0.0.0</version>
-  <description>TODO: Package description</description>
+  <description>UMI-RTX ROS2 Interface</description>
   <maintainer email="theo.massa@ensta-bretagne.org">theo</maintainer>
   <license>TODO: License declaration</license>
 
@@ -17,8 +17,6 @@
   <depend>qt_gui_cpp</depend>
   <depend>rviz2</depend>
   
-  
-  <exec_depend>joint_state_publisher</exec_depend>
   <exec_depend>robot_state_publisher</exec_depend>
   <exec_depend>xacro</exec_depend>
 
