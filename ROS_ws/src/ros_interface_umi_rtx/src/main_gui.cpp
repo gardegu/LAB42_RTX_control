@@ -158,8 +158,12 @@ MainGUI::MainGUI(QApplication * app,
 
     videoLabel = new QLabel("");
     capture.open(0);
-    timer = new QTimer;
-    connect(timer, SIGNAL(timeout()), this, SLOT(updateFrame()));
+    frame = new cv::Mat;
+    image = new QImage;
+    timer = new QTimer(this);
+    connect(timer, &QTimer::timeout, this, [this](){
+        updateFrame();
+    });
     timer->start(33);
     rviz_layout->addWidget(videoLabel);
 
@@ -174,7 +178,7 @@ MainGUI::MainGUI(QApplication * app,
 
 MainGUI::~MainGUI()
 {
-    // capture.release();
+    capture.release();
 }
 
 
@@ -211,15 +215,17 @@ void MainGUI::initializeRViz()
 }
 
 void MainGUI::updateFrame()
-{
+{   
     capture.read(*frame); // Capture d'une image du flux vidéo
+
+    int w = frame->cols,h = frame->rows;
 
     // Convertir l'image OpenCV en QImage
     *image = QImage(frame->data, frame->cols, frame->rows, frame->step, QImage::Format_RGB888).rgbSwapped();
-
+    *image = image->scaled((int)w/2,(int)h/2);
     // Afficher l'image dans le QLabel
     videoLabel->setPixmap(QPixmap::fromImage(*image));
-    videoLabel->adjustSize(); // Ajuster la taille du QLabel pour correspondre à l'image
+    // videoLabel->adjustSize(); // Ajuster la taille du QLabel pour correspondre à l'image
 }
 
 QWidget *
