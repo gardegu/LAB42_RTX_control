@@ -73,8 +73,6 @@ private:
 
     QApplication* app_;
     QWidget* main_widget;
-    QDockWidget* RightDockWidget;
-    QDockWidget* TopDockWidget;
     QImage* image;
     QLabel* videoLabel;
     QTimer* timer;

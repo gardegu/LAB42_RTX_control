@@ -23,6 +23,7 @@ void InvKin_node::timer_callback(){
 
 void InvKin_node::get_pose(const geometry_msgs::msg::Point::SharedPtr msg){
     double x,y,z;
+    // Frame coordinates to avoid positions that are too far apart
     x = max(-0.6,min(0.6,msg->x));
     y = max(0.1,min(0.69,msg->y));
     z = max(0.1,min(0.7,msg->z));
@@ -39,6 +40,7 @@ void InvKin_node::get_roll(const std_msgs::msg::Float32::SharedPtr msg){
 
 void InvKin_node::get_state(double x, double y, double z){    
 
+    // If coordinates didn't change, we don't compose the inverse kinematics
     if (x!=last_x or y!=last_y or z!=last_z or target_pitch!=last_pitch or target_roll!=last_roll){ // Avoid calculation when the position doesn't change
         last_x = x;
         last_y = y;

@@ -45,7 +45,6 @@ void Arm_node::timer_callback(){
     // publisher_params->publish(params);
 
     if (commands_motor.size()>0 and !umi_moving() and (x!=targ_x or y!=targ_y or z!=targ_z or pitch!=target_pitch or roll!=target_roll)){
-        // cout << "new target" << endl;
         x = targ_x;
         y = targ_y;
         z = targ_z;

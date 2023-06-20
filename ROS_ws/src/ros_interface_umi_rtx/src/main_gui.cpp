@@ -191,7 +191,7 @@ MainGUI::~MainGUI()
 void MainGUI::initializeRViz()
 {
     app_->processEvents();
-    render_panel_ = new rviz_common::RenderPanel(RightDockWidget);
+    render_panel_ = new rviz_common::RenderPanel(main_widget);
     app_->processEvents();
     render_panel_->getRenderWindow()->initialize();
     auto clock = rviz_ros_node_.lock()->get_raw_node()->get_clock();
@@ -199,21 +199,24 @@ void MainGUI::initializeRViz()
     render_panel_->initialize(manager_);
     app_->processEvents();
 
+    // Rviz config_file, might work without it
+    // TODO test without config
     QString config_file = QString::fromStdString(ament_index_cpp::get_package_share_directory("ros_interface_umi_rtx")+"/rviz/rviz_basic_settings.rviz");
-
     rviz_common::YamlConfigReader config_reader;
     rviz_common::Config config;
     config_reader.readFile(config, config_file);
-    
     manager_->load(config);
 
+    // Add TF and model in the integrated window
     TF_ = manager_->createDisplay("rviz_default_plugins/TF","TF",true);
     Model_ = manager_->createDisplay("rviz_default_plugins/RobotModel","RobotModel",true);
     assert(TF_ != NULL);
     assert(Model_ != NULL);
 
+    // Subscribe to the description topic to see the model
     Model_->setTopic(QString::fromStdString("/robot_description"),QString::fromStdString("std_msgs/msg/String"));
 
+    // Necessary to move the camera
     manager_->getToolManager()->addTool(QString::fromStdString("rviz_default_plugins/MoveCamera"));
     // render_panel_->getViewController()->subProp(QString::fromStdString("Distance"))->setValue(2.0);
 
@@ -224,20 +227,17 @@ void MainGUI::initializeRViz()
 
 void MainGUI::updateFrame()
 {   
-    capture.read(*frame); // Capture d'une image du flux vidéo
+    capture.read(*frame); // get current frame
     int w = frame->cols,h = frame->rows;
-
-    cv::Size newSize(w / 2, h / 2); 
+    cv::Size newSize(w / 2, h / 2); // resize frame to do less calculations
     cv::resize(*frame,*frame,newSize);
 
-
-    // Convertir l'image OpenCV en QImage
     *image = QImage(frame->data, frame->cols, frame->rows, frame->step, QImage::Format_RGB888).rgbSwapped();
-    // Afficher l'image dans le QLabel
     videoLabel->setPixmap(QPixmap::fromImage(*image));
-    // videoLabel->adjustSize(); // Ajuster la taille du QLabel pour correspondre à l'image
 }
 
+
+// Necessary to build but useless functions in our case
 QWidget *
 MainGUI::getParentWindow()
 {

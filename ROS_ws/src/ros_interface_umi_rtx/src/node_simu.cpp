@@ -44,19 +44,19 @@ void Simu_node::init_urdf(){
         joint_list.clear();
 
 
-        // Parcourir les balises <joint>
+        // Browse <joint> tags
         for (xml_node<>* jointNode = robotNode->first_node("joint"); jointNode; jointNode = jointNode->next_sibling("joint")) {
-            // Extraire les attributs du joint (type, name, limit, etc.)
+            // Extract joint attributes (type, name, limit, etc.)
             string jtype = jointNode->first_attribute("type")->value();
             string name = jointNode->first_attribute("name")->value();
 
-            // Vérifier si le joint est fixe
+            // Check that the joint is fixed
             if (jtype == "fixed" || jtype == "floating" || jtype == "planar") {
                 continue;
             }
 
             joint_list.push_back(name);
-            // Initialiser le joint en fonction des attributs
+            // Initialize joint based on attributes
             double minval = 0.0;
             double maxval = 0.0;
 
@@ -75,7 +75,7 @@ void Simu_node::init_urdf(){
                 }
             }
 
-            // Traiter les balises safety_controller et mimic
+            // Handling mimic tags
             xml_node<>* mimic_tags = robotNode->first_node("mimic");
             if (mimic_tags){
                 xml_node<>* tag = &mimic_tags[0];
@@ -112,7 +112,7 @@ void Simu_node::init_urdf(){
                 zeroval = 0;
             }
 
-            // Initialiser le joint dans la structure de données appropriée
+            // Initialize the joint in the appropriate data structure
             map<string, double> joint = {{"min",minval},
                                          {"max",maxval},
                                          {"zero",zeroval},
