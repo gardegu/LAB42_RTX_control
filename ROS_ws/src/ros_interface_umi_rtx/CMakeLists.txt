@@ -212,7 +212,7 @@ DESTINATION lib/${PROJECT_NAME})
 install(DIRECTORY include
   DESTINATION include)
 
-install(DIRECTORY launch rviz urdf
+install(DIRECTORY launch rviz urdf images
   DESTINATION share/${PROJECT_NAME}
 )
 

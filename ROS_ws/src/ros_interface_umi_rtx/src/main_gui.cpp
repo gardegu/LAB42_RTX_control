@@ -20,36 +20,37 @@ MainGUI::MainGUI(QApplication * app,
     QLabel *label_x = new QLabel("X coordinates :");
     label_x->setAlignment(Qt::AlignRight);
     main_layout->addWidget(label_x,1,0);
-    // Création du slider
+    // Slider creation, to control x position
     QSlider* slider_x = new QSlider(Qt::Horizontal);
-    slider_x->setRange(-30, 30); // Plage de valeurs du slider
-    slider_x->setSingleStep(1); // Pas d'incrémentation du slider
+    slider_x->setRange(-30, 30); // range of values
+    slider_x->setSingleStep(1); 
     main_layout->addWidget(slider_x,1,1);
-    // Création du spin box pour afficher la valeur flottante x
+
     QDoubleSpinBox* spinBox_x = new QDoubleSpinBox;
     spinBox_x->setMaximum(30);
     spinBox_x->setMinimum(-30);
     spinBox_x->setSingleStep(1);
     main_layout->addWidget(spinBox_x,1,2);
-    // Lier le slider et le spin box
+    // Link slider and spinBox
     QObject::connect(slider_x, &QSlider::valueChanged, spinBox_x, static_cast<void (QDoubleSpinBox::*)(double)>(&QDoubleSpinBox::setValue));
     QObject::connect(spinBox_x, static_cast<void (QDoubleSpinBox::*)(double)>(&QDoubleSpinBox::valueChanged), slider_x, &QSlider::setValue);
 
 
+    // Same for y
     QLabel *label_y = new QLabel("Y coordinates :");
     label_y->setAlignment(Qt::AlignRight);
     main_layout->addWidget(label_y,2,0);
-    // Création du slider
+
     QSlider* slider_y = new QSlider(Qt::Horizontal);
-    slider_y->setRange(20, 70); // Plage de valeurs du slider
-    slider_y->setSingleStep(1); // Pas d'incrémentation du slider
+    slider_y->setRange(20, 70); 
+    slider_y->setSingleStep(1);
     main_layout->addWidget(slider_y,2,1);
-    // Création du spin box pour afficher la valeur flottante x
+
     QDoubleSpinBox* spinBox_y = new QDoubleSpinBox;
     spinBox_y->setMaximum(70);
     spinBox_y->setMinimum(20);
     main_layout->addWidget(spinBox_y,2,2);
-    // Lier le slider et le spin box
+
     QObject::connect(slider_y, &QSlider::valueChanged, spinBox_y, static_cast<void (QDoubleSpinBox::*)(double)>(&QDoubleSpinBox::setValue));
     QObject::connect(spinBox_y, static_cast<void (QDoubleSpinBox::*)(double)>(&QDoubleSpinBox::valueChanged), slider_y, &QSlider::setValue);
 
@@ -57,17 +58,17 @@ MainGUI::MainGUI(QApplication * app,
     QLabel *label_z = new QLabel("Z coordinates :");
     label_z->setAlignment(Qt::AlignRight);
     main_layout->addWidget(label_z,3,0);
-    // Création du slider
+
     QSlider* slider_z = new QSlider(Qt::Horizontal);
-    slider_z->setRange(10, 70); // Plage de valeurs du slider
-    slider_z->setSingleStep(1); // Pas d'incrémentation du slider
+    slider_z->setRange(10, 70); 
+    slider_z->setSingleStep(1);
     main_layout->addWidget(slider_z,3,1);
-    // Création du spin box pour afficher la valeur flottante x
+
     QDoubleSpinBox* spinBox_z = new QDoubleSpinBox;
     spinBox_z->setMaximum(70);
     spinBox_z->setMinimum(10);
     main_layout->addWidget(spinBox_z,3,2);
-    // Lier le slider et le spin box
+
     QObject::connect(slider_z, &QSlider::valueChanged, spinBox_z, static_cast<void (QDoubleSpinBox::*)(double)>(&QDoubleSpinBox::setValue));
     QObject::connect(spinBox_z, static_cast<void (QDoubleSpinBox::*)(double)>(&QDoubleSpinBox::valueChanged), slider_z, &QSlider::setValue);
 
@@ -120,16 +121,17 @@ MainGUI::MainGUI(QApplication * app,
         roll = newValue;
     });
 
+    // Initial values for manual mode
     slider_x->setValue(0);
     slider_y->setValue(60);
     slider_z->setValue(60);
 
-    // Création du bouton pour le switch
+    // Button to switch between manual and automatic mode
     QPushButton* switchButton = new QPushButton(this);
-    switchButton->setCheckable(true);  // Permet de sélectionner/désélectionner le bouton
-    switchButton->setChecked(true);  // Définit l'état initial du switch (désélectionné)
+    switchButton->setCheckable(true);
+    switchButton->setChecked(true);
     // Personnalisation de l'apparence du switch
-    switchButton->setFixedSize(120, 50);  // Définit la taille du bouton
+    switchButton->setFixedSize(120, 50);
     switchButton->setText("Manual mode");
     switchButton->setStyleSheet("QPushButton {"
                                 "border: none;"
@@ -143,16 +145,17 @@ MainGUI::MainGUI(QApplication * app,
                                     "background-color: #ccc;"
                                 "}");
 
-    // Connexion du signal clicked au slot correspondant pour réagir aux clics sur le switch
+    // Connection of the clicked signal to the corresponding slot to react to clicks on the switch
     connect(switchButton, &QPushButton::clicked, this, [=]() {
         manual_on = switchButton->isChecked();
         ros2_node->manual_control = switchButton->isChecked();
     });
     main_layout->addWidget(switchButton,0,3);
 
-    // Print RVIZ in the window
+    // Initialize RViz configuration
     initializeRViz();
 
+    // Add RViz widget to the interface
     QVBoxLayout* rviz_layout = new QVBoxLayout;
     rviz_layout->addWidget(render_panel_);
 
@@ -161,10 +164,11 @@ MainGUI::MainGUI(QApplication * app,
     frame = new cv::Mat;
     image = new QImage;
     timer = new QTimer(this);
+    // TODO connect timer to frame
     // connect(timer, &QTimer::timeout, this, [this](){
     //     updateFrame();
     // });
-    timer->start(33);
+    timer->start(40);
     rviz_layout->addWidget(videoLabel);
 
     QHBoxLayout* glob_layout = new QHBoxLayout;
@@ -175,7 +179,7 @@ MainGUI::MainGUI(QApplication * app,
     setCentralWidget(main_widget);
     setStyleSheet("background-color: #e0e8bd;");
 
-    setWindowIcon(QIcon("/home/theo/Pictures/icon.png"));
+    setWindowIcon(QIcon(QString::fromStdString(ament_index_cpp::get_package_share_directory("ros_interface_umi_rtx")+"/images/icon.png")));
 }
 
 MainGUI::~MainGUI()
@@ -229,7 +233,6 @@ void MainGUI::updateFrame()
 
     // Convertir l'image OpenCV en QImage
     *image = QImage(frame->data, frame->cols, frame->rows, frame->step, QImage::Format_RGB888).rgbSwapped();
-    // *image = image->scaled((int)w/2,(int)h/2);
     // Afficher l'image dans le QLabel
     videoLabel->setPixmap(QPixmap::fromImage(*image));
     // videoLabel->adjustSize(); // Ajuster la taille du QLabel pour correspondre à l'image

@@ -29,9 +29,9 @@ void Objective_node::timer_callback(){
 }
 
 void Objective_node::Lissajou(){
-    x = 0.3*sin(t);
-    y = 0.5+0.1*sin(0.6*t);
-    z = 0.3+0.2*sin(t);
+    x = 0.3*sin(0.5*t);
+    y = 0.5+0.1*sin(0.3*t);
+    z = 0.3+0.2*sin(0.2*t);
 }
 
 void Objective_node::update_state(double new_x, double new_y, double new_z, double new_roll, double new_pitch){
