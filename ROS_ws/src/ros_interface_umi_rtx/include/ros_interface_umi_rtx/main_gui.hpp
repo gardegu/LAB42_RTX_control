@@ -26,7 +26,6 @@
 #include "rclcpp/clock.hpp"
 
 #include "rviz_common/display.hpp"
-#include <rviz_common/display_context.hpp>
 #include "rviz_common/window_manager_interface.hpp"
 #include "rviz_common/ros_integration/ros_node_abstraction.hpp"
 #include "rviz_common/render_panel.hpp"
@@ -35,6 +34,7 @@
 #include <rviz_common/yaml_config_reader.hpp>
 #include <rviz_common/tool.hpp>
 #include <rviz_common/tool_manager.hpp>
+#include <rviz_common/view_controller.hpp>
 #include "rviz_rendering/render_window.hpp"
 #include "rviz_default_plugins/visibility_control.hpp"
 

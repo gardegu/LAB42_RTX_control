@@ -161,9 +161,9 @@ MainGUI::MainGUI(QApplication * app,
     frame = new cv::Mat;
     image = new QImage;
     timer = new QTimer(this);
-    connect(timer, &QTimer::timeout, this, [this](){
-        updateFrame();
-    });
+    // connect(timer, &QTimer::timeout, this, [this](){
+    //     updateFrame();
+    // });
     timer->start(33);
     rviz_layout->addWidget(videoLabel);
 
@@ -174,6 +174,8 @@ MainGUI::MainGUI(QApplication * app,
     main_widget->setLayout(glob_layout);
     setCentralWidget(main_widget);
     setStyleSheet("background-color: #e0e8bd;");
+
+    setWindowIcon(QIcon("/home/theo/Pictures/icon.png"));
 }
 
 MainGUI::~MainGUI()
@@ -209,6 +211,8 @@ void MainGUI::initializeRViz()
     Model_->setTopic(QString::fromStdString("/robot_description"),QString::fromStdString("std_msgs/msg/String"));
 
     manager_->getToolManager()->addTool(QString::fromStdString("rviz_default_plugins/MoveCamera"));
+    // render_panel_->getViewController()->subProp(QString::fromStdString("Distance"))->setValue(2.0);
+
 
     manager_->initialize();
     manager_->startUpdate();
@@ -217,12 +221,15 @@ void MainGUI::initializeRViz()
 void MainGUI::updateFrame()
 {   
     capture.read(*frame); // Capture d'une image du flux vidéo
-
     int w = frame->cols,h = frame->rows;
+
+    cv::Size newSize(w / 2, h / 2); 
+    cv::resize(*frame,*frame,newSize);
+
 
     // Convertir l'image OpenCV en QImage
     *image = QImage(frame->data, frame->cols, frame->rows, frame->step, QImage::Format_RGB888).rgbSwapped();
-    *image = image->scaled((int)w/2,(int)h/2);
+    // *image = image->scaled((int)w/2,(int)h/2);
     // Afficher l'image dans le QLabel
     videoLabel->setPixmap(QPixmap::fromImage(*image));
     // videoLabel->adjustSize(); // Ajuster la taille du QLabel pour correspondre à l'image
@@ -279,7 +286,6 @@ int main(int argc, char* argv[])
         if (ros2_node->manual_control){
             ros2_node->update_state(gui_app->x,gui_app->y,gui_app->z,gui_app->roll,gui_app->pitch);
         }
-        // ros2_node->update_state(gui_app->x,gui_app->y,gui_app->z,gui_app->roll,gui_app->pitch);
         exec.spin_some();
         app.processEvents();
     }

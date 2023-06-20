@@ -30,7 +30,7 @@ void Objective_node::timer_callback(){
 
 void Objective_node::Lissajou(){
     x = 0.3*sin(t);
-    y = 0.4+0.1*sin(0.6*t);
+    y = 0.5+0.1*sin(0.6*t);
     z = 0.3+0.2*sin(t);
 }
 
