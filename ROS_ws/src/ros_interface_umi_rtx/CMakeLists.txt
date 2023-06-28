@@ -176,6 +176,7 @@ $<INSTALL_INTERFACE:include>)
  rclcpp
  geometry_msgs
  std_msgs
+ sensor_msgs
  ament_index_cpp
  rviz_common
  rviz_default_plugins

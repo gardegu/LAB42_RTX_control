@@ -2,9 +2,13 @@
 
 void Objective_node::init_interfaces(){
     timer_ = this->create_wall_timer(loop_dt_, std::bind(&Objective_node::timer_callback, this));
+
     objective_publisher  = this->create_publisher<geometry_msgs::msg::Point>("target_position",10);
     pitch_publisher = this->create_publisher<std_msgs::msg::Float32>("target_pitch",10);
     roll_publisher = this->create_publisher<std_msgs::msg::Float32>("target_roll",10);
+
+    image_subscriber = this->create_subscription<sensor_msgs::msg::Image>("processed_image",10,
+        std::bind(&Objective_node::get_image, this, _1));
 }
 
 void Objective_node::timer_callback(){
@@ -28,6 +32,11 @@ void Objective_node::timer_callback(){
     roll_publisher->publish(roll_msg);
 }
 
+void Objective_node::get_image(const sensor_msgs::msg::Image::SharedPtr msg){
+    cv_bridge::CvImagePtr cv_ptr = cv_bridge::toCvCopy(msg, "bgr8");
+    frame = cv_ptr->image;
+}
+
 void Objective_node::Lissajou(){
     x = 0.3*sin(0.5*t);
     y = 0.5+0.1*sin(0.3*t);
@@ -45,7 +54,6 @@ void Objective_node::update_state(double new_x, double new_y, double new_z, doub
 // int main(int argc, char *argv[]){
 //     rclcpp::init(argc,argv);
 //     shared_ptr<rclcpp::Node> node = make_shared<Objective_node>();
-
 //     rclcpp::spin(node);
 //     rclcpp::shutdown();
 //     return EXIT_SUCCESS;

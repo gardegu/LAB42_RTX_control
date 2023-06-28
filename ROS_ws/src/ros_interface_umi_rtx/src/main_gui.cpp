@@ -160,7 +160,7 @@ MainGUI::MainGUI(QApplication * app,
     rviz_layout->addWidget(render_panel_);
 
     videoLabel = new QLabel("");
-    capture.open(0);
+    // capture.open(0);
     frame = new cv::Mat;
     image = new QImage;
     timer = new QTimer(this);
@@ -184,7 +184,7 @@ MainGUI::MainGUI(QApplication * app,
 
 MainGUI::~MainGUI()
 {
-    capture.release();
+    // capture.release();
 }
 
 
@@ -227,10 +227,13 @@ void MainGUI::initializeRViz()
 
 void MainGUI::updateFrame()
 {   
-    capture.read(*frame); // get current frame
+    // capture.read(*frame); // get current frame
+    *frame = ros2_node->frame;
     int w = frame->cols,h = frame->rows;
     cv::Size newSize(w / 2, h / 2); // resize frame to do less calculations
-    cv::resize(*frame,*frame,newSize);
+    if (newSize.area() > 0){
+        cv::resize(*frame,*frame,newSize);
+    }
 
     *image = QImage(frame->data, frame->cols, frame->rows, frame->step, QImage::Format_RGB888).rgbSwapped();
     videoLabel->setPixmap(QPixmap::fromImage(*image));

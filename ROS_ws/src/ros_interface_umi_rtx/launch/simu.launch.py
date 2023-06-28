@@ -92,6 +92,7 @@ def generate_launch_description():
                               declare_use_sim_time_cmd, declare_urdf_model_path_cmd,
                               start_robot_state_publisher_cmd,
                               nodeInvKin, nodeSimu,
+                              nodeCamera,
                               GUI,
                               ]) #TODO rajouter nodeCamera
          

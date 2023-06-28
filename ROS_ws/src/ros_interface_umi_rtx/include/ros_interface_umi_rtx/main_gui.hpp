@@ -82,7 +82,7 @@ private:
     rviz_common::VisualizationManager * manager_;
     rviz_common::ros_integration::RosNodeAbstractionIface::WeakPtr rviz_ros_node_;
 
-    cv::VideoCapture capture;
+    // cv::VideoCapture capture;
     cv::Mat* frame;
 
     void initializeRViz();

@@ -7,7 +7,7 @@ void Camera::init_interfaces(){
     timer_ = this->create_wall_timer(loop_dt_,std::bind(&Camera::timer_callback,this));
 
     image_publisher = this->create_publisher<sensor_msgs::msg::Image>("processed_image",10);
-    coord_publisher = this->create_publisher<geometry_msgs::msg::Point>("target_position",10);
+    // coord_publisher = this->create_publisher<geometry_msgs::msg::Point>("target_position",10);
 }
 
 void Camera::init_camera(){
@@ -85,7 +85,7 @@ void Camera::timer_callback(){
                 m_cx = cx;
                 m_cy = cy;
 
-                coord_publisher->publish(coord_msg);
+                // coord_publisher->publish(coord_msg);
             }
 
             else {
@@ -95,7 +95,7 @@ void Camera::timer_callback(){
                 coord_msg.y = m_cy;
 
                 cv::circle(frame,cv::Point(m_frame_width-40,40),20,cv::Scalar(100,50,100),-1);
-                coord_publisher->publish(coord_msg);
+                // coord_publisher->publish(coord_msg);
             }
         }
 
@@ -103,7 +103,7 @@ void Camera::timer_callback(){
             coord_msg.x = m_cx;
             coord_msg.y = m_cy;
 
-            coord_publisher->publish(coord_msg);
+            // coord_publisher->publish(coord_msg);
         }
 
         cv::circle(frame,cv::Point(m_frame_width-40,40),20,cv::Scalar(0,255,0),-1);
