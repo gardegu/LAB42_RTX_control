@@ -95,7 +95,7 @@ def generate_launch_description():
         package = 'ros_interface_umi_rtx',
         namespace='',
         executable='GUI',
-        name='qt_window',
+        name='GUI',
     )
     
     return LaunchDescription([declare_rviz_config_file_cmd, declare_use_robot_state_pub_cmd,

@@ -27,6 +27,14 @@ void InvKin_node::get_pose(const geometry_msgs::msg::Point::SharedPtr msg){
     x = max(-0.6,min(0.6,msg->x));
     y = max(0.1,min(0.69,msg->y));
     z = max(0.1,min(0.7,msg->z));
+    double theta = atan2(y,x);
+    double r = sqrt(pow(x,2)+pow(y,2));
+    double rmax = 0.69;
+    if (r>rmax){
+        x = rmax*cos(theta);
+        y = rmax*sin(theta);
+    }
+
     get_state(x,y,z);
 }
 

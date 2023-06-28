@@ -17,7 +17,7 @@ void Arm_node::init_interfaces(){
     pitch_subscription = this->create_subscription<std_msgs::msg::Float32>("target_pitch",10,
         std::bind(&Arm_node::get_pitch, this, _1));
 
-    pitch_subscription = this->create_subscription<std_msgs::msg::Float32>("target_roll",10,
+    roll_subscription = this->create_subscription<std_msgs::msg::Float32>("target_roll",10,
         std::bind(&Arm_node::get_roll, this, _1));
     
     grip_subscription = this->create_subscription<std_msgs::msg::Float32>("target_grip",10,
@@ -63,7 +63,7 @@ void Arm_node::get_commands(const sensor_msgs::msg::JointState::SharedPtr msg){
     commands_motor = {{ZED,objective[0]},
                       {SHOULDER,objective[1]},
                       {ELBOW,objective[2]},
-                      {WRIST1,1*(objective[4]+objective[5])},//TODO divides the angle by two actually
+                      {WRIST1,1*(objective[4]+objective[5])},//TODO divides the angle by two
                       {WRIST2,1*(objective[5]-objective[4])}};
 }
 
@@ -78,7 +78,7 @@ void Arm_node::get_pitch(const std_msgs::msg::Float32::SharedPtr msg){
 }
 
 void Arm_node::get_roll(const std_msgs::msg::Float32::SharedPtr msg){
-    target_pitch = msg->data*M_PI/180;
+    target_roll = msg->data*M_PI/180;
 }
 
 void Arm_node::get_grip(const std_msgs::msg::Float32::SharedPtr msg){
@@ -92,7 +92,7 @@ void Arm_node::set_motors(){
     for (const auto& pair:commands_motor){
         key = pair.first;
         obj_angle = pair.second;
-        if (key!=ZED){ //Revolute joints
+        if (key!=ZED and key!=GRIP){ //Revolute joints
             full_arm.mJoints[key]->setOrientation(obj_angle);
         }
 

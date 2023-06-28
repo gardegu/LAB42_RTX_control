@@ -165,9 +165,9 @@ MainGUI::MainGUI(QApplication * app,
     image = new QImage;
     timer = new QTimer(this);
     // TODO connect timer to frame
-    // connect(timer, &QTimer::timeout, this, [this](){
-    //     updateFrame();
-    // });
+    connect(timer, &QTimer::timeout, this, [this](){
+        updateFrame();
+    });
     timer->start(40);
     rviz_layout->addWidget(videoLabel);
 
@@ -201,11 +201,11 @@ void MainGUI::initializeRViz()
 
     // Rviz config_file, might work without it
     // TODO test without config
-    QString config_file = QString::fromStdString(ament_index_cpp::get_package_share_directory("ros_interface_umi_rtx")+"/rviz/rviz_basic_settings.rviz");
-    rviz_common::YamlConfigReader config_reader;
-    rviz_common::Config config;
-    config_reader.readFile(config, config_file);
-    manager_->load(config);
+    // QString config_file = QString::fromStdString(ament_index_cpp::get_package_share_directory("ros_interface_umi_rtx")+"/rviz/rviz_basic_settings.rviz");
+    // rviz_common::YamlConfigReader config_reader;
+    // rviz_common::Config config;
+    // config_reader.readFile(config, config_file);
+    // manager_->load(config);
 
     // Add TF and model in the integrated window
     TF_ = manager_->createDisplay("rviz_default_plugins/TF","TF",true);

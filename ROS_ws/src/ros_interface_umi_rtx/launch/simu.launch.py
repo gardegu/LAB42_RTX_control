@@ -84,7 +84,7 @@ def generate_launch_description():
         package = 'ros_interface_umi_rtx',
         namespace='',
         executable='GUI',
-        name='qt_window',
+        name='GUI',
     )
     
             
