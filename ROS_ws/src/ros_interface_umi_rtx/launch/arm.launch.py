@@ -103,6 +103,7 @@ def generate_launch_description():
                               start_robot_state_publisher_cmd,
                               nodeArm, nodeInvKin,
                               nodeSimu,
+                              nodeCamera,
                               GUI
                               ])
 
