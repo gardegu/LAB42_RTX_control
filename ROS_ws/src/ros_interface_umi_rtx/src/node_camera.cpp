@@ -39,6 +39,8 @@ void Camera::timer_callback(){
 
     //stereo_split_views();
 
+    // Remplacer frame par frameLeft dans le cas où on utilise la caméra stéréo
+
     cv::Mat hsv_img;
     cv::cvtColor(frame,hsv_img,cv::COLOR_BGR2HSV);
 
