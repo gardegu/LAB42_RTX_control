@@ -152,7 +152,7 @@ void Camera::get_angles(vector<vector<cv::Point>> &contours){
 
 }
 
-void stereo_calibration(){
+void Camera::stereo_calibration(){
     std::cout << "Calibrating the stereo device...\n" << std::endl;
 
     std::vector<std::vector<cv::Point3f>> objectPoints;
@@ -212,7 +212,7 @@ void stereo_calibration(){
     std::cout << "Stereo device calibrated\n" << std::endl;
 }
 
-void stereo_rectification(){
+void Camera::stereo_rectification(){
     std::cout << "Computing rectification paramters..." << std::endl;
 
     cv::stereoRectify(m_cameraMatrixLeft, m_distCoeffsLeft, m_cameraMatrixRight, m_distCoeffsRight, cv::Size(1280,720), m_R, m_T, m_R1, m_R2, m_P1, m_P2, m_Q, cv::CALIB_ZERO_DISPARITY);
