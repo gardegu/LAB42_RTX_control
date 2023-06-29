@@ -21,7 +21,7 @@ void Camera::init_camera(){
     }
 
     // Stereo Calibration of the ZED M device
-    stereo_calibration();
+    //stereo_calibration();
 
     // Computing rectification parameters
     //stereo_rectification();
