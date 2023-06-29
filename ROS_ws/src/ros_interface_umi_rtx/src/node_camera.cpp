@@ -112,6 +112,12 @@ void Camera::timer_callback(){
     }
 }
 
+void Camera::get_angles(){
+    cv2::Mat image = frame;
+    
+}
+
+
 int main(int argc, char * argv[]){
     rclcpp::init(argc,argv);
     std::shared_ptr<rclcpp::Node> node = std::make_shared<Camera>();

@@ -13,6 +13,7 @@
 
 using namespace std::chrono_literals;
 using namespace std::placeholders;
+using namespace std;
 
 class Camera : public rclcpp::Node{
 public:
@@ -25,6 +26,8 @@ private:
     void timer_callback();
     void init_interfaces();
     void init_camera();
+
+    void get_angles(vector<vector<cv::Point>> &contours;);
 
     std::chrono::milliseconds loop_dt_ = 40ms;
 
