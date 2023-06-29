@@ -3,6 +3,7 @@
 
 #include "rclcpp/rclcpp.hpp"
 #include "geometry_msgs/msg/point.hpp"
+#include "geometry_msgs/msg/vector3.hpp"
 #include "std_msgs/msg/float32.hpp"
 #include "sensor_msgs/msg/joint_state.hpp"
 
@@ -38,9 +39,10 @@ public:
 private:
     void init_interfaces();
     void timer_callback();
-    void get_pose(const geometry_msgs::msg::Point::SharedPtr msg);
-    void get_pitch(const std_msgs::msg::Float32::SharedPtr msg);
-    void get_roll(const std_msgs::msg::Float32::SharedPtr msg);
+    void get_position(const geometry_msgs::msg::Point::SharedPtr msg);
+    void get_angles(const geometry_msgs::msg::Vector3::SharedPtr msg);
+    // void get_pitch(const std_msgs::msg::Float32::SharedPtr msg);
+    // void get_roll(const std_msgs::msg::Float32::SharedPtr msg);
     void get_state(double x, double y, double z);
 
     void correct_angle(Eigen::VectorXd &q); // Put angles in [-pi,pi]
@@ -53,6 +55,7 @@ private:
     double last_x,last_y,last_z;
     int ROLL=6, PITCH=7;
 
+    double target_yaw;
     double target_pitch, last_pitch;
     double target_roll, last_roll;
 
@@ -71,10 +74,11 @@ private:
 
 
     rclcpp::TimerBase::SharedPtr timer_;
-    rclcpp::Subscription<geometry_msgs::msg::Point>::SharedPtr pose_subscription;
+    rclcpp::Subscription<geometry_msgs::msg::Point>::SharedPtr position_subscription;
+    rclcpp::Subscription<geometry_msgs::msg::Vector3>::SharedPtr angles_subscription;
 
-    rclcpp::Subscription<std_msgs::msg::Float32>::SharedPtr pitch_subscription;
-    rclcpp::Subscription<std_msgs::msg::Float32>::SharedPtr roll_subscription;
+    // rclcpp::Subscription<std_msgs::msg::Float32>::SharedPtr pitch_subscription;
+    // rclcpp::Subscription<std_msgs::msg::Float32>::SharedPtr roll_subscription;
 
     rclcpp::Publisher<sensor_msgs::msg::JointState>::SharedPtr angles_publisher;
 

@@ -2,12 +2,14 @@
 
 void InvKin_node::init_interfaces(){
     timer_ = this->create_wall_timer(loop_dt_, std::bind(&InvKin_node::timer_callback, this));
-    pose_subscription = this->create_subscription<geometry_msgs::msg::Point>("target_position",10,
-        std::bind(&InvKin_node::get_pose, this, _1));
-    pitch_subscription = this->create_subscription<std_msgs::msg::Float32>("target_pitch",10,
-        std::bind(&InvKin_node::get_pitch, this, _1));
-    roll_subscription = this->create_subscription<std_msgs::msg::Float32>("target_roll",10,
-        std::bind(&InvKin_node::get_roll, this, _1));
+    position_subscription = this->create_subscription<geometry_msgs::msg::Point>("target_position",10,
+        std::bind(&InvKin_node::get_position, this, _1));
+    angles_subscription = this->create_subscription<geometry_msgs::msg::Vector3>("target_angles",10,
+        std::bind(&InvKin_node::get_angles, this, _1));
+    // pitch_subscription = this->create_subscription<std_msgs::msg::Float32>("target_pitch",10,
+    //     std::bind(&InvKin_node::get_pitch, this, _1));
+    // roll_subscription = this->create_subscription<std_msgs::msg::Float32>("target_roll",10,
+    //     std::bind(&InvKin_node::get_roll, this, _1));
     angles_publisher  = this->create_publisher<sensor_msgs::msg::JointState>("motor_commands",10);
 }
 
@@ -21,7 +23,7 @@ void InvKin_node::timer_callback(){
     angles_publisher->publish(msg);
 }
 
-void InvKin_node::get_pose(const geometry_msgs::msg::Point::SharedPtr msg){
+void InvKin_node::get_position(const geometry_msgs::msg::Point::SharedPtr msg){
     double x,y,z;
     // Frame coordinates to avoid positions that are too far apart
     x = max(-0.6,min(0.6,msg->x));
@@ -38,13 +40,18 @@ void InvKin_node::get_pose(const geometry_msgs::msg::Point::SharedPtr msg){
     get_state(x,y,z);
 }
 
-void InvKin_node::get_pitch(const std_msgs::msg::Float32::SharedPtr msg){
-    target_pitch = msg->data*M_PI/180;
+void InvKin_node::get_angles(const geometry_msgs::msg::Vector3::SharedPtr msg){
+    target_yaw = msg->x*M_PI/180;
+    target_pitch = msg->y*M_PI/180;
+    target_roll = msg->z*M_PI/180;
 }
+// void InvKin_node::get_pitch(const std_msgs::msg::Float32::SharedPtr msg){
+//     target_pitch = msg->data*M_PI/180;
+// }
 
-void InvKin_node::get_roll(const std_msgs::msg::Float32::SharedPtr msg){
-    target_roll = msg->data*M_PI/180;
-}
+// void InvKin_node::get_roll(const std_msgs::msg::Float32::SharedPtr msg){
+//     target_roll = msg->data*M_PI/180;
+// }
 
 void InvKin_node::get_state(double x, double y, double z){    
 
