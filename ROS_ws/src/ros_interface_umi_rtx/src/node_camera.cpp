@@ -11,6 +11,7 @@ void Camera::init_interfaces(){
     image_publisher = this->create_publisher<sensor_msgs::msg::Image>("processed_image",10);
     coord_publisher = this->create_publisher<geometry_msgs::msg::Point>("processed_position",10);
     angles_publisher = this->create_publisher<geometry_msgs::msg::Vector3>("processed_angles",10);
+    disparity_publisher = this->create_publisher<sensor_msgs::msg::Image>("disparity_image",10);
 }
 
 void Camera::init_camera(){
@@ -134,6 +135,8 @@ void Camera::timer_callback(){
     angles_publisher->publish(angles_msg);
 
     //stereo_get_disparity();
+    //sensor_msgs::msg::Image::SharedPtr disp_msg = cv_bridge::CvImage(std_msgs::msg::Header(),"mono8",disparityMap).toImageMsg();
+    //disparity_publisher->publish(*disp_msg);
 
 }
 

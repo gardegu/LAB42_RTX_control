@@ -45,6 +45,7 @@ private:
     rclcpp::Publisher<sensor_msgs::msg::Image>::SharedPtr image_publisher;
     rclcpp::Publisher<geometry_msgs::msg::Point>::SharedPtr coord_publisher;
     rclcpp::Publisher<geometry_msgs::msg::Vector3>::SharedPtr angles_publisher;
+    rclcpp::Publisher<sensor_msgs::msg::Image>::SharedPtr disparity_publisher;
 
     cv::VideoCapture cap;
 
