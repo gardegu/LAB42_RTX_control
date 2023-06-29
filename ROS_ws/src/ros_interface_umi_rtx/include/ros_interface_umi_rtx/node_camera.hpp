@@ -58,7 +58,7 @@ private:
     cv::Mat m_cameraMatrixLeft, m_distCoeffsLeft, m_cameraMatrixRight, m_distCoeffsRight;
     cv::Mat m_R, m_T, m_E, m_F;
     cv::Mat m_R1, m_R2, m_P1, m_P2, m_Q;
-    cv::Mat m_map1Left, m_map2Left, m_map1Right;
+    cv::Mat m_map1Left, m_map2Left, m_map1Right, m_map2Right;
 
     double m_cx, m_cy, m_cz, yaw, pitch, roll;
 
