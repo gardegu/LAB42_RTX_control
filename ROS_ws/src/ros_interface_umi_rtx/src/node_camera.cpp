@@ -178,8 +178,8 @@ void Camera::stereo_calibration(){
         std::vector<cv::Point2f> cornersLeftSub;
         std::vector<cv::Point2f> cornersRightSub;
 
-        bool patternFoundLeft = cv::findChessboardCorners(imageLeft, cv::Size(7,5), cornersLeftSub, cv::CALIB_CB_ADAPTIVE_THRESH | cv::CALIB_CB_NORMALIZE_IMAGE);
-        bool patternFoundRight = cv::findChessboardCorners(imageRight, cv::Size(7,5), cornersRightSub, cv::CALIB_CB_ADAPTIVE_THRESH | cv::CALIB_CB_NORMALIZE_IMAGE);
+        bool patternFoundLeft = cv::findChessboardCorners(imageLeft, m_patternSize, cornersLeftSub, cv::CALIB_CB_ADAPTIVE_THRESH | cv::CALIB_CB_NORMALIZE_IMAGE);
+        bool patternFoundRight = cv::findChessboardCorners(imageRight, m_patternSize, cornersRightSub, cv::CALIB_CB_ADAPTIVE_THRESH | cv::CALIB_CB_NORMALIZE_IMAGE);
         //std::cout << "Found corners on left image? " << patternFoundLeft << std::endl;
         //std::cout << "Found corners on right image? " << patternFoundRight << std::endl;
         //std::cout << "Number of corners detected in image " << i << " (left) test1: " << cornersLeftSub.size() << std::endl;
@@ -194,8 +194,8 @@ void Camera::stereo_calibration(){
 
             std::vector<cv::Point3f> objectPointsImage;
 
-            for (int y = 0; y < cv::Size(7,5).height; y++) {
-                for (int x = 0; x < cv::Size(7,5).width; x++) {
+            for (int y = 0; y < m_patternSize.height; y++) {
+                for (int x = 0; x < m_patternSize.width; x++) {
                     objectPointsImage.push_back(cv::Point3f(x * m_squareSize, y * m_squareSize, 0));
                 }
             }
