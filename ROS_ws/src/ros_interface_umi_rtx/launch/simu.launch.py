@@ -50,18 +50,19 @@ def generate_launch_description():
         'robot_description': Command(['xacro ', urdf_model])}],
         arguments=[default_urdf_model_path])
     
-    # Launch RViz
-    nodeRviz = Node(
-        package='rviz2',
-        executable='rviz2',
-        name='rviz2',
-        arguments=['-d', rviz_config_file])
+    # # Launch RViz
+    # nodeRviz = Node(
+    #     package='rviz2',
+    #     executable='rviz2',
+    #     name='rviz2',
+    #     arguments=['-d', rviz_config_file])
     
     nodeCamera = Node(
         package = 'ros_interface_umi_rtx',
         namespace='',
         executable='nodeCamera',
         name='camera',
+        output='screen'
     )
     
     nodeInvKin = Node(
@@ -94,15 +95,7 @@ def generate_launch_description():
                               nodeInvKin, nodeSimu,
                               nodeCamera,
                               GUI,
-                              ]) #TODO rajouter nodeCamera
+                              ])
          
-                            #   nodeRviz,
-                            #   actions.ExecuteProcess(cmd=["rqt"])
-    # return LaunchDescription([declare_rviz_config_file_cmd, declare_use_robot_state_pub_cmd,
-    #                           declare_use_sim_time_cmd, declare_urdf_model_path_cmd,
-    #                           declare_use_joint_state_publisher_cmd, start_joint_state_publisher_gui_node,
-    #                           start_robot_state_publisher_cmd,
-    #                           nodeInvKin, nodeCamera,
-    #                           nodeRviz, 
-    #                           ])
+    
         
