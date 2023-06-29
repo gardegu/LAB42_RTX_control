@@ -20,6 +20,9 @@ void Camera::init_camera(){
         std::cout << "ERROR! Unable to open camera" << std::endl;
     }
 
+    // Stereo Calibration of the ZED M device
+    stereo_calibration();
+
     m_frame_width = cap.get(cv::CAP_PROP_FRAME_WIDTH);
     m_frame_height = cap.get(cv::CAP_PROP_FRAME_HEIGHT);
     //std::cout << "init done" << std::endl;
@@ -146,6 +149,65 @@ void Camera::get_angles(vector<vector<cv::Point>> &contours){
 
 }
 
+void stereo_calibration(){
+    std::cout << "Calibrating the stereo device...\n" << std::endl;
+
+    std::vector<std::vector<cv::Point3f>> objectPoints;
+    std::vector<std::vector<cv::Point2f>> cornersLeft;
+    std::vector<std::vector<cv::Point2f>> cornersRight;
+
+    for(int i=1;i<=5;i++){
+        cv::Mat imageLeft = cv::imread("CalibrationImages/leftImage0" + std::to_string(i) + ".png", cv::IMREAD_GRAYSCALE);
+        cv::Mat imageRight = cv::imread("CalibrationImages/rightImage0" + std::to_string(i) + ".png", cv::IMREAD_GRAYSCALE);
+
+        if(imageLeft.empty()){
+            std::cout << "Error reading the calibration left image " << i << std::endl;
+        }
+        if(imageRight.empty()){
+            std::cout << "Error reading the calibration right image " << i << std::endl;
+        }
+
+        cv::Size imageLeftSize = imageLeft.size();
+        cv::Size imageRightSize = imageRight.size();
+        //std::cout << "Left image size: " << imageLeftSize << std::endl;
+        //std::cout << "Right image size: " << imageRightSize << std::endl;
+
+        std::vector<cv::Point2f> cornersLeftSub;
+        std::vector<cv::Point2f> cornersRightSub;
+
+        bool patternFoundLeft = cv::findChessboardCorners(imageLeft, m_patternSize, cornersLeftSub, cv::CALIB_CB_ADAPTATIVE_THRESH | cv::CALIB_CB_NORMALIZE_IMAGE);
+        bool patternFoundRight = cv::findChessboardCorners(imageRight, m_patternSize, cornersRightSub, cv::CALIB_CB_ADAPTATIVE_THRESH | cv::CALIB_CB_NORMALIZE_IMAGE);
+        //std::cout << "Found corners on left image? " << patternFoundLeft << std::endl;
+        //std::cout << "Found corners on right image? " << patternFoundRight << std::endl;
+        //std::cout << "Number of corners detected in image " << i << " (left) test1: " << cornersLeftSub.size() << std::endl;
+        //std::cout << "Number of corners detected in image " << i << " (right) test1: " << cornersRightSub.size() << std::endl;
+
+        if(patternFoundLeft && patternFoundRight){
+            cv::cornerSubPix(imageLeft, cornersLeftSub, cv::Size(5,5), cv::Size(-1,-1), cv::TermCriteria(cv::TermCriteria::EPS + cv::TermCriteria::COUNT, 30, 0.1));
+            cv::cornerSubPix(imageRight, cornersRightSub, cv::Size(5,5), cv::Size(-1,-1), cv::TermCriteria(cv::TermCriteria::EPS + cv::TermCriteria::COUNT, 30, 0.1));
+
+            cornersLeft.push_back(cornersLeftSub);
+            cornersRight.push_back(cornersRightSub);
+
+            std::vector<cv::Point3f> objectPointsImage;
+
+            for (int y = 0; y < patternSize.height; y++) {
+                for (int x = 0; x < patternSize.width; x++) {
+                    objectPointsImage.push_back(cv::Point3f(x * squareSize, y * squareSize, 0));
+                }
+            }
+
+            objectPoints.push_back(objectPointsImage);
+        }
+
+        //cv::drawChessboardCorners(imageLeft, patternSize, cornersLeftSub, patternFoundLeft);
+        //cv::drawChessboardCorners(imageRight, patternSize, cornersRightSub, patternFoundRight);
+    }
+
+    m_rms_error = cv::stereoCalibrate(objectPoints, cornersLeft, cornersRight, m_cameraMatrixLeft, m_distCoeffsLeft, m_cameraMatrixRight, m_distCoeffsRight, m_imageLeftSize, m_R, m_T, m_E, m_F);
+
+    std::cout << "Stereo device calibrated\n" << std::endl;
+}
 
 int main(int argc, char * argv[]){
     rclcpp::init(argc,argv);
