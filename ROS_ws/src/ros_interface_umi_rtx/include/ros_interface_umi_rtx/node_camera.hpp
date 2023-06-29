@@ -36,6 +36,7 @@ private:
     void stereo_calibration();
     void stereo_rectification();
     void stereo_split_views();
+    void stereo_get_disparity();
 
     std::chrono::milliseconds loop_dt_ = 40ms;
 
@@ -46,23 +47,36 @@ private:
     rclcpp::Publisher<geometry_msgs::msg::Vector3>::SharedPtr angles_publisher;
 
     cv::VideoCapture cap;
+
     cv::Mat frame, frameLeft, frameRight;
-
-    //cv::Size m_patternSize(7,5);
-    float m_squareSize = 3.1;
-    double m_baseline = 63;
-    double m_focalLength = 2.8;
-
-    double m_rms_error;
-
     cv::Mat m_cameraMatrixLeft, m_distCoeffsLeft, m_cameraMatrixRight, m_distCoeffsRight;
     cv::Mat m_R, m_T, m_E, m_F;
     cv::Mat m_R1, m_R2, m_P1, m_P2, m_Q;
     cv::Mat m_map1Left, m_map2Left, m_map1Right, m_map2Right;
+    cv::Mat disparityMap;
 
-    double m_cx, m_cy, m_cz, yaw, pitch, roll;
+    cv::Ptr<cv::StereoSGBM> stereo;
 
     int m_frame_width, m_frame_height;
+    int blockSize = 5;
+    int min_disp = 0;
+    int max_disp = 32;
+    int num_disp = max_disp - min_disp;
+    int uniquenessRatio = 10;
+    int speckleWindowSize = 200;
+    int speckleRange = 2;
+    int disp12MaxDiff = 0;
+    int iP1 = 8 * 1 * blockSize * blockSize;
+    int iP2 = 16 * 1 * blockSize * blockSize;
+
+    //cv::Size m_patternSize(7,5);
+    float m_squareSize = 3.1;
+
+    double m_baseline = 63;
+    double m_focalLength = 2.8;
+    double m_rms_error;
+    double m_cx, m_cy, m_cz, yaw, pitch, roll;
+
 
 };
 

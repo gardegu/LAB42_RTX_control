@@ -4,6 +4,8 @@ void Camera::init_interfaces(){
     m_cx = 0;
     m_cy = 0;
 
+    stereo = cv::StereoSGBM::create(min_disp,num_disp,blockSize,iP1,iP2,disp12MaxDiff,0,uniquenessRatio,speckleWindowSize,speckleRange);
+
     timer_ = this->create_wall_timer(loop_dt_,std::bind(&Camera::timer_callback,this));
 
     image_publisher = this->create_publisher<sensor_msgs::msg::Image>("processed_image",10);
@@ -130,6 +132,9 @@ void Camera::timer_callback(){
     angles_msg.y = pitch;
     angles_msg.z = roll;
     angles_publisher->publish(angles_msg);
+
+    //stereo_get_disparity();
+
 }
 
 void Camera::get_angles(vector<vector<cv::Point>> &contours){
@@ -242,6 +247,17 @@ void Camera::stereo_split_views(){
 
     cv::resize(frameLeft,frameLeft,cv::Size(1280,720));
     cv::resize(frameRight,frameRight,cv::Size(1280,720));
+}
+
+void Camera::stereo_get_disparity(){
+    cv::remap(frameLeft,frameLeft,m_map1Left,m_map2Left,cv::INTER_LINEAR);
+    cv::remap(frameRight,frameRight,m_map1Right,m_map2Right,cv::INTER_LINEAR);
+
+    stereo->compute(frameLeft,frameRight,disparityMap);
+
+    cv::threshold(disparityMap,disparityMap,0,0,cv::THRESH_TOZERO);
+
+    disparityMap.convertTo(disparityMap,CV_32F,1.0/16.0);
 }
 
 int main(int argc, char * argv[]){
