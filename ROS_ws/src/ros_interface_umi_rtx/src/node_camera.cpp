@@ -207,7 +207,7 @@ void Camera::stereo_calibration(){
         //cv::drawChessboardCorners(imageRight, patternSize, cornersRightSub, patternFoundRight);
     }
 
-    m_rms_error = cv::stereoCalibrate(objectPoints, cornersLeft, cornersRight, m_cameraMatrixLeft, m_distCoeffsLeft, m_cameraMatrixRight, m_distCoeffsRight, m_imageLeftSize, m_R, m_T, m_E, m_F);
+    m_rms_error = cv::stereoCalibrate(objectPoints, cornersLeft, cornersRight, m_cameraMatrixLeft, m_distCoeffsLeft, m_cameraMatrixRight, m_distCoeffsRight, imageLeftSize, m_R, m_T, m_E, m_F);
 
     std::cout << "Stereo device calibrated\n" << std::endl;
 }
