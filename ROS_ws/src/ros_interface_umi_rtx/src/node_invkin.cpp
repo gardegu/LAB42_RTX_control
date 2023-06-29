@@ -45,13 +45,6 @@ void InvKin_node::get_angles(const geometry_msgs::msg::Vector3::SharedPtr msg){
     target_pitch = msg->y*M_PI/180;
     target_roll = msg->z*M_PI/180;
 }
-// void InvKin_node::get_pitch(const std_msgs::msg::Float32::SharedPtr msg){
-//     target_pitch = msg->data*M_PI/180;
-// }
-
-// void InvKin_node::get_roll(const std_msgs::msg::Float32::SharedPtr msg){
-//     target_roll = msg->data*M_PI/180;
-// }
 
 void InvKin_node::get_state(double x, double y, double z){    
 

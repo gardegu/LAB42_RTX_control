@@ -46,7 +46,7 @@ private :
     
     std::chrono::milliseconds loop_dt_ = 40ms;
 
-    double x,y,z,pitch,roll;
+    double x,y,z,yaw,pitch,roll;
     float t,dt=0.04;
 
     double processed_x,processed_y,processed_z,processed_yaw,processed_pitch,processed_roll;
@@ -54,8 +54,7 @@ private :
 
     rclcpp::TimerBase::SharedPtr timer_;
     rclcpp::Publisher<geometry_msgs::msg::Point>::SharedPtr objective_publisher;
-    rclcpp::Publisher<std_msgs::msg::Float32>::SharedPtr pitch_publisher;
-    rclcpp::Publisher<std_msgs::msg::Float32>::SharedPtr roll_publisher;
+    rclcpp::Publisher<geometry_msgs::msg::Vector3>::SharedPtr angles_publisher;
 
     rclcpp::Subscription<geometry_msgs::msg::Point>::SharedPtr position_subscriber;
     rclcpp::Subscription<geometry_msgs::msg::Vector3>::SharedPtr angles_subscriber;

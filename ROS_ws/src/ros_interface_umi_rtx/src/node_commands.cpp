@@ -4,8 +4,7 @@ void Objective_node::init_interfaces(){
     timer_ = this->create_wall_timer(loop_dt_, std::bind(&Objective_node::timer_callback, this));
 
     objective_publisher  = this->create_publisher<geometry_msgs::msg::Point>("target_position",10);
-    pitch_publisher = this->create_publisher<std_msgs::msg::Float32>("target_pitch",10);
-    roll_publisher = this->create_publisher<std_msgs::msg::Float32>("target_roll",10);
+    angles_publisher  = this->create_publisher<geometry_msgs::msg::Vector3>("target_angles",10);
 
     position_subscriber = this->create_subscription<geometry_msgs::msg::Point>("processed_position",10,
         std::bind(&Objective_node::get_processed_position, this, _1));
@@ -18,24 +17,23 @@ void Objective_node::init_interfaces(){
 void Objective_node::timer_callback(){
     if (!manual_control){
         Lissajou();
-        pitch = processed_pitch;
-        roll = processed_roll;
+        // pitch = processed_pitch;
+        // roll = processed_roll;
     }
     t+=dt;
 
-    geometry_msgs::msg::Point msg;
-    msg.x = x;
-    msg.y = y;
-    msg.z = z;
-    objective_publisher->publish(msg);
+    geometry_msgs::msg::Point position_msg;
+    position_msg.x = x;
+    position_msg.y = y;
+    position_msg.z = z;
+    objective_publisher->publish(position_msg);
 
-    std_msgs::msg::Float32 pitch_msg;
-    pitch_msg.data = pitch;
-    pitch_publisher->publish(pitch_msg);
+    geometry_msgs::msg::Vector3 angles_msg;
+    angles_msg.x = yaw; 
+    angles_msg.y = pitch;
+    angles_msg.z = roll;
 
-    std_msgs::msg::Float32 roll_msg;
-    roll_msg.data = roll;
-    roll_publisher->publish(roll_msg);
+    angles_publisher->publish(angles_msg);
 }
 
 void Objective_node::get_processed_position(const geometry_msgs::msg::Point::SharedPtr msg){
