@@ -23,6 +23,9 @@ void Camera::init_camera(){
     // Stereo Calibration of the ZED M device
     stereo_calibration();
 
+    // Computing rectification parameters
+    stereo_rectification();
+
     m_frame_width = cap.get(cv::CAP_PROP_FRAME_WIDTH);
     m_frame_height = cap.get(cv::CAP_PROP_FRAME_HEIGHT);
     //std::cout << "init done" << std::endl;
@@ -207,6 +210,17 @@ void stereo_calibration(){
     m_rms_error = cv::stereoCalibrate(objectPoints, cornersLeft, cornersRight, m_cameraMatrixLeft, m_distCoeffsLeft, m_cameraMatrixRight, m_distCoeffsRight, m_imageLeftSize, m_R, m_T, m_E, m_F);
 
     std::cout << "Stereo device calibrated\n" << std::endl;
+}
+
+void stereo_rectification(){
+    std::cout << "Computing rectification paramters..." << std::endl;
+
+    cv::stereoRectify(m_cameraMatrixLeft, m_distCoeffsLeft, m_cameraMatrixRight, m_distCoeffsRight, cv::Size(1280,720), m_R, m_T, m_R1, m_R2, m_P1, m_P2, m_Q, cv::CALIB_ZERO_DISPARITY);
+
+    cv::initUndistortRectifyMap(m_cameraMatrixLeft, m_distCoeffsLeft, m_R1, m_P1, cv::Size(1280,720), CV_32FC1, m_map1Left, m_map2Left);
+    cv::initUndistortRectifyMap(m_cameraMatrixRight, m_distCoeffsRight, m_R2, m_P2, cv::Size(1280,720), CV_32FC1, m_map1Right, m_map2Right);
+
+    std::cout << "Rectification parameters computed\n" << std::endl;
 }
 
 int main(int argc, char * argv[]){
