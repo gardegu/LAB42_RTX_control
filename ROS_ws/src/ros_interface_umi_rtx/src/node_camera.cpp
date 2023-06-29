@@ -159,6 +159,8 @@ void Camera::stereo_calibration(){
     std::vector<std::vector<cv::Point2f>> cornersLeft;
     std::vector<std::vector<cv::Point2f>> cornersRight;
 
+    cv::Size imageLeftSize, imageRightSize;
+
     for(int i=1;i<=5;i++){
         cv::Mat imageLeft = cv::imread("CalibrationImages/leftImage0" + std::to_string(i) + ".png", cv::IMREAD_GRAYSCALE);
         cv::Mat imageRight = cv::imread("CalibrationImages/rightImage0" + std::to_string(i) + ".png", cv::IMREAD_GRAYSCALE);
@@ -170,8 +172,8 @@ void Camera::stereo_calibration(){
             std::cout << "Error reading the calibration right image " << i << std::endl;
         }
 
-        cv::Size imageLeftSize = imageLeft.size();
-        cv::Size imageRightSize = imageRight.size();
+        imageLeftSize = imageLeft.size();
+        imageRightSize = imageRight.size();
         //std::cout << "Left image size: " << imageLeftSize << std::endl;
         //std::cout << "Right image size: " << imageRightSize << std::endl;
 
@@ -207,7 +209,7 @@ void Camera::stereo_calibration(){
         //cv::drawChessboardCorners(imageRight, patternSize, cornersRightSub, patternFoundRight);
     }
 
-    m_rms_error = cv::stereoCalibrate(objectPoints, cornersLeft, cornersRight, m_cameraMatrixLeft, m_distCoeffsLeft, m_cameraMatrixRight, m_distCoeffsRight, m_imageLeftSize, m_R, m_T, m_E, m_F);
+    m_rms_error = cv::stereoCalibrate(objectPoints, cornersLeft, cornersRight, m_cameraMatrixLeft, m_distCoeffsLeft, m_cameraMatrixRight, m_distCoeffsRight, imageLeftSize, m_R, m_T, m_E, m_F);
 
     std::cout << "Stereo device calibrated\n" << std::endl;
 }

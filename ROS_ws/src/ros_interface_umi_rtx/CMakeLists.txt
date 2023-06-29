@@ -76,7 +76,7 @@ target_include_directories(armerror PUBLIC
  geometry_msgs
  )
 
- target_link_libraries(nodeCamera "${cpp_typesupport_target}")
+ target_link_libraries(nodeCamera "${cpp_typesupport_target}" ${OpenCV_LIBS})
  target_include_directories(nodeCamera PUBLIC
 $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
 $<INSTALL_INTERFACE:include>)
