@@ -24,7 +24,7 @@ void Camera::init_camera(){
     stereo_calibration();
 
     // Computing rectification parameters
-    stereo_rectification();
+    //stereo_rectification();
 
     m_frame_width = cap.get(cv::CAP_PROP_FRAME_WIDTH);
     m_frame_height = cap.get(cv::CAP_PROP_FRAME_HEIGHT);
