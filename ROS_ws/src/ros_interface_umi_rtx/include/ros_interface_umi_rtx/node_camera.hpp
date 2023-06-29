@@ -26,6 +26,8 @@ public:
     Camera() : Node("control") {
         init_interfaces();
         init_camera();
+
+        m_patternSize(7,5);
     };
 
 private:
@@ -48,7 +50,7 @@ private:
     cv::VideoCapture cap;
     cv::Mat frame, frameLeft, frameRight;
 
-    cv::Size m_patternSize(7,5);
+    cv::Size m_patternSize;
     float m_squareSize = 3.1;
     double m_baseline = 63;
     double m_focalLength = 2.8;
