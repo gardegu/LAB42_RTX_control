@@ -11,14 +11,14 @@ void Arm_node::init_interfaces(){
     subscription_commands = this->create_subscription<sensor_msgs::msg::JointState>("motor_commands",10,
         std::bind(&Arm_node::get_commands, this, _1));
     
-    pose_subscription = this->create_subscription<geometry_msgs::msg::Point>("target_position",10,
-        std::bind(&Arm_node::get_pose, this, _1));
+    position_subscription = this->create_subscription<geometry_msgs::msg::Point>("target_position",10,
+        std::bind(&Arm_node::get_position, this, _1));
 
-    pitch_subscription = this->create_subscription<std_msgs::msg::Float32>("target_pitch",10,
-        std::bind(&Arm_node::get_pitch, this, _1));
+    // pitch_subscription = this->create_subscription<std_msgs::msg::Float32>("target_pitch",10,
+    //     std::bind(&Arm_node::get_pitch, this, _1));
 
-    roll_subscription = this->create_subscription<std_msgs::msg::Float32>("target_roll",10,
-        std::bind(&Arm_node::get_roll, this, _1));
+    // roll_subscription = this->create_subscription<std_msgs::msg::Float32>("target_roll",10,
+    //     std::bind(&Arm_node::get_roll, this, _1));
     
     grip_subscription = this->create_subscription<std_msgs::msg::Float32>("target_grip",10,
         std::bind(&Arm_node::get_grip, this, _1));
@@ -67,19 +67,25 @@ void Arm_node::get_commands(const sensor_msgs::msg::JointState::SharedPtr msg){
                       {WRIST2,1*(objective[5]-objective[4])}};
 }
 
-void Arm_node::get_pose(const geometry_msgs::msg::Point::SharedPtr msg){
+void Arm_node::get_position(const geometry_msgs::msg::Point::SharedPtr msg){
     targ_x = msg->x;
     targ_y = msg->y;
     targ_z = msg->z;
 }
 
-void Arm_node::get_pitch(const std_msgs::msg::Float32::SharedPtr msg){
-    target_pitch = msg->data*M_PI/180;
+void Arm_node::get_angles(const geometry_msgs::msg::Vector3::SharedPtr msg){
+    target_yaw = msg->x*M_PI/180;
+    target_pitch = msg->y*M_PI/180;
+    target_roll = msg->z*M_PI/180;
 }
 
-void Arm_node::get_roll(const std_msgs::msg::Float32::SharedPtr msg){
-    target_roll = msg->data*M_PI/180;
-}
+// void Arm_node::get_pitch(const std_msgs::msg::Float32::SharedPtr msg){
+//     target_pitch = msg->data*M_PI/180;
+// }
+
+// void Arm_node::get_roll(const std_msgs::msg::Float32::SharedPtr msg){
+//     target_roll = msg->data*M_PI/180;
+// }
 
 void Arm_node::get_grip(const std_msgs::msg::Float32::SharedPtr msg){
     commands_motor[GRIP] = msg->data;

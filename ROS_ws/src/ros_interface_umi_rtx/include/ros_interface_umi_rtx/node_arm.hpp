@@ -6,6 +6,7 @@
 #include "std_msgs/msg/float32.hpp"
 #include "sensor_msgs/msg/joint_state.hpp"
 #include "geometry_msgs/msg/point.hpp"
+#include "geometry_msgs/msg/vector3.hpp"
 
 #include "ros_interface_umi_rtx/umi-drivers/armlib.h"
 #include "ros_interface_umi_rtx/umi-drivers/rtx.h"
@@ -54,9 +55,10 @@ private:
     void timer_callback();
     void init_interfaces();
     void get_commands(const sensor_msgs::msg::JointState::SharedPtr msg);
-    void get_pose(const geometry_msgs::msg::Point::SharedPtr msg);
-    void get_pitch(const std_msgs::msg::Float32::SharedPtr msg);
-    void get_roll(const std_msgs::msg::Float32::SharedPtr msg);
+    void get_position(const geometry_msgs::msg::Point::SharedPtr msg);
+    void get_angles(const geometry_msgs::msg::Vector3::SharedPtr msg);
+    // void get_pitch(const std_msgs::msg::Float32::SharedPtr msg);
+    // void get_roll(const std_msgs::msg::Float32::SharedPtr msg);
     void get_grip(const std_msgs::msg::Float32::SharedPtr msg);
     void set_motors();
     void get_params();
@@ -69,14 +71,16 @@ private:
 
     Arm full_arm;
     double targ_x,targ_y,targ_z, x,y,z;
-    double target_pitch, target_roll, pitch, roll;
+    double target_yaw, target_pitch, target_roll, pitch, roll;
 
     rclcpp::TimerBase::SharedPtr timer_;
     rclcpp::Subscription<sensor_msgs::msg::JointState>::SharedPtr subscription_commands;
 
-    rclcpp::Subscription<geometry_msgs::msg::Point>::SharedPtr pose_subscription;
-    rclcpp::Subscription<std_msgs::msg::Float32>::SharedPtr pitch_subscription;
-    rclcpp::Subscription<std_msgs::msg::Float32>::SharedPtr roll_subscription;
+    rclcpp::Subscription<geometry_msgs::msg::Point>::SharedPtr position_subscription;
+    rclcpp::Subscription<geometry_msgs::msg::Vector3>::SharedPtr angles_subscription;
+
+    // rclcpp::Subscription<std_msgs::msg::Float32>::SharedPtr pitch_subscription;
+    // rclcpp::Subscription<std_msgs::msg::Float32>::SharedPtr roll_subscription;
     rclcpp::Subscription<std_msgs::msg::Float32>::SharedPtr grip_subscription;
     
     rclcpp::Publisher<std_msgs::msg::String>::SharedPtr publisher_params;
