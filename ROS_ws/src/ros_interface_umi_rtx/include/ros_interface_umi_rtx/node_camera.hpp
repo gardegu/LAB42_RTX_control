@@ -4,6 +4,7 @@
 #include "rclcpp/rclcpp.hpp"
 #include "sensor_msgs/msg/image.hpp"
 #include "geometry_msgs/msg/point.hpp"
+#include "geometry_msgs/msg/vector3.hpp"
 #include <cv_bridge/cv_bridge.h>
 #include <opencv2/opencv.hpp>
 #include <vector>
@@ -27,7 +28,7 @@ private:
     void init_interfaces();
     void init_camera();
 
-    void get_angles(vector<vector<cv::Point>> &contours;);
+    void get_angles(vector<vector<cv::Point>> &contours);
 
     std::chrono::milliseconds loop_dt_ = 40ms;
 
@@ -35,15 +36,14 @@ private:
 
     rclcpp::Publisher<sensor_msgs::msg::Image>::SharedPtr image_publisher;
     rclcpp::Publisher<geometry_msgs::msg::Point>::SharedPtr coord_publisher;
+    rclcpp::Publisher<geometry_msgs::msg::Vector3>::SharedPtr angles_publisher;
 
     cv::VideoCapture cap;
     cv::Mat frame;
 
-    double m_cx;
-    double m_cy;
+    double m_cx, m_cy, m_cz, yaw, pitch, roll;
 
-    int m_frame_width;
-    int m_frame_height;
+    int m_frame_width, m_frame_height;
 
 };
 

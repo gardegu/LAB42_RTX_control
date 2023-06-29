@@ -7,13 +7,19 @@ void Objective_node::init_interfaces(){
     pitch_publisher = this->create_publisher<std_msgs::msg::Float32>("target_pitch",10);
     roll_publisher = this->create_publisher<std_msgs::msg::Float32>("target_roll",10);
 
+    position_subscriber = this->create_subscription<geometry_msgs::msg::Point>("processed_position",10,
+        std::bind(&Objective_node::get_processed_position, this, _1));
+    angles_subscriber = this->create_subscription<geometry_msgs::msg::Vector3>("processed_angles",10,
+        std::bind(&Objective_node::get_processed_angles, this, _1));
     image_subscriber = this->create_subscription<sensor_msgs::msg::Image>("processed_image",10,
         std::bind(&Objective_node::get_image, this, _1));
 }
 
 void Objective_node::timer_callback(){
     if (!manual_control){
-        Lissajou();
+        // Lissajou();
+        pitch = processed_pitch;
+        roll = processed_roll;
     }
     t+=dt;
 
@@ -32,14 +38,26 @@ void Objective_node::timer_callback(){
     roll_publisher->publish(roll_msg);
 }
 
+void Objective_node::get_processed_position(const geometry_msgs::msg::Point::SharedPtr msg){
+    processed_x = msg->x;
+    processed_y = msg->y;
+    processed_z = msg->z;
+}
+
+void Objective_node::get_processed_angles(const geometry_msgs::msg::Vector3::SharedPtr msg){
+    processed_yaw = msg->x;
+    processed_pitch = msg->y;
+    processed_roll = msg->z;
+}
+
 void Objective_node::get_image(const sensor_msgs::msg::Image::SharedPtr msg){
     cv_bridge::CvImagePtr cv_ptr = cv_bridge::toCvCopy(msg, "bgr8");
     frame = cv_ptr->image;
 }
 
 void Objective_node::Lissajou(){
-    x = 0.3*sin(0.5*t);
-    y = 0.5+0.1*sin(0.3*t);
+    x = 0.2*sin(0.5*t);
+    y = 0.3+0.1*sin(0.3*t);
     z = 0.3+0.2*sin(0.2*t);
 }
 

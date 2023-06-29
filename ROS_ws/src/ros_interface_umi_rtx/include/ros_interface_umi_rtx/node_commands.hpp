@@ -3,6 +3,7 @@
 
 #include "rclcpp/rclcpp.hpp"
 #include "geometry_msgs/msg/point.hpp"
+#include "geometry_msgs/msg/vector3.hpp"
 #include "std_msgs/msg/float32.hpp"
 #include "sensor_msgs/msg/image.hpp"
 
@@ -39,6 +40,8 @@ private :
     void timer_callback();
     void Lissajou();
 
+    void get_processed_position(const geometry_msgs::msg::Point::SharedPtr msg);
+    void get_processed_angles(const geometry_msgs::msg::Vector3::SharedPtr msg);
     void get_image(const sensor_msgs::msg::Image::SharedPtr msg);
     
     std::chrono::milliseconds loop_dt_ = 40ms;
@@ -46,12 +49,16 @@ private :
     double x,y,z,pitch,roll;
     float t,dt=0.04;
 
+    double processed_x,processed_y,processed_z,processed_yaw,processed_pitch,processed_roll;
+
 
     rclcpp::TimerBase::SharedPtr timer_;
     rclcpp::Publisher<geometry_msgs::msg::Point>::SharedPtr objective_publisher;
     rclcpp::Publisher<std_msgs::msg::Float32>::SharedPtr pitch_publisher;
     rclcpp::Publisher<std_msgs::msg::Float32>::SharedPtr roll_publisher;
 
+    rclcpp::Subscription<geometry_msgs::msg::Point>::SharedPtr position_subscriber;
+    rclcpp::Subscription<geometry_msgs::msg::Vector3>::SharedPtr angles_subscriber;
     rclcpp::Subscription<sensor_msgs::msg::Image>::SharedPtr image_subscriber;
     
 };

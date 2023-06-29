@@ -7,7 +7,8 @@ void Camera::init_interfaces(){
     timer_ = this->create_wall_timer(loop_dt_,std::bind(&Camera::timer_callback,this));
 
     image_publisher = this->create_publisher<sensor_msgs::msg::Image>("processed_image",10);
-    // coord_publisher = this->create_publisher<geometry_msgs::msg::Point>("target_position",10);
+    coord_publisher = this->create_publisher<geometry_msgs::msg::Point>("processed_position",10);
+    angles_publisher = this->create_publisher<geometry_msgs::msg::Vector3>("processed_angles",10);
 }
 
 void Camera::init_camera(){
@@ -25,6 +26,9 @@ void Camera::init_camera(){
 }
 
 void Camera::timer_callback(){
+    geometry_msgs::msg::Point coord_msg;
+    geometry_msgs::msg::Vector3 angles_msg;
+
     cap.read(frame);
 
     cv::Mat hsv_img;
@@ -52,6 +56,8 @@ void Camera::timer_callback(){
     }
 
     else{
+        get_angles(contours);
+
         double maxArea = 0;
         int maxAreaIdx = -1;
 
@@ -68,7 +74,6 @@ void Camera::timer_callback(){
 
         //std::cout << "indice : " << maxAreaIdx << std::endl;
 
-        geometry_msgs::msg::Point coord_msg;
 
         if(maxAreaIdx > -1) {
             cv::drawContours(frame, contours, maxAreaIdx, cv::Scalar(255, 255, 255), 2);
@@ -100,7 +105,6 @@ void Camera::timer_callback(){
             coord_msg.x = m_cx;
             coord_msg.y = m_cy;
         }
-        // coord_publisher->publish(coord_msg);
 
         cv::circle(frame,cv::Point(m_frame_width-40,40),20,cv::Scalar(0,255,0),-1);
 
@@ -110,11 +114,36 @@ void Camera::timer_callback(){
         sensor_msgs::msg::Image::SharedPtr img_msg = cv_bridge::CvImage(std_msgs::msg::Header(), "bgr8", frame).toImageMsg();
         image_publisher->publish(*img_msg);
     }
+    coord_publisher->publish(coord_msg);
+
+    angles_msg.x = yaw;
+    angles_msg.y = pitch;
+    angles_msg.z = roll;
+    angles_publisher->publish(angles_msg);
 }
 
-void Camera::get_angles(){
-    cv2::Mat image = frame;
-    
+void Camera::get_angles(vector<vector<cv::Point>> &contours){
+    vector<cv::Point> longest_contour;
+    double max_area = 0.0;
+    for (const auto& contour : contours) {
+        double area = cv::contourArea(contour);
+        if (area > max_area) {
+            max_area = area;
+            longest_contour = contour;
+        }
+    }
+
+    cv::Vec4f line_params;
+    cv::fitLine(longest_contour, line_params, cv::DIST_L2, 0, 0.01, 0.01);
+
+    float vx = line_params[0];
+    float vy = line_params[1];
+    float theta = atan2(vy, vx) + M_PI/2;
+
+    yaw = 0.;
+    pitch = 90.;
+    roll = theta*180/M_PI;
+
 }
 
 
