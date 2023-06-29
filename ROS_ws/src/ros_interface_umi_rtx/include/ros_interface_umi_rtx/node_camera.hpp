@@ -35,6 +35,7 @@ private:
     void get_angles(vector<vector<cv::Point>> &contours);
     void stereo_calibration();
     void stereo_rectification();
+    void stereo_split_views();
 
     std::chrono::milliseconds loop_dt_ = 40ms;
 
@@ -45,10 +46,10 @@ private:
     rclcpp::Publisher<geometry_msgs::msg::Vector3>::SharedPtr angles_publisher;
 
     cv::VideoCapture cap;
-    cv::Mat frame;
+    cv::Mat frame, frameLeft, frameRight;
 
     cv::Size m_patternSize(7,5);
-    float m_squareSize(3.1);
+    float m_squareSize = 3.1;
     double m_baseline = 63;
     double m_focalLength = 2.8;
 
