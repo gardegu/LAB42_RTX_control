@@ -52,20 +52,10 @@ private:
     double m_focalLength = 2.8;
 
     double m_rms_error;
-    cv::Mat m_cameraMatrixLeft;
-    cv::Mat m_distCoeffsLeft;
-    cv::Mat m_cameraMatrixRight;
-    cv::Mat m_distCoeffsRight;
-    cv::Mat m_R;
-    cv::Mat m_T;
-    cv::Mat m_E;
-    cv::Mat m_F;
 
-    cv::Mat m_R1;
-    cv::Mat m_R2;
-    cv::Mat m_P1;
-    cv::Mat m_P2;
-    cv::Mat m_Q;
+    cv::Mat m_cameraMatrixLeft, m_distCoeffsLeft, m_cameraMatrixRight, m_distCoeffsRight;
+    cv::Mat m_R, m_T, m_E, m_F;
+    cv::Mat m_R1, m_R2, m_P1, m_P2, m_Q;
 
     double m_cx, m_cy, m_cz, yaw, pitch, roll;
 
