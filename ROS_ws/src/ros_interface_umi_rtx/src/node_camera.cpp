@@ -37,6 +37,8 @@ void Camera::timer_callback(){
 
     cap.read(frame);
 
+    //stereo_split_views();
+
     cv::Mat hsv_img;
     cv::cvtColor(frame,hsv_img,cv::COLOR_BGR2HSV);
 
@@ -223,6 +225,21 @@ void Camera::stereo_rectification(){
     cv::initUndistortRectifyMap(m_cameraMatrixRight, m_distCoeffsRight, m_R2, m_P2, cv::Size(1280,720), CV_32FC1, m_map1Right, m_map2Right);
 
     std::cout << "Rectification parameters computed\n" << std::endl;
+}
+
+void Camera::stereo_split_views(){
+    if(frame.empty()){
+        std::cout << "Error reading the frame" << std::endl;
+    }
+
+    int width = frame.cols;
+    int height = frame.rows;
+
+    cv::Mat frameLeft = frame(cv::Rect(0,0,width/2,height));
+    cv::Mat frameRight = frame(cv::Rect(width/2,0,width/2,height));
+
+    cv::resize(frameLeft,frameLeft,cv::Size(1280,720));
+    cv::resize(frameRight,frameRight,cv::Size(1280,720));
 }
 
 int main(int argc, char * argv[]){
