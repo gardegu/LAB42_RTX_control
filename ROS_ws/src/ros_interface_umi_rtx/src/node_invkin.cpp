@@ -49,15 +49,17 @@ void InvKin_node::get_angles(const geometry_msgs::msg::Vector3::SharedPtr msg){
 void InvKin_node::get_state(double x, double y, double z){    
 
     // If coordinates didn't change, we don't compose the inverse kinematics
-    if (x!=last_x or y!=last_y or z!=last_z or target_pitch!=last_pitch or target_roll!=last_roll){ // Avoid calculation when the position doesn't change
+    if (x!=last_x or y!=last_y or z!=last_z or target_yaw!=last_yaw or target_pitch!=last_pitch or target_roll!=last_roll){ // Avoid calculation when the position doesn't change
         last_x = x;
         last_y = y;
         last_z = z;
+        last_yaw = target_yaw;
         last_pitch = target_pitch;
         last_roll = target_roll;
         
         z -= 0.455; // Adapt to the z-origin of the urdf file
-        double yaw=atan2(y,x), roll=target_roll, pitch=target_pitch;
+        // double yaw=atan2(y,x), roll=target_roll, pitch=target_pitch;
+        double yaw=target_yaw, roll=target_roll, pitch=target_pitch;
 
         // Translation to put the target at the tip of the hand
         x -= L*cos(target_pitch)*cos(yaw);

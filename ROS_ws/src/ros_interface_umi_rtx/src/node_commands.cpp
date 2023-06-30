@@ -17,8 +17,8 @@ void Objective_node::init_interfaces(){
 void Objective_node::timer_callback(){
     if (!manual_control){
         Lissajou();
-        // pitch = processed_pitch;
-        // roll = processed_roll;
+        pitch = processed_pitch;
+        roll = processed_roll;
     }
     t+=dt;
 

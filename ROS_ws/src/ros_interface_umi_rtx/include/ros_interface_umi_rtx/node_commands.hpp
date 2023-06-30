@@ -46,7 +46,7 @@ private :
     
     std::chrono::milliseconds loop_dt_ = 40ms;
 
-    double x,y,z,yaw,pitch,roll;
+    double x=0., y=0.5, z=0.5, yaw,pitch,roll;
     float t,dt=0.04;
 
     double processed_x,processed_y,processed_z,processed_yaw,processed_pitch,processed_roll;

@@ -69,7 +69,6 @@ void Camera::timer_callback(){
     }
 
     else{
-        get_angles(contours);
 
         double maxArea = 0;
         int maxAreaIdx = -1;
@@ -89,6 +88,7 @@ void Camera::timer_callback(){
 
 
         if(maxAreaIdx > -1) {
+            get_angles(contours);
             cv::drawContours(frame, contours, maxAreaIdx, cv::Scalar(255, 255, 255), 2);
 
             cv::Moments moments = cv::moments(contours[maxAreaIdx]);
@@ -158,7 +158,7 @@ void Camera::get_angles(vector<vector<cv::Point>> &contours){
     float vy = line_params[1];
     float theta = atan2(vy, vx) + M_PI/2;
 
-    yaw = 0.;
+    yaw = 90.;
     pitch = 90.;
     roll = theta*180/M_PI;
 

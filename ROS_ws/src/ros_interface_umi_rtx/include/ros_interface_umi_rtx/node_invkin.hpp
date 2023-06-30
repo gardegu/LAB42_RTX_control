@@ -54,7 +54,7 @@ private:
     double last_x,last_y,last_z;
     int ROLL=6, PITCH=7;
 
-    double target_yaw;
+    double target_yaw, last_yaw;
     double target_pitch, last_pitch;
     double target_roll, last_roll;
 
