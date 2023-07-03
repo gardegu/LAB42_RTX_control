@@ -46,6 +46,8 @@ void Camera::timer_callback(){
 
     cv::Mat hsv_img;
     cv::cvtColor(frame,hsv_img,cv::COLOR_BGR2HSV);
+    //cv::cvtColor(frameLeft,hsv_img,cv::COLOR_BGR2HSV);
+
 
     cv::Scalar lower_bound = cv::Scalar(20,100,100);
     cv::Scalar upper_bound = cv::Scalar(60,255,255);
@@ -60,11 +62,15 @@ void Camera::timer_callback(){
         //std::cout << "Cannot detect the target" << std::endl;
 
         cv::circle(frame,cv::Point(m_frame_width-40,40),20,cv::Scalar(0,0,255),-1);
+        //cv::circle(frameLeft,cv::Point(m_frame_width-40,40),20,cv::Scalar(0,0,255),-1);
 
         cv::line(frame,cv::Point (m_frame_width/2 - 25,m_frame_height/2),cv::Point (m_frame_width/2 + 25,m_frame_height/2),cv::Scalar(255,255,255),2);
         cv::line(frame,cv::Point (m_frame_width/2,m_frame_height/2 - 25),cv::Point (m_frame_width/2,m_frame_height/2 + 25),cv::Scalar(255,255,255),2);
+        //cv::line(frameLeft,cv::Point (m_frame_width/2 - 25,m_frame_height/2),cv::Point (m_frame_width/2 + 25,m_frame_height/2),cv::Scalar(255,255,255),2);
+        //cv::line(frameLeft,cv::Point (m_frame_width/2,m_frame_height/2 - 25),cv::Point (m_frame_width/2,m_frame_height/2 + 25),cv::Scalar(255,255,255),2);
 
         sensor_msgs::msg::Image::SharedPtr img_msg = cv_bridge::CvImage(std_msgs::msg::Header(),"bgr8",frame).toImageMsg();
+        //sensor_msgs::msg::Image::SharedPtr img_msg = cv_bridge::CvImage(std_msgs::msg::Header(),"bgr8",frameLeft).toImageMsg();
         image_publisher->publish(*img_msg);
     }
 
@@ -90,6 +96,7 @@ void Camera::timer_callback(){
         if(maxAreaIdx > -1) {
             get_angles(contours);
             cv::drawContours(frame, contours, maxAreaIdx, cv::Scalar(255, 255, 255), 2);
+            //cv::drawContours(frameLeft, contours, maxAreaIdx, cv::Scalar(255, 255, 255), 2);
 
             cv::Moments moments = cv::moments(contours[maxAreaIdx]);
 
@@ -111,6 +118,7 @@ void Camera::timer_callback(){
                 coord_msg.y = m_cy;
 
                 cv::circle(frame,cv::Point(m_frame_width-40,40),20,cv::Scalar(100,50,100),-1);
+                //cv::circle(frameLeft,cv::Point(m_frame_width-40,40),20,cv::Scalar(100,50,100),-1);
             }
         }
 
@@ -120,11 +128,15 @@ void Camera::timer_callback(){
         }
 
         cv::circle(frame,cv::Point(m_frame_width-40,40),20,cv::Scalar(0,255,0),-1);
+        //cv::circle(frameLeft,cv::Point(m_frame_width-40,40),20,cv::Scalar(0,255,0),-1);
 
         cv::line(frame,cv::Point (m_frame_width/2 - 25,m_frame_height/2),cv::Point (m_frame_width/2 + 25,m_frame_height/2),cv::Scalar(255,255,255),2);
         cv::line(frame,cv::Point (m_frame_width/2,m_frame_height/2 - 25),cv::Point (m_frame_width/2,m_frame_height/2 + 25),cv::Scalar(255,255,255),2);
+        //cv::line(frameLeft,cv::Point (m_frame_width/2 - 25,m_frame_height/2),cv::Point (m_frame_width/2 + 25,m_frame_height/2),cv::Scalar(255,255,255),2);
+        //cv::line(frameLeft,cv::Point (m_frame_width/2,m_frame_height/2 - 25),cv::Point (m_frame_width/2,m_frame_height/2 + 25),cv::Scalar(255,255,255),2);
 
         sensor_msgs::msg::Image::SharedPtr img_msg = cv_bridge::CvImage(std_msgs::msg::Header(), "bgr8", frame).toImageMsg();
+        //sensor_msgs::msg::Image::SharedPtr img_msg = cv_bridge::CvImage(std_msgs::msg::Header(), "bgr8", frameLeft).toImageMsg();
         image_publisher->publish(*img_msg);
     }
     coord_publisher->publish(coord_msg);
