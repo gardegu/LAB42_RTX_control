@@ -5,6 +5,8 @@ void Objective_node::init_interfaces(){
 
     objective_publisher  = this->create_publisher<geometry_msgs::msg::Point>("target_position",10);
     angles_publisher  = this->create_publisher<geometry_msgs::msg::Vector3>("target_angles",10);
+    grip_publisher  = this->create_publisher<std_msgs::msg::Float32>("target_grip",10);
+    mission_publisher  = this->create_publisher<std_msgs::msg::String>("mission",10);
 
     position_subscriber = this->create_subscription<geometry_msgs::msg::Point>("processed_position",10,
         std::bind(&Objective_node::get_processed_position, this, _1));
@@ -15,11 +17,53 @@ void Objective_node::init_interfaces(){
 }
 
 void Objective_node::timer_callback(){
-    if (!manual_control){
-        Lissajou();
-        pitch = processed_pitch;
-        roll = processed_roll;
+    double dt1 = 6;
+    if (mode != "manual"){
+        // Lissajou();
+        // TODO replace objective by target position
+        if ((t-t0)<dt1){
+            x = x0 + (0.2-x0)*(t-t0)/dt1;
+            y = y0 + (0.4-y0)*(t-t0)/dt1;
+            z = z0 + (0.6-z0)*(t-t0)/dt1;
+
+            pitch = pitch0 + (45-pitch0)*(t-t0)/dt1;
+            roll = roll0 + (45-roll0)*(t-t0)/dt1;
+            grip = 0.4;
+        }
+
+        else if ((t-t0)>=dt1 and (t-t0)<12){
+            x0 = x;
+            y0 = y;
+            z0 = z;
+
+            roll0 = roll;
+            pitch0 = pitch;
+            grip = 0.0;
+        }
+
+        else if ((t-t0)>=12 and (t-t0)<18){
+            x = x0 + (0.-x0)*(t-t0-12)/6;
+            y = y0 + (0.5-y0)*(t-t0-12)/6;
+            z = z0 + (0.8-z0)*(t-t0-12)/6;
+
+            pitch = pitch0 + (0.-pitch0)*(t-t0-12)/6;
+            roll = roll0 + (0.-roll0)*(t-t0-12)/6;
+        } 
     }
+
+    else {
+        // yaw = atan2(y,x);
+        x0 = x;
+        y0 = y;
+        z0 = z;
+
+        roll0 = roll;
+        pitch0 = pitch;
+
+        t0 = t;
+    }
+
+
     t+=dt;
 
     geometry_msgs::msg::Point position_msg;
@@ -32,8 +76,11 @@ void Objective_node::timer_callback(){
     angles_msg.x = yaw; 
     angles_msg.y = pitch;
     angles_msg.z = roll;
-
     angles_publisher->publish(angles_msg);
+
+    std_msgs::msg::Float32 grip_msg;
+    grip_msg.data = grip;
+    grip_publisher->publish(grip_msg);
 }
 
 void Objective_node::get_processed_position(const geometry_msgs::msg::Point::SharedPtr msg){

@@ -148,7 +148,13 @@ MainGUI::MainGUI(QApplication * app,
     // Connection of the clicked signal to the corresponding slot to react to clicks on the switch
     connect(switchButton, &QPushButton::clicked, this, [=]() {
         manual_on = switchButton->isChecked();
-        ros2_node->manual_control = switchButton->isChecked();
+        if (manual_on){
+            ros2_node->mode = "manual";
+        }
+        else {
+            ros2_node->mode = "grab";
+        }
+        // ros2_node->manual_control = switchButton->isChecked();
     });
     main_layout->addWidget(switchButton,0,3);
 
@@ -164,7 +170,6 @@ MainGUI::MainGUI(QApplication * app,
     frame = new cv::Mat;
     image = new QImage;
     timer = new QTimer(this);
-    // TODO connect timer to frame
     connect(timer, &QTimer::timeout, this, [this](){
         updateFrame();
     });
@@ -289,7 +294,7 @@ int main(int argc, char* argv[])
 
     while (rclcpp::ok())
     {   
-        if (ros2_node->manual_control){
+        if (ros2_node->mode=="manual"){
             ros2_node->update_state(gui_app->x,gui_app->y,gui_app->z,gui_app->roll,gui_app->pitch);
         }
         exec.spin_some();

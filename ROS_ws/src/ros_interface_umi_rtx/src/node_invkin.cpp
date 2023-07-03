@@ -6,10 +6,8 @@ void InvKin_node::init_interfaces(){
         std::bind(&InvKin_node::get_position, this, _1));
     angles_subscription = this->create_subscription<geometry_msgs::msg::Vector3>("target_angles",10,
         std::bind(&InvKin_node::get_angles, this, _1));
-    // pitch_subscription = this->create_subscription<std_msgs::msg::Float32>("target_pitch",10,
-    //     std::bind(&InvKin_node::get_pitch, this, _1));
-    // roll_subscription = this->create_subscription<std_msgs::msg::Float32>("target_roll",10,
-    //     std::bind(&InvKin_node::get_roll, this, _1));
+    grip_subscription = this->create_subscription<std_msgs::msg::Float32>("target_grip",10,
+        std::bind(&InvKin_node::get_grip, this, _1));
     angles_publisher  = this->create_publisher<sensor_msgs::msg::JointState>("motor_commands",10);
 }
 
@@ -18,7 +16,7 @@ void InvKin_node::timer_callback(){
 
     msg.header.stamp = this->get_clock()->now();
     msg.name = {"shoulder_updown","shoulder_joint","elbow","wrist","wrist_gripper_connection_roll","wrist_gripper_connection_pitch","gripper_left","gripper_right"};
-    msg.position = {state[ZED],state[SHOULDER],state[ELBOW],state[YAW],state[ROLL],state[PITCH],0,0};
+    msg.position = {state[ZED],state[SHOULDER],state[ELBOW],state[YAW],state[ROLL],state[PITCH],target_grip/2,+target_grip/2};
 
     angles_publisher->publish(msg);
 }
@@ -46,6 +44,10 @@ void InvKin_node::get_angles(const geometry_msgs::msg::Vector3::SharedPtr msg){
     target_roll = msg->z*M_PI/180;
 }
 
+void InvKin_node::get_grip(const std_msgs::msg::Float32::SharedPtr msg){
+    target_grip = msg->data;
+}
+
 void InvKin_node::get_state(double x, double y, double z){    
 
     // If coordinates didn't change, we don't compose the inverse kinematics
@@ -58,13 +60,13 @@ void InvKin_node::get_state(double x, double y, double z){
         last_roll = target_roll;
         
         z -= 0.455; // Adapt to the z-origin of the urdf file
-        // double yaw=atan2(y,x), roll=target_roll, pitch=target_pitch;
-        double yaw=target_yaw, roll=target_roll, pitch=target_pitch;
+        double yaw=atan2(y,x), roll=target_roll, pitch=target_pitch;
+        // double yaw=target_yaw, roll=target_roll, pitch=target_pitch;
 
         // Translation to put the target at the tip of the hand
-        x -= L*cos(target_pitch)*cos(yaw);
-        y -= L*cos(target_pitch)*sin(yaw);
-        z += L*sin(target_pitch);
+        x -= L*cos(pitch)*cos(yaw);
+        y -= L*cos(pitch)*sin(yaw);
+        z += L*sin(pitch);
 
         Eigen::Matrix3d mat_yaw, mat_roll, mat_pitch;
         mat_yaw << cos(yaw),-sin(yaw),0,

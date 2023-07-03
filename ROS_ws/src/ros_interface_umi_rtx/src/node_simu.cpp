@@ -4,6 +4,8 @@ void Simu_node::init_interfaces(){
     timer_ = this->create_wall_timer(loop_dt_, std::bind(&Simu_node::timer_callback, this));
     invkin_subscriber = this->create_subscription<sensor_msgs::msg::JointState>("motor_commands",10,
         std::bind(&Simu_node::get_commands, this, _1));
+    mission_subscriber = this->create_subscription<std_msgs::msg::String>("mission",10,
+        std::bind(&Simu_node::get_mission, this, _1));
     simu_publisher = this->create_publisher<sensor_msgs::msg::JointState>("joint_states",10);
 }
 
@@ -141,13 +143,28 @@ void Simu_node::get_commands(const sensor_msgs::msg::JointState::SharedPtr msg){
     (*joint)["position"] = min(max(msg->position[0],(*joint)["min"]),(*joint)["max"]);
 
 
-    for (int i=1; i<msg->name.size(); i++){ // Revolute joints
+    for (int i=1; i<=5; i++){ // Revolute joints
         name = msg->name[i];
         joint = &free_joints[name];
 
         (*joint)["position"] = min(max(msg->position[i]*M_PI/180,(*joint)["min"]),(*joint)["max"]);
     }
+
+    // Gripper left
+    name = msg->name[6];
+    joint = &free_joints[name];
+    (*joint)["position"] = min(max(msg->position[6],(*joint)["min"]),(*joint)["max"]);
+
+    // Gripper right
+    name = msg->name[7];
+    joint = &free_joints[name];
+    (*joint)["position"] = min(max(msg->position[7],(*joint)["min"]),(*joint)["max"]);
 }
+
+void Simu_node::get_mission(const std_msgs::msg::String::SharedPtr msg){
+    mission = msg->data;
+}
+
 
 
 int main(int argc, char *argv[]){
