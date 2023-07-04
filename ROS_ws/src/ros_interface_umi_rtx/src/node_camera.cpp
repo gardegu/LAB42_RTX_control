@@ -42,6 +42,9 @@ void Camera::timer_callback(){
 
     stereo_split_views();
 
+    m_frame_width_left = frameLeft.cols;
+    m_frame_height_left = frameLeft.rows;
+
     // Remplacer frame par frameLeft dans le cas où on utilise la caméra stéréo
 
     cv::Mat hsv_img;
@@ -66,8 +69,8 @@ void Camera::timer_callback(){
 
         //cv::line(frame,cv::Point (m_frame_width/2 - 25,m_frame_height/2),cv::Point (m_frame_width/2 + 25,m_frame_height/2),cv::Scalar(255,255,255),2);
         //cv::line(frame,cv::Point (m_frame_width/2,m_frame_height/2 - 25),cv::Point (m_frame_width/2,m_frame_height/2 + 25),cv::Scalar(255,255,255),2);
-        cv::line(frameLeft,cv::Point (m_frame_width/2 - 25,m_frame_height/2),cv::Point (m_frame_width/2 + 25,m_frame_height/2),cv::Scalar(255,255,255),2);
-        cv::line(frameLeft,cv::Point (m_frame_width/2,m_frame_height/2 - 25),cv::Point (m_frame_width/2,m_frame_height/2 + 25),cv::Scalar(255,255,255),2);
+        cv::line(frameLeft,cv::Point (m_frame_width_left/2 - 25,m_frame_height_left/2),cv::Point (m_frame_width_left/2 + 25,m_frame_height_left/2),cv::Scalar(255,255,255),2);
+        cv::line(frameLeft,cv::Point (m_frame_width_left/2,m_frame_height_left/2 - 25),cv::Point (m_frame_width_left/2,m_frame_height_left/2 + 25),cv::Scalar(255,255,255),2);
 
         //sensor_msgs::msg::Image::SharedPtr img_msg = cv_bridge::CvImage(std_msgs::msg::Header(),"bgr8",frame).toImageMsg();
         sensor_msgs::msg::Image::SharedPtr img_msg = cv_bridge::CvImage(std_msgs::msg::Header(),"bgr8",frameLeft).toImageMsg();
@@ -118,7 +121,7 @@ void Camera::timer_callback(){
                 coord_msg.y = m_cy;
 
                 //cv::circle(frame,cv::Point(m_frame_width-40,40),20,cv::Scalar(100,50,100),-1);
-                cv::circle(frameLeft,cv::Point(m_frame_width-40,40),20,cv::Scalar(100,50,100),-1);
+                cv::circle(frameLeft,cv::Point(m_frame_width_left-40,40),20,cv::Scalar(100,50,100),-1);
             }
         }
 
@@ -128,12 +131,12 @@ void Camera::timer_callback(){
         }
 
         //cv::circle(frame,cv::Point(m_frame_width-40,40),20,cv::Scalar(0,255,0),-1);
-        cv::circle(frameLeft,cv::Point(m_frame_width-40,40),20,cv::Scalar(0,255,0),-1);
+        cv::circle(frameLeft,cv::Point(m_frame_width_left-40,40),20,cv::Scalar(0,255,0),-1);
 
         //cv::line(frame,cv::Point (m_frame_width/2 - 25,m_frame_height/2),cv::Point (m_frame_width/2 + 25,m_frame_height/2),cv::Scalar(255,255,255),2);
         //cv::line(frame,cv::Point (m_frame_width/2,m_frame_height/2 - 25),cv::Point (m_frame_width/2,m_frame_height/2 + 25),cv::Scalar(255,255,255),2);
-        cv::line(frameLeft,cv::Point (m_frame_width/2 - 25,m_frame_height/2),cv::Point (m_frame_width/2 + 25,m_frame_height/2),cv::Scalar(255,255,255),2);
-        cv::line(frameLeft,cv::Point (m_frame_width/2,m_frame_height/2 - 25),cv::Point (m_frame_width/2,m_frame_height/2 + 25),cv::Scalar(255,255,255),2);
+        cv::line(frameLeft,cv::Point (m_frame_width_left/2 - 25,m_frame_height_left/2),cv::Point (m_frame_width_left/2 + 25,m_frame_height_left/2),cv::Scalar(255,255,255),2);
+        cv::line(frameLeft,cv::Point (m_frame_width_left/2,m_frame_height_left/2 - 25),cv::Point (m_frame_width_left/2,m_frame_height_left/2 + 25),cv::Scalar(255,255,255),2);
 
         //sensor_msgs::msg::Image::SharedPtr img_msg = cv_bridge::CvImage(std_msgs::msg::Header(), "bgr8", frame).toImageMsg();
         sensor_msgs::msg::Image::SharedPtr img_msg = cv_bridge::CvImage(std_msgs::msg::Header(), "bgr8", frameLeft).toImageMsg();

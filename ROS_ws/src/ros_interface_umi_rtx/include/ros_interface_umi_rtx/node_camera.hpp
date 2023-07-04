@@ -61,6 +61,7 @@ private:
     cv::Ptr<cv::StereoSGBM> stereo;
 
     int m_frame_width, m_frame_height;
+    int m_frame_width_left, m_frame_height_left;
     int blockSize = 5;
     int min_disp = 0;
     int max_disp = 32;
