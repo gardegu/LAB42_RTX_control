@@ -47,6 +47,15 @@ void Camera::timer_callback(){
 
     // Remplacer frame par frameLeft dans le cas où on utilise la caméra stéréo
 
+    get_banana_and_angles(coord_msg,angles_msg);
+
+    stereo_get_disparity();
+    sensor_msgs::msg::Image::SharedPtr disp_msg = cv_bridge::CvImage(std_msgs::msg::Header(),"mono8",disparityMap).toImageMsg();
+    disparity_publisher->publish(*disp_msg);
+
+}
+
+void Camera::get_banana_and_angles(geometry_msgs::msg::Point coord_msg, geometry_msgs::msg::Vector3 angles_msg){
     cv::Mat hsv_img;
     //cv::cvtColor(frame,hsv_img,cv::COLOR_BGR2HSV);
     cv::cvtColor(frameLeft,hsv_img,cv::COLOR_BGR2HSV);
@@ -148,11 +157,6 @@ void Camera::timer_callback(){
     angles_msg.y = pitch;
     angles_msg.z = roll;
     angles_publisher->publish(angles_msg);
-
-    stereo_get_disparity();
-    sensor_msgs::msg::Image::SharedPtr disp_msg = cv_bridge::CvImage(std_msgs::msg::Header(),"mono8",disparityMap).toImageMsg();
-    disparity_publisher->publish(*disp_msg);
-
 }
 
 void Camera::get_angles(vector<vector<cv::Point>> &contours){
