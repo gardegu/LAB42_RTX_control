@@ -28,7 +28,7 @@ void Objective_node::timer_callback(){
 
             pitch = pitch0 + (45-pitch0)*(t-t0)/dt1;
             roll = roll0 + (45-roll0)*(t-t0)/dt1;
-            grip = 0.4;
+            grip = 0.08;
         }
 
         else if ((t-t0)>=dt1 and (t-t0)<12){
@@ -38,7 +38,7 @@ void Objective_node::timer_callback(){
 
             roll0 = roll;
             pitch0 = pitch;
-            grip = 0.0;
+            grip = 0.01;
         }
 
         else if ((t-t0)>=12 and (t-t0)<18){
@@ -62,8 +62,6 @@ void Objective_node::timer_callback(){
 
         t0 = t;
     }
-
-
     t+=dt;
 
     geometry_msgs::msg::Point position_msg;

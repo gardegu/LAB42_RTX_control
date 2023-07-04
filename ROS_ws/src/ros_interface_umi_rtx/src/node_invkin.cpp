@@ -16,7 +16,7 @@ void InvKin_node::timer_callback(){
 
     msg.header.stamp = this->get_clock()->now();
     msg.name = {"shoulder_updown","shoulder_joint","elbow","wrist","wrist_gripper_connection_roll","wrist_gripper_connection_pitch","gripper_left","gripper_right"};
-    msg.position = {state[ZED],state[SHOULDER],state[ELBOW],state[YAW],state[ROLL],state[PITCH],target_grip/2,+target_grip/2};
+    msg.position = {state[ZED],state[SHOULDER],state[ELBOW],state[YAW],state[ROLL],state[PITCH],0.05-target_grip/2,-0.05+target_grip/2};
 
     angles_publisher->publish(msg);
 }
