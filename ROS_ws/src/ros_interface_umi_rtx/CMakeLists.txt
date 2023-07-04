@@ -74,6 +74,7 @@ target_include_directories(armerror PUBLIC
  OpenCV
  cv_bridge
  geometry_msgs
+ ament_index_cpp
  )
 
  target_link_libraries(nodeCamera "${cpp_typesupport_target}" ${OpenCV_LIBS})
@@ -213,7 +214,7 @@ DESTINATION lib/${PROJECT_NAME})
 install(DIRECTORY include
   DESTINATION include)
 
-install(DIRECTORY launch rviz urdf images
+install(DIRECTORY launch rviz urdf images CalibrationImages
   DESTINATION share/${PROJECT_NAME}
 )
 

@@ -17,6 +17,8 @@
 #include <opencv2/highgui.hpp>
 #include <opencv2/ximgproc.hpp>
 
+#include <ament_index_cpp/get_package_share_directory.hpp>
+
 using namespace std::chrono_literals;
 using namespace std::placeholders;
 using namespace std;

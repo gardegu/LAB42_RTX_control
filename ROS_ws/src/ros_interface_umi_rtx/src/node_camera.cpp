@@ -15,19 +15,19 @@ void Camera::init_interfaces(){
 }
 
 void Camera::init_camera(){
-    cap.open(0); // webcam
+    //cap.open(0); // webcam
     //cap.open(4) // robot's camera
-    // cap.open(4);
+    cap.open(4);
 
     if (!cap.isOpened()) {
         std::cout << "ERROR! Unable to open camera" << std::endl;
     }
 
     // Stereo Calibration of the ZED M device
-    //stereo_calibration();
+    stereo_calibration();
 
     // Computing rectification parameters
-    //stereo_rectification();
+    stereo_rectification();
 
     m_frame_width = cap.get(cv::CAP_PROP_FRAME_WIDTH);
     m_frame_height = cap.get(cv::CAP_PROP_FRAME_HEIGHT);
@@ -40,13 +40,13 @@ void Camera::timer_callback(){
 
     cap.read(frame);
 
-    //stereo_split_views();
+    stereo_split_views();
 
     // Remplacer frame par frameLeft dans le cas où on utilise la caméra stéréo
 
     cv::Mat hsv_img;
-    cv::cvtColor(frame,hsv_img,cv::COLOR_BGR2HSV);
-    //cv::cvtColor(frameLeft,hsv_img,cv::COLOR_BGR2HSV);
+    //cv::cvtColor(frame,hsv_img,cv::COLOR_BGR2HSV);
+    cv::cvtColor(frameLeft,hsv_img,cv::COLOR_BGR2HSV);
 
 
     cv::Scalar lower_bound = cv::Scalar(20,100,100);
@@ -61,16 +61,16 @@ void Camera::timer_callback(){
     if(contours.empty()){
         //std::cout << "Cannot detect the target" << std::endl;
 
-        cv::circle(frame,cv::Point(m_frame_width-40,40),20,cv::Scalar(0,0,255),-1);
-        //cv::circle(frameLeft,cv::Point(m_frame_width-40,40),20,cv::Scalar(0,0,255),-1);
+        //cv::circle(frame,cv::Point(m_frame_width-40,40),20,cv::Scalar(0,0,255),-1);
+        cv::circle(frameLeft,cv::Point(m_frame_width-40,40),20,cv::Scalar(0,0,255),-1);
 
-        cv::line(frame,cv::Point (m_frame_width/2 - 25,m_frame_height/2),cv::Point (m_frame_width/2 + 25,m_frame_height/2),cv::Scalar(255,255,255),2);
-        cv::line(frame,cv::Point (m_frame_width/2,m_frame_height/2 - 25),cv::Point (m_frame_width/2,m_frame_height/2 + 25),cv::Scalar(255,255,255),2);
-        //cv::line(frameLeft,cv::Point (m_frame_width/2 - 25,m_frame_height/2),cv::Point (m_frame_width/2 + 25,m_frame_height/2),cv::Scalar(255,255,255),2);
-        //cv::line(frameLeft,cv::Point (m_frame_width/2,m_frame_height/2 - 25),cv::Point (m_frame_width/2,m_frame_height/2 + 25),cv::Scalar(255,255,255),2);
+        //cv::line(frame,cv::Point (m_frame_width/2 - 25,m_frame_height/2),cv::Point (m_frame_width/2 + 25,m_frame_height/2),cv::Scalar(255,255,255),2);
+        //cv::line(frame,cv::Point (m_frame_width/2,m_frame_height/2 - 25),cv::Point (m_frame_width/2,m_frame_height/2 + 25),cv::Scalar(255,255,255),2);
+        cv::line(frameLeft,cv::Point (m_frame_width/2 - 25,m_frame_height/2),cv::Point (m_frame_width/2 + 25,m_frame_height/2),cv::Scalar(255,255,255),2);
+        cv::line(frameLeft,cv::Point (m_frame_width/2,m_frame_height/2 - 25),cv::Point (m_frame_width/2,m_frame_height/2 + 25),cv::Scalar(255,255,255),2);
 
-        sensor_msgs::msg::Image::SharedPtr img_msg = cv_bridge::CvImage(std_msgs::msg::Header(),"bgr8",frame).toImageMsg();
-        //sensor_msgs::msg::Image::SharedPtr img_msg = cv_bridge::CvImage(std_msgs::msg::Header(),"bgr8",frameLeft).toImageMsg();
+        //sensor_msgs::msg::Image::SharedPtr img_msg = cv_bridge::CvImage(std_msgs::msg::Header(),"bgr8",frame).toImageMsg();
+        sensor_msgs::msg::Image::SharedPtr img_msg = cv_bridge::CvImage(std_msgs::msg::Header(),"bgr8",frameLeft).toImageMsg();
         image_publisher->publish(*img_msg);
     }
 
@@ -95,8 +95,8 @@ void Camera::timer_callback(){
 
         if(maxAreaIdx > -1) {
             get_angles(contours);
-            cv::drawContours(frame, contours, maxAreaIdx, cv::Scalar(255, 255, 255), 2);
-            //cv::drawContours(frameLeft, contours, maxAreaIdx, cv::Scalar(255, 255, 255), 2);
+            //cv::drawContours(frame, contours, maxAreaIdx, cv::Scalar(255, 255, 255), 2);
+            cv::drawContours(frameLeft, contours, maxAreaIdx, cv::Scalar(255, 255, 255), 2);
 
             cv::Moments moments = cv::moments(contours[maxAreaIdx]);
 
@@ -117,8 +117,8 @@ void Camera::timer_callback(){
                 coord_msg.x = m_cx;
                 coord_msg.y = m_cy;
 
-                cv::circle(frame,cv::Point(m_frame_width-40,40),20,cv::Scalar(100,50,100),-1);
-                //cv::circle(frameLeft,cv::Point(m_frame_width-40,40),20,cv::Scalar(100,50,100),-1);
+                //cv::circle(frame,cv::Point(m_frame_width-40,40),20,cv::Scalar(100,50,100),-1);
+                cv::circle(frameLeft,cv::Point(m_frame_width-40,40),20,cv::Scalar(100,50,100),-1);
             }
         }
 
@@ -127,16 +127,16 @@ void Camera::timer_callback(){
             coord_msg.y = m_cy;
         }
 
-        cv::circle(frame,cv::Point(m_frame_width-40,40),20,cv::Scalar(0,255,0),-1);
-        //cv::circle(frameLeft,cv::Point(m_frame_width-40,40),20,cv::Scalar(0,255,0),-1);
+        //cv::circle(frame,cv::Point(m_frame_width-40,40),20,cv::Scalar(0,255,0),-1);
+        cv::circle(frameLeft,cv::Point(m_frame_width-40,40),20,cv::Scalar(0,255,0),-1);
 
-        cv::line(frame,cv::Point (m_frame_width/2 - 25,m_frame_height/2),cv::Point (m_frame_width/2 + 25,m_frame_height/2),cv::Scalar(255,255,255),2);
-        cv::line(frame,cv::Point (m_frame_width/2,m_frame_height/2 - 25),cv::Point (m_frame_width/2,m_frame_height/2 + 25),cv::Scalar(255,255,255),2);
-        //cv::line(frameLeft,cv::Point (m_frame_width/2 - 25,m_frame_height/2),cv::Point (m_frame_width/2 + 25,m_frame_height/2),cv::Scalar(255,255,255),2);
-        //cv::line(frameLeft,cv::Point (m_frame_width/2,m_frame_height/2 - 25),cv::Point (m_frame_width/2,m_frame_height/2 + 25),cv::Scalar(255,255,255),2);
+        //cv::line(frame,cv::Point (m_frame_width/2 - 25,m_frame_height/2),cv::Point (m_frame_width/2 + 25,m_frame_height/2),cv::Scalar(255,255,255),2);
+        //cv::line(frame,cv::Point (m_frame_width/2,m_frame_height/2 - 25),cv::Point (m_frame_width/2,m_frame_height/2 + 25),cv::Scalar(255,255,255),2);
+        cv::line(frameLeft,cv::Point (m_frame_width/2 - 25,m_frame_height/2),cv::Point (m_frame_width/2 + 25,m_frame_height/2),cv::Scalar(255,255,255),2);
+        cv::line(frameLeft,cv::Point (m_frame_width/2,m_frame_height/2 - 25),cv::Point (m_frame_width/2,m_frame_height/2 + 25),cv::Scalar(255,255,255),2);
 
-        sensor_msgs::msg::Image::SharedPtr img_msg = cv_bridge::CvImage(std_msgs::msg::Header(), "bgr8", frame).toImageMsg();
-        //sensor_msgs::msg::Image::SharedPtr img_msg = cv_bridge::CvImage(std_msgs::msg::Header(), "bgr8", frameLeft).toImageMsg();
+        //sensor_msgs::msg::Image::SharedPtr img_msg = cv_bridge::CvImage(std_msgs::msg::Header(), "bgr8", frame).toImageMsg();
+        sensor_msgs::msg::Image::SharedPtr img_msg = cv_bridge::CvImage(std_msgs::msg::Header(), "bgr8", frameLeft).toImageMsg();
         image_publisher->publish(*img_msg);
     }
     coord_publisher->publish(coord_msg);
@@ -146,9 +146,9 @@ void Camera::timer_callback(){
     angles_msg.z = roll;
     angles_publisher->publish(angles_msg);
 
-    //stereo_get_disparity();
-    //sensor_msgs::msg::Image::SharedPtr disp_msg = cv_bridge::CvImage(std_msgs::msg::Header(),"mono8",disparityMap).toImageMsg();
-    //disparity_publisher->publish(*disp_msg);
+    stereo_get_disparity();
+    sensor_msgs::msg::Image::SharedPtr disp_msg = cv_bridge::CvImage(std_msgs::msg::Header(),"mono8",disparityMap).toImageMsg();
+    disparity_publisher->publish(*disp_msg);
 
 }
 
@@ -177,7 +177,7 @@ void Camera::get_angles(vector<vector<cv::Point>> &contours){
 }
 
 void Camera::stereo_calibration(){
-    std::cout << "Calibrating the stereo device...\n" << std::endl;
+    std::cout << "Calibrating the stereo device..." << std::endl;
 
     std::vector<std::vector<cv::Point3f>> objectPoints;
     std::vector<std::vector<cv::Point2f>> cornersLeft;
@@ -186,8 +186,9 @@ void Camera::stereo_calibration(){
     cv::Size imageLeftSize, imageRightSize;
 
     for(int i=1;i<=5;i++){
-        cv::Mat imageLeft = cv::imread("CalibrationImages/leftImage0" + std::to_string(i) + ".png", cv::IMREAD_GRAYSCALE);
-        cv::Mat imageRight = cv::imread("CalibrationImages/rightImage0" + std::to_string(i) + ".png", cv::IMREAD_GRAYSCALE);
+        //ament_index_cpp::get_package_share_directory("ros_interface_umi_rtx")+"/images/icon.png"
+        cv::Mat imageLeft = cv::imread(ament_index_cpp::get_package_share_directory("ros_interface_umi_rtx") + "/CalibrationImages/leftImage0" + std::to_string(i) + ".png", cv::IMREAD_GRAYSCALE);
+        cv::Mat imageRight = cv::imread(ament_index_cpp::get_package_share_directory("ros_interface_umi_rtx") + "/CalibrationImages/rightImage0" + std::to_string(i) + ".png", cv::IMREAD_GRAYSCALE);
 
         if(imageLeft.empty()){
             std::cout << "Error reading the calibration left image " << i << std::endl;
@@ -257,8 +258,8 @@ void Camera::stereo_split_views(){
     int width = frame.cols;
     int height = frame.rows;
 
-    cv::Mat frameLeft = frame(cv::Rect(0,0,width/2,height));
-    cv::Mat frameRight = frame(cv::Rect(width/2,0,width/2,height));
+    frameLeft = frame(cv::Rect(0,0,width/2,height));
+    frameRight = frame(cv::Rect(width/2,0,width/2,height));
 
     cv::resize(frameLeft,frameLeft,cv::Size(1280,720));
     cv::resize(frameRight,frameRight,cv::Size(1280,720));
