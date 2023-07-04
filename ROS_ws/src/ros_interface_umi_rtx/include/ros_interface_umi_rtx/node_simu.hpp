@@ -26,7 +26,6 @@ class Simu_node : public rclcpp::Node{
 public:
     Simu_node() : Node("simulation"){
         init_interfaces();
-
         init_urdf();
     };
 

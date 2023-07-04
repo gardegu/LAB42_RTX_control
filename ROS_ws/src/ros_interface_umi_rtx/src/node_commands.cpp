@@ -26,8 +26,8 @@ void Objective_node::timer_callback(){
             y = y0 + (0.4-y0)*(t-t0)/dt1;
             z = z0 + (0.6-z0)*(t-t0)/dt1;
 
-            pitch = pitch0 + (45-pitch0)*(t-t0)/dt1;
-            roll = roll0 + (45-roll0)*(t-t0)/dt1;
+            pitch = pitch0 + (processed_pitch-pitch0)*(t-t0)/dt1;
+            roll = roll0 + (processed_roll-roll0)*(t-t0)/dt1;
             grip = 0.08;
         }
 
@@ -38,7 +38,7 @@ void Objective_node::timer_callback(){
 
             roll0 = roll;
             pitch0 = pitch;
-            grip = 0.01;
+            grip = 0.02;
         }
 
         else if ((t-t0)>=12 and (t-t0)<18){
@@ -52,7 +52,6 @@ void Objective_node::timer_callback(){
     }
 
     else {
-        // yaw = atan2(y,x);
         x0 = x;
         y0 = y;
         z0 = z;
