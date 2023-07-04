@@ -280,6 +280,7 @@ void Camera::stereo_get_disparity(){
     cv::threshold(disparityMap,disparityMap,0,0,cv::THRESH_TOZERO);
 
     disparityMap.convertTo(disparityMap,CV_32F,1.0/16.0);
+    cv::normalize(disparityMap, disparityMap, 0, 255, cv::NORM_MINMAX, CV_8U); // à méditer
 }
 
 int main(int argc, char * argv[]){

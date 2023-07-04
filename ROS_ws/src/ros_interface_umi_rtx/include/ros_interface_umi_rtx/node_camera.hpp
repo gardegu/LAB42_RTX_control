@@ -63,9 +63,9 @@ private:
 
     int m_frame_width, m_frame_height;
     int m_frame_width_left, m_frame_height_left;
-    int blockSize = 17;
+    int blockSize = 7;
     int min_disp = 0;
-    int max_disp = 32;
+    int max_disp = 64;
     int num_disp = max_disp - min_disp;
     int uniquenessRatio = 10;
     int speckleWindowSize = 200;
