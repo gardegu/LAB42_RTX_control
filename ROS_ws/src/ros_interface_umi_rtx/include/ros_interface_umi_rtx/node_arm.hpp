@@ -78,9 +78,6 @@ private:
 
     rclcpp::Subscription<geometry_msgs::msg::Point>::SharedPtr position_subscription;
     rclcpp::Subscription<geometry_msgs::msg::Vector3>::SharedPtr angles_subscription;
-
-    // rclcpp::Subscription<std_msgs::msg::Float32>::SharedPtr pitch_subscription;
-    // rclcpp::Subscription<std_msgs::msg::Float32>::SharedPtr roll_subscription;
     rclcpp::Subscription<std_msgs::msg::Float32>::SharedPtr grip_subscription;
     
     rclcpp::Publisher<std_msgs::msg::String>::SharedPtr publisher_params;
