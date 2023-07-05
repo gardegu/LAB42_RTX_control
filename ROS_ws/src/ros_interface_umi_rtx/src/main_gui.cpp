@@ -204,14 +204,6 @@ void MainGUI::initializeRViz()
     render_panel_->initialize(manager_);
     app_->processEvents();
 
-    // Rviz config_file, might work without it
-    // TODO test without config
-    // QString config_file = QString::fromStdString(ament_index_cpp::get_package_share_directory("ros_interface_umi_rtx")+"/rviz/rviz_basic_settings.rviz");
-    // rviz_common::YamlConfigReader config_reader;
-    // rviz_common::Config config;
-    // config_reader.readFile(config, config_file);
-    // manager_->load(config);
-
     // Add TF and model in the integrated window
     TF_ = manager_->createDisplay("rviz_default_plugins/TF","TF",true);
     Model_ = manager_->createDisplay("rviz_default_plugins/RobotModel","RobotModel",true);
@@ -261,7 +253,6 @@ MainGUI::addPane(const QString & name, QWidget * pane, Qt::DockWidgetArea area, 
 void
 MainGUI::setStatus(const QString & message)
 {
-  // TODO(mjeronimo)
 }
 
 void MainGUI::closeEvent(QCloseEvent * event)

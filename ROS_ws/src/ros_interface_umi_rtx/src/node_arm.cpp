@@ -20,7 +20,7 @@ void Arm_node::init_interfaces(){
     grip_subscription = this->create_subscription<std_msgs::msg::Float32>("target_grip",10,
         std::bind(&Arm_node::get_grip, this, _1));
 
-    // publisher_params  = this->create_publisher<std_msgs::msg::String>("motor_params",10);
+    publisher_params  = this->create_publisher<std_msgs::msg::String>("motor_params",10);
 
     if (arm_init_comms(1,2)!=-1){
         cout << "----------Communication initialized----------" << endl;
@@ -32,14 +32,14 @@ void Arm_node::init_interfaces(){
 
 void Arm_node::timer_callback(){
     // TODO improve time for get_params
-    // get_params();
+    get_params();
 
-    // // Collect the parameters and publish them
-    // std_msgs::msg::String params;
+    // Collect the parameters and publish them
+    std_msgs::msg::String params;
 
-    // params.data = params2msg();
+    params.data = params2msg();
 
-    // publisher_params->publish(params);
+    publisher_params->publish(params);
 
     if (commands_motor.size()>0 and !umi_moving() and (x!=targ_x or y!=targ_y or z!=targ_z or pitch!=target_pitch or roll!=target_roll)){
         x = targ_x;
@@ -60,7 +60,7 @@ void Arm_node::get_commands(const sensor_msgs::msg::JointState::SharedPtr msg){
     commands_motor = {{ZED,objective[0]},
                       {SHOULDER,objective[1]},
                       {ELBOW,objective[2]},
-                      {WRIST1,0.5*(objective[4]+objective[5])},//TODO divides the angle by two
+                      {WRIST1,0.5*(objective[4]+objective[5])},
                       {WRIST2,0.5*(objective[5]-objective[4])}};
 }
 
@@ -108,11 +108,20 @@ void Arm_node::get_params(){
     
     for (const auto motor:full_arm.mJoints){
         motors_params[motor->m_ID] = {};
-        for (int PID=0; PID<NUMBER_OF_DATA_CODES; PID++){
-            res = motor->get_parameter(PID, &value);
-            if (res!=-1){
-                motors_params[motor->m_ID][PID] = value;
-            }
+        // for (int PID=0; PID<NUMBER_OF_DATA_CODES; PID++){
+        //     res = motor->get_parameter(PID, &value);
+        //     if (res!=-1){
+        //         motors_params[motor->m_ID][PID] = value;
+        //     }
+        // }
+        res = motor->get_parameter(CURRENT_POSITION, &value);
+        if (res!=-1){
+            motors_params[motor->m_ID][CURRENT_POSITION] = value;
+        }
+
+        res = motor->get_parameter(NEW_POSITION, &value);
+        if (res!=-1){
+            motors_params[motor->m_ID][NEW_POSITION] = value;
         }
     }
 }
