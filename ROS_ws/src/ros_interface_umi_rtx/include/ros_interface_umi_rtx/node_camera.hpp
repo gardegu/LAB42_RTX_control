@@ -40,6 +40,7 @@ private:
     void stereo_rectification();
     void stereo_split_views();
     void stereo_get_disparity();
+    void stereo_get_depth();
 
     std::chrono::milliseconds loop_dt_ = 40ms;
 
@@ -49,6 +50,7 @@ private:
     rclcpp::Publisher<geometry_msgs::msg::Point>::SharedPtr coord_publisher;
     rclcpp::Publisher<geometry_msgs::msg::Vector3>::SharedPtr angles_publisher;
     rclcpp::Publisher<sensor_msgs::msg::Image>::SharedPtr disparity_publisher;
+    rclcpp::Publisher<sensor_msgs::msg::Image>::SharedPtr depth_publisher;
 
     cv::VideoCapture cap;
 
@@ -58,6 +60,7 @@ private:
     cv::Mat m_R1, m_R2, m_P1, m_P2, m_Q;
     cv::Mat m_map1Left, m_map2Left, m_map1Right, m_map2Right;
     cv::Mat disparityMap;
+    cv::Mat depthMap;
 
     cv::Ptr<cv::StereoSGBM> stereo;
 
@@ -65,7 +68,7 @@ private:
     int m_frame_width_left, m_frame_height_left;
     int blockSize = 7;
     int min_disp = 0;
-    int max_disp = 64;
+    int max_disp = 80;
     int num_disp = max_disp - min_disp;
     int uniquenessRatio = 10;
     int speckleWindowSize = 200;

@@ -12,6 +12,7 @@ void Camera::init_interfaces(){
     coord_publisher = this->create_publisher<geometry_msgs::msg::Point>("processed_position",10);
     angles_publisher = this->create_publisher<geometry_msgs::msg::Vector3>("processed_angles",10);
     disparity_publisher = this->create_publisher<sensor_msgs::msg::Image>("disparity_image",10);
+    depth_publisher = this->create_publisher<sensor_msgs::msg::Image>("depth_image",10);
 }
 
 void Camera::init_camera(){
@@ -51,6 +52,10 @@ void Camera::timer_callback(){
     stereo_get_disparity();
     sensor_msgs::msg::Image::SharedPtr disp_msg = cv_bridge::CvImage(std_msgs::msg::Header(),"mono8",disparityMap).toImageMsg();
     disparity_publisher->publish(*disp_msg);
+
+    stereo_get_depth();
+    sensor_msgs::msg::Image::SharedPtr depth_msg = cv_bridge::CvImage(std_msgs::msg::Header(),"mono8",depthMap).toImageMsg();
+    depth_publisher->publish(*depth_msg);
 
 }
 
@@ -240,7 +245,7 @@ void Camera::stereo_calibration(){
         //cv::drawChessboardCorners(imageRight, patternSize, cornersRightSub, patternFoundRight);
     }
 
-    m_rms_error = cv::stereoCalibrate(objectPoints, cornersLeft, cornersRight, m_cameraMatrixLeft, m_distCoeffsLeft, m_cameraMatrixRight, m_distCoeffsRight, imageLeftSize, m_R, m_T, m_E, m_F);
+    m_rms_error = cv::stereoCalibrate(objectPoints, cornersLeft, cornersRight, m_cameraMatrixLeft, m_distCoeffsLeft, m_cameraMatrixRight, m_distCoeffsRight, imageLeftSize, m_R, m_T, m_E, m_F,cv::CALIB_SAME_FOCAL_LENGTH | cv::CALIB_ZERO_TANGENT_DIST);
 
     std::cout << "Stereo device calibrated\n" << std::endl;
 }
@@ -281,6 +286,11 @@ void Camera::stereo_get_disparity(){
 
     disparityMap.convertTo(disparityMap,CV_32F,1.0/16.0);
     cv::normalize(disparityMap, disparityMap, 0, 255, cv::NORM_MINMAX, CV_8U); // à méditer
+}
+
+void Camera::stereo_get_depth(){
+    depthMap = (m_focalLength*m_baseline)/disparityMap;
+    cv::normalize(depthMap,depthMap,0,255,cv::NORM_MINMAX,CV_8U);
 }
 
 int main(int argc, char * argv[]){
