@@ -72,47 +72,66 @@ MainGUI::MainGUI(QApplication * app,
     QObject::connect(slider_z, &QSlider::valueChanged, spinBox_z, static_cast<void (QDoubleSpinBox::*)(double)>(&QDoubleSpinBox::setValue));
     QObject::connect(spinBox_z, static_cast<void (QDoubleSpinBox::*)(double)>(&QDoubleSpinBox::valueChanged), slider_z, &QSlider::setValue);
 
-
+    QLabel *label_yaw = new QLabel("Yaw :");
+    label_yaw->setAlignment(Qt::AlignRight);
+    main_layout->addWidget(label_yaw,4,0);
+    QSlider* slider_yaw = new QSlider(Qt::Horizontal);
+    slider_yaw->setRange(-110, 110);
+    slider_yaw->setSingleStep(1);
+    main_layout->addWidget(slider_yaw,4,1);
+    QDoubleSpinBox* spinBox_yaw = new QDoubleSpinBox;
+    spinBox_yaw->setMaximum(110);
+    spinBox_yaw->setMinimum(-110);
+    spinBox_yaw->setSingleStep(1);
+    main_layout->addWidget(spinBox_yaw,4,2);
+    QObject::connect(slider_yaw, &QSlider::valueChanged, spinBox_yaw, static_cast<void (QDoubleSpinBox::*)(double)>(&QDoubleSpinBox::setValue));
+    QObject::connect(spinBox_yaw, static_cast<void (QDoubleSpinBox::*)(double)>(&QDoubleSpinBox::valueChanged), slider_yaw, &QSlider::setValue);
 
     QLabel *label_pitch = new QLabel("Pitch :");
     label_pitch->setAlignment(Qt::AlignRight);
-    main_layout->addWidget(label_pitch,4,0);
+    main_layout->addWidget(label_pitch,5,0);
     QSlider* slider_pitch = new QSlider(Qt::Horizontal);
     slider_pitch->setRange(0, 90);
     slider_pitch->setSingleStep(1);
-    main_layout->addWidget(slider_pitch,4,1);
+    main_layout->addWidget(slider_pitch,5,1);
     QDoubleSpinBox* spinBox_pitch = new QDoubleSpinBox;
     spinBox_pitch->setMaximum(90);
     spinBox_pitch->setMinimum(0);
     spinBox_pitch->setSingleStep(1);
-    main_layout->addWidget(spinBox_pitch,4,2);
+    main_layout->addWidget(spinBox_pitch,5,2);
     QObject::connect(slider_pitch, &QSlider::valueChanged, spinBox_pitch, static_cast<void (QDoubleSpinBox::*)(double)>(&QDoubleSpinBox::setValue));
     QObject::connect(spinBox_pitch, static_cast<void (QDoubleSpinBox::*)(double)>(&QDoubleSpinBox::valueChanged), slider_pitch, &QSlider::setValue);
 
     QLabel *label_roll = new QLabel("Roll :");
     label_roll->setAlignment(Qt::AlignRight);
-    main_layout->addWidget(label_roll,5,0);
+    main_layout->addWidget(label_roll,6,0);
     QSlider* slider_roll = new QSlider(Qt::Horizontal);
     slider_roll->setRange(0, 90);
     slider_roll->setSingleStep(1);
-    main_layout->addWidget(slider_roll,5,1);
+    main_layout->addWidget(slider_roll,6,1);
     QDoubleSpinBox* spinBox_roll = new QDoubleSpinBox;
     spinBox_roll->setMaximum(90);
     spinBox_roll->setMinimum(0);
     spinBox_roll->setSingleStep(1);
-    main_layout->addWidget(spinBox_roll,5,2);
+    main_layout->addWidget(spinBox_roll,6,2);
     QObject::connect(slider_roll, &QSlider::valueChanged, spinBox_roll, static_cast<void (QDoubleSpinBox::*)(double)>(&QDoubleSpinBox::setValue));
     QObject::connect(spinBox_roll, static_cast<void (QDoubleSpinBox::*)(double)>(&QDoubleSpinBox::valueChanged), slider_roll, &QSlider::setValue);
 
 
     QObject::connect(spinBox_x, static_cast<void (QDoubleSpinBox::*)(double)>(&QDoubleSpinBox::valueChanged), this, [=](double newValue){
         x = newValue/100;
+        yaw = atan2(y,x)*180/M_PI + raw_yaw;
     });
     QObject::connect(spinBox_y, static_cast<void (QDoubleSpinBox::*)(double)>(&QDoubleSpinBox::valueChanged), this, [=](double newValue){
         y = newValue/100;
+        yaw = atan2(y,x)*180/M_PI + raw_yaw;
     });
     QObject::connect(spinBox_z, static_cast<void (QDoubleSpinBox::*)(double)>(&QDoubleSpinBox::valueChanged), this, [=](double newValue){
         z = newValue/100;
+    });
+    QObject::connect(spinBox_yaw, static_cast<void (QDoubleSpinBox::*)(double)>(&QDoubleSpinBox::valueChanged), this, [=](double newValue){
+        yaw = atan2(y,x)*180/M_PI + newValue;
+        raw_yaw = newValue;
     });
     QObject::connect(spinBox_pitch, static_cast<void (QDoubleSpinBox::*)(double)>(&QDoubleSpinBox::valueChanged), this, [=](double newValue){
         pitch = newValue;
@@ -304,7 +323,7 @@ int main(int argc, char* argv[])
     while (rclcpp::ok())
     {   
         if (ros2_node->mode=="manual"){
-            ros2_node->update_state(gui_app->x,gui_app->y,gui_app->z,gui_app->roll,gui_app->pitch);
+            ros2_node->update_state(gui_app->x,gui_app->y,gui_app->z,gui_app->yaw,gui_app->pitch,gui_app->roll);
         }
         exec.spin_some();
         app.processEvents();

@@ -20,7 +20,7 @@ void Arm_node::init_interfaces(){
     grip_subscription = this->create_subscription<std_msgs::msg::Float32>("target_grip",10,
         std::bind(&Arm_node::get_grip, this, _1));
 
-    publisher_params  = this->create_publisher<std_msgs::msg::String>("motor_params",10);
+    // publisher_params  = this->create_publisher<std_msgs::msg::String>("motor_params",10);
 
     if (arm_init_comms(1,2)!=-1){
         cout << "----------Communication initialized----------" << endl;
@@ -32,14 +32,14 @@ void Arm_node::init_interfaces(){
 
 void Arm_node::timer_callback(){
     // TODO improve time for get_params
-    get_params();
+    // get_params();
 
-    // Collect the parameters and publish them
-    std_msgs::msg::String params;
+    // // Collect the parameters and publish them
+    // std_msgs::msg::String params;
 
-    params.data = params2msg();
+    // params.data = params2msg();
 
-    publisher_params->publish(params);
+    // publisher_params->publish(params);
 
     if (commands_motor.size()>0 and !umi_moving() and (x!=targ_x or y!=targ_y or z!=targ_z or pitch!=target_pitch or roll!=target_roll)){
         x = targ_x;

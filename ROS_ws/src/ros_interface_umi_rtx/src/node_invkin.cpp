@@ -59,10 +59,10 @@ void InvKin_node::get_state(double x, double y, double z){
         last_pitch = target_pitch;
         last_roll = target_roll;
         
-        // z -= 0.455; // Adapt to the z-origin of the urdf file
-        z -= 0.626;
-        double yaw=atan2(y,x), roll=target_roll, pitch=target_pitch;
-        // double yaw=target_yaw, roll=target_roll, pitch=target_pitch;
+        z -= 0.455; // Adapt to the z-origin of the urdf file
+        // z -= 0.626;
+        // double yaw=atan2(y,x), roll=target_roll, pitch=target_pitch;
+        double yaw=target_yaw, roll=target_roll, pitch=target_pitch;
 
         // Translation to put the target at the tip of the hand
         x -= L*cos(pitch)*cos(yaw);

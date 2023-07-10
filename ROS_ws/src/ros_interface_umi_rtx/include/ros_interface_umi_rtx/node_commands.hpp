@@ -32,7 +32,7 @@ public:
         init_interfaces();
     };
 
-    void update_state(double new_x, double new_y, double new_z, double new_roll, double new_pitch);
+    void update_state(double new_x, double new_y, double new_z, double new_yaw, double new_pitch, double new_roll);
 
     string mode="manual";
     cv::Mat frame;
@@ -48,7 +48,7 @@ private :
     
     std::chrono::milliseconds loop_dt_ = 40ms;
 
-    double x=0., y=0.5, z=0.5, yaw,pitch,roll;
+    double x=0., y=0.5, z=0.5, yaw=0.,pitch=0.,roll=0.;
     double x0,y0,z0,yaw0,pitch0,roll0,t0;
     double grip;
     float t=0,dt=0.04;

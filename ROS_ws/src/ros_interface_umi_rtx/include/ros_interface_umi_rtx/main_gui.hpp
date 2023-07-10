@@ -62,7 +62,8 @@ public:
             QWidget* parent = nullptr);
     ~MainGUI() override;
 
-    double x,y,z,pitch=0.,roll=0.;
+    double x=0.,y=0.6,z=0.6,yaw=90.,pitch=0.,roll=0.;
+    double raw_yaw=90.;
 
     bool manual_on = true;
 

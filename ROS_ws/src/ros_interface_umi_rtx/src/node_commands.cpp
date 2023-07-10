@@ -103,12 +103,13 @@ void Objective_node::Lissajou(){
     z = 0.3+0.2*sin(0.2*t);
 }
 
-void Objective_node::update_state(double new_x, double new_y, double new_z, double new_roll, double new_pitch){
+void Objective_node::update_state(double new_x, double new_y, double new_z, double new_yaw, double new_pitch, double new_roll){
     x = new_x;
     y = new_y;
     z = new_z;
-    roll = new_roll;
+    yaw = new_yaw;
     pitch = new_pitch;
+    roll = new_roll;
 }
 
 // int main(int argc, char *argv[]){
