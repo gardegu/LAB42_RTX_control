@@ -22,13 +22,13 @@ MainGUI::MainGUI(QApplication * app,
     main_layout->addWidget(label_x,1,0);
     // Slider creation, to control x position
     QSlider* slider_x = new QSlider(Qt::Horizontal);
-    slider_x->setRange(-30, 30); // range of values
+    slider_x->setRange(-60, 60); // range of values
     slider_x->setSingleStep(1); 
     main_layout->addWidget(slider_x,1,1);
 
     QDoubleSpinBox* spinBox_x = new QDoubleSpinBox;
-    spinBox_x->setMaximum(30);
-    spinBox_x->setMinimum(-30);
+    spinBox_x->setMaximum(60);
+    spinBox_x->setMinimum(-60);
     spinBox_x->setSingleStep(1);
     main_layout->addWidget(spinBox_x,1,2);
     // Link slider and spinBox
@@ -158,6 +158,23 @@ MainGUI::MainGUI(QApplication * app,
     });
     main_layout->addWidget(switchButton,0,3);
 
+    // QVBoxLayout* click_layout = new QVBoxLayout;
+    // ClickWidget* Click = new ClickWidget();
+    // // Click->setText(QString("clique batard"));
+    // QObject::connect(Click,&ClickWidget::mousePressEvent, this, [=](){
+    //     int width = Click->width();
+    //     int height = Click->height();
+
+    //     int cx = Click->x_pix, cy = Click->y_pix; 
+
+    //     int new_x = 30*(cx-0.5*width)/(0.5*width);
+    //     int new_y = 60*cy/height;
+
+    //     slider_x->setValue(new_x);
+    //     slider_y->setValue(new_y);
+    // });
+    // click_layout->addWidget(Click);
+
     // Initialize RViz configuration
     initializeRViz();
 
@@ -179,6 +196,7 @@ MainGUI::MainGUI(QApplication * app,
     QHBoxLayout* glob_layout = new QHBoxLayout;
     glob_layout->addLayout(rviz_layout);
     glob_layout->addLayout(main_layout);
+    // glob_layout->addLayout(click_layout);
 
     main_widget->setLayout(glob_layout);
     setCentralWidget(main_widget);

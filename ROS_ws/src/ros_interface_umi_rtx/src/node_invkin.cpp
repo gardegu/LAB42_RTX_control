@@ -29,7 +29,7 @@ void InvKin_node::get_position(const geometry_msgs::msg::Point::SharedPtr msg){
     z = max(0.1,min(0.7,msg->z));
     double theta = atan2(y,x);
     double r = sqrt(pow(x,2)+pow(y,2));
-    double rmax = 0.69;
+    double rmax = 0.69-L*sin(target_pitch);
     if (r>rmax){
         x = rmax*cos(theta);
         y = rmax*sin(theta);

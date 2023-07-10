@@ -38,6 +38,8 @@
 #include "rviz_rendering/render_window.hpp"
 #include "rviz_default_plugins/visibility_control.hpp"
 
+// #include "custom_widget/click widget.hpp"
+
 #include <ament_index_cpp/get_package_share_directory.hpp>
 
 #include <iostream>
