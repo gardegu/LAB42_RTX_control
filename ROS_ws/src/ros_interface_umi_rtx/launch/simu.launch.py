@@ -86,7 +86,6 @@ def generate_launch_description():
         namespace='',
         executable='GUI',
         name='GUI',
-        output='screen'
     )
     
             

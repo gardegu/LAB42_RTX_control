@@ -49,6 +49,44 @@ void Objective_node::timer_callback(){
             pitch = pitch0 + (0.-pitch0)*(t-t0-12)/6;
             roll = roll0 + (0.-roll0)*(t-t0-12)/6;
         } 
+
+        else if ((t-t0)>=18 and (t-t0)<24){
+            x0 = x;
+            y0 = y;
+            z0 = z;
+
+            roll0 = roll;
+            pitch0 = pitch;
+        } 
+
+        else if ((t-t0)>=24 and (t-t0)<30){
+            x = x0 + (0.21-x0)*(t-t0-24)/6;
+            y = y0 + (0.42-y0)*(t-t0-24)/6;
+            z = z0 + (0.22-z0)*(t-t0-24)/6;
+
+            pitch = pitch0 + (90.-pitch0)*(t-t0-24)/6;
+            roll = roll0 + (0.-roll0)*(t-t0-24)/6;
+        } 
+
+        else if ((t-t0)>=30 and (t-t0)<34){
+            x0 = x;
+            y0 = y;
+            z0 = z;
+
+            roll0 = roll;
+            pitch0 = pitch;
+            grip = 0.08;
+        }
+
+        else if ((t-t0)>=34 and (t-t0)<40){
+            x = x0 + (0.-x0)*(t-t0-34)/6;
+            y = y0 + (0.5-y0)*(t-t0-34)/6;
+            z = z0 + (0.8-z0)*(t-t0-34)/6;
+
+            pitch = pitch0 + (0.-pitch0)*(t-t0-34)/6;
+            roll = roll0 + (0.-roll0)*(t-t0-34)/6;
+            grip = 0.08 + (0.02-0.08)*(t-t0-34)/6;
+        } 
     }
 
     else {

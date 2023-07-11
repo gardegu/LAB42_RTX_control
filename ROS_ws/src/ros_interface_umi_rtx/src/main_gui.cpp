@@ -169,9 +169,11 @@ MainGUI::MainGUI(QApplication * app,
         manual_on = switchButton->isChecked();
         if (manual_on){
             ros2_node->mode = "manual";
+            switchButton->setText("Manual mode");
         }
         else {
             ros2_node->mode = "grab";
+            switchButton->setText("Grab mode");
         }
         // ros2_node->manual_control = switchButton->isChecked();
     });
