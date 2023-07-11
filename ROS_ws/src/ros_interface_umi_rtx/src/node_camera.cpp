@@ -289,8 +289,10 @@ void Camera::stereo_get_disparity(){
 }
 
 void Camera::stereo_get_depth(){
-    depthMap = (m_focalLength*m_baseline)/disparityMap;
-    cv::normalize(depthMap,depthMap,0,255,cv::NORM_MINMAX,CV_8U);
+    //depthMap = (m_focalLength*m_baseline)/disparityMap;
+    depthMap = (0.5*m_frame_width_left/tan(90*0.5*M_PI/180)) * m_baseline / disparityMap;
+    //cv::normalize(depthMap,depthMap,0,255,cv::NORM_MINMAX,CV_8U);
+    //depthMap = 255 - depthMap;
 }
 
 int main(int argc, char * argv[]){

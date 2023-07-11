@@ -80,8 +80,8 @@ private:
     //cv::Size m_patternSize(7,5);
     float m_squareSize = 3.1;
 
-    double m_baseline = 63;
-    double m_focalLength = 2.8;
+    double m_baseline = 63; // millimeters
+    double m_focalLength = 2.8; // millimeters
     double m_rms_error;
     double m_cx, m_cy, m_cz, yaw, pitch, roll;
 
