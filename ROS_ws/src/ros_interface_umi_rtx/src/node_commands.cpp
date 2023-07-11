@@ -22,12 +22,12 @@ void Objective_node::timer_callback(){
         // Lissajou();
         // TODO replace objective by target position
         if ((t-t0)<dt1){
-            x = x0 + (0.2-x0)*(t-t0)/dt1;
-            y = y0 + (0.4-y0)*(t-t0)/dt1;
-            z = z0 + (0.6-z0)*(t-t0)/dt1;
+            x = x0 + (0.21-x0)*(t-t0)/dt1;
+            y = y0 + (0.42-y0)*(t-t0)/dt1;
+            z = z0 + (0.22-z0)*(t-t0)/dt1;
 
-            pitch = pitch0 + (processed_pitch-pitch0)*(t-t0)/dt1;
-            roll = roll0 + (processed_roll-roll0)*(t-t0)/dt1;
+            pitch = pitch0 + (90.-pitch0)*(t-t0)/dt1;
+            roll = roll0 + (0.-roll0)*(t-t0)/dt1;
             grip = 0.08;
         }
 
