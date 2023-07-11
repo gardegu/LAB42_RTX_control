@@ -75,6 +75,7 @@ target_include_directories(armerror PUBLIC
  cv_bridge
  geometry_msgs
  ament_index_cpp
+ std_msgs
  )
 
  target_link_libraries(nodeCamera "${cpp_typesupport_target}" ${OpenCV_LIBS})

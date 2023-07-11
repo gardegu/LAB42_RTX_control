@@ -13,6 +13,7 @@ void Camera::init_interfaces(){
     angles_publisher = this->create_publisher<geometry_msgs::msg::Vector3>("processed_angles",10);
     disparity_publisher = this->create_publisher<sensor_msgs::msg::Image>("disparity_image",10);
     depth_publisher = this->create_publisher<sensor_msgs::msg::Image>("depth_image",10);
+    double_publisher = this->create_publisher<std_msgs::msg::Float64>("target_depth",10);
 }
 
 void Camera::init_camera(){
@@ -56,6 +57,11 @@ void Camera::timer_callback(){
     stereo_get_depth();
     sensor_msgs::msg::Image::SharedPtr depth_msg = cv_bridge::CvImage(std_msgs::msg::Header(),"mono8",depthMap).toImageMsg();
     depth_publisher->publish(*depth_msg);
+
+    std_msgs::msg::Float64 target_depth_msg;
+    target_depth_msg.data = depthMap.at<double>(m_frame_width_left/2,m_frame_height_left/2);
+    //target_depth_msg.data = cv::mean(depthMap)[0];
+    double_publisher->publish(target_depth_msg);
 
 }
 

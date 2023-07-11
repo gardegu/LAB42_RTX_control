@@ -5,6 +5,7 @@
 #include "sensor_msgs/msg/image.hpp"
 #include "geometry_msgs/msg/point.hpp"
 #include "geometry_msgs/msg/vector3.hpp"
+#include "std_msgs/msg/float64.hpp"
 #include <cv_bridge/cv_bridge.h>
 #include <opencv2/opencv.hpp>
 #include <vector>
@@ -51,6 +52,7 @@ private:
     rclcpp::Publisher<geometry_msgs::msg::Vector3>::SharedPtr angles_publisher;
     rclcpp::Publisher<sensor_msgs::msg::Image>::SharedPtr disparity_publisher;
     rclcpp::Publisher<sensor_msgs::msg::Image>::SharedPtr depth_publisher;
+    rclcpp::Publisher<std_msgs::msg::Float64>::SharedPtr double_publisher;
 
     cv::VideoCapture cap;
 
