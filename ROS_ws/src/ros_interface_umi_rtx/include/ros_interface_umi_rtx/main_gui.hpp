@@ -79,6 +79,7 @@ private:
     QImage* image;
     QLabel* videoLabel;
     QTimer* timer;
+    QDoubleSpinBox *spinBox_x,*spinBox_y,*spinBox_z,*spinBox_yaw,*spinBox_pitch,*spinBox_roll; 
 
     rviz_common::RenderPanel * render_panel_;
     rviz_common::Display *TF_, *Model_;

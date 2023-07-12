@@ -26,7 +26,7 @@ MainGUI::MainGUI(QApplication * app,
     slider_x->setSingleStep(1); 
     main_layout->addWidget(slider_x,1,1);
 
-    QDoubleSpinBox* spinBox_x = new QDoubleSpinBox;
+    spinBox_x = new QDoubleSpinBox;
     spinBox_x->setMaximum(60);
     spinBox_x->setMinimum(-60);
     spinBox_x->setSingleStep(1);
@@ -46,7 +46,7 @@ MainGUI::MainGUI(QApplication * app,
     slider_y->setSingleStep(1);
     main_layout->addWidget(slider_y,2,1);
 
-    QDoubleSpinBox* spinBox_y = new QDoubleSpinBox;
+    spinBox_y = new QDoubleSpinBox;
     spinBox_y->setMaximum(70);
     spinBox_y->setMinimum(20);
     main_layout->addWidget(spinBox_y,2,2);
@@ -64,7 +64,7 @@ MainGUI::MainGUI(QApplication * app,
     slider_z->setSingleStep(1);
     main_layout->addWidget(slider_z,3,1);
 
-    QDoubleSpinBox* spinBox_z = new QDoubleSpinBox;
+    spinBox_z = new QDoubleSpinBox;
     spinBox_z->setMaximum(70);
     spinBox_z->setMinimum(10);
     main_layout->addWidget(spinBox_z,3,2);
@@ -79,7 +79,7 @@ MainGUI::MainGUI(QApplication * app,
     slider_yaw->setRange(-110, 110);
     slider_yaw->setSingleStep(1);
     main_layout->addWidget(slider_yaw,4,1);
-    QDoubleSpinBox* spinBox_yaw = new QDoubleSpinBox;
+    spinBox_yaw = new QDoubleSpinBox;
     spinBox_yaw->setMaximum(110);
     spinBox_yaw->setMinimum(-110);
     spinBox_yaw->setSingleStep(1);
@@ -94,7 +94,7 @@ MainGUI::MainGUI(QApplication * app,
     slider_pitch->setRange(0, 90);
     slider_pitch->setSingleStep(1);
     main_layout->addWidget(slider_pitch,5,1);
-    QDoubleSpinBox* spinBox_pitch = new QDoubleSpinBox;
+    spinBox_pitch = new QDoubleSpinBox;
     spinBox_pitch->setMaximum(90);
     spinBox_pitch->setMinimum(0);
     spinBox_pitch->setSingleStep(1);
@@ -109,7 +109,7 @@ MainGUI::MainGUI(QApplication * app,
     slider_roll->setRange(0, 90);
     slider_roll->setSingleStep(1);
     main_layout->addWidget(slider_roll,6,1);
-    QDoubleSpinBox* spinBox_roll = new QDoubleSpinBox;
+    spinBox_roll = new QDoubleSpinBox;
     spinBox_roll->setMaximum(90);
     spinBox_roll->setMinimum(0);
     spinBox_roll->setSingleStep(1);
@@ -142,7 +142,7 @@ MainGUI::MainGUI(QApplication * app,
 
     // Initial values for manual mode
     slider_x->setValue(0);
-    slider_y->setValue(60);
+    slider_y->setValue(68);
     slider_z->setValue(60);
 
     // Button to switch between manual and automatic mode
@@ -175,8 +175,9 @@ MainGUI::MainGUI(QApplication * app,
             ros2_node->mode = "grab";
             switchButton->setText("Grab mode");
         }
-        // ros2_node->manual_control = switchButton->isChecked();
     });
+
+
     main_layout->addWidget(switchButton,0,3);
 
     // QVBoxLayout* click_layout = new QVBoxLayout;
@@ -203,6 +204,7 @@ MainGUI::MainGUI(QApplication * app,
     QVBoxLayout* rviz_layout = new QVBoxLayout;
     rviz_layout->addWidget(render_panel_);
 
+
     videoLabel = new QLabel("");
     // capture.open(0);
     frame = new cv::Mat;
@@ -210,6 +212,18 @@ MainGUI::MainGUI(QApplication * app,
     timer = new QTimer(this);
     connect(timer, &QTimer::timeout, this, [this](){
         updateFrame();
+        double  up_x = this->ros2_node->x,
+                up_y = this->ros2_node->y,
+                up_z = this->ros2_node->z,
+                up_pitch = this->ros2_node->pitch,
+                up_roll = this->ros2_node->roll;
+                // up_yaw = this->ros2_node->yaw,
+        spinBox_x->setValue(100*up_x);
+        spinBox_y->setValue(100*up_y);
+        spinBox_z->setValue(100*up_z);
+        // spinBox_yaw->setValue(up_yaw);
+        spinBox_pitch->setValue(up_pitch);
+        spinBox_roll->setValue(up_roll);
     });
     timer->start(40);
     rviz_layout->addWidget(videoLabel);
