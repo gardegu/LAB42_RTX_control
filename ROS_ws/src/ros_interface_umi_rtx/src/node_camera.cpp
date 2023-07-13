@@ -59,8 +59,11 @@ void Camera::timer_callback(){
     depth_publisher->publish(*depth_msg);
 
     std_msgs::msg::Float64 target_depth_msg;
-    target_depth_msg.data = depthMap.at<double>(m_frame_width_left/2,m_frame_height_left/2);
-    //target_depth_msg.data = cv::mean(depthMap)[0];
+    //target_depth_msg.data = depthMap.at<float>(depthMap.rows/2,depthMap.cols/2);
+    target_depth_msg.data = cv::mean(depthMap)[0];
+    //target_depth_msg.data = (0.5*m_frame_width_left/tan(90*0.5*M_PI/180)) * m_baseline / disparityMap.at<float>(m_frame_width_left/2,m_frame_height_left/2);
+    //target_depth_msg.data = disparityMap.at<float>(m_frame_width_left/2,m_frame_height_left/2);
+    //target_depth_msg.data = depthMap.at<uchar>(300,300);
     double_publisher->publish(target_depth_msg);
 
 }
@@ -296,7 +299,7 @@ void Camera::stereo_get_disparity(){
 
 void Camera::stereo_get_depth(){
     //depthMap = (m_focalLength*m_baseline)/disparityMap;
-    depthMap = (0.5*m_frame_width_left/tan(90*0.5*M_PI/180)) * m_baseline / disparityMap;
+    depthMap = depth_factor * (0.5*m_frame_width_left/tan(90*0.5*M_PI/180)) * m_baseline / disparityMap;
     //cv::normalize(depthMap,depthMap,0,255,cv::NORM_MINMAX,CV_8U);
     //depthMap = 255 - depthMap;
 }
