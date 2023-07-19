@@ -17,7 +17,7 @@ MainGUI::MainGUI(QApplication * app,
     main_layout->addWidget(Title, 0,1);
 
     /// Add sliders
-    QLabel *label_x = new QLabel("X coordinates :");
+    QLabel *label_x = new QLabel("X :");
     label_x->setAlignment(Qt::AlignRight);
     main_layout->addWidget(label_x,1,0);
     // Slider creation, to control x position
@@ -37,7 +37,7 @@ MainGUI::MainGUI(QApplication * app,
 
 
     // Same for y
-    QLabel *label_y = new QLabel("Y coordinates :");
+    QLabel *label_y = new QLabel("Y :");
     label_y->setAlignment(Qt::AlignRight);
     main_layout->addWidget(label_y,2,0);
 
@@ -55,7 +55,7 @@ MainGUI::MainGUI(QApplication * app,
     QObject::connect(spinBox_y, static_cast<void (QDoubleSpinBox::*)(double)>(&QDoubleSpinBox::valueChanged), slider_y, &QSlider::setValue);
 
 
-    QLabel *label_z = new QLabel("Z coordinates :");
+    QLabel *label_z = new QLabel("Z :");
     label_z->setAlignment(Qt::AlignRight);
     main_layout->addWidget(label_z,3,0);
 
@@ -117,6 +117,21 @@ MainGUI::MainGUI(QApplication * app,
     QObject::connect(slider_roll, &QSlider::valueChanged, spinBox_roll, static_cast<void (QDoubleSpinBox::*)(double)>(&QDoubleSpinBox::setValue));
     QObject::connect(spinBox_roll, static_cast<void (QDoubleSpinBox::*)(double)>(&QDoubleSpinBox::valueChanged), slider_roll, &QSlider::setValue);
 
+    QLabel *label_grip = new QLabel("Grip :");
+    label_grip->setAlignment(Qt::AlignRight);
+    main_layout->addWidget(label_grip,7,0);
+    QSlider* slider_grip = new QSlider(Qt::Horizontal);
+    slider_grip->setRange(20, 80);
+    slider_grip->setSingleStep(1);
+    main_layout->addWidget(slider_grip,7,1);
+    spinBox_grip = new QDoubleSpinBox;
+    spinBox_grip->setMaximum(80);
+    spinBox_grip->setMinimum(20);
+    spinBox_grip->setSingleStep(1);
+    main_layout->addWidget(spinBox_grip,7,2);
+    QObject::connect(slider_grip, &QSlider::valueChanged, spinBox_grip, static_cast<void (QDoubleSpinBox::*)(double)>(&QDoubleSpinBox::setValue));
+    QObject::connect(spinBox_grip, static_cast<void (QDoubleSpinBox::*)(double)>(&QDoubleSpinBox::valueChanged), slider_grip, &QSlider::setValue);
+
 
     QObject::connect(spinBox_x, static_cast<void (QDoubleSpinBox::*)(double)>(&QDoubleSpinBox::valueChanged), this, [=](double newValue){
         x = newValue/100;
@@ -139,11 +154,15 @@ MainGUI::MainGUI(QApplication * app,
     QObject::connect(spinBox_roll, static_cast<void (QDoubleSpinBox::*)(double)>(&QDoubleSpinBox::valueChanged), this, [=](double newValue){
         roll = newValue;
     });
+    QObject::connect(spinBox_grip, static_cast<void (QDoubleSpinBox::*)(double)>(&QDoubleSpinBox::valueChanged), this, [=](double newValue){
+        grip = newValue/1000;
+    });
 
     // Initial values for manual mode
     slider_x->setValue(0);
     slider_y->setValue(68);
     slider_z->setValue(60);
+    slider_grip->setValue(20);
 
     // Button to switch between manual and automatic mode
     QPushButton* switchButton = new QPushButton(this);
@@ -177,25 +196,7 @@ MainGUI::MainGUI(QApplication * app,
         }
     });
 
-
     main_layout->addWidget(switchButton,0,3);
-
-    // QVBoxLayout* click_layout = new QVBoxLayout;
-    // ClickWidget* Click = new ClickWidget();
-    // // Click->setText(QString("clique batard"));
-    // QObject::connect(Click,&ClickWidget::mousePressEvent, this, [=](){
-    //     int width = Click->width();
-    //     int height = Click->height();
-
-    //     int cx = Click->x_pix, cy = Click->y_pix; 
-
-    //     int new_x = 30*(cx-0.5*width)/(0.5*width);
-    //     int new_y = 60*cy/height;
-
-    //     slider_x->setValue(new_x);
-    //     slider_y->setValue(new_y);
-    // });
-    // click_layout->addWidget(Click);
 
     // Initialize RViz configuration
     initializeRViz();
@@ -231,7 +232,6 @@ MainGUI::MainGUI(QApplication * app,
     QHBoxLayout* glob_layout = new QHBoxLayout;
     glob_layout->addLayout(rviz_layout);
     glob_layout->addLayout(main_layout);
-    // glob_layout->addLayout(click_layout);
 
     main_widget->setLayout(glob_layout);
     setCentralWidget(main_widget);
@@ -339,7 +339,7 @@ int main(int argc, char* argv[])
     while (rclcpp::ok())
     {   
         if (ros2_node->mode=="manual"){
-            ros2_node->update_state(gui_app->x,gui_app->y,gui_app->z,gui_app->yaw,gui_app->pitch,gui_app->roll);
+            ros2_node->update_state(gui_app->x, gui_app->y, gui_app->z, gui_app->yaw, gui_app->pitch, gui_app->roll, gui_app->grip);
         }
         exec.spin_some();
         app.processEvents();

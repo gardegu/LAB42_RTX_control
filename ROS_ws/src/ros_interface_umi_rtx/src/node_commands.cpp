@@ -18,13 +18,24 @@ void Objective_node::init_interfaces(){
 
 void Objective_node::timer_callback(){
     double dt1 = 6;
-    if (mode != "manual"){
+    /*
+    We follow a simple trajectory between each step :
+        - Open the grip and goes to the target
+        - Close the grip to grab the object
+        - Go back to initial place
+        - Wait
+        - Same trajectory but we put the object back at his place
+    */
+    if (mode != "manual"){  
         // Lissajou();
+
+        double target_x = 0.21, target_y = 0.42, target_z = 0.22;
+
         // TODO replace objective by target position
         if ((t-t0)<dt1){
-            x = x0 + (0.21-x0)*(t-t0)/dt1;
-            y = y0 + (0.42-y0)*(t-t0)/dt1;
-            z = z0 + (0.22-z0)*(t-t0)/dt1;
+            x = x0 + (target_x-x0)*(t-t0)/dt1;
+            y = y0 + (target_y-y0)*(t-t0)/dt1;
+            z = z0 + (target_z-z0)*(t-t0)/dt1;
 
             pitch = pitch0 + (90.-pitch0)*(t-t0)/dt1;
             roll = roll0 + (0.-roll0)*(t-t0)/dt1;
@@ -60,9 +71,9 @@ void Objective_node::timer_callback(){
         } 
 
         else if ((t-t0)>=24 and (t-t0)<30){
-            x = x0 + (0.21-x0)*(t-t0-24)/6;
-            y = y0 + (0.42-y0)*(t-t0-24)/6;
-            z = z0 + (0.22-z0)*(t-t0-24)/6;
+            x = x0 + (target_x-x0)*(t-t0-24)/6;
+            y = y0 + (target_y-y0)*(t-t0-24)/6;
+            z = z0 + (target_z-z0)*(t-t0-24)/6;
 
             pitch = pitch0 + (90.-pitch0)*(t-t0-24)/6;
             roll = roll0 + (0.-roll0)*(t-t0-24)/6;
@@ -90,6 +101,9 @@ void Objective_node::timer_callback(){
     }
 
     else {
+        /*
+        If the arm is controlled manually we adapt the origin pose of the automatical procedure of grab mode
+        */
         x0 = x;
         y0 = y;
         z0 = z;
@@ -141,13 +155,14 @@ void Objective_node::Lissajou(){
     z = 0.3+0.2*sin(0.2*t);
 }
 
-void Objective_node::update_state(double new_x, double new_y, double new_z, double new_yaw, double new_pitch, double new_roll){
+void Objective_node::update_state(double new_x, double new_y, double new_z, double new_yaw, double new_pitch, double new_roll, double new_grip){
     x = new_x;
     y = new_y;
     z = new_z;
     yaw = new_yaw;
     pitch = new_pitch;
     roll = new_roll;
+    grip = new_grip;
 }
 
 // int main(int argc, char *argv[]){

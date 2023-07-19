@@ -41,12 +41,14 @@ void Arm_node::timer_callback(){
 
     // publisher_params->publish(params);
 
-    if (commands_motor.size()>0 and !umi_moving() and (x!=targ_x or y!=targ_y or z!=targ_z or pitch!=target_pitch or roll!=target_roll)){
+    if (commands_motor.size()>0 and !umi_moving() and (x!=targ_x or y!=targ_y or z!=targ_z or yaw!=target_yaw or pitch!=target_pitch or roll!=target_roll or grip!=target_grip)){
         x = targ_x;
         y = targ_y;
         z = targ_z;
+        yaw = target_yaw;
         pitch = target_pitch;
         roll = target_roll;
+        grip = target_grip;
 
         set_motors();
         arm_go(NUMERIC,0x1555);
@@ -79,6 +81,7 @@ void Arm_node::get_angles(const geometry_msgs::msg::Vector3::SharedPtr msg){
 
 void Arm_node::get_grip(const std_msgs::msg::Float32::SharedPtr msg){
     commands_motor[GRIP] = msg->data*1000;
+    target_grip = msg->data;
 }
 
 void Arm_node::set_motors(){
@@ -108,20 +111,9 @@ void Arm_node::get_params(){
     
     for (const auto motor:full_arm.mJoints){
         motors_params[motor->m_ID] = {};
-        // for (int PID=0; PID<NUMBER_OF_DATA_CODES; PID++){
-        //     res = motor->get_parameter(PID, &value);
-        //     if (res!=-1){
-        //         motors_params[motor->m_ID][PID] = value;
-        //     }
-        // }
         res = motor->get_parameter(CURRENT_POSITION, &value);
         if (res!=-1){
             motors_params[motor->m_ID][CURRENT_POSITION] = value;
-        }
-
-        res = motor->get_parameter(NEW_POSITION, &value);
-        if (res!=-1){
-            motors_params[motor->m_ID][NEW_POSITION] = value;
         }
     }
 }

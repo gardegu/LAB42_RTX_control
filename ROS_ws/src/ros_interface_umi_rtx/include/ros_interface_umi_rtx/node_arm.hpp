@@ -57,8 +57,6 @@ private:
     void get_commands(const sensor_msgs::msg::JointState::SharedPtr msg);
     void get_position(const geometry_msgs::msg::Point::SharedPtr msg);
     void get_angles(const geometry_msgs::msg::Vector3::SharedPtr msg);
-    // void get_pitch(const std_msgs::msg::Float32::SharedPtr msg);
-    // void get_roll(const std_msgs::msg::Float32::SharedPtr msg);
     void get_grip(const std_msgs::msg::Float32::SharedPtr msg);
     void set_motors();
     void get_params();
@@ -66,12 +64,13 @@ private:
     string params2msg(); //Converts motors_params into a string to publish more easily
     
     std::chrono::milliseconds loop_dt_ = 40ms; // Timer of the node
-    map<int,double> commands_motor; // Map which keeps the commands for each motor
+    map<int,double> commands_motor; // Map that stores the commands for each motor
     map<int,map<int,int>> motors_params; // Keeps in memory the parameters of the motors
 
     Arm full_arm;
     double targ_x,targ_y,targ_z, x,y,z;
-    double target_yaw, target_pitch, target_roll, pitch, roll;
+    double target_yaw, target_pitch, target_roll, yaw, pitch, roll;
+    double target_grip, grip;
 
     rclcpp::TimerBase::SharedPtr timer_;
     rclcpp::Subscription<sensor_msgs::msg::JointState>::SharedPtr subscription_commands;

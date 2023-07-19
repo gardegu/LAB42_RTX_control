@@ -38,8 +38,6 @@
 #include "rviz_rendering/render_window.hpp"
 #include "rviz_default_plugins/visibility_control.hpp"
 
-// #include "custom_widget/click widget.hpp"
-
 #include <ament_index_cpp/get_package_share_directory.hpp>
 
 #include <iostream>
@@ -62,7 +60,7 @@ public:
             QWidget* parent = nullptr);
     ~MainGUI() override;
 
-    double x=0.,y=0.6,z=0.6,yaw=0.,pitch=0.,roll=0.;
+    double x=0.,y=0.6,z=0.6,yaw=0.,pitch=0.,roll=0., grip=0.2;
     double raw_yaw=0.;
 
     bool manual_on = true;
@@ -79,7 +77,7 @@ private:
     QImage* image;
     QLabel* videoLabel;
     QTimer* timer;
-    QDoubleSpinBox *spinBox_x,*spinBox_y,*spinBox_z,*spinBox_yaw,*spinBox_pitch,*spinBox_roll; 
+    QDoubleSpinBox *spinBox_x,*spinBox_y,*spinBox_z,*spinBox_yaw,*spinBox_pitch,*spinBox_roll, *spinBox_grip; 
 
     rviz_common::RenderPanel * render_panel_;
     rviz_common::Display *TF_, *Model_;

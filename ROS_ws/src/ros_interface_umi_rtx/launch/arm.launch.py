@@ -107,5 +107,4 @@ def generate_launch_description():
                               GUI
                               ])
 
-                            #   actions.ExecuteProcess(cmd=["rqt"])
     #nodeCamera, actions.ExecuteProcess(cmd=['ros2','bag','record','-a'],output='screen') #TODO
