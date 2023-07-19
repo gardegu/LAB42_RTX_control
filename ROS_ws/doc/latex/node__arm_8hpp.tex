@@ -1,0 +1,67 @@
+\hypertarget{node__arm_8hpp}{}\doxysection{src/ros\+\_\+interface\+\_\+umi\+\_\+rtx/include/ros\+\_\+interface\+\_\+umi\+\_\+rtx/node\+\_\+arm.hpp File Reference}
+\label{node__arm_8hpp}\index{src/ros\_interface\_umi\_rtx/include/ros\_interface\_umi\_rtx/node\_arm.hpp@{src/ros\_interface\_umi\_rtx/include/ros\_interface\_umi\_rtx/node\_arm.hpp}}
+
+
+R\+O\+S2 node that is connected to the arm and allows to send received commands to it.  
+
+
+{\ttfamily \#include \char`\"{}rclcpp/rclcpp.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}std\+\_\+msgs/msg/string.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}std\+\_\+msgs/msg/float32.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}sensor\+\_\+msgs/msg/joint\+\_\+state.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}geometry\+\_\+msgs/msg/point.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}geometry\+\_\+msgs/msg/vector3.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}ros\+\_\+interface\+\_\+umi\+\_\+rtx/umi-\/drivers/armlib.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}ros\+\_\+interface\+\_\+umi\+\_\+rtx/umi-\/drivers/rtx.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}ros\+\_\+interface\+\_\+umi\+\_\+rtx/umi-\/drivers/armraw.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}ros\+\_\+interface\+\_\+umi\+\_\+rtx/umi-\/drivers/comm.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}ros\+\_\+interface\+\_\+umi\+\_\+rtx/umi-\/drivers/rtxd.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}ros\+\_\+interface\+\_\+umi\+\_\+rtx/arm\+\_\+parts/arm.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}ros\+\_\+interface\+\_\+umi\+\_\+rtx/robotics/umi.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$sys/types.\+h$>$}\newline
+{\ttfamily \#include $<$sys/param.\+h$>$}\newline
+{\ttfamily \#include $<$sys/socket.\+h$>$}\newline
+{\ttfamily \#include $<$sys/fcntl.\+h$>$}\newline
+{\ttfamily \#include $<$sys/un.\+h$>$}\newline
+{\ttfamily \#include $<$sys/uio.\+h$>$}\newline
+{\ttfamily \#include $<$sys/file.\+h$>$}\newline
+{\ttfamily \#include $<$netinet/in.\+h$>$}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$unistd.\+h$>$}\newline
+{\ttfamily \#include $<$errno.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$netdb.\+h$>$}\newline
+{\ttfamily \#include $<$fcntl.\+h$>$}\newline
+{\ttfamily \#include $<$signal.\+h$>$}\newline
+{\ttfamily \#include $<$chrono$>$}\newline
+{\ttfamily \#include $<$map$>$}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$sstream$>$}\newline
+Include dependency graph for node\+\_\+arm.\+hpp\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{node__arm_8hpp__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classArm__node}{Arm\+\_\+node}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+R\+O\+S2 node that is connected to the arm and allows to send received commands to it. 
+
+\begin{DoxyAuthor}{Author}
+Théo M\+A\+S\+SA (\href{mailto:theo.massa@ensta-bretagne.org}{\texttt{ theo.\+massa@ensta-\/bretagne.\+org}}) 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2023-\/07-\/19 
+\end{DoxyDate}

@@ -1,0 +1,162 @@
+\hypertarget{classMainGUI}{}\doxysection{Main\+G\+UI Class Reference}
+\label{classMainGUI}\index{MainGUI@{MainGUI}}
+
+
+\mbox{\hyperlink{classMainGUI}{Main\+G\+UI}} class, defines our custom interface.  
+
+
+
+
+{\ttfamily \#include $<$main\+\_\+gui.\+hpp$>$}
+
+
+
+Inheritance diagram for Main\+G\+UI\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=332pt]{classMainGUI__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Main\+G\+UI\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=332pt]{classMainGUI__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classMainGUI_ac17290e6e604d280b2c1827510449302}{Main\+G\+UI}} (Q\+Application $\ast$app, const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classObjective__node}{Objective\+\_\+node}} $>$ \&ros2\+\_\+node, rviz\+\_\+common\+::ros\+\_\+integration\+::\+Ros\+Node\+Abstraction\+Iface\+::\+Weak\+Ptr rviz\+\_\+ros\+\_\+node, Q\+Widget $\ast$parent=nullptr)
+\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{classMainGUI}{Main\+G\+UI}} object. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classMainGUI_abec2b98180f171ec7b798a9f65f109f6}\label{classMainGUI_abec2b98180f171ec7b798a9f65f109f6}} 
+\mbox{\hyperlink{classMainGUI_abec2b98180f171ec7b798a9f65f109f6}{$\sim$\+Main\+G\+UI}} () override
+\begin{DoxyCompactList}\small\item\em Destroy the Main G\+UI object. \end{DoxyCompactList}\item 
+Q\+Widget $\ast$ \mbox{\hyperlink{classMainGUI_ab7a6e50263996b8b4985f62f0881f8a4}{get\+Parent\+Window}} () override
+\begin{DoxyCompactList}\small\item\em Get the Parent Window object, override of the Q\+Main\+Window property, necessary for compilation but useless here. \end{DoxyCompactList}\item 
+rviz\+\_\+common\+::\+Panel\+Dock\+Widget $\ast$ \mbox{\hyperlink{classMainGUI_a26a80fe2795f6ca4ac6ef8c844dcbf42}{add\+Pane}} (const Q\+String \&name, Q\+Widget $\ast$pane, Qt\+::\+Dock\+Widget\+Area area, bool floating) override
+\begin{DoxyCompactList}\small\item\em Add a Dock\+Widget to our window, override of the Q\+Main\+Window property, necessary for compilation but useless here. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classMainGUI_a53ea40f64db05c23de77b253c5f8eb5d}{set\+Status}} (const Q\+String \&message) override
+\begin{DoxyCompactList}\small\item\em Set the Status object, override of the Q\+Main\+Window property, necessary for compilation but useless here. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classMainGUI_a9110631d8522942ba0e890a178405f8d}\label{classMainGUI_a9110631d8522942ba0e890a178405f8d}} 
+double {\bfseries x} =0.
+\item 
+\mbox{\Hypertarget{classMainGUI_a001d00c8a60bb77f5da8422233efac88}\label{classMainGUI_a001d00c8a60bb77f5da8422233efac88}} 
+double {\bfseries y} =0.\+6
+\item 
+\mbox{\Hypertarget{classMainGUI_abc3f26a81798b6b0724a338a56a404c1}\label{classMainGUI_abc3f26a81798b6b0724a338a56a404c1}} 
+double {\bfseries z} =0.\+6
+\item 
+\mbox{\Hypertarget{classMainGUI_abd808f95946f232fed28bb351077316a}\label{classMainGUI_abd808f95946f232fed28bb351077316a}} 
+double {\bfseries yaw} =0.
+\item 
+\mbox{\Hypertarget{classMainGUI_ae17f200241ed7b9d7e4dbbe481d55914}\label{classMainGUI_ae17f200241ed7b9d7e4dbbe481d55914}} 
+double {\bfseries pitch} =0.
+\item 
+\mbox{\Hypertarget{classMainGUI_af2d7bedbf443f6427b61f3389ea45d52}\label{classMainGUI_af2d7bedbf443f6427b61f3389ea45d52}} 
+double {\bfseries roll} =0.
+\item 
+\mbox{\Hypertarget{classMainGUI_ab7006b4899215deb683488ce70f5b0ab}\label{classMainGUI_ab7006b4899215deb683488ce70f5b0ab}} 
+double {\bfseries grip} =0.\+2
+\item 
+\mbox{\Hypertarget{classMainGUI_a517c96ab992c56c10622d9cc2393c0fc}\label{classMainGUI_a517c96ab992c56c10622d9cc2393c0fc}} 
+double {\bfseries raw\+\_\+yaw} =0.
+\item 
+\mbox{\Hypertarget{classMainGUI_a9a29a71e115b7468e03408ad0741c118}\label{classMainGUI_a9a29a71e115b7468e03408ad0741c118}} 
+bool {\bfseries manual\+\_\+on} = true
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\mbox{\hyperlink{classMainGUI}{Main\+G\+UI}} class, defines our custom interface. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classMainGUI_ac17290e6e604d280b2c1827510449302}\label{classMainGUI_ac17290e6e604d280b2c1827510449302}} 
+\index{MainGUI@{MainGUI}!MainGUI@{MainGUI}}
+\index{MainGUI@{MainGUI}!MainGUI@{MainGUI}}
+\doxysubsubsection{\texorpdfstring{MainGUI()}{MainGUI()}}
+{\footnotesize\ttfamily Main\+G\+U\+I\+::\+Main\+G\+UI (\begin{DoxyParamCaption}\item[{Q\+Application $\ast$}]{app,  }\item[{const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classObjective__node}{Objective\+\_\+node}} $>$ \&}]{ros2\+\_\+node,  }\item[{rviz\+\_\+common\+::ros\+\_\+integration\+::\+Ros\+Node\+Abstraction\+Iface\+::\+Weak\+Ptr}]{rviz\+\_\+ros\+\_\+node,  }\item[{Q\+Widget $\ast$}]{parent = {\ttfamily nullptr} }\end{DoxyParamCaption})}
+
+
+
+Construct a new \mbox{\hyperlink{classMainGUI}{Main\+G\+UI}} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em app} & Q\+Application object that will be used for the G\+UI \\
+\hline
+{\em ros2\+\_\+node} & The command node that works in pair with this interface \\
+\hline
+{\em rviz\+\_\+ros\+\_\+node} & The R\+Viz R\+OS node that is necessary to run R\+Viz2 in our interface \\
+\hline
+{\em parent} & \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classMainGUI_a26a80fe2795f6ca4ac6ef8c844dcbf42}\label{classMainGUI_a26a80fe2795f6ca4ac6ef8c844dcbf42}} 
+\index{MainGUI@{MainGUI}!addPane@{addPane}}
+\index{addPane@{addPane}!MainGUI@{MainGUI}}
+\doxysubsubsection{\texorpdfstring{addPane()}{addPane()}}
+{\footnotesize\ttfamily rviz\+\_\+common\+::\+Panel\+Dock\+Widget$\ast$ Main\+G\+U\+I\+::add\+Pane (\begin{DoxyParamCaption}\item[{const Q\+String \&}]{name,  }\item[{Q\+Widget $\ast$}]{pane,  }\item[{Qt\+::\+Dock\+Widget\+Area}]{area,  }\item[{bool}]{floating }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}}
+
+
+
+Add a Dock\+Widget to our window, override of the Q\+Main\+Window property, necessary for compilation but useless here. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & Name of the new Dock\+Widget \\
+\hline
+{\em pane} & Type of the desired D\+Ock\+Widget \\
+\hline
+{\em area} & Size of the Widget \\
+\hline
+{\em floating} & Don\textquotesingle{}t know the utility of this one \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+rviz\+\_\+common\+::\+Panel\+Dock\+Widget$\ast$ 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classMainGUI_ab7a6e50263996b8b4985f62f0881f8a4}\label{classMainGUI_ab7a6e50263996b8b4985f62f0881f8a4}} 
+\index{MainGUI@{MainGUI}!getParentWindow@{getParentWindow}}
+\index{getParentWindow@{getParentWindow}!MainGUI@{MainGUI}}
+\doxysubsubsection{\texorpdfstring{getParentWindow()}{getParentWindow()}}
+{\footnotesize\ttfamily Q\+Widget$\ast$ Main\+G\+U\+I\+::get\+Parent\+Window (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}}
+
+
+
+Get the Parent Window object, override of the Q\+Main\+Window property, necessary for compilation but useless here. 
+
+\begin{DoxyReturn}{Returns}
+Q\+Widget$\ast$ 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classMainGUI_a53ea40f64db05c23de77b253c5f8eb5d}\label{classMainGUI_a53ea40f64db05c23de77b253c5f8eb5d}} 
+\index{MainGUI@{MainGUI}!setStatus@{setStatus}}
+\index{setStatus@{setStatus}!MainGUI@{MainGUI}}
+\doxysubsubsection{\texorpdfstring{setStatus()}{setStatus()}}
+{\footnotesize\ttfamily void Main\+G\+U\+I\+::set\+Status (\begin{DoxyParamCaption}\item[{const Q\+String \&}]{message }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}}
+
+
+
+Set the Status object, override of the Q\+Main\+Window property, necessary for compilation but useless here. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em message} & \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/ros\+\_\+interface\+\_\+umi\+\_\+rtx/include/ros\+\_\+interface\+\_\+umi\+\_\+rtx/\mbox{\hyperlink{main__gui_8hpp}{main\+\_\+gui.\+hpp}}\end{DoxyCompactItemize}

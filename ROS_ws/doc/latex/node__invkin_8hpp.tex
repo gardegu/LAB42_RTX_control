@@ -1,0 +1,51 @@
+\hypertarget{node__invkin_8hpp}{}\doxysection{src/ros\+\_\+interface\+\_\+umi\+\_\+rtx/include/ros\+\_\+interface\+\_\+umi\+\_\+rtx/node\+\_\+invkin.hpp File Reference}
+\label{node__invkin_8hpp}\index{src/ros\_interface\_umi\_rtx/include/ros\_interface\_umi\_rtx/node\_invkin.hpp@{src/ros\_interface\_umi\_rtx/include/ros\_interface\_umi\_rtx/node\_invkin.hpp}}
+
+
+Node dedicated in the inverse kinematics processing.  
+
+
+{\ttfamily \#include \char`\"{}rclcpp/rclcpp.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}geometry\+\_\+msgs/msg/point.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}geometry\+\_\+msgs/msg/vector3.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}std\+\_\+msgs/msg/float32.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}sensor\+\_\+msgs/msg/joint\+\_\+state.\+hpp\char`\"{}}\newline
+{\ttfamily \#include $<$ament\+\_\+index\+\_\+cpp/get\+\_\+package\+\_\+share\+\_\+directory.\+hpp$>$}\newline
+{\ttfamily \#include \char`\"{}pinocchio/parsers/urdf.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}pinocchio/spatial/explog.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}pinocchio/algorithm/kinematics.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}pinocchio/algorithm/jacobian.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}pinocchio/algorithm/joint-\/configuration.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}ros\+\_\+interface\+\_\+umi\+\_\+rtx/umi-\/drivers/rtx.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$map$>$}\newline
+{\ttfamily \#include $<$math.\+h$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include $<$cmath$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+Include dependency graph for node\+\_\+invkin.\+hpp\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{node__invkin_8hpp__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classInvKin__node}{Inv\+Kin\+\_\+node}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Node dedicated in the inverse kinematics processing. 
+
+\begin{DoxyAuthor}{Author}
+Théo M\+A\+S\+SA (\href{mailto:theo.massa@ensta-bretagne.org}{\texttt{ theo.\+massa@ensta-\/bretagne.\+org}}) 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2023-\/07-\/19 
+\end{DoxyDate}
