@@ -8,7 +8,7 @@
 This repository has for purpose to set up a ROS2 interface in order to use the UMI-RTX Arm.
 
 ### Configuration
-This project is built and tested with Ubuntu 20.04 and ROS2 Foxy.
+This project is built and tested with **Ubuntu 20.04** and **ROS2 Foxy**.
 
 ### Usage
 #### Real arm
@@ -37,6 +37,7 @@ And then sourcing ROS:
 
 #### Simulation
 In order to start only the simulation, just place yourself in LAB42_RTX_control and do:
+
 If you are on bash:
 
     source ROS_ws/install/setup.bash
