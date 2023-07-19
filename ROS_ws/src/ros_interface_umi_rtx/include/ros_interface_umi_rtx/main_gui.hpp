@@ -1,3 +1,12 @@
+/**
+ * @file main_gui.hpp
+ * @author Théo MASSA (theo.massa@ensta-bretagne.org)
+ * @brief Main window used for the custom Graphic User Interface (GUI) of our ROS2 interface
+ * @version 0.1
+ * @date 2023-07-19
+ * 
+ */
+
 #ifndef __GUI__
 #define __GUI__
 
@@ -52,21 +61,55 @@ class RenderPanel;
 class VisualizationManager;
 }
 
+/**
+ * @brief MainGUI class, defines our custom interface
+ */
 class MainGUI : public QMainWindow, public rviz_common::WindowManagerInterface {
 public:
+    /**
+     * @brief Construct a new MainGUI object
+     * 
+     * @param app QApplication object that will be used for the GUI
+     * @param ros2_node The command node that works in pair with this interface
+     * @param rviz_ros_node The RViz ROS node that is necessary to run RViz2 in our interface
+     * @param parent 
+     */
     MainGUI(QApplication * app,
             const std::shared_ptr<Objective_node>&  ros2_node, 
             rviz_common::ros_integration::RosNodeAbstractionIface::WeakPtr rviz_ros_node, 
             QWidget* parent = nullptr);
+
+    /**
+     * @brief Destroy the Main GUI object
+     */
     ~MainGUI() override;
 
-    double x=0.,y=0.6,z=0.6,yaw=0.,pitch=0.,roll=0., grip=0.2;
+    double x=0., y=0.6, z=0.6, yaw=0., pitch=0., roll=0., grip=0.2;
     double raw_yaw=0.;
 
     bool manual_on = true;
 
+    /**
+     * @brief Get the Parent Window object, override of the QMainWindow property, necessary for compilation but useless here
+     * 
+     * @return QWidget* 
+     */
     QWidget * getParentWindow() override;
+    /**
+     * @brief Add a DockWidget to our window, override of the QMainWindow property, necessary for compilation but useless here
+     * 
+     * @param name Name of the new DockWidget
+     * @param pane Type of the desired DOckWidget
+     * @param area Size of the Widget
+     * @param floating Don't know the utility of this one
+     * @return rviz_common::PanelDockWidget* 
+     */
     rviz_common::PanelDockWidget * addPane(const QString & name, QWidget * pane, Qt::DockWidgetArea area, bool floating) override;
+    /**
+     * @brief Set the Status object, override of the QMainWindow property, necessary for compilation but useless here
+     * 
+     * @param message 
+     */
     void setStatus(const QString & message) override;
 
 private:
@@ -86,11 +129,20 @@ private:
 
     // cv::VideoCapture capture;
     cv::Mat* frame;
-
+    /**
+     * @brief Initialise the RViz2 object, in order to integrate in our interface
+     */
     void initializeRViz();
 
 private slots:
+    /**
+     * @brief Event necessary to compile, close the window and shutdown the ros node.
+     * @param event 
+     */
     void closeEvent(QCloseEvent *event);
+    /**
+     * @brief Function to update the video frame     * 
+     */
     void updateFrame();
 
 };

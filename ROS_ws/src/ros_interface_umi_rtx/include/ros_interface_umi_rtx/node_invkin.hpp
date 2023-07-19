@@ -1,3 +1,12 @@
+/**
+ * @file node_invkin.hpp
+ * @author Théo MASSA (theo.massa@ensta-bretagne.org)
+ * @brief Node dedicated in the inverse kinematics processing
+ * @version 0.1
+ * @date 2023-07-19
+ * 
+ */
+
 #ifndef __INVKIN_H__
 #define __INVKIN_H__
 
@@ -29,6 +38,10 @@ using namespace std;
 
 class InvKin_node : public rclcpp::Node{
 public:
+    /**
+     * @brief Construct a new InvKin_node object
+     * 
+     */
     InvKin_node() : Node("inverse_kinematics") {
         init_interfaces();
         pinocchio::urdf::buildModel(urdf_file,model);
@@ -37,15 +50,48 @@ public:
     };
 
 private:
+    /**
+     * @brief Initialize the timer, subscribers and publishers
+     */
     void init_interfaces();
+    /**
+     * @brief Timer callback, actions that will be done at every iterations
+     */
     void timer_callback();
+    /**
+     * @brief Get the targeted position
+     *
+     * @param msg 
+     */
     void get_position(const geometry_msgs::msg::Point::SharedPtr msg);
+    /**
+     * @brief Get the targeted orientation
+     * 
+     * @param msg 
+     */
     void get_angles(const geometry_msgs::msg::Vector3::SharedPtr msg);
+    /**
+     * @brief Get the targeted grip
+     * 
+     * @param msg 
+     */
     void get_grip(const std_msgs::msg::Float32::SharedPtr msg);
     
+    /**
+     * @brief Processed the joints' states required to reach the desired pose, using an inverse kinematics algorithm
+     * 
+     * @param x 
+     * @param y 
+     * @param z 
+     */
     void get_state(double x, double y, double z);
 
-    void correct_angle(Eigen::VectorXd &q); // Put angles in [-pi,pi]
+    /**
+     * @brief Put joints' angles in [-pi,pi]
+     * 
+     * @param q 
+     */
+    void correct_angle(Eigen::VectorXd &q);
 
     std::chrono::milliseconds loop_dt_ = 40ms; // Timer of the node
     map<int,double> state;

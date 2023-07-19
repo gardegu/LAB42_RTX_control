@@ -1,3 +1,12 @@
+/**
+ * @file node_simu.hpp
+ * @author Théo MASSA (theo.massa@ensta-bretagne.org)
+ * @brief Node dedicated to the simulation, converts the commands for RViz
+ * @version 0.1
+ * @date 2023-07-19
+ * 
+ */
+
 #ifndef __SIMU_H__
 #define __SIMU_H__
 
@@ -24,16 +33,39 @@ using namespace rapidxml;
 
 class Simu_node : public rclcpp::Node{
 public:
+    /**
+     * @brief Construct a new Simu_node object
+     * 
+     */
     Simu_node() : Node("simulation"){
         init_interfaces();
         init_urdf();
     };
 
 private :
+    /**
+     * @brief Initialize the timer, subscribers and publishers
+     */
     void init_interfaces();
+    /**
+     * @brief Timer callback, actions that will be done at every iterations
+     */
     void timer_callback();
+    /**
+     * @brief Read the URDF description of the arm, to get the joints informations
+     */
     void init_urdf();
+    /**
+     * @brief Get the commands that will be sent to the arm
+     * 
+     * @param msg States of the joints required to reach the desired position sent through 
+     */
     void get_commands(const sensor_msgs::msg::JointState::SharedPtr msg);
+    /**
+     * @brief Get the mission (manual or grab for now)
+     * 
+     * @param msg 
+     */
     void get_mission(const std_msgs::msg::String::SharedPtr msg);
 
     std::chrono::milliseconds loop_dt_ = 40ms;

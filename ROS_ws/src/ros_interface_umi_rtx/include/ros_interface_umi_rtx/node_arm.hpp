@@ -1,3 +1,12 @@
+/**
+ * @file node_arm.hpp
+ * @author Théo MASSA (theo.massa@ensta-bretagne.org)
+ * @brief ROS2 node that is connected to the arm and allows to send received commands to it.
+ * @version 0.1
+ * @date 2023-07-19
+ * 
+ */
+
 #ifndef __NODE_ARM_H__
 #define __NODE_ARM_H__
 
@@ -41,8 +50,12 @@ using namespace std::chrono_literals;
 using namespace std::placeholders;
 using namespace std;
 
+
 class Arm_node : public rclcpp::Node{
 public:
+    /**
+     * @brief Construct a new Arm_node object
+     */
     Arm_node() : Node("arm_node") {
         init_interfaces();
         
@@ -52,16 +65,55 @@ public:
     };
 
 private:
+    /**
+     * @brief Timer callback, actions that will be done at every iterations
+     */
     void timer_callback();
+    /**
+     * @brief Initialize the timer, subscribers and publishers
+     */
     void init_interfaces();
+    /**
+     * @brief Get the commands that will be sent to the arm
+     * 
+     * @param msg States of the joints required to reach the desired position
+     */
     void get_commands(const sensor_msgs::msg::JointState::SharedPtr msg);
+    /**
+     * @brief Get the targeted position
+     *
+     * @param msg 
+     */
     void get_position(const geometry_msgs::msg::Point::SharedPtr msg);
+    /**
+     * @brief Get the targeted orientation
+     * 
+     * @param msg 
+     */
     void get_angles(const geometry_msgs::msg::Vector3::SharedPtr msg);
+    /**
+     * @brief Get the targeted grip
+     * 
+     * @param msg 
+     */
     void get_grip(const std_msgs::msg::Float32::SharedPtr msg);
+    /**
+     * @brief Set the motors/joints to their required state to reach the desired position
+     * 
+     */
     void set_motors();
+    /**
+     * @brief Get the joints' parameters
+     * 
+     */
     void get_params();
 
-    string params2msg(); //Converts motors_params into a string to publish more easily
+    /**
+     * @brief Converts motors_params into a string to publish more easily
+     * 
+     * @return string 
+     */
+    string params2msg();
     
     std::chrono::milliseconds loop_dt_ = 40ms; // Timer of the node
     map<int,double> commands_motor; // Map that stores the commands for each motor
