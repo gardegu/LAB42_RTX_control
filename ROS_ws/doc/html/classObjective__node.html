@@ -65,6 +65,8 @@ $(function() {
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
+<a href="#pri-methods">Private Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="classObjective__node-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">Objective_node Class Reference</div>  </div>
@@ -128,8 +130,209 @@ double&#160;</td><td class="memItemRight" valign="bottom"><b>roll</b> =0.</td></
 <tr class="memitem:af5f60f20b11c3e7d064d825df33f5efa"><td class="memItemLeft" align="right" valign="top"><a id="af5f60f20b11c3e7d064d825df33f5efa"></a>
 double&#160;</td><td class="memItemRight" valign="bottom"><b>grip</b> =0.2</td></tr>
 <tr class="separator:af5f60f20b11c3e7d064d825df33f5efa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:a4551c645109d3558c9199d41fb178e5e"><td class="memItemLeft" align="right" valign="top"><a id="a4551c645109d3558c9199d41fb178e5e"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classObjective__node.html#a4551c645109d3558c9199d41fb178e5e">init_interfaces</a> ()</td></tr>
+<tr class="memdesc:a4551c645109d3558c9199d41fb178e5e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize the timer, subscribers and publishers. <br /></td></tr>
+<tr class="separator:a4551c645109d3558c9199d41fb178e5e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a50cde468c869dde93201b5ebd0d07717"><td class="memItemLeft" align="right" valign="top"><a id="a50cde468c869dde93201b5ebd0d07717"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classObjective__node.html#a50cde468c869dde93201b5ebd0d07717">timer_callback</a> ()</td></tr>
+<tr class="memdesc:a50cde468c869dde93201b5ebd0d07717"><td class="mdescLeft">&#160;</td><td class="mdescRight">Timer callback, actions that will be done at every iterations. <br /></td></tr>
+<tr class="separator:a50cde468c869dde93201b5ebd0d07717"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aedc074b9451057279b10f0f37902e90f"><td class="memItemLeft" align="right" valign="top"><a id="aedc074b9451057279b10f0f37902e90f"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classObjective__node.html#aedc074b9451057279b10f0f37902e90f">Lissajou</a> ()</td></tr>
+<tr class="memdesc:aedc074b9451057279b10f0f37902e90f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lissajou's trajectory for the target, function to delete. <br /></td></tr>
+<tr class="separator:aedc074b9451057279b10f0f37902e90f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad25f590c05a4065b3460f2de8f92f2c6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classObjective__node.html#ad25f590c05a4065b3460f2de8f92f2c6">get_processed_position</a> (const geometry_msgs::msg::Point::SharedPtr msg)</td></tr>
+<tr class="memdesc:ad25f590c05a4065b3460f2de8f92f2c6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the targeted position processed by the camera.  <a href="classObjective__node.html#ad25f590c05a4065b3460f2de8f92f2c6">More...</a><br /></td></tr>
+<tr class="separator:ad25f590c05a4065b3460f2de8f92f2c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aedb3e18a445335af1bfaf1c70dace9d2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classObjective__node.html#aedb3e18a445335af1bfaf1c70dace9d2">get_processed_angles</a> (const geometry_msgs::msg::Vector3::SharedPtr msg)</td></tr>
+<tr class="memdesc:aedb3e18a445335af1bfaf1c70dace9d2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the targeted angles processed by the camera.  <a href="classObjective__node.html#aedb3e18a445335af1bfaf1c70dace9d2">More...</a><br /></td></tr>
+<tr class="separator:aedb3e18a445335af1bfaf1c70dace9d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a88c37158402cd0f3fb8e1ff004e3aedf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classObjective__node.html#a88c37158402cd0f3fb8e1ff004e3aedf">get_image</a> (const sensor_msgs::msg::Image::SharedPtr msg)</td></tr>
+<tr class="memdesc:a88c37158402cd0f3fb8e1ff004e3aedf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the images published.  <a href="classObjective__node.html#a88c37158402cd0f3fb8e1ff004e3aedf">More...</a><br /></td></tr>
+<tr class="separator:a88c37158402cd0f3fb8e1ff004e3aedf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:a90ad9bc0b7aa6a3c98b3af64b24dea43"><td class="memItemLeft" align="right" valign="top"><a id="a90ad9bc0b7aa6a3c98b3af64b24dea43"></a>
+std::chrono::milliseconds&#160;</td><td class="memItemRight" valign="bottom"><b>loop_dt_</b> = 40ms</td></tr>
+<tr class="separator:a90ad9bc0b7aa6a3c98b3af64b24dea43"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ade7d4355cafbd0d373c9bb3f46a6126b"><td class="memItemLeft" align="right" valign="top"><a id="ade7d4355cafbd0d373c9bb3f46a6126b"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><b>x0</b></td></tr>
+<tr class="separator:ade7d4355cafbd0d373c9bb3f46a6126b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2342954cd194d14cc9cd080af983726f"><td class="memItemLeft" align="right" valign="top"><a id="a2342954cd194d14cc9cd080af983726f"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><b>y0</b></td></tr>
+<tr class="separator:a2342954cd194d14cc9cd080af983726f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af74e8de2ca38d268ab72395331857642"><td class="memItemLeft" align="right" valign="top"><a id="af74e8de2ca38d268ab72395331857642"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><b>z0</b></td></tr>
+<tr class="separator:af74e8de2ca38d268ab72395331857642"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a342c06f80cd613c93a060afb7e6b975c"><td class="memItemLeft" align="right" valign="top"><a id="a342c06f80cd613c93a060afb7e6b975c"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><b>yaw0</b></td></tr>
+<tr class="separator:a342c06f80cd613c93a060afb7e6b975c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abc7f4d48760be3cb01452e5dae9d6533"><td class="memItemLeft" align="right" valign="top"><a id="abc7f4d48760be3cb01452e5dae9d6533"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><b>pitch0</b></td></tr>
+<tr class="separator:abc7f4d48760be3cb01452e5dae9d6533"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae1a5618aa3a994adf56b31182f7cc19d"><td class="memItemLeft" align="right" valign="top"><a id="ae1a5618aa3a994adf56b31182f7cc19d"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><b>roll0</b></td></tr>
+<tr class="separator:ae1a5618aa3a994adf56b31182f7cc19d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acf18b0ee03d52bd8e0c06c9ca855f0b1"><td class="memItemLeft" align="right" valign="top"><a id="acf18b0ee03d52bd8e0c06c9ca855f0b1"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><b>t0</b></td></tr>
+<tr class="separator:acf18b0ee03d52bd8e0c06c9ca855f0b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad1ca1c59390f9b346ec22c2e1a34e88f"><td class="memItemLeft" align="right" valign="top"><a id="ad1ca1c59390f9b346ec22c2e1a34e88f"></a>
+float&#160;</td><td class="memItemRight" valign="bottom"><b>t</b> =0</td></tr>
+<tr class="separator:ad1ca1c59390f9b346ec22c2e1a34e88f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a34153b3f3d12a23c6d34aea394b2b917"><td class="memItemLeft" align="right" valign="top"><a id="a34153b3f3d12a23c6d34aea394b2b917"></a>
+float&#160;</td><td class="memItemRight" valign="bottom"><b>dt</b> =0.04</td></tr>
+<tr class="separator:a34153b3f3d12a23c6d34aea394b2b917"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9e05e3418acb1347ccb5af8196e64cb6"><td class="memItemLeft" align="right" valign="top"><a id="a9e05e3418acb1347ccb5af8196e64cb6"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><b>processed_x</b></td></tr>
+<tr class="separator:a9e05e3418acb1347ccb5af8196e64cb6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aad45afc6c48892e2dfcee2ce5199cb7d"><td class="memItemLeft" align="right" valign="top"><a id="aad45afc6c48892e2dfcee2ce5199cb7d"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><b>processed_y</b></td></tr>
+<tr class="separator:aad45afc6c48892e2dfcee2ce5199cb7d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a37f8c35f45fa1eada749902d205b459e"><td class="memItemLeft" align="right" valign="top"><a id="a37f8c35f45fa1eada749902d205b459e"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><b>processed_z</b></td></tr>
+<tr class="separator:a37f8c35f45fa1eada749902d205b459e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abc3640a574a6b129665bdfd9bf552aae"><td class="memItemLeft" align="right" valign="top"><a id="abc3640a574a6b129665bdfd9bf552aae"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><b>processed_yaw</b></td></tr>
+<tr class="separator:abc3640a574a6b129665bdfd9bf552aae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a840ab0561b5235f8e82145790c4ad923"><td class="memItemLeft" align="right" valign="top"><a id="a840ab0561b5235f8e82145790c4ad923"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><b>processed_pitch</b></td></tr>
+<tr class="separator:a840ab0561b5235f8e82145790c4ad923"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aadca213867f58d4e17c98d03b6686b11"><td class="memItemLeft" align="right" valign="top"><a id="aadca213867f58d4e17c98d03b6686b11"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><b>processed_roll</b></td></tr>
+<tr class="separator:aadca213867f58d4e17c98d03b6686b11"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aab3f1460fb035632ec13f5fefea741df"><td class="memItemLeft" align="right" valign="top"><a id="aab3f1460fb035632ec13f5fefea741df"></a>
+rclcpp::TimerBase::SharedPtr&#160;</td><td class="memItemRight" valign="bottom"><b>timer_</b></td></tr>
+<tr class="separator:aab3f1460fb035632ec13f5fefea741df"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0a3142350d43a299873a3f51990c9cd4"><td class="memItemLeft" align="right" valign="top"><a id="a0a3142350d43a299873a3f51990c9cd4"></a>
+rclcpp::Publisher&lt; geometry_msgs::msg::Point &gt;::SharedPtr&#160;</td><td class="memItemRight" valign="bottom"><b>objective_publisher</b></td></tr>
+<tr class="separator:a0a3142350d43a299873a3f51990c9cd4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a62491f590a2cafe375351917f1d595cf"><td class="memItemLeft" align="right" valign="top"><a id="a62491f590a2cafe375351917f1d595cf"></a>
+rclcpp::Publisher&lt; geometry_msgs::msg::Vector3 &gt;::SharedPtr&#160;</td><td class="memItemRight" valign="bottom"><b>angles_publisher</b></td></tr>
+<tr class="separator:a62491f590a2cafe375351917f1d595cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a46f561bcede221a4e83bbd4fa2da6fcb"><td class="memItemLeft" align="right" valign="top"><a id="a46f561bcede221a4e83bbd4fa2da6fcb"></a>
+rclcpp::Publisher&lt; std_msgs::msg::String &gt;::SharedPtr&#160;</td><td class="memItemRight" valign="bottom"><b>mission_publisher</b></td></tr>
+<tr class="separator:a46f561bcede221a4e83bbd4fa2da6fcb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad065742047ac8af4508eef5bb7282f92"><td class="memItemLeft" align="right" valign="top"><a id="ad065742047ac8af4508eef5bb7282f92"></a>
+rclcpp::Publisher&lt; std_msgs::msg::Float32 &gt;::SharedPtr&#160;</td><td class="memItemRight" valign="bottom"><b>grip_publisher</b></td></tr>
+<tr class="separator:ad065742047ac8af4508eef5bb7282f92"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0c9d4abb329719daf1a38c574ebad3a6"><td class="memItemLeft" align="right" valign="top"><a id="a0c9d4abb329719daf1a38c574ebad3a6"></a>
+rclcpp::Subscription&lt; geometry_msgs::msg::Point &gt;::SharedPtr&#160;</td><td class="memItemRight" valign="bottom"><b>position_subscriber</b></td></tr>
+<tr class="separator:a0c9d4abb329719daf1a38c574ebad3a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aadcfe5ee3b4e356a49ca96aea14336b7"><td class="memItemLeft" align="right" valign="top"><a id="aadcfe5ee3b4e356a49ca96aea14336b7"></a>
+rclcpp::Subscription&lt; geometry_msgs::msg::Vector3 &gt;::SharedPtr&#160;</td><td class="memItemRight" valign="bottom"><b>angles_subscriber</b></td></tr>
+<tr class="separator:aadcfe5ee3b4e356a49ca96aea14336b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acf2ea49da4efee6efb4d7e93f5fa4746"><td class="memItemLeft" align="right" valign="top"><a id="acf2ea49da4efee6efb4d7e93f5fa4746"></a>
+rclcpp::Subscription&lt; sensor_msgs::msg::Image &gt;::SharedPtr&#160;</td><td class="memItemRight" valign="bottom"><b>image_subscriber</b></td></tr>
+<tr class="separator:acf2ea49da4efee6efb4d7e93f5fa4746"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="a88c37158402cd0f3fb8e1ff004e3aedf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a88c37158402cd0f3fb8e1ff004e3aedf">&#9670;&nbsp;</a></span>get_image()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Objective_node::get_image </td>
+          <td>(</td>
+          <td class="paramtype">const sensor_msgs::msg::Image::SharedPtr&#160;</td>
+          <td class="paramname"><em>msg</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Get the images published. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">msg</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="aedb3e18a445335af1bfaf1c70dace9d2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aedb3e18a445335af1bfaf1c70dace9d2">&#9670;&nbsp;</a></span>get_processed_angles()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Objective_node::get_processed_angles </td>
+          <td>(</td>
+          <td class="paramtype">const geometry_msgs::msg::Vector3::SharedPtr&#160;</td>
+          <td class="paramname"><em>msg</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Get the targeted angles processed by the camera. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">msg</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ad25f590c05a4065b3460f2de8f92f2c6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad25f590c05a4065b3460f2de8f92f2c6">&#9670;&nbsp;</a></span>get_processed_position()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Objective_node::get_processed_position </td>
+          <td>(</td>
+          <td class="paramtype">const geometry_msgs::msg::Point::SharedPtr&#160;</td>
+          <td class="paramname"><em>msg</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Get the targeted position processed by the camera. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">msg</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a id="af59654500616e7950746d761b4a19547"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#af59654500616e7950746d761b4a19547">&#9670;&nbsp;</a></span>update_state()</h2>
 

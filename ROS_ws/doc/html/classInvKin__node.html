@@ -64,17 +64,24 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-methods">Private Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="classInvKin__node-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">InvKin_node Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>This node processes the inverse kinematics, in order to get the joints' states required to reach the targeted pose.  
+ <a href="classInvKin__node.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="node__invkin_8hpp_source.html">node_invkin.hpp</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for InvKin_node:</div>
 <div class="dyncontent">
 <div class="center"><img src="classInvKin__node__inherit__graph.png" border="0" usemap="#InvKin__node_inherit__map" alt="Inheritance graph"/></div>
 <map name="InvKin__node_inherit__map" id="InvKin__node_inherit__map">
-<area shape="rect" title=" " alt="" coords="5,80,100,107"/>
+<area shape="rect" title="This node processes the inverse kinematics, in order to get the joints&#39; states required to reach the ..." alt="" coords="5,80,100,107"/>
 <area shape="rect" title=" " alt="" coords="26,5,79,32"/>
 </map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
@@ -83,7 +90,7 @@ Collaboration diagram for InvKin_node:</div>
 <div class="dyncontent">
 <div class="center"><img src="classInvKin__node__coll__graph.png" border="0" usemap="#InvKin__node_coll__map" alt="Collaboration graph"/></div>
 <map name="InvKin__node_coll__map" id="InvKin__node_coll__map">
-<area shape="rect" title=" " alt="" coords="5,80,100,107"/>
+<area shape="rect" title="This node processes the inverse kinematics, in order to get the joints&#39; states required to reach the ..." alt="" coords="5,80,100,107"/>
 <area shape="rect" title=" " alt="" coords="26,5,79,32"/>
 </map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
@@ -91,10 +98,134 @@ Collaboration diagram for InvKin_node:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a2ddeae2e88a86145415981054b574358"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classInvKin__node.html#a2ddeae2e88a86145415981054b574358">InvKin_node</a> ()</td></tr>
-<tr class="memdesc:a2ddeae2e88a86145415981054b574358"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="classInvKin__node.html">InvKin_node</a> object.  <a href="classInvKin__node.html#a2ddeae2e88a86145415981054b574358">More...</a><br /></td></tr>
+<tr class="memdesc:a2ddeae2e88a86145415981054b574358"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="classInvKin__node.html" title="This node processes the inverse kinematics, in order to get the joints&#39; states required to reach the ...">InvKin_node</a> object.  <a href="classInvKin__node.html#a2ddeae2e88a86145415981054b574358">More...</a><br /></td></tr>
 <tr class="separator:a2ddeae2e88a86145415981054b574358"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:ad8bb3e8d90b5be4befa048d79fc97e71"><td class="memItemLeft" align="right" valign="top"><a id="ad8bb3e8d90b5be4befa048d79fc97e71"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classInvKin__node.html#ad8bb3e8d90b5be4befa048d79fc97e71">init_interfaces</a> ()</td></tr>
+<tr class="memdesc:ad8bb3e8d90b5be4befa048d79fc97e71"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize the timer, subscribers and publishers. <br /></td></tr>
+<tr class="separator:ad8bb3e8d90b5be4befa048d79fc97e71"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad3585199cc81eb72cb160d26b51a3dc1"><td class="memItemLeft" align="right" valign="top"><a id="ad3585199cc81eb72cb160d26b51a3dc1"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classInvKin__node.html#ad3585199cc81eb72cb160d26b51a3dc1">timer_callback</a> ()</td></tr>
+<tr class="memdesc:ad3585199cc81eb72cb160d26b51a3dc1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Timer callback, actions that will be done at every iterations. <br /></td></tr>
+<tr class="separator:ad3585199cc81eb72cb160d26b51a3dc1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a90293733a2cddfe1527340b61b487db0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classInvKin__node.html#a90293733a2cddfe1527340b61b487db0">get_position</a> (const geometry_msgs::msg::Point::SharedPtr msg)</td></tr>
+<tr class="memdesc:a90293733a2cddfe1527340b61b487db0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the targeted position.  <a href="classInvKin__node.html#a90293733a2cddfe1527340b61b487db0">More...</a><br /></td></tr>
+<tr class="separator:a90293733a2cddfe1527340b61b487db0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1a94abbdf9a686e28e5fa393217c167b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classInvKin__node.html#a1a94abbdf9a686e28e5fa393217c167b">get_angles</a> (const geometry_msgs::msg::Vector3::SharedPtr msg)</td></tr>
+<tr class="memdesc:a1a94abbdf9a686e28e5fa393217c167b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the targeted orientation.  <a href="classInvKin__node.html#a1a94abbdf9a686e28e5fa393217c167b">More...</a><br /></td></tr>
+<tr class="separator:a1a94abbdf9a686e28e5fa393217c167b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afe4b94559a4a51da10a4c28ca189f0ab"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classInvKin__node.html#afe4b94559a4a51da10a4c28ca189f0ab">get_grip</a> (const std_msgs::msg::Float32::SharedPtr msg)</td></tr>
+<tr class="memdesc:afe4b94559a4a51da10a4c28ca189f0ab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the targeted grip.  <a href="classInvKin__node.html#afe4b94559a4a51da10a4c28ca189f0ab">More...</a><br /></td></tr>
+<tr class="separator:afe4b94559a4a51da10a4c28ca189f0ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a412bf7be07f80f3b6d9e3a3304c3d67f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classInvKin__node.html#a412bf7be07f80f3b6d9e3a3304c3d67f">get_state</a> (double x, double y, double z)</td></tr>
+<tr class="memdesc:a412bf7be07f80f3b6d9e3a3304c3d67f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Processed the joints' states required to reach the desired pose, using an inverse kinematics algorithm.  <a href="classInvKin__node.html#a412bf7be07f80f3b6d9e3a3304c3d67f">More...</a><br /></td></tr>
+<tr class="separator:a412bf7be07f80f3b6d9e3a3304c3d67f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a568e39d50b2fe87b4030a31f16c2c638"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classInvKin__node.html#a568e39d50b2fe87b4030a31f16c2c638">correct_angle</a> (Eigen::VectorXd &amp;q)</td></tr>
+<tr class="memdesc:a568e39d50b2fe87b4030a31f16c2c638"><td class="mdescLeft">&#160;</td><td class="mdescRight">Put joints' angles in [-pi,pi].  <a href="classInvKin__node.html#a568e39d50b2fe87b4030a31f16c2c638">More...</a><br /></td></tr>
+<tr class="separator:a568e39d50b2fe87b4030a31f16c2c638"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:a9f85a510dc6be40abc485196095b634b"><td class="memItemLeft" align="right" valign="top"><a id="a9f85a510dc6be40abc485196095b634b"></a>
+std::chrono::milliseconds&#160;</td><td class="memItemRight" valign="bottom"><b>loop_dt_</b> = 40ms</td></tr>
+<tr class="separator:a9f85a510dc6be40abc485196095b634b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aae62a4275d94632efe0cf8e5caa9998a"><td class="memItemLeft" align="right" valign="top"><a id="aae62a4275d94632efe0cf8e5caa9998a"></a>
+map&lt; int, double &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>state</b></td></tr>
+<tr class="separator:aae62a4275d94632efe0cf8e5caa9998a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad3f4a1c36336625bd238f358827efef7"><td class="memItemLeft" align="right" valign="top"><a id="ad3f4a1c36336625bd238f358827efef7"></a>
+float&#160;</td><td class="memItemRight" valign="bottom"><b>L</b> = 0.15</td></tr>
+<tr class="separator:ad3f4a1c36336625bd238f358827efef7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a74a3931b4ee55a3a7f5570c019a237a4"><td class="memItemLeft" align="right" valign="top"><a id="a74a3931b4ee55a3a7f5570c019a237a4"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><b>last_x</b></td></tr>
+<tr class="separator:a74a3931b4ee55a3a7f5570c019a237a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae25023cbc1b01213322bdf3e6f045f77"><td class="memItemLeft" align="right" valign="top"><a id="ae25023cbc1b01213322bdf3e6f045f77"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><b>last_y</b></td></tr>
+<tr class="separator:ae25023cbc1b01213322bdf3e6f045f77"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8362616851cab2ccc4f45f9dc145ad5c"><td class="memItemLeft" align="right" valign="top"><a id="a8362616851cab2ccc4f45f9dc145ad5c"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><b>last_z</b></td></tr>
+<tr class="separator:a8362616851cab2ccc4f45f9dc145ad5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab1048b0d22c3fd96392ceb8689f87e02"><td class="memItemLeft" align="right" valign="top"><a id="ab1048b0d22c3fd96392ceb8689f87e02"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>ROLL</b> =6</td></tr>
+<tr class="separator:ab1048b0d22c3fd96392ceb8689f87e02"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1e4f22269a0d68eb8acd29bdfbafcd1e"><td class="memItemLeft" align="right" valign="top"><a id="a1e4f22269a0d68eb8acd29bdfbafcd1e"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>PITCH</b> =7</td></tr>
+<tr class="separator:a1e4f22269a0d68eb8acd29bdfbafcd1e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae99eb15a9dc78e2067ed7bed541cb840"><td class="memItemLeft" align="right" valign="top"><a id="ae99eb15a9dc78e2067ed7bed541cb840"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><b>target_yaw</b></td></tr>
+<tr class="separator:ae99eb15a9dc78e2067ed7bed541cb840"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a866fda8e36659c53095c90a08a0c81d9"><td class="memItemLeft" align="right" valign="top"><a id="a866fda8e36659c53095c90a08a0c81d9"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><b>last_yaw</b></td></tr>
+<tr class="separator:a866fda8e36659c53095c90a08a0c81d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3d95f35d38138cc2558acf38b0b8b347"><td class="memItemLeft" align="right" valign="top"><a id="a3d95f35d38138cc2558acf38b0b8b347"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><b>target_pitch</b></td></tr>
+<tr class="separator:a3d95f35d38138cc2558acf38b0b8b347"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7413b6a02f6a5206a47d4f54bd940426"><td class="memItemLeft" align="right" valign="top"><a id="a7413b6a02f6a5206a47d4f54bd940426"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><b>last_pitch</b></td></tr>
+<tr class="separator:a7413b6a02f6a5206a47d4f54bd940426"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a04c43604556b767c59ae903ba91ba99e"><td class="memItemLeft" align="right" valign="top"><a id="a04c43604556b767c59ae903ba91ba99e"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><b>target_roll</b></td></tr>
+<tr class="separator:a04c43604556b767c59ae903ba91ba99e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3f648333375b1b74344a5257c5d3a688"><td class="memItemLeft" align="right" valign="top"><a id="a3f648333375b1b74344a5257c5d3a688"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><b>last_roll</b></td></tr>
+<tr class="separator:a3f648333375b1b74344a5257c5d3a688"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae73e5feaf1ca753b9bc52e8dd9925226"><td class="memItemLeft" align="right" valign="top"><a id="ae73e5feaf1ca753b9bc52e8dd9925226"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><b>target_grip</b></td></tr>
+<tr class="separator:ae73e5feaf1ca753b9bc52e8dd9925226"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad1ebd1406292534d78a5ed556ce5de43"><td class="memItemLeft" align="right" valign="top"><a id="ad1ebd1406292534d78a5ed556ce5de43"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><b>lats_grip</b></td></tr>
+<tr class="separator:ad1ebd1406292534d78a5ed556ce5de43"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4376de144b44125de5296e4b014a7617"><td class="memItemLeft" align="right" valign="top"><a id="a4376de144b44125de5296e4b014a7617"></a>
+string&#160;</td><td class="memItemRight" valign="bottom"><b>urdf_file</b> = ament_index_cpp::get_package_share_directory(&quot;ros_interface_umi_rtx&quot;)+&quot;/urdf/umi_rtx.urdf&quot;</td></tr>
+<tr class="separator:a4376de144b44125de5296e4b014a7617"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8cbece46733014da4904bba46f96654a"><td class="memItemLeft" align="right" valign="top"><a id="a8cbece46733014da4904bba46f96654a"></a>
+pinocchio::Model&#160;</td><td class="memItemRight" valign="bottom"><b>model</b></td></tr>
+<tr class="separator:a8cbece46733014da4904bba46f96654a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8d8e959fc63726ce8de1ecf51dbc1346"><td class="memItemLeft" align="right" valign="top"><a id="a8d8e959fc63726ce8de1ecf51dbc1346"></a>
+pinocchio::Data&#160;</td><td class="memItemRight" valign="bottom"><b>data</b></td></tr>
+<tr class="separator:a8d8e959fc63726ce8de1ecf51dbc1346"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac9c2515ce15bda3391e96091333b1fab"><td class="memItemLeft" align="right" valign="top"><a id="ac9c2515ce15bda3391e96091333b1fab"></a>
+const int&#160;</td><td class="memItemRight" valign="bottom"><b>JOINT_ID</b> = 6</td></tr>
+<tr class="separator:ac9c2515ce15bda3391e96091333b1fab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad9d3aa1d037c3887fb285073961ded14"><td class="memItemLeft" align="right" valign="top"><a id="ad9d3aa1d037c3887fb285073961ded14"></a>
+const double&#160;</td><td class="memItemRight" valign="bottom"><b>eps</b> = 1e-4</td></tr>
+<tr class="separator:ad9d3aa1d037c3887fb285073961ded14"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3429b58fa44cc5e23464ad05fa95d58d"><td class="memItemLeft" align="right" valign="top"><a id="a3429b58fa44cc5e23464ad05fa95d58d"></a>
+const int&#160;</td><td class="memItemRight" valign="bottom"><b>IT_MAX</b> = 1000</td></tr>
+<tr class="separator:a3429b58fa44cc5e23464ad05fa95d58d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a89e542a06a1006263e432e98d979386f"><td class="memItemLeft" align="right" valign="top"><a id="a89e542a06a1006263e432e98d979386f"></a>
+const double&#160;</td><td class="memItemRight" valign="bottom"><b>DT</b> = 1e-1</td></tr>
+<tr class="separator:a89e542a06a1006263e432e98d979386f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a87f63eab319101fc8d2b538942ad9dfd"><td class="memItemLeft" align="right" valign="top"><a id="a87f63eab319101fc8d2b538942ad9dfd"></a>
+const double&#160;</td><td class="memItemRight" valign="bottom"><b>damp</b> = 1e-12</td></tr>
+<tr class="separator:a87f63eab319101fc8d2b538942ad9dfd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7fe47d95ffeb12ae9947fc1690b80179"><td class="memItemLeft" align="right" valign="top"><a id="a7fe47d95ffeb12ae9947fc1690b80179"></a>
+pinocchio::Data::Matrix6x&#160;</td><td class="memItemRight" valign="bottom"><b>J</b></td></tr>
+<tr class="separator:a7fe47d95ffeb12ae9947fc1690b80179"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af87fb5359c1e5c9b8cdb2c7b846944c7"><td class="memItemLeft" align="right" valign="top"><a id="af87fb5359c1e5c9b8cdb2c7b846944c7"></a>
+Eigen::VectorXd&#160;</td><td class="memItemRight" valign="bottom"><b>q</b></td></tr>
+<tr class="separator:af87fb5359c1e5c9b8cdb2c7b846944c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a445334266920e92b266823068b559a0a"><td class="memItemLeft" align="right" valign="top"><a id="a445334266920e92b266823068b559a0a"></a>
+rclcpp::TimerBase::SharedPtr&#160;</td><td class="memItemRight" valign="bottom"><b>timer_</b></td></tr>
+<tr class="separator:a445334266920e92b266823068b559a0a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8a179a52607d7c77b4a304a1ce728ee1"><td class="memItemLeft" align="right" valign="top"><a id="a8a179a52607d7c77b4a304a1ce728ee1"></a>
+rclcpp::Subscription&lt; geometry_msgs::msg::Point &gt;::SharedPtr&#160;</td><td class="memItemRight" valign="bottom"><b>position_subscription</b></td></tr>
+<tr class="separator:a8a179a52607d7c77b4a304a1ce728ee1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad48b7cc4149fb14d68c33dc709b7f3d7"><td class="memItemLeft" align="right" valign="top"><a id="ad48b7cc4149fb14d68c33dc709b7f3d7"></a>
+rclcpp::Subscription&lt; geometry_msgs::msg::Vector3 &gt;::SharedPtr&#160;</td><td class="memItemRight" valign="bottom"><b>angles_subscription</b></td></tr>
+<tr class="separator:ad48b7cc4149fb14d68c33dc709b7f3d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab9abf82dabd452b212471144fce55cca"><td class="memItemLeft" align="right" valign="top"><a id="ab9abf82dabd452b212471144fce55cca"></a>
+rclcpp::Subscription&lt; std_msgs::msg::Float32 &gt;::SharedPtr&#160;</td><td class="memItemRight" valign="bottom"><b>grip_subscription</b></td></tr>
+<tr class="separator:ab9abf82dabd452b212471144fce55cca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aed6ed9106810c617ed3a47f9ad036181"><td class="memItemLeft" align="right" valign="top"><a id="aed6ed9106810c617ed3a47f9ad036181"></a>
+rclcpp::Publisher&lt; sensor_msgs::msg::JointState &gt;::SharedPtr&#160;</td><td class="memItemRight" valign="bottom"><b>angles_publisher</b></td></tr>
+<tr class="separator:aed6ed9106810c617ed3a47f9ad036181"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>This node processes the inverse kinematics, in order to get the joints' states required to reach the targeted pose. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a2ddeae2e88a86145415981054b574358"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a2ddeae2e88a86145415981054b574358">&#9670;&nbsp;</a></span>InvKin_node()</h2>
 
@@ -118,7 +249,196 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Construct a new <a class="el" href="classInvKin__node.html">InvKin_node</a> object. </p>
+<p>Construct a new <a class="el" href="classInvKin__node.html" title="This node processes the inverse kinematics, in order to get the joints&#39; states required to reach the ...">InvKin_node</a> object. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a568e39d50b2fe87b4030a31f16c2c638"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a568e39d50b2fe87b4030a31f16c2c638">&#9670;&nbsp;</a></span>correct_angle()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void InvKin_node::correct_angle </td>
+          <td>(</td>
+          <td class="paramtype">Eigen::VectorXd &amp;&#160;</td>
+          <td class="paramname"><em>q</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Put joints' angles in [-pi,pi]. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">q</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a1a94abbdf9a686e28e5fa393217c167b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1a94abbdf9a686e28e5fa393217c167b">&#9670;&nbsp;</a></span>get_angles()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void InvKin_node::get_angles </td>
+          <td>(</td>
+          <td class="paramtype">const geometry_msgs::msg::Vector3::SharedPtr&#160;</td>
+          <td class="paramname"><em>msg</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Get the targeted orientation. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">msg</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="afe4b94559a4a51da10a4c28ca189f0ab"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afe4b94559a4a51da10a4c28ca189f0ab">&#9670;&nbsp;</a></span>get_grip()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void InvKin_node::get_grip </td>
+          <td>(</td>
+          <td class="paramtype">const std_msgs::msg::Float32::SharedPtr&#160;</td>
+          <td class="paramname"><em>msg</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Get the targeted grip. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">msg</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a90293733a2cddfe1527340b61b487db0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a90293733a2cddfe1527340b61b487db0">&#9670;&nbsp;</a></span>get_position()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void InvKin_node::get_position </td>
+          <td>(</td>
+          <td class="paramtype">const geometry_msgs::msg::Point::SharedPtr&#160;</td>
+          <td class="paramname"><em>msg</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Get the targeted position. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">msg</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a412bf7be07f80f3b6d9e3a3304c3d67f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a412bf7be07f80f3b6d9e3a3304c3d67f">&#9670;&nbsp;</a></span>get_state()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void InvKin_node::get_state </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>z</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Processed the joints' states required to reach the desired pose, using an inverse kinematics algorithm. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">x</td><td>Targeted x </td></tr>
+    <tr><td class="paramname">y</td><td>Targeted y </td></tr>
+    <tr><td class="paramname">z</td><td>Targeted z </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

@@ -69,6 +69,8 @@ $(function() {
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-methods">Private Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="classrapidxml_1_1memory__pool-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">rapidxml::memory_pool&lt; Ch &gt; Class Template Reference</div>  </div>
@@ -77,6 +79,11 @@ $(function() {
 
 <p><code>#include &lt;<a class="el" href="rapidxml_8hpp_source.html">rapidxml.hpp</a>&gt;</code></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structrapidxml_1_1memory__pool_1_1header.html">header</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a0b609da81dff28a19ebd704400788429"><td class="memItemLeft" align="right" valign="top"><a id="a0b609da81dff28a19ebd704400788429"></a>
@@ -97,6 +104,42 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:aad377c835fdaed1cb2cc9df194cf84e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a84d3d8d2cdfc00501e1dcf26d889ae03"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrapidxml_1_1memory__pool.html#a84d3d8d2cdfc00501e1dcf26d889ae03">set_allocator</a> (alloc_func *af, free_func *ff)</td></tr>
 <tr class="separator:a84d3d8d2cdfc00501e1dcf26d889ae03"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:a1076043ef092e327e59dd988c1ba82fb"><td class="memItemLeft" align="right" valign="top"><a id="a1076043ef092e327e59dd988c1ba82fb"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>init</b> ()</td></tr>
+<tr class="separator:a1076043ef092e327e59dd988c1ba82fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a317396afc1812f08b64a1dd9cde4039b"><td class="memItemLeft" align="right" valign="top"><a id="a317396afc1812f08b64a1dd9cde4039b"></a>
+char *&#160;</td><td class="memItemRight" valign="bottom"><b>align</b> (char *ptr)</td></tr>
+<tr class="separator:a317396afc1812f08b64a1dd9cde4039b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1aed504a747303352e05f61c6ccbbebb"><td class="memItemLeft" align="right" valign="top"><a id="a1aed504a747303352e05f61c6ccbbebb"></a>
+char *&#160;</td><td class="memItemRight" valign="bottom"><b>allocate_raw</b> (std::size_t size)</td></tr>
+<tr class="separator:a1aed504a747303352e05f61c6ccbbebb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4e9cf53fa5f9da3a8f31b754bd94b4ec"><td class="memItemLeft" align="right" valign="top"><a id="a4e9cf53fa5f9da3a8f31b754bd94b4ec"></a>
+void *&#160;</td><td class="memItemRight" valign="bottom"><b>allocate_aligned</b> (std::size_t size)</td></tr>
+<tr class="separator:a4e9cf53fa5f9da3a8f31b754bd94b4ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:a775205c5faa60b63385c24368d26d4e1"><td class="memItemLeft" align="right" valign="top"><a id="a775205c5faa60b63385c24368d26d4e1"></a>
+char *&#160;</td><td class="memItemRight" valign="bottom"><b>m_begin</b></td></tr>
+<tr class="separator:a775205c5faa60b63385c24368d26d4e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4a89ff677c72afc163d1855cefc28013"><td class="memItemLeft" align="right" valign="top"><a id="a4a89ff677c72afc163d1855cefc28013"></a>
+char *&#160;</td><td class="memItemRight" valign="bottom"><b>m_ptr</b></td></tr>
+<tr class="separator:a4a89ff677c72afc163d1855cefc28013"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6c9a83514446842518c9ffb7a38b76eb"><td class="memItemLeft" align="right" valign="top"><a id="a6c9a83514446842518c9ffb7a38b76eb"></a>
+char *&#160;</td><td class="memItemRight" valign="bottom"><b>m_end</b></td></tr>
+<tr class="separator:a6c9a83514446842518c9ffb7a38b76eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aacc5ca734ebfbef7f42251764eb396f4"><td class="memItemLeft" align="right" valign="top"><a id="aacc5ca734ebfbef7f42251764eb396f4"></a>
+char&#160;</td><td class="memItemRight" valign="bottom"><b>m_static_memory</b> [RAPIDXML_STATIC_POOL_SIZE]</td></tr>
+<tr class="separator:aacc5ca734ebfbef7f42251764eb396f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae8964773675d24f77a808356be773c1d"><td class="memItemLeft" align="right" valign="top"><a id="ae8964773675d24f77a808356be773c1d"></a>
+alloc_func *&#160;</td><td class="memItemRight" valign="bottom"><b>m_alloc_func</b></td></tr>
+<tr class="separator:ae8964773675d24f77a808356be773c1d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af8f41565f4de167eb2f40ca20695f24d"><td class="memItemLeft" align="right" valign="top"><a id="af8f41565f4de167eb2f40ca20695f24d"></a>
+free_func *&#160;</td><td class="memItemRight" valign="bottom"><b>m_free_func</b></td></tr>
+<tr class="separator:af8f41565f4de167eb2f40ca20695f24d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><h3>template&lt;class Ch = char&gt;<br />

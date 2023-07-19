@@ -69,6 +69,8 @@ $(function() {
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-methods">Private Member Functions</a> &#124;
+<a href="#pri-static-methods">Static Private Member Functions</a> &#124;
 <a href="classrapidxml_1_1xml__document-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">rapidxml::xml_document&lt; Ch &gt; Class Template Reference</div>  </div>
@@ -77,6 +79,25 @@ $(function() {
 
 <p><code>#include &lt;<a class="el" href="rapidxml_8hpp_source.html">rapidxml.hpp</a>&gt;</code></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structrapidxml_1_1xml__document_1_1attribute__name__pred.html">attribute_name_pred</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structrapidxml_1_1xml__document_1_1attribute__value__pred.html">attribute_value_pred</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structrapidxml_1_1xml__document_1_1attribute__value__pure__pred.html">attribute_value_pure_pred</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structrapidxml_1_1xml__document_1_1node__name__pred.html">node_name_pred</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structrapidxml_1_1xml__document_1_1text__pred.html">text_pred</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structrapidxml_1_1xml__document_1_1text__pure__no__ws__pred.html">text_pure_no_ws_pred</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structrapidxml_1_1xml__document_1_1text__pure__with__ws__pred.html">text_pure_with_ws_pred</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structrapidxml_1_1xml__document_1_1whitespace__pred.html">whitespace_pred</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:aae8841b15085ba8f32ff46587ace28f5"><td class="memItemLeft" align="right" valign="top"><a id="aae8841b15085ba8f32ff46587ace28f5"></a>
@@ -88,6 +109,68 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:ac6e73ff9ac323bf5a370c38feb03a6b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a826929ff54242532198701f19ff5f83f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrapidxml_1_1xml__document.html#a826929ff54242532198701f19ff5f83f">clear</a> ()</td></tr>
 <tr class="separator:a826929ff54242532198701f19ff5f83f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:aaa63a0c7b57ab8fce63d4aebe4da123d"><td class="memTemplParams" colspan="2"><a id="aaa63a0c7b57ab8fce63d4aebe4da123d"></a>
+template&lt;int Flags&gt; </td></tr>
+<tr class="memitem:aaa63a0c7b57ab8fce63d4aebe4da123d"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><b>parse_bom</b> (Ch *&amp;text)</td></tr>
+<tr class="separator:aaa63a0c7b57ab8fce63d4aebe4da123d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0151c52c82ba79ea0605c2facf39c534"><td class="memTemplParams" colspan="2"><a id="a0151c52c82ba79ea0605c2facf39c534"></a>
+template&lt;int Flags&gt; </td></tr>
+<tr class="memitem:a0151c52c82ba79ea0605c2facf39c534"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classrapidxml_1_1xml__node.html">xml_node</a>&lt; Ch &gt; *&#160;</td><td class="memTemplItemRight" valign="bottom"><b>parse_xml_declaration</b> (Ch *&amp;text)</td></tr>
+<tr class="separator:a0151c52c82ba79ea0605c2facf39c534"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abc287ce83bcb2dc8519e300236004591"><td class="memTemplParams" colspan="2"><a id="abc287ce83bcb2dc8519e300236004591"></a>
+template&lt;int Flags&gt; </td></tr>
+<tr class="memitem:abc287ce83bcb2dc8519e300236004591"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classrapidxml_1_1xml__node.html">xml_node</a>&lt; Ch &gt; *&#160;</td><td class="memTemplItemRight" valign="bottom"><b>parse_comment</b> (Ch *&amp;text)</td></tr>
+<tr class="separator:abc287ce83bcb2dc8519e300236004591"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4c613f3a928f763b4c788422edda5860"><td class="memTemplParams" colspan="2"><a id="a4c613f3a928f763b4c788422edda5860"></a>
+template&lt;int Flags&gt; </td></tr>
+<tr class="memitem:a4c613f3a928f763b4c788422edda5860"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classrapidxml_1_1xml__node.html">xml_node</a>&lt; Ch &gt; *&#160;</td><td class="memTemplItemRight" valign="bottom"><b>parse_doctype</b> (Ch *&amp;text)</td></tr>
+<tr class="separator:a4c613f3a928f763b4c788422edda5860"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a09e12a4233a07387d4b5a5ad239388aa"><td class="memTemplParams" colspan="2"><a id="a09e12a4233a07387d4b5a5ad239388aa"></a>
+template&lt;int Flags&gt; </td></tr>
+<tr class="memitem:a09e12a4233a07387d4b5a5ad239388aa"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classrapidxml_1_1xml__node.html">xml_node</a>&lt; Ch &gt; *&#160;</td><td class="memTemplItemRight" valign="bottom"><b>parse_pi</b> (Ch *&amp;text)</td></tr>
+<tr class="separator:a09e12a4233a07387d4b5a5ad239388aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aec6cedf45179b6378c670bc3ea509e61"><td class="memTemplParams" colspan="2"><a id="aec6cedf45179b6378c670bc3ea509e61"></a>
+template&lt;int Flags&gt; </td></tr>
+<tr class="memitem:aec6cedf45179b6378c670bc3ea509e61"><td class="memTemplItemLeft" align="right" valign="top">Ch&#160;</td><td class="memTemplItemRight" valign="bottom"><b>parse_and_append_data</b> (<a class="el" href="classrapidxml_1_1xml__node.html">xml_node</a>&lt; Ch &gt; *node, Ch *&amp;text, Ch *contents_start)</td></tr>
+<tr class="separator:aec6cedf45179b6378c670bc3ea509e61"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab94daeb25e8a1609e31210a45b2afa6c"><td class="memTemplParams" colspan="2"><a id="ab94daeb25e8a1609e31210a45b2afa6c"></a>
+template&lt;int Flags&gt; </td></tr>
+<tr class="memitem:ab94daeb25e8a1609e31210a45b2afa6c"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classrapidxml_1_1xml__node.html">xml_node</a>&lt; Ch &gt; *&#160;</td><td class="memTemplItemRight" valign="bottom"><b>parse_cdata</b> (Ch *&amp;text)</td></tr>
+<tr class="separator:ab94daeb25e8a1609e31210a45b2afa6c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aea385acd096ab200d63a777d53435ada"><td class="memTemplParams" colspan="2"><a id="aea385acd096ab200d63a777d53435ada"></a>
+template&lt;int Flags&gt; </td></tr>
+<tr class="memitem:aea385acd096ab200d63a777d53435ada"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classrapidxml_1_1xml__node.html">xml_node</a>&lt; Ch &gt; *&#160;</td><td class="memTemplItemRight" valign="bottom"><b>parse_element</b> (Ch *&amp;text)</td></tr>
+<tr class="separator:aea385acd096ab200d63a777d53435ada"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5e94cbc9b02e864cb80961ddb8cc63a7"><td class="memTemplParams" colspan="2"><a id="a5e94cbc9b02e864cb80961ddb8cc63a7"></a>
+template&lt;int Flags&gt; </td></tr>
+<tr class="memitem:a5e94cbc9b02e864cb80961ddb8cc63a7"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classrapidxml_1_1xml__node.html">xml_node</a>&lt; Ch &gt; *&#160;</td><td class="memTemplItemRight" valign="bottom"><b>parse_node</b> (Ch *&amp;text)</td></tr>
+<tr class="separator:a5e94cbc9b02e864cb80961ddb8cc63a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aae0a4c2e1972ab9a9e0ce91cf1166ac9"><td class="memTemplParams" colspan="2"><a id="aae0a4c2e1972ab9a9e0ce91cf1166ac9"></a>
+template&lt;int Flags&gt; </td></tr>
+<tr class="memitem:aae0a4c2e1972ab9a9e0ce91cf1166ac9"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><b>parse_node_contents</b> (Ch *&amp;text, <a class="el" href="classrapidxml_1_1xml__node.html">xml_node</a>&lt; Ch &gt; *node)</td></tr>
+<tr class="separator:aae0a4c2e1972ab9a9e0ce91cf1166ac9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac0b3cd07b3d5cbaa83762a196c681519"><td class="memTemplParams" colspan="2"><a id="ac0b3cd07b3d5cbaa83762a196c681519"></a>
+template&lt;int Flags&gt; </td></tr>
+<tr class="memitem:ac0b3cd07b3d5cbaa83762a196c681519"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><b>parse_node_attributes</b> (Ch *&amp;text, <a class="el" href="classrapidxml_1_1xml__node.html">xml_node</a>&lt; Ch &gt; *node)</td></tr>
+<tr class="separator:ac0b3cd07b3d5cbaa83762a196c681519"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-static-methods"></a>
+Static Private Member Functions</h2></td></tr>
+<tr class="memitem:ae33040bcfa8e5a29dc6f6f130984a981"><td class="memTemplParams" colspan="2"><a id="ae33040bcfa8e5a29dc6f6f130984a981"></a>
+template&lt;int Flags&gt; </td></tr>
+<tr class="memitem:ae33040bcfa8e5a29dc6f6f130984a981"><td class="memTemplItemLeft" align="right" valign="top">static void&#160;</td><td class="memTemplItemRight" valign="bottom"><b>insert_coded_character</b> (Ch *&amp;text, unsigned long code)</td></tr>
+<tr class="separator:ae33040bcfa8e5a29dc6f6f130984a981"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a27aca5bdcb3bfa899f61b17d7f1d3a0d"><td class="memTemplParams" colspan="2"><a id="a27aca5bdcb3bfa899f61b17d7f1d3a0d"></a>
+template&lt;class StopPred , int Flags&gt; </td></tr>
+<tr class="memitem:a27aca5bdcb3bfa899f61b17d7f1d3a0d"><td class="memTemplItemLeft" align="right" valign="top">static void&#160;</td><td class="memTemplItemRight" valign="bottom"><b>skip</b> (Ch *&amp;text)</td></tr>
+<tr class="separator:a27aca5bdcb3bfa899f61b17d7f1d3a0d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af86781975cdfff2105fa8c0b49ab4507"><td class="memTemplParams" colspan="2"><a id="af86781975cdfff2105fa8c0b49ab4507"></a>
+template&lt;class StopPred , class StopPredPure , int Flags&gt; </td></tr>
+<tr class="memitem:af86781975cdfff2105fa8c0b49ab4507"><td class="memTemplItemLeft" align="right" valign="top">static Ch *&#160;</td><td class="memTemplItemRight" valign="bottom"><b>skip_and_expand_character_refs</b> (Ch *&amp;text)</td></tr>
+<tr class="separator:af86781975cdfff2105fa8c0b49ab4507"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><h3>template&lt;class Ch = char&gt;<br />

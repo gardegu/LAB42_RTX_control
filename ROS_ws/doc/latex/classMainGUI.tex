@@ -11,8 +11,7 @@
 
 
 
-Inheritance diagram for Main\+G\+UI\+:
-\nopagebreak
+Inheritance diagram for Main\+G\+UI\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -21,8 +20,7 @@ Inheritance diagram for Main\+G\+UI\+:
 \end{figure}
 
 
-Collaboration diagram for Main\+G\+UI\+:
-\nopagebreak
+Collaboration diagram for Main\+G\+UI\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -72,6 +70,80 @@ double {\bfseries raw\+\_\+yaw} =0.
 \item 
 \mbox{\Hypertarget{classMainGUI_a9a29a71e115b7468e03408ad0741c118}\label{classMainGUI_a9a29a71e115b7468e03408ad0741c118}} 
 bool {\bfseries manual\+\_\+on} = true
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Slots}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classMainGUI_a8b7ae47a6c207d8b255dd5f758600bfd}{close\+Event}} (Q\+Close\+Event $\ast$event)
+\begin{DoxyCompactList}\small\item\em Event necessary to compile, close the window and shutdown the ros node. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classMainGUI_a4e4b4c82e523ab30ca2200bb9f6b5122}\label{classMainGUI_a4e4b4c82e523ab30ca2200bb9f6b5122}} 
+void \mbox{\hyperlink{classMainGUI_a4e4b4c82e523ab30ca2200bb9f6b5122}{update\+Frame}} ()
+\begin{DoxyCompactList}\small\item\em Function to update the video frame $\ast$. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classMainGUI_a19969b143a7234f365e21c92a15c151e}\label{classMainGUI_a19969b143a7234f365e21c92a15c151e}} 
+void \mbox{\hyperlink{classMainGUI_a19969b143a7234f365e21c92a15c151e}{initialize\+R\+Viz}} ()
+\begin{DoxyCompactList}\small\item\em Initialise the R\+Viz2 object, in order to integrate in our interface. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classMainGUI_a741b1e892b057f9e26b672dc877efa44}\label{classMainGUI_a741b1e892b057f9e26b672dc877efa44}} 
+const shared\+\_\+ptr$<$ \mbox{\hyperlink{classObjective__node}{Objective\+\_\+node}} $>$ {\bfseries ros2\+\_\+node}
+\item 
+\mbox{\Hypertarget{classMainGUI_aea20c66826ca1439fe37731229b18273}\label{classMainGUI_aea20c66826ca1439fe37731229b18273}} 
+Q\+Application $\ast$ {\bfseries app\+\_\+}
+\item 
+\mbox{\Hypertarget{classMainGUI_a18bbaa6379a28da6583aaf05b40ee7a8}\label{classMainGUI_a18bbaa6379a28da6583aaf05b40ee7a8}} 
+Q\+Widget $\ast$ {\bfseries main\+\_\+widget}
+\item 
+\mbox{\Hypertarget{classMainGUI_a8993b048fcb760145c5358bc055d80dd}\label{classMainGUI_a8993b048fcb760145c5358bc055d80dd}} 
+Q\+Image $\ast$ {\bfseries image}
+\item 
+\mbox{\Hypertarget{classMainGUI_a5450b0913e1167c7a8ba8f6b3a1fbce2}\label{classMainGUI_a5450b0913e1167c7a8ba8f6b3a1fbce2}} 
+Q\+Label $\ast$ {\bfseries video\+Label}
+\item 
+\mbox{\Hypertarget{classMainGUI_ad994baecbf01fbe8561ee2fbdd8af867}\label{classMainGUI_ad994baecbf01fbe8561ee2fbdd8af867}} 
+Q\+Timer $\ast$ {\bfseries timer}
+\item 
+\mbox{\Hypertarget{classMainGUI_a96c54e3a11ff5d0d57ca9dd7eb5842ca}\label{classMainGUI_a96c54e3a11ff5d0d57ca9dd7eb5842ca}} 
+Q\+Double\+Spin\+Box $\ast$ {\bfseries spin\+Box\+\_\+x}
+\item 
+\mbox{\Hypertarget{classMainGUI_adaa9239c90c0943418c64d6487987026}\label{classMainGUI_adaa9239c90c0943418c64d6487987026}} 
+Q\+Double\+Spin\+Box $\ast$ {\bfseries spin\+Box\+\_\+y}
+\item 
+\mbox{\Hypertarget{classMainGUI_a8c10aba0c20abe5b96538969bbfed2df}\label{classMainGUI_a8c10aba0c20abe5b96538969bbfed2df}} 
+Q\+Double\+Spin\+Box $\ast$ {\bfseries spin\+Box\+\_\+z}
+\item 
+\mbox{\Hypertarget{classMainGUI_abdf891bbcb4e2d7104b0db3fd312fc5a}\label{classMainGUI_abdf891bbcb4e2d7104b0db3fd312fc5a}} 
+Q\+Double\+Spin\+Box $\ast$ {\bfseries spin\+Box\+\_\+yaw}
+\item 
+\mbox{\Hypertarget{classMainGUI_ad73feba1067f132f2c8651b4626711fb}\label{classMainGUI_ad73feba1067f132f2c8651b4626711fb}} 
+Q\+Double\+Spin\+Box $\ast$ {\bfseries spin\+Box\+\_\+pitch}
+\item 
+\mbox{\Hypertarget{classMainGUI_a72eda8e2f166369f43257969e35a7f32}\label{classMainGUI_a72eda8e2f166369f43257969e35a7f32}} 
+Q\+Double\+Spin\+Box $\ast$ {\bfseries spin\+Box\+\_\+roll}
+\item 
+\mbox{\Hypertarget{classMainGUI_a8f87992d8e31abb5aadf6bf5233ef3b7}\label{classMainGUI_a8f87992d8e31abb5aadf6bf5233ef3b7}} 
+Q\+Double\+Spin\+Box $\ast$ {\bfseries spin\+Box\+\_\+grip}
+\item 
+\mbox{\Hypertarget{classMainGUI_a36ee4a0e742a83f366cab30936cccca7}\label{classMainGUI_a36ee4a0e742a83f366cab30936cccca7}} 
+rviz\+\_\+common\+::\+Render\+Panel $\ast$ {\bfseries render\+\_\+panel\+\_\+}
+\item 
+\mbox{\Hypertarget{classMainGUI_a5371470d953d4ef7fe2f6fc0062b4ebc}\label{classMainGUI_a5371470d953d4ef7fe2f6fc0062b4ebc}} 
+rviz\+\_\+common\+::\+Display $\ast$ {\bfseries T\+F\+\_\+}
+\item 
+\mbox{\Hypertarget{classMainGUI_ac21b686d10da6368bd1c0418310cbeae}\label{classMainGUI_ac21b686d10da6368bd1c0418310cbeae}} 
+rviz\+\_\+common\+::\+Display $\ast$ {\bfseries Model\+\_\+}
+\item 
+\mbox{\Hypertarget{classMainGUI_a1f39c60a79f506f44958d7e14b825132}\label{classMainGUI_a1f39c60a79f506f44958d7e14b825132}} 
+rviz\+\_\+common\+::\+Visualization\+Manager $\ast$ {\bfseries manager\+\_\+}
+\item 
+\mbox{\Hypertarget{classMainGUI_afa9be5aab72d98435957b2606239edf1}\label{classMainGUI_afa9be5aab72d98435957b2606239edf1}} 
+rviz\+\_\+common\+::ros\+\_\+integration\+::\+Ros\+Node\+Abstraction\+Iface\+::\+Weak\+Ptr {\bfseries rviz\+\_\+ros\+\_\+node\+\_\+}
+\item 
+\mbox{\Hypertarget{classMainGUI_a76d8db2177f56f866e4ce028541adb35}\label{classMainGUI_a76d8db2177f56f866e4ce028541adb35}} 
+cv\+::\+Mat $\ast$ {\bfseries frame}
 \end{DoxyCompactItemize}
 
 
@@ -127,6 +199,21 @@ Add a Dock\+Widget to our window, override of the Q\+Main\+Window property, nece
 \begin{DoxyReturn}{Returns}
 rviz\+\_\+common\+::\+Panel\+Dock\+Widget$\ast$ 
 \end{DoxyReturn}
+\mbox{\Hypertarget{classMainGUI_a8b7ae47a6c207d8b255dd5f758600bfd}\label{classMainGUI_a8b7ae47a6c207d8b255dd5f758600bfd}} 
+\index{MainGUI@{MainGUI}!closeEvent@{closeEvent}}
+\index{closeEvent@{closeEvent}!MainGUI@{MainGUI}}
+\doxysubsubsection{\texorpdfstring{closeEvent}{closeEvent}}
+{\footnotesize\ttfamily void Main\+G\+U\+I\+::close\+Event (\begin{DoxyParamCaption}\item[{Q\+Close\+Event $\ast$}]{event }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}
+
+
+
+Event necessary to compile, close the window and shutdown the ros node. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em event} & \\
+\hline
+\end{DoxyParams}
 \mbox{\Hypertarget{classMainGUI_ab7a6e50263996b8b4985f62f0881f8a4}\label{classMainGUI_ab7a6e50263996b8b4985f62f0881f8a4}} 
 \index{MainGUI@{MainGUI}!getParentWindow@{getParentWindow}}
 \index{getParentWindow@{getParentWindow}!MainGUI@{MainGUI}}

@@ -1,4 +1,7 @@
 var searchData=
 [
-  ['type_76',['type',['../classrapidxml_1_1xml__node.html#a5f91729128856b0aaab598d4364ace60',1,'rapidxml::xml_node::type() const'],['../classrapidxml_1_1xml__node.html#a499bbc9300c1b06821d5c08b24164c68',1,'rapidxml::xml_node::type(node_type type)']]]
+  ['set_5fallocator_95',['set_allocator',['../classrapidxml_1_1memory__pool.html#a84d3d8d2cdfc00501e1dcf26d889ae03',1,'rapidxml::memory_pool']]],
+  ['set_5fmotors_96',['set_motors',['../classArm__node.html#ab8fe5a73a65a723fc8ebcc74cb60d25d',1,'Arm_node']]],
+  ['setstatus_97',['setStatus',['../classMainGUI.html#a53ea40f64db05c23de77b253c5f8eb5d',1,'MainGUI']]],
+  ['simu_5fnode_98',['Simu_node',['../classSimu__node.html',1,'Simu_node'],['../classSimu__node.html#a46ef5e86a9c108db642f09f6e4f0f646',1,'Simu_node::Simu_node()']]]
 ];

@@ -64,6 +64,8 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-methods">Private Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="classSimu__node-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">Simu_node Class Reference</div>  </div>
@@ -93,6 +95,66 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a46ef5e86a9c108db642f09f6e4f0f646"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSimu__node.html#a46ef5e86a9c108db642f09f6e4f0f646">Simu_node</a> ()</td></tr>
 <tr class="memdesc:a46ef5e86a9c108db642f09f6e4f0f646"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="classSimu__node.html">Simu_node</a> object.  <a href="classSimu__node.html#a46ef5e86a9c108db642f09f6e4f0f646">More...</a><br /></td></tr>
 <tr class="separator:a46ef5e86a9c108db642f09f6e4f0f646"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:a53c4b9dc09ef86397737ece14144bfbb"><td class="memItemLeft" align="right" valign="top"><a id="a53c4b9dc09ef86397737ece14144bfbb"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSimu__node.html#a53c4b9dc09ef86397737ece14144bfbb">init_interfaces</a> ()</td></tr>
+<tr class="memdesc:a53c4b9dc09ef86397737ece14144bfbb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize the timer, subscribers and publishers. <br /></td></tr>
+<tr class="separator:a53c4b9dc09ef86397737ece14144bfbb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1ea6667aa5501f814ce1677400ea8010"><td class="memItemLeft" align="right" valign="top"><a id="a1ea6667aa5501f814ce1677400ea8010"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSimu__node.html#a1ea6667aa5501f814ce1677400ea8010">timer_callback</a> ()</td></tr>
+<tr class="memdesc:a1ea6667aa5501f814ce1677400ea8010"><td class="mdescLeft">&#160;</td><td class="mdescRight">Timer callback, actions that will be done at every iterations. <br /></td></tr>
+<tr class="separator:a1ea6667aa5501f814ce1677400ea8010"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7483f71b747b8e7048a22ee878fe0acf"><td class="memItemLeft" align="right" valign="top"><a id="a7483f71b747b8e7048a22ee878fe0acf"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSimu__node.html#a7483f71b747b8e7048a22ee878fe0acf">init_urdf</a> ()</td></tr>
+<tr class="memdesc:a7483f71b747b8e7048a22ee878fe0acf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read the URDF description of the arm, to get the joints informations. <br /></td></tr>
+<tr class="separator:a7483f71b747b8e7048a22ee878fe0acf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5fa5c67ce98785bd873f00cbf5d24913"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSimu__node.html#a5fa5c67ce98785bd873f00cbf5d24913">get_commands</a> (const sensor_msgs::msg::JointState::SharedPtr msg)</td></tr>
+<tr class="memdesc:a5fa5c67ce98785bd873f00cbf5d24913"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the commands that will be sent to the arm.  <a href="classSimu__node.html#a5fa5c67ce98785bd873f00cbf5d24913">More...</a><br /></td></tr>
+<tr class="separator:a5fa5c67ce98785bd873f00cbf5d24913"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa3984748e6022d866f67ec499f1c0ce4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSimu__node.html#aa3984748e6022d866f67ec499f1c0ce4">get_mission</a> (const std_msgs::msg::String::SharedPtr msg)</td></tr>
+<tr class="memdesc:aa3984748e6022d866f67ec499f1c0ce4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the mission (manual or grab for now)  <a href="classSimu__node.html#aa3984748e6022d866f67ec499f1c0ce4">More...</a><br /></td></tr>
+<tr class="separator:aa3984748e6022d866f67ec499f1c0ce4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:a2831e055578ad1edd5457c92f43b6360"><td class="memItemLeft" align="right" valign="top"><a id="a2831e055578ad1edd5457c92f43b6360"></a>
+std::chrono::milliseconds&#160;</td><td class="memItemRight" valign="bottom"><b>loop_dt_</b> = 40ms</td></tr>
+<tr class="separator:a2831e055578ad1edd5457c92f43b6360"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0e3589bc1d2f0b929390f74e09ae42b4"><td class="memItemLeft" align="right" valign="top"><a id="a0e3589bc1d2f0b929390f74e09ae42b4"></a>
+map&lt; string, map&lt; string, double &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>dependent_joints</b></td></tr>
+<tr class="separator:a0e3589bc1d2f0b929390f74e09ae42b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa107a51209118ada43ffc6c2322fffc6"><td class="memItemLeft" align="right" valign="top"><a id="aa107a51209118ada43ffc6c2322fffc6"></a>
+map&lt; string, map&lt; string, double &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>free_joints</b></td></tr>
+<tr class="separator:aa107a51209118ada43ffc6c2322fffc6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4ae8f6789d75885d86ba564df0aa2514"><td class="memItemLeft" align="right" valign="top"><a id="a4ae8f6789d75885d86ba564df0aa2514"></a>
+map&lt; string, double &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>zeros</b></td></tr>
+<tr class="separator:a4ae8f6789d75885d86ba564df0aa2514"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5398dd90229bc654fa0efa42295fad4a"><td class="memItemLeft" align="right" valign="top"><a id="a5398dd90229bc654fa0efa42295fad4a"></a>
+vector&lt; string &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>joint_list</b></td></tr>
+<tr class="separator:a5398dd90229bc654fa0efa42295fad4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a27686fcb8501ba661d8dcf8ade2c9a1c"><td class="memItemLeft" align="right" valign="top"><a id="a27686fcb8501ba661d8dcf8ade2c9a1c"></a>
+vector&lt; string &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>names</b></td></tr>
+<tr class="separator:a27686fcb8501ba661d8dcf8ade2c9a1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab2df902eb1a6aa8f2bc397952f4b2292"><td class="memItemLeft" align="right" valign="top"><a id="ab2df902eb1a6aa8f2bc397952f4b2292"></a>
+string&#160;</td><td class="memItemRight" valign="bottom"><b>urdf_file</b> = ament_index_cpp::get_package_share_directory(&quot;ros_interface_umi_rtx&quot;)+&quot;/urdf/umi_rtx.urdf&quot;</td></tr>
+<tr class="separator:ab2df902eb1a6aa8f2bc397952f4b2292"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a40982d737bd2735c9da7d6c795be2afe"><td class="memItemLeft" align="right" valign="top"><a id="a40982d737bd2735c9da7d6c795be2afe"></a>
+string&#160;</td><td class="memItemRight" valign="bottom"><b>mission</b></td></tr>
+<tr class="separator:a40982d737bd2735c9da7d6c795be2afe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa280be6b13086396c36feda13fe1fd52"><td class="memItemLeft" align="right" valign="top"><a id="aa280be6b13086396c36feda13fe1fd52"></a>
+rclcpp::TimerBase::SharedPtr&#160;</td><td class="memItemRight" valign="bottom"><b>timer_</b></td></tr>
+<tr class="separator:aa280be6b13086396c36feda13fe1fd52"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9514636511a9a1a7bfd86f692ef7cdf4"><td class="memItemLeft" align="right" valign="top"><a id="a9514636511a9a1a7bfd86f692ef7cdf4"></a>
+rclcpp::Subscription&lt; sensor_msgs::msg::JointState &gt;::SharedPtr&#160;</td><td class="memItemRight" valign="bottom"><b>invkin_subscriber</b></td></tr>
+<tr class="separator:a9514636511a9a1a7bfd86f692ef7cdf4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a59627e1803a33043f4f1c75c2dd25458"><td class="memItemLeft" align="right" valign="top"><a id="a59627e1803a33043f4f1c75c2dd25458"></a>
+rclcpp::Subscription&lt; std_msgs::msg::String &gt;::SharedPtr&#160;</td><td class="memItemRight" valign="bottom"><b>mission_subscriber</b></td></tr>
+<tr class="separator:a59627e1803a33043f4f1c75c2dd25458"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adb83bdebd9f32822471ea12d217001ce"><td class="memItemLeft" align="right" valign="top"><a id="adb83bdebd9f32822471ea12d217001ce"></a>
+rclcpp::Publisher&lt; sensor_msgs::msg::JointState &gt;::SharedPtr&#160;</td><td class="memItemRight" valign="bottom"><b>simu_publisher</b></td></tr>
+<tr class="separator:adb83bdebd9f32822471ea12d217001ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a46ef5e86a9c108db642f09f6e4f0f646"></a>
@@ -119,6 +181,75 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Construct a new <a class="el" href="classSimu__node.html">Simu_node</a> object. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a5fa5c67ce98785bd873f00cbf5d24913"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5fa5c67ce98785bd873f00cbf5d24913">&#9670;&nbsp;</a></span>get_commands()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Simu_node::get_commands </td>
+          <td>(</td>
+          <td class="paramtype">const sensor_msgs::msg::JointState::SharedPtr&#160;</td>
+          <td class="paramname"><em>msg</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Get the commands that will be sent to the arm. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">msg</td><td>States of the joints required to reach the desired position sent through </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="aa3984748e6022d866f67ec499f1c0ce4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa3984748e6022d866f67ec499f1c0ce4">&#9670;&nbsp;</a></span>get_mission()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Simu_node::get_mission </td>
+          <td>(</td>
+          <td class="paramtype">const std_msgs::msg::String::SharedPtr&#160;</td>
+          <td class="paramname"><em>msg</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Get the mission (manual or grab for now) </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">msg</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

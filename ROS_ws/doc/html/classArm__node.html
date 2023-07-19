@@ -64,6 +64,8 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-methods">Private Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="classArm__node-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">Arm_node Class Reference</div>  </div>
@@ -94,7 +96,333 @@ Public Member Functions</h2></td></tr>
 &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classArm__node.html#a9cf932084033ba3988983df301c45492">Arm_node</a> ()</td></tr>
 <tr class="memdesc:a9cf932084033ba3988983df301c45492"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="classArm__node.html">Arm_node</a> object. <br /></td></tr>
 <tr class="separator:a9cf932084033ba3988983df301c45492"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:aa7178fb2b19a38b862e50b9e8f6f0171"><td class="memItemLeft" align="right" valign="top"><a id="aa7178fb2b19a38b862e50b9e8f6f0171"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classArm__node.html#aa7178fb2b19a38b862e50b9e8f6f0171">timer_callback</a> ()</td></tr>
+<tr class="memdesc:aa7178fb2b19a38b862e50b9e8f6f0171"><td class="mdescLeft">&#160;</td><td class="mdescRight">Timer callback, actions that will be done at every iterations. <br /></td></tr>
+<tr class="separator:aa7178fb2b19a38b862e50b9e8f6f0171"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2bf097e1bdf54194b1f2ba040bfd2b24"><td class="memItemLeft" align="right" valign="top"><a id="a2bf097e1bdf54194b1f2ba040bfd2b24"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classArm__node.html#a2bf097e1bdf54194b1f2ba040bfd2b24">init_interfaces</a> ()</td></tr>
+<tr class="memdesc:a2bf097e1bdf54194b1f2ba040bfd2b24"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize the timer, subscribers and publishers. <br /></td></tr>
+<tr class="separator:a2bf097e1bdf54194b1f2ba040bfd2b24"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acc453461607d25c4b927b9e1c751554f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classArm__node.html#acc453461607d25c4b927b9e1c751554f">get_commands</a> (const sensor_msgs::msg::JointState::SharedPtr msg)</td></tr>
+<tr class="memdesc:acc453461607d25c4b927b9e1c751554f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the commands that will be sent to the arm.  <a href="classArm__node.html#acc453461607d25c4b927b9e1c751554f">More...</a><br /></td></tr>
+<tr class="separator:acc453461607d25c4b927b9e1c751554f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3bee829f26dedfcd030e04100fe92d87"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classArm__node.html#a3bee829f26dedfcd030e04100fe92d87">get_position</a> (const geometry_msgs::msg::Point::SharedPtr msg)</td></tr>
+<tr class="memdesc:a3bee829f26dedfcd030e04100fe92d87"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the targeted position.  <a href="classArm__node.html#a3bee829f26dedfcd030e04100fe92d87">More...</a><br /></td></tr>
+<tr class="separator:a3bee829f26dedfcd030e04100fe92d87"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab30d900522967fe5a46503e924914892"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classArm__node.html#ab30d900522967fe5a46503e924914892">get_angles</a> (const geometry_msgs::msg::Vector3::SharedPtr msg)</td></tr>
+<tr class="memdesc:ab30d900522967fe5a46503e924914892"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the targeted orientation.  <a href="classArm__node.html#ab30d900522967fe5a46503e924914892">More...</a><br /></td></tr>
+<tr class="separator:ab30d900522967fe5a46503e924914892"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8951f9bafb8f671b81a35a7331f841eb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classArm__node.html#a8951f9bafb8f671b81a35a7331f841eb">get_grip</a> (const std_msgs::msg::Float32::SharedPtr msg)</td></tr>
+<tr class="memdesc:a8951f9bafb8f671b81a35a7331f841eb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the targeted grip.  <a href="classArm__node.html#a8951f9bafb8f671b81a35a7331f841eb">More...</a><br /></td></tr>
+<tr class="separator:a8951f9bafb8f671b81a35a7331f841eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab8fe5a73a65a723fc8ebcc74cb60d25d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classArm__node.html#ab8fe5a73a65a723fc8ebcc74cb60d25d">set_motors</a> ()</td></tr>
+<tr class="memdesc:ab8fe5a73a65a723fc8ebcc74cb60d25d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the motors/joints to their required state to reach the desired position.  <a href="classArm__node.html#ab8fe5a73a65a723fc8ebcc74cb60d25d">More...</a><br /></td></tr>
+<tr class="separator:ab8fe5a73a65a723fc8ebcc74cb60d25d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af0870610cbd2e4d775a9b6b2aa969571"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classArm__node.html#af0870610cbd2e4d775a9b6b2aa969571">get_params</a> ()</td></tr>
+<tr class="memdesc:af0870610cbd2e4d775a9b6b2aa969571"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the joints' parameters.  <a href="classArm__node.html#af0870610cbd2e4d775a9b6b2aa969571">More...</a><br /></td></tr>
+<tr class="separator:af0870610cbd2e4d775a9b6b2aa969571"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac76f87573b3f4e925b7cfe2a0ee50593"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classArm__node.html#ac76f87573b3f4e925b7cfe2a0ee50593">params2msg</a> ()</td></tr>
+<tr class="memdesc:ac76f87573b3f4e925b7cfe2a0ee50593"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts motors_params into a string to publish more easily.  <a href="classArm__node.html#ac76f87573b3f4e925b7cfe2a0ee50593">More...</a><br /></td></tr>
+<tr class="separator:ac76f87573b3f4e925b7cfe2a0ee50593"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:ac61d4023472654a05a089be98fd02feb"><td class="memItemLeft" align="right" valign="top"><a id="ac61d4023472654a05a089be98fd02feb"></a>
+std::chrono::milliseconds&#160;</td><td class="memItemRight" valign="bottom"><b>loop_dt_</b> = 40ms</td></tr>
+<tr class="separator:ac61d4023472654a05a089be98fd02feb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acf1c9ad0ca1335a673913138182a31a9"><td class="memItemLeft" align="right" valign="top"><a id="acf1c9ad0ca1335a673913138182a31a9"></a>
+map&lt; int, double &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>commands_motor</b></td></tr>
+<tr class="separator:acf1c9ad0ca1335a673913138182a31a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a06a249b4cf617a707447477398e2875b"><td class="memItemLeft" align="right" valign="top"><a id="a06a249b4cf617a707447477398e2875b"></a>
+map&lt; int, map&lt; int, int &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>motors_params</b></td></tr>
+<tr class="separator:a06a249b4cf617a707447477398e2875b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8052be98c8a414ce95917a4395a683d5"><td class="memItemLeft" align="right" valign="top"><a id="a8052be98c8a414ce95917a4395a683d5"></a>
+Arm&#160;</td><td class="memItemRight" valign="bottom"><b>full_arm</b></td></tr>
+<tr class="separator:a8052be98c8a414ce95917a4395a683d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aededd217987fbc8c27dfcd6c82fb7dee"><td class="memItemLeft" align="right" valign="top"><a id="aededd217987fbc8c27dfcd6c82fb7dee"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><b>targ_x</b></td></tr>
+<tr class="separator:aededd217987fbc8c27dfcd6c82fb7dee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a86fc07df0bd6578084fe2a009a55b187"><td class="memItemLeft" align="right" valign="top"><a id="a86fc07df0bd6578084fe2a009a55b187"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><b>targ_y</b></td></tr>
+<tr class="separator:a86fc07df0bd6578084fe2a009a55b187"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a31e9f9dd75564edf7ec9c5de55a2ea04"><td class="memItemLeft" align="right" valign="top"><a id="a31e9f9dd75564edf7ec9c5de55a2ea04"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><b>targ_z</b></td></tr>
+<tr class="separator:a31e9f9dd75564edf7ec9c5de55a2ea04"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aacd1962cf7b71403f01c8520d31f44dc"><td class="memItemLeft" align="right" valign="top"><a id="aacd1962cf7b71403f01c8520d31f44dc"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><b>x</b></td></tr>
+<tr class="separator:aacd1962cf7b71403f01c8520d31f44dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7b616d9c8b18676e0f8c63ade613ad6e"><td class="memItemLeft" align="right" valign="top"><a id="a7b616d9c8b18676e0f8c63ade613ad6e"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><b>y</b></td></tr>
+<tr class="separator:a7b616d9c8b18676e0f8c63ade613ad6e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a43556c591dba522991a8726410033b34"><td class="memItemLeft" align="right" valign="top"><a id="a43556c591dba522991a8726410033b34"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><b>z</b></td></tr>
+<tr class="separator:a43556c591dba522991a8726410033b34"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aad2716a24880860f565a70e0be98905c"><td class="memItemLeft" align="right" valign="top"><a id="aad2716a24880860f565a70e0be98905c"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><b>target_yaw</b></td></tr>
+<tr class="separator:aad2716a24880860f565a70e0be98905c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3b65d082eec88caaa19f093a007d1578"><td class="memItemLeft" align="right" valign="top"><a id="a3b65d082eec88caaa19f093a007d1578"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><b>target_pitch</b></td></tr>
+<tr class="separator:a3b65d082eec88caaa19f093a007d1578"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8d2c8d0abf8a9d216dee7f41e2110d79"><td class="memItemLeft" align="right" valign="top"><a id="a8d2c8d0abf8a9d216dee7f41e2110d79"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><b>target_roll</b></td></tr>
+<tr class="separator:a8d2c8d0abf8a9d216dee7f41e2110d79"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7191ac1b065e2d15b440b61c78f40c6b"><td class="memItemLeft" align="right" valign="top"><a id="a7191ac1b065e2d15b440b61c78f40c6b"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><b>yaw</b></td></tr>
+<tr class="separator:a7191ac1b065e2d15b440b61c78f40c6b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aab4df9cc3b3603ba0fdc6de2a0fc71ec"><td class="memItemLeft" align="right" valign="top"><a id="aab4df9cc3b3603ba0fdc6de2a0fc71ec"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><b>pitch</b></td></tr>
+<tr class="separator:aab4df9cc3b3603ba0fdc6de2a0fc71ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a449272c1d21a4d985194584b21e778af"><td class="memItemLeft" align="right" valign="top"><a id="a449272c1d21a4d985194584b21e778af"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><b>roll</b></td></tr>
+<tr class="separator:a449272c1d21a4d985194584b21e778af"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a206b4df75c47f148bcf4c1d47584b4d7"><td class="memItemLeft" align="right" valign="top"><a id="a206b4df75c47f148bcf4c1d47584b4d7"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><b>target_grip</b></td></tr>
+<tr class="separator:a206b4df75c47f148bcf4c1d47584b4d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a645102201eb5737b2735f8f16301ca6a"><td class="memItemLeft" align="right" valign="top"><a id="a645102201eb5737b2735f8f16301ca6a"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><b>grip</b></td></tr>
+<tr class="separator:a645102201eb5737b2735f8f16301ca6a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1a0c186534ca31c784b0c22f18e5dc11"><td class="memItemLeft" align="right" valign="top"><a id="a1a0c186534ca31c784b0c22f18e5dc11"></a>
+rclcpp::TimerBase::SharedPtr&#160;</td><td class="memItemRight" valign="bottom"><b>timer_</b></td></tr>
+<tr class="separator:a1a0c186534ca31c784b0c22f18e5dc11"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a18e212ff8aa6622d27f6ab0f6035ccea"><td class="memItemLeft" align="right" valign="top"><a id="a18e212ff8aa6622d27f6ab0f6035ccea"></a>
+rclcpp::Subscription&lt; sensor_msgs::msg::JointState &gt;::SharedPtr&#160;</td><td class="memItemRight" valign="bottom"><b>subscription_commands</b></td></tr>
+<tr class="separator:a18e212ff8aa6622d27f6ab0f6035ccea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab4b0bc2fe3c5e921cba23d3f337109e0"><td class="memItemLeft" align="right" valign="top"><a id="ab4b0bc2fe3c5e921cba23d3f337109e0"></a>
+rclcpp::Subscription&lt; geometry_msgs::msg::Point &gt;::SharedPtr&#160;</td><td class="memItemRight" valign="bottom"><b>position_subscription</b></td></tr>
+<tr class="separator:ab4b0bc2fe3c5e921cba23d3f337109e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a00307350adf203cd5f78cd3bc4f06c85"><td class="memItemLeft" align="right" valign="top"><a id="a00307350adf203cd5f78cd3bc4f06c85"></a>
+rclcpp::Subscription&lt; geometry_msgs::msg::Vector3 &gt;::SharedPtr&#160;</td><td class="memItemRight" valign="bottom"><b>angles_subscription</b></td></tr>
+<tr class="separator:a00307350adf203cd5f78cd3bc4f06c85"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1cdb7bf022711923c58dc939d254dbe9"><td class="memItemLeft" align="right" valign="top"><a id="a1cdb7bf022711923c58dc939d254dbe9"></a>
+rclcpp::Subscription&lt; std_msgs::msg::Float32 &gt;::SharedPtr&#160;</td><td class="memItemRight" valign="bottom"><b>grip_subscription</b></td></tr>
+<tr class="separator:a1cdb7bf022711923c58dc939d254dbe9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab0816ca97808050f5c25e0815ff590af"><td class="memItemLeft" align="right" valign="top"><a id="ab0816ca97808050f5c25e0815ff590af"></a>
+rclcpp::Publisher&lt; std_msgs::msg::String &gt;::SharedPtr&#160;</td><td class="memItemRight" valign="bottom"><b>publisher_params</b></td></tr>
+<tr class="separator:ab0816ca97808050f5c25e0815ff590af"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="ab30d900522967fe5a46503e924914892"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab30d900522967fe5a46503e924914892">&#9670;&nbsp;</a></span>get_angles()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Arm_node::get_angles </td>
+          <td>(</td>
+          <td class="paramtype">const geometry_msgs::msg::Vector3::SharedPtr&#160;</td>
+          <td class="paramname"><em>msg</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Get the targeted orientation. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">msg</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="acc453461607d25c4b927b9e1c751554f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acc453461607d25c4b927b9e1c751554f">&#9670;&nbsp;</a></span>get_commands()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Arm_node::get_commands </td>
+          <td>(</td>
+          <td class="paramtype">const sensor_msgs::msg::JointState::SharedPtr&#160;</td>
+          <td class="paramname"><em>msg</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Get the commands that will be sent to the arm. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">msg</td><td>States of the joints required to reach the desired position </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a8951f9bafb8f671b81a35a7331f841eb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8951f9bafb8f671b81a35a7331f841eb">&#9670;&nbsp;</a></span>get_grip()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Arm_node::get_grip </td>
+          <td>(</td>
+          <td class="paramtype">const std_msgs::msg::Float32::SharedPtr&#160;</td>
+          <td class="paramname"><em>msg</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Get the targeted grip. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">msg</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="af0870610cbd2e4d775a9b6b2aa969571"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af0870610cbd2e4d775a9b6b2aa969571">&#9670;&nbsp;</a></span>get_params()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Arm_node::get_params </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Get the joints' parameters. </p>
+
+</div>
+</div>
+<a id="a3bee829f26dedfcd030e04100fe92d87"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3bee829f26dedfcd030e04100fe92d87">&#9670;&nbsp;</a></span>get_position()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Arm_node::get_position </td>
+          <td>(</td>
+          <td class="paramtype">const geometry_msgs::msg::Point::SharedPtr&#160;</td>
+          <td class="paramname"><em>msg</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Get the targeted position. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">msg</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ac76f87573b3f4e925b7cfe2a0ee50593"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac76f87573b3f4e925b7cfe2a0ee50593">&#9670;&nbsp;</a></span>params2msg()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">string Arm_node::params2msg </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Converts motors_params into a string to publish more easily. </p>
+<dl class="section return"><dt>Returns</dt><dd>string </dd></dl>
+
+</div>
+</div>
+<a id="ab8fe5a73a65a723fc8ebcc74cb60d25d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab8fe5a73a65a723fc8ebcc74cb60d25d">&#9670;&nbsp;</a></span>set_motors()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Arm_node::set_motors </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Set the motors/joints to their required state to reach the desired position. </p>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li>src/ros_interface_umi_rtx/include/ros_interface_umi_rtx/<a class="el" href="node__arm_8hpp_source.html">node_arm.hpp</a></li>
 </ul>

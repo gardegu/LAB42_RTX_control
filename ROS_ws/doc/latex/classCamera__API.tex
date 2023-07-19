@@ -2,8 +2,7 @@
 \label{classCamera__API}\index{Camera\_API@{Camera\_API}}
 
 
-Inheritance diagram for Camera\+\_\+\+A\+PI\+:
-\nopagebreak
+Inheritance diagram for Camera\+\_\+\+A\+PI\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -17,9 +16,96 @@ Collaboration diagram for Camera\+\_\+\+A\+PI\+:
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=153pt]{classCamera__API__coll__graph}
+\includegraphics[width=180pt]{classCamera__API__coll__graph}
 \end{center}
 \end{figure}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classCamera__API_a58f0ea05da32d7908d9dad46fb744cd4}\label{classCamera__API_a58f0ea05da32d7908d9dad46fb744cd4}} 
+void {\bfseries timer\+\_\+callback} ()
+\item 
+\mbox{\Hypertarget{classCamera__API_a280311b05b5872043fa0ca8901598a8f}\label{classCamera__API_a280311b05b5872043fa0ca8901598a8f}} 
+void {\bfseries init\+\_\+interfaces} ()
+\item 
+\mbox{\Hypertarget{classCamera__API_a811035bc5d0fac2ed7d72ea44d93631a}\label{classCamera__API_a811035bc5d0fac2ed7d72ea44d93631a}} 
+void {\bfseries init\+\_\+camera} ()
+\item 
+\mbox{\Hypertarget{classCamera__API_aedd9e93f88a37b7b31df7875f5e64b26}\label{classCamera__API_aedd9e93f88a37b7b31df7875f5e64b26}} 
+void {\bfseries get\+\_\+banana\+\_\+and\+\_\+angles} (geometry\+\_\+msgs\+::msg\+::\+Point coord\+\_\+msg, geometry\+\_\+msgs\+::msg\+::\+Vector3 angles\+\_\+msg)
+\item 
+\mbox{\Hypertarget{classCamera__API_a795b2c1ffb5f946fe6eb85c65b25bcb0}\label{classCamera__API_a795b2c1ffb5f946fe6eb85c65b25bcb0}} 
+void {\bfseries get\+\_\+angles} (vector$<$ vector$<$ cv\+::\+Point $>$$>$ \&contours)
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classCamera__API_a672be9bee95c12080c8d0ca5846411b5}\label{classCamera__API_a672be9bee95c12080c8d0ca5846411b5}} 
+std\+::chrono\+::milliseconds {\bfseries loop\+\_\+dt\+\_\+} = 40ms
+\item 
+\mbox{\Hypertarget{classCamera__API_ae52e953be129c89c59ce9d038b133f83}\label{classCamera__API_ae52e953be129c89c59ce9d038b133f83}} 
+rclcpp\+::\+Timer\+Base\+::\+Shared\+Ptr {\bfseries timer\+\_\+}
+\item 
+\mbox{\Hypertarget{classCamera__API_a60bb810ff7e2c4a4c167d2537048b04c}\label{classCamera__API_a60bb810ff7e2c4a4c167d2537048b04c}} 
+rclcpp\+::\+Publisher$<$ sensor\+\_\+msgs\+::msg\+::\+Image $>$\+::Shared\+Ptr {\bfseries image\+\_\+publisher}
+\item 
+\mbox{\Hypertarget{classCamera__API_a840a893199ff820f3e04be59846c92b3}\label{classCamera__API_a840a893199ff820f3e04be59846c92b3}} 
+rclcpp\+::\+Publisher$<$ geometry\+\_\+msgs\+::msg\+::\+Point $>$\+::Shared\+Ptr {\bfseries coord\+\_\+publisher}
+\item 
+\mbox{\Hypertarget{classCamera__API_a21473dea286f8cf0c01087e2a0040f02}\label{classCamera__API_a21473dea286f8cf0c01087e2a0040f02}} 
+rclcpp\+::\+Publisher$<$ geometry\+\_\+msgs\+::msg\+::\+Vector3 $>$\+::Shared\+Ptr {\bfseries angles\+\_\+publisher}
+\item 
+\mbox{\Hypertarget{classCamera__API_aa4ef9f91c852e7c760222ee56281c761}\label{classCamera__API_aa4ef9f91c852e7c760222ee56281c761}} 
+rclcpp\+::\+Publisher$<$ sensor\+\_\+msgs\+::msg\+::\+Image $>$\+::Shared\+Ptr {\bfseries depth\+\_\+publisher}
+\item 
+\mbox{\Hypertarget{classCamera__API_a45ef2ffed1fe957bc654556171dd9ad0}\label{classCamera__API_a45ef2ffed1fe957bc654556171dd9ad0}} 
+rclcpp\+::\+Publisher$<$ std\+\_\+msgs\+::msg\+::\+Float64 $>$\+::Shared\+Ptr {\bfseries double\+\_\+publisher}
+\item 
+\mbox{\Hypertarget{classCamera__API_ac0e1db26d7ff09f31f60d95dbee8aa54}\label{classCamera__API_ac0e1db26d7ff09f31f60d95dbee8aa54}} 
+double {\bfseries m\+\_\+cx}
+\item 
+\mbox{\Hypertarget{classCamera__API_a2706eece84306dbebe1d7344cf98ede8}\label{classCamera__API_a2706eece84306dbebe1d7344cf98ede8}} 
+double {\bfseries m\+\_\+cy}
+\item 
+\mbox{\Hypertarget{classCamera__API_aa0bd46d2861a04cdc21b06eb7cff69fb}\label{classCamera__API_aa0bd46d2861a04cdc21b06eb7cff69fb}} 
+double {\bfseries m\+\_\+cz}
+\item 
+\mbox{\Hypertarget{classCamera__API_a833851b11a3f7091e339c71c51d017c0}\label{classCamera__API_a833851b11a3f7091e339c71c51d017c0}} 
+double {\bfseries yaw}
+\item 
+\mbox{\Hypertarget{classCamera__API_a0b6a3ceb0c70d47586496fd930bf08e1}\label{classCamera__API_a0b6a3ceb0c70d47586496fd930bf08e1}} 
+double {\bfseries pitch}
+\item 
+\mbox{\Hypertarget{classCamera__API_a08154b8cdffb47b3fa7bbb51be32825b}\label{classCamera__API_a08154b8cdffb47b3fa7bbb51be32825b}} 
+double {\bfseries roll}
+\item 
+\mbox{\Hypertarget{classCamera__API_a46ce48789e57ff67dc5ecf5e9229e009}\label{classCamera__API_a46ce48789e57ff67dc5ecf5e9229e009}} 
+\mbox{\hyperlink{classCamera}{Camera}} {\bfseries zed}
+\item 
+\mbox{\Hypertarget{classCamera__API_abdbbc24c63c461e9a911278a7c062785}\label{classCamera__API_abdbbc24c63c461e9a911278a7c062785}} 
+Init\+Parameters {\bfseries init\+\_\+parameters}
+\item 
+\mbox{\Hypertarget{classCamera__API_ad74e6685e08dfad31fab7c6f5ccfebeb}\label{classCamera__API_ad74e6685e08dfad31fab7c6f5ccfebeb}} 
+sl\+::\+Mat {\bfseries zed\+\_\+image}
+\item 
+\mbox{\Hypertarget{classCamera__API_a26fbce82df8e30b8759682888ac3b92d}\label{classCamera__API_a26fbce82df8e30b8759682888ac3b92d}} 
+sl\+::\+Mat {\bfseries zed\+\_\+image\+\_\+left}
+\item 
+\mbox{\Hypertarget{classCamera__API_af5b497ffba7b3a9d9747c526b1f44dbf}\label{classCamera__API_af5b497ffba7b3a9d9747c526b1f44dbf}} 
+sl\+::\+Mat {\bfseries zed\+\_\+image\+\_\+right}
+\item 
+\mbox{\Hypertarget{classCamera__API_af0ad0f03da69880363c375e43deef1bb}\label{classCamera__API_af0ad0f03da69880363c375e43deef1bb}} 
+sl\+::\+Mat {\bfseries zed\+\_\+depth}
+\item 
+\mbox{\Hypertarget{classCamera__API_af90c50b250742bc751a253cf58388197}\label{classCamera__API_af90c50b250742bc751a253cf58388197}} 
+sl\+::\+Mat {\bfseries zed\+\_\+point\+\_\+cloud}
+\item 
+\mbox{\Hypertarget{classCamera__API_ad0728287cf5fdeab0daba809ee10101e}\label{classCamera__API_ad0728287cf5fdeab0daba809ee10101e}} 
+int {\bfseries zed\+\_\+image\+\_\+left\+\_\+width}
+\item 
+\mbox{\Hypertarget{classCamera__API_a90c01187d14974bc248f7d31832fd64a}\label{classCamera__API_a90c01187d14974bc248f7d31832fd64a}} 
+int {\bfseries zed\+\_\+image\+\_\+left\+\_\+height}
+\end{DoxyCompactItemize}
 
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}

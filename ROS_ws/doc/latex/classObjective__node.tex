@@ -2,8 +2,7 @@
 \label{classObjective__node}\index{Objective\_node@{Objective\_node}}
 
 
-Inheritance diagram for Objective\+\_\+node\+:
-\nopagebreak
+Inheritance diagram for Objective\+\_\+node\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -12,8 +11,7 @@ Inheritance diagram for Objective\+\_\+node\+:
 \end{figure}
 
 
-Collaboration diagram for Objective\+\_\+node\+:
-\nopagebreak
+Collaboration diagram for Objective\+\_\+node\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -58,9 +56,147 @@ double {\bfseries roll} =0.
 \mbox{\Hypertarget{classObjective__node_af5f60f20b11c3e7d064d825df33f5efa}\label{classObjective__node_af5f60f20b11c3e7d064d825df33f5efa}} 
 double {\bfseries grip} =0.\+2
 \end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classObjective__node_a4551c645109d3558c9199d41fb178e5e}\label{classObjective__node_a4551c645109d3558c9199d41fb178e5e}} 
+void \mbox{\hyperlink{classObjective__node_a4551c645109d3558c9199d41fb178e5e}{init\+\_\+interfaces}} ()
+\begin{DoxyCompactList}\small\item\em Initialize the timer, subscribers and publishers. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classObjective__node_a50cde468c869dde93201b5ebd0d07717}\label{classObjective__node_a50cde468c869dde93201b5ebd0d07717}} 
+void \mbox{\hyperlink{classObjective__node_a50cde468c869dde93201b5ebd0d07717}{timer\+\_\+callback}} ()
+\begin{DoxyCompactList}\small\item\em Timer callback, actions that will be done at every iterations. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classObjective__node_aedc074b9451057279b10f0f37902e90f}\label{classObjective__node_aedc074b9451057279b10f0f37902e90f}} 
+void \mbox{\hyperlink{classObjective__node_aedc074b9451057279b10f0f37902e90f}{Lissajou}} ()
+\begin{DoxyCompactList}\small\item\em Lissajou\textquotesingle{}s trajectory for the target, function to delete. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classObjective__node_ad25f590c05a4065b3460f2de8f92f2c6}{get\+\_\+processed\+\_\+position}} (const geometry\+\_\+msgs\+::msg\+::\+Point\+::\+Shared\+Ptr msg)
+\begin{DoxyCompactList}\small\item\em Get the targeted position processed by the camera. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classObjective__node_aedb3e18a445335af1bfaf1c70dace9d2}{get\+\_\+processed\+\_\+angles}} (const geometry\+\_\+msgs\+::msg\+::\+Vector3\+::\+Shared\+Ptr msg)
+\begin{DoxyCompactList}\small\item\em Get the targeted angles processed by the camera. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classObjective__node_a88c37158402cd0f3fb8e1ff004e3aedf}{get\+\_\+image}} (const sensor\+\_\+msgs\+::msg\+::\+Image\+::\+Shared\+Ptr msg)
+\begin{DoxyCompactList}\small\item\em Get the images published. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classObjective__node_a90ad9bc0b7aa6a3c98b3af64b24dea43}\label{classObjective__node_a90ad9bc0b7aa6a3c98b3af64b24dea43}} 
+std\+::chrono\+::milliseconds {\bfseries loop\+\_\+dt\+\_\+} = 40ms
+\item 
+\mbox{\Hypertarget{classObjective__node_ade7d4355cafbd0d373c9bb3f46a6126b}\label{classObjective__node_ade7d4355cafbd0d373c9bb3f46a6126b}} 
+double {\bfseries x0}
+\item 
+\mbox{\Hypertarget{classObjective__node_a2342954cd194d14cc9cd080af983726f}\label{classObjective__node_a2342954cd194d14cc9cd080af983726f}} 
+double {\bfseries y0}
+\item 
+\mbox{\Hypertarget{classObjective__node_af74e8de2ca38d268ab72395331857642}\label{classObjective__node_af74e8de2ca38d268ab72395331857642}} 
+double {\bfseries z0}
+\item 
+\mbox{\Hypertarget{classObjective__node_a342c06f80cd613c93a060afb7e6b975c}\label{classObjective__node_a342c06f80cd613c93a060afb7e6b975c}} 
+double {\bfseries yaw0}
+\item 
+\mbox{\Hypertarget{classObjective__node_abc7f4d48760be3cb01452e5dae9d6533}\label{classObjective__node_abc7f4d48760be3cb01452e5dae9d6533}} 
+double {\bfseries pitch0}
+\item 
+\mbox{\Hypertarget{classObjective__node_ae1a5618aa3a994adf56b31182f7cc19d}\label{classObjective__node_ae1a5618aa3a994adf56b31182f7cc19d}} 
+double {\bfseries roll0}
+\item 
+\mbox{\Hypertarget{classObjective__node_acf18b0ee03d52bd8e0c06c9ca855f0b1}\label{classObjective__node_acf18b0ee03d52bd8e0c06c9ca855f0b1}} 
+double {\bfseries t0}
+\item 
+\mbox{\Hypertarget{classObjective__node_ad1ca1c59390f9b346ec22c2e1a34e88f}\label{classObjective__node_ad1ca1c59390f9b346ec22c2e1a34e88f}} 
+float {\bfseries t} =0
+\item 
+\mbox{\Hypertarget{classObjective__node_a34153b3f3d12a23c6d34aea394b2b917}\label{classObjective__node_a34153b3f3d12a23c6d34aea394b2b917}} 
+float {\bfseries dt} =0.\+04
+\item 
+\mbox{\Hypertarget{classObjective__node_a9e05e3418acb1347ccb5af8196e64cb6}\label{classObjective__node_a9e05e3418acb1347ccb5af8196e64cb6}} 
+double {\bfseries processed\+\_\+x}
+\item 
+\mbox{\Hypertarget{classObjective__node_aad45afc6c48892e2dfcee2ce5199cb7d}\label{classObjective__node_aad45afc6c48892e2dfcee2ce5199cb7d}} 
+double {\bfseries processed\+\_\+y}
+\item 
+\mbox{\Hypertarget{classObjective__node_a37f8c35f45fa1eada749902d205b459e}\label{classObjective__node_a37f8c35f45fa1eada749902d205b459e}} 
+double {\bfseries processed\+\_\+z}
+\item 
+\mbox{\Hypertarget{classObjective__node_abc3640a574a6b129665bdfd9bf552aae}\label{classObjective__node_abc3640a574a6b129665bdfd9bf552aae}} 
+double {\bfseries processed\+\_\+yaw}
+\item 
+\mbox{\Hypertarget{classObjective__node_a840ab0561b5235f8e82145790c4ad923}\label{classObjective__node_a840ab0561b5235f8e82145790c4ad923}} 
+double {\bfseries processed\+\_\+pitch}
+\item 
+\mbox{\Hypertarget{classObjective__node_aadca213867f58d4e17c98d03b6686b11}\label{classObjective__node_aadca213867f58d4e17c98d03b6686b11}} 
+double {\bfseries processed\+\_\+roll}
+\item 
+\mbox{\Hypertarget{classObjective__node_aab3f1460fb035632ec13f5fefea741df}\label{classObjective__node_aab3f1460fb035632ec13f5fefea741df}} 
+rclcpp\+::\+Timer\+Base\+::\+Shared\+Ptr {\bfseries timer\+\_\+}
+\item 
+\mbox{\Hypertarget{classObjective__node_a0a3142350d43a299873a3f51990c9cd4}\label{classObjective__node_a0a3142350d43a299873a3f51990c9cd4}} 
+rclcpp\+::\+Publisher$<$ geometry\+\_\+msgs\+::msg\+::\+Point $>$\+::Shared\+Ptr {\bfseries objective\+\_\+publisher}
+\item 
+\mbox{\Hypertarget{classObjective__node_a62491f590a2cafe375351917f1d595cf}\label{classObjective__node_a62491f590a2cafe375351917f1d595cf}} 
+rclcpp\+::\+Publisher$<$ geometry\+\_\+msgs\+::msg\+::\+Vector3 $>$\+::Shared\+Ptr {\bfseries angles\+\_\+publisher}
+\item 
+\mbox{\Hypertarget{classObjective__node_a46f561bcede221a4e83bbd4fa2da6fcb}\label{classObjective__node_a46f561bcede221a4e83bbd4fa2da6fcb}} 
+rclcpp\+::\+Publisher$<$ std\+\_\+msgs\+::msg\+::\+String $>$\+::Shared\+Ptr {\bfseries mission\+\_\+publisher}
+\item 
+\mbox{\Hypertarget{classObjective__node_ad065742047ac8af4508eef5bb7282f92}\label{classObjective__node_ad065742047ac8af4508eef5bb7282f92}} 
+rclcpp\+::\+Publisher$<$ std\+\_\+msgs\+::msg\+::\+Float32 $>$\+::Shared\+Ptr {\bfseries grip\+\_\+publisher}
+\item 
+\mbox{\Hypertarget{classObjective__node_a0c9d4abb329719daf1a38c574ebad3a6}\label{classObjective__node_a0c9d4abb329719daf1a38c574ebad3a6}} 
+rclcpp\+::\+Subscription$<$ geometry\+\_\+msgs\+::msg\+::\+Point $>$\+::Shared\+Ptr {\bfseries position\+\_\+subscriber}
+\item 
+\mbox{\Hypertarget{classObjective__node_aadcfe5ee3b4e356a49ca96aea14336b7}\label{classObjective__node_aadcfe5ee3b4e356a49ca96aea14336b7}} 
+rclcpp\+::\+Subscription$<$ geometry\+\_\+msgs\+::msg\+::\+Vector3 $>$\+::Shared\+Ptr {\bfseries angles\+\_\+subscriber}
+\item 
+\mbox{\Hypertarget{classObjective__node_acf2ea49da4efee6efb4d7e93f5fa4746}\label{classObjective__node_acf2ea49da4efee6efb4d7e93f5fa4746}} 
+rclcpp\+::\+Subscription$<$ sensor\+\_\+msgs\+::msg\+::\+Image $>$\+::Shared\+Ptr {\bfseries image\+\_\+subscriber}
+\end{DoxyCompactItemize}
 
 
 \doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classObjective__node_a88c37158402cd0f3fb8e1ff004e3aedf}\label{classObjective__node_a88c37158402cd0f3fb8e1ff004e3aedf}} 
+\index{Objective\_node@{Objective\_node}!get\_image@{get\_image}}
+\index{get\_image@{get\_image}!Objective\_node@{Objective\_node}}
+\doxysubsubsection{\texorpdfstring{get\_image()}{get\_image()}}
+{\footnotesize\ttfamily void Objective\+\_\+node\+::get\+\_\+image (\begin{DoxyParamCaption}\item[{const sensor\+\_\+msgs\+::msg\+::\+Image\+::\+Shared\+Ptr}]{msg }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Get the images published. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em msg} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classObjective__node_aedb3e18a445335af1bfaf1c70dace9d2}\label{classObjective__node_aedb3e18a445335af1bfaf1c70dace9d2}} 
+\index{Objective\_node@{Objective\_node}!get\_processed\_angles@{get\_processed\_angles}}
+\index{get\_processed\_angles@{get\_processed\_angles}!Objective\_node@{Objective\_node}}
+\doxysubsubsection{\texorpdfstring{get\_processed\_angles()}{get\_processed\_angles()}}
+{\footnotesize\ttfamily void Objective\+\_\+node\+::get\+\_\+processed\+\_\+angles (\begin{DoxyParamCaption}\item[{const geometry\+\_\+msgs\+::msg\+::\+Vector3\+::\+Shared\+Ptr}]{msg }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Get the targeted angles processed by the camera. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em msg} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classObjective__node_ad25f590c05a4065b3460f2de8f92f2c6}\label{classObjective__node_ad25f590c05a4065b3460f2de8f92f2c6}} 
+\index{Objective\_node@{Objective\_node}!get\_processed\_position@{get\_processed\_position}}
+\index{get\_processed\_position@{get\_processed\_position}!Objective\_node@{Objective\_node}}
+\doxysubsubsection{\texorpdfstring{get\_processed\_position()}{get\_processed\_position()}}
+{\footnotesize\ttfamily void Objective\+\_\+node\+::get\+\_\+processed\+\_\+position (\begin{DoxyParamCaption}\item[{const geometry\+\_\+msgs\+::msg\+::\+Point\+::\+Shared\+Ptr}]{msg }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Get the targeted position processed by the camera. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em msg} & \\
+\hline
+\end{DoxyParams}
 \mbox{\Hypertarget{classObjective__node_af59654500616e7950746d761b4a19547}\label{classObjective__node_af59654500616e7950746d761b4a19547}} 
 \index{Objective\_node@{Objective\_node}!update\_state@{update\_state}}
 \index{update\_state@{update\_state}!Objective\_node@{Objective\_node}}

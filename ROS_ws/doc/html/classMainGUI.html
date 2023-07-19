@@ -65,6 +65,9 @@ $(function() {
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
+<a href="#pri-slots">Private Slots</a> &#124;
+<a href="#pri-methods">Private Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="classMainGUI-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">MainGUI Class Reference</div>  </div>
@@ -144,6 +147,83 @@ double&#160;</td><td class="memItemRight" valign="bottom"><b>raw_yaw</b> =0.</td
 <tr class="memitem:a9a29a71e115b7468e03408ad0741c118"><td class="memItemLeft" align="right" valign="top"><a id="a9a29a71e115b7468e03408ad0741c118"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>manual_on</b> = true</td></tr>
 <tr class="separator:a9a29a71e115b7468e03408ad0741c118"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-slots"></a>
+Private Slots</h2></td></tr>
+<tr class="memitem:a8b7ae47a6c207d8b255dd5f758600bfd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMainGUI.html#a8b7ae47a6c207d8b255dd5f758600bfd">closeEvent</a> (QCloseEvent *event)</td></tr>
+<tr class="memdesc:a8b7ae47a6c207d8b255dd5f758600bfd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Event necessary to compile, close the window and shutdown the ros node.  <a href="classMainGUI.html#a8b7ae47a6c207d8b255dd5f758600bfd">More...</a><br /></td></tr>
+<tr class="separator:a8b7ae47a6c207d8b255dd5f758600bfd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4e4b4c82e523ab30ca2200bb9f6b5122"><td class="memItemLeft" align="right" valign="top"><a id="a4e4b4c82e523ab30ca2200bb9f6b5122"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMainGUI.html#a4e4b4c82e523ab30ca2200bb9f6b5122">updateFrame</a> ()</td></tr>
+<tr class="memdesc:a4e4b4c82e523ab30ca2200bb9f6b5122"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to update the video frame *. <br /></td></tr>
+<tr class="separator:a4e4b4c82e523ab30ca2200bb9f6b5122"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:a19969b143a7234f365e21c92a15c151e"><td class="memItemLeft" align="right" valign="top"><a id="a19969b143a7234f365e21c92a15c151e"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMainGUI.html#a19969b143a7234f365e21c92a15c151e">initializeRViz</a> ()</td></tr>
+<tr class="memdesc:a19969b143a7234f365e21c92a15c151e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialise the RViz2 object, in order to integrate in our interface. <br /></td></tr>
+<tr class="separator:a19969b143a7234f365e21c92a15c151e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:a741b1e892b057f9e26b672dc877efa44"><td class="memItemLeft" align="right" valign="top"><a id="a741b1e892b057f9e26b672dc877efa44"></a>
+const shared_ptr&lt; <a class="el" href="classObjective__node.html">Objective_node</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>ros2_node</b></td></tr>
+<tr class="separator:a741b1e892b057f9e26b672dc877efa44"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aea20c66826ca1439fe37731229b18273"><td class="memItemLeft" align="right" valign="top"><a id="aea20c66826ca1439fe37731229b18273"></a>
+QApplication *&#160;</td><td class="memItemRight" valign="bottom"><b>app_</b></td></tr>
+<tr class="separator:aea20c66826ca1439fe37731229b18273"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a18bbaa6379a28da6583aaf05b40ee7a8"><td class="memItemLeft" align="right" valign="top"><a id="a18bbaa6379a28da6583aaf05b40ee7a8"></a>
+QWidget *&#160;</td><td class="memItemRight" valign="bottom"><b>main_widget</b></td></tr>
+<tr class="separator:a18bbaa6379a28da6583aaf05b40ee7a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8993b048fcb760145c5358bc055d80dd"><td class="memItemLeft" align="right" valign="top"><a id="a8993b048fcb760145c5358bc055d80dd"></a>
+QImage *&#160;</td><td class="memItemRight" valign="bottom"><b>image</b></td></tr>
+<tr class="separator:a8993b048fcb760145c5358bc055d80dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5450b0913e1167c7a8ba8f6b3a1fbce2"><td class="memItemLeft" align="right" valign="top"><a id="a5450b0913e1167c7a8ba8f6b3a1fbce2"></a>
+QLabel *&#160;</td><td class="memItemRight" valign="bottom"><b>videoLabel</b></td></tr>
+<tr class="separator:a5450b0913e1167c7a8ba8f6b3a1fbce2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad994baecbf01fbe8561ee2fbdd8af867"><td class="memItemLeft" align="right" valign="top"><a id="ad994baecbf01fbe8561ee2fbdd8af867"></a>
+QTimer *&#160;</td><td class="memItemRight" valign="bottom"><b>timer</b></td></tr>
+<tr class="separator:ad994baecbf01fbe8561ee2fbdd8af867"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a96c54e3a11ff5d0d57ca9dd7eb5842ca"><td class="memItemLeft" align="right" valign="top"><a id="a96c54e3a11ff5d0d57ca9dd7eb5842ca"></a>
+QDoubleSpinBox *&#160;</td><td class="memItemRight" valign="bottom"><b>spinBox_x</b></td></tr>
+<tr class="separator:a96c54e3a11ff5d0d57ca9dd7eb5842ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adaa9239c90c0943418c64d6487987026"><td class="memItemLeft" align="right" valign="top"><a id="adaa9239c90c0943418c64d6487987026"></a>
+QDoubleSpinBox *&#160;</td><td class="memItemRight" valign="bottom"><b>spinBox_y</b></td></tr>
+<tr class="separator:adaa9239c90c0943418c64d6487987026"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8c10aba0c20abe5b96538969bbfed2df"><td class="memItemLeft" align="right" valign="top"><a id="a8c10aba0c20abe5b96538969bbfed2df"></a>
+QDoubleSpinBox *&#160;</td><td class="memItemRight" valign="bottom"><b>spinBox_z</b></td></tr>
+<tr class="separator:a8c10aba0c20abe5b96538969bbfed2df"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abdf891bbcb4e2d7104b0db3fd312fc5a"><td class="memItemLeft" align="right" valign="top"><a id="abdf891bbcb4e2d7104b0db3fd312fc5a"></a>
+QDoubleSpinBox *&#160;</td><td class="memItemRight" valign="bottom"><b>spinBox_yaw</b></td></tr>
+<tr class="separator:abdf891bbcb4e2d7104b0db3fd312fc5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad73feba1067f132f2c8651b4626711fb"><td class="memItemLeft" align="right" valign="top"><a id="ad73feba1067f132f2c8651b4626711fb"></a>
+QDoubleSpinBox *&#160;</td><td class="memItemRight" valign="bottom"><b>spinBox_pitch</b></td></tr>
+<tr class="separator:ad73feba1067f132f2c8651b4626711fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a72eda8e2f166369f43257969e35a7f32"><td class="memItemLeft" align="right" valign="top"><a id="a72eda8e2f166369f43257969e35a7f32"></a>
+QDoubleSpinBox *&#160;</td><td class="memItemRight" valign="bottom"><b>spinBox_roll</b></td></tr>
+<tr class="separator:a72eda8e2f166369f43257969e35a7f32"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8f87992d8e31abb5aadf6bf5233ef3b7"><td class="memItemLeft" align="right" valign="top"><a id="a8f87992d8e31abb5aadf6bf5233ef3b7"></a>
+QDoubleSpinBox *&#160;</td><td class="memItemRight" valign="bottom"><b>spinBox_grip</b></td></tr>
+<tr class="separator:a8f87992d8e31abb5aadf6bf5233ef3b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a36ee4a0e742a83f366cab30936cccca7"><td class="memItemLeft" align="right" valign="top"><a id="a36ee4a0e742a83f366cab30936cccca7"></a>
+rviz_common::RenderPanel *&#160;</td><td class="memItemRight" valign="bottom"><b>render_panel_</b></td></tr>
+<tr class="separator:a36ee4a0e742a83f366cab30936cccca7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5371470d953d4ef7fe2f6fc0062b4ebc"><td class="memItemLeft" align="right" valign="top"><a id="a5371470d953d4ef7fe2f6fc0062b4ebc"></a>
+rviz_common::Display *&#160;</td><td class="memItemRight" valign="bottom"><b>TF_</b></td></tr>
+<tr class="separator:a5371470d953d4ef7fe2f6fc0062b4ebc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac21b686d10da6368bd1c0418310cbeae"><td class="memItemLeft" align="right" valign="top"><a id="ac21b686d10da6368bd1c0418310cbeae"></a>
+rviz_common::Display *&#160;</td><td class="memItemRight" valign="bottom"><b>Model_</b></td></tr>
+<tr class="separator:ac21b686d10da6368bd1c0418310cbeae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1f39c60a79f506f44958d7e14b825132"><td class="memItemLeft" align="right" valign="top"><a id="a1f39c60a79f506f44958d7e14b825132"></a>
+rviz_common::VisualizationManager *&#160;</td><td class="memItemRight" valign="bottom"><b>manager_</b></td></tr>
+<tr class="separator:a1f39c60a79f506f44958d7e14b825132"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afa9be5aab72d98435957b2606239edf1"><td class="memItemLeft" align="right" valign="top"><a id="afa9be5aab72d98435957b2606239edf1"></a>
+rviz_common::ros_integration::RosNodeAbstractionIface::WeakPtr&#160;</td><td class="memItemRight" valign="bottom"><b>rviz_ros_node_</b></td></tr>
+<tr class="separator:afa9be5aab72d98435957b2606239edf1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a76d8db2177f56f866e4ce028541adb35"><td class="memItemLeft" align="right" valign="top"><a id="a76d8db2177f56f866e4ce028541adb35"></a>
+cv::Mat *&#160;</td><td class="memItemRight" valign="bottom"><b>frame</b></td></tr>
+<tr class="separator:a76d8db2177f56f866e4ce028541adb35"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p><a class="el" href="classMainGUI.html" title="MainGUI class, defines our custom interface.">MainGUI</a> class, defines our custom interface. </p>
@@ -257,6 +337,40 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>manual_on</b> = true<
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>rviz_common::PanelDockWidget* </dd></dl>
+
+</div>
+</div>
+<a id="a8b7ae47a6c207d8b255dd5f758600bfd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8b7ae47a6c207d8b255dd5f758600bfd">&#9670;&nbsp;</a></span>closeEvent</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MainGUI::closeEvent </td>
+          <td>(</td>
+          <td class="paramtype">QCloseEvent *&#160;</td>
+          <td class="paramname"><em>event</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span><span class="mlabel">slot</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Event necessary to compile, close the window and shutdown the ros node. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">event</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

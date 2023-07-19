@@ -36,6 +36,9 @@ using namespace std::chrono_literals;
 using namespace std::placeholders;
 using namespace std;
 
+/**
+ * @brief This node processes the inverse kinematics, in order to get the joints' states required to reach the targeted pose.
+ */
 class InvKin_node : public rclcpp::Node{
 public:
     /**
@@ -80,9 +83,9 @@ private:
     /**
      * @brief Processed the joints' states required to reach the desired pose, using an inverse kinematics algorithm
      * 
-     * @param x 
-     * @param y 
-     * @param z 
+     * @param x Targeted x
+     * @param y Targeted y
+     * @param z Targeted z
      */
     void get_state(double x, double y, double z);
 

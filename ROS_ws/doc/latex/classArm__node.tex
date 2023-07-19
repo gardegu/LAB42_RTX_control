@@ -2,8 +2,7 @@
 \label{classArm__node}\index{Arm\_node@{Arm\_node}}
 
 
-Inheritance diagram for Arm\+\_\+node\+:
-\nopagebreak
+Inheritance diagram for Arm\+\_\+node\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -12,8 +11,7 @@ Inheritance diagram for Arm\+\_\+node\+:
 \end{figure}
 
 
-Collaboration diagram for Arm\+\_\+node\+:
-\nopagebreak
+Collaboration diagram for Arm\+\_\+node\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -26,6 +24,200 @@ Collaboration diagram for Arm\+\_\+node\+:
 \mbox{\Hypertarget{classArm__node_a9cf932084033ba3988983df301c45492}\label{classArm__node_a9cf932084033ba3988983df301c45492}} 
 \mbox{\hyperlink{classArm__node_a9cf932084033ba3988983df301c45492}{Arm\+\_\+node}} ()
 \begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{classArm__node}{Arm\+\_\+node}} object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classArm__node_aa7178fb2b19a38b862e50b9e8f6f0171}\label{classArm__node_aa7178fb2b19a38b862e50b9e8f6f0171}} 
+void \mbox{\hyperlink{classArm__node_aa7178fb2b19a38b862e50b9e8f6f0171}{timer\+\_\+callback}} ()
+\begin{DoxyCompactList}\small\item\em Timer callback, actions that will be done at every iterations. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classArm__node_a2bf097e1bdf54194b1f2ba040bfd2b24}\label{classArm__node_a2bf097e1bdf54194b1f2ba040bfd2b24}} 
+void \mbox{\hyperlink{classArm__node_a2bf097e1bdf54194b1f2ba040bfd2b24}{init\+\_\+interfaces}} ()
+\begin{DoxyCompactList}\small\item\em Initialize the timer, subscribers and publishers. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classArm__node_acc453461607d25c4b927b9e1c751554f}{get\+\_\+commands}} (const sensor\+\_\+msgs\+::msg\+::\+Joint\+State\+::\+Shared\+Ptr msg)
+\begin{DoxyCompactList}\small\item\em Get the commands that will be sent to the arm. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classArm__node_a3bee829f26dedfcd030e04100fe92d87}{get\+\_\+position}} (const geometry\+\_\+msgs\+::msg\+::\+Point\+::\+Shared\+Ptr msg)
+\begin{DoxyCompactList}\small\item\em Get the targeted position. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classArm__node_ab30d900522967fe5a46503e924914892}{get\+\_\+angles}} (const geometry\+\_\+msgs\+::msg\+::\+Vector3\+::\+Shared\+Ptr msg)
+\begin{DoxyCompactList}\small\item\em Get the targeted orientation. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classArm__node_a8951f9bafb8f671b81a35a7331f841eb}{get\+\_\+grip}} (const std\+\_\+msgs\+::msg\+::\+Float32\+::\+Shared\+Ptr msg)
+\begin{DoxyCompactList}\small\item\em Get the targeted grip. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classArm__node_ab8fe5a73a65a723fc8ebcc74cb60d25d}{set\+\_\+motors}} ()
+\begin{DoxyCompactList}\small\item\em Set the motors/joints to their required state to reach the desired position. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classArm__node_af0870610cbd2e4d775a9b6b2aa969571}{get\+\_\+params}} ()
+\begin{DoxyCompactList}\small\item\em Get the joints\textquotesingle{} parameters. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{classArm__node_ac76f87573b3f4e925b7cfe2a0ee50593}{params2msg}} ()
+\begin{DoxyCompactList}\small\item\em Converts motors\+\_\+params into a string to publish more easily. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classArm__node_ac61d4023472654a05a089be98fd02feb}\label{classArm__node_ac61d4023472654a05a089be98fd02feb}} 
+std\+::chrono\+::milliseconds {\bfseries loop\+\_\+dt\+\_\+} = 40ms
+\item 
+\mbox{\Hypertarget{classArm__node_acf1c9ad0ca1335a673913138182a31a9}\label{classArm__node_acf1c9ad0ca1335a673913138182a31a9}} 
+map$<$ int, double $>$ {\bfseries commands\+\_\+motor}
+\item 
+\mbox{\Hypertarget{classArm__node_a06a249b4cf617a707447477398e2875b}\label{classArm__node_a06a249b4cf617a707447477398e2875b}} 
+map$<$ int, map$<$ int, int $>$ $>$ {\bfseries motors\+\_\+params}
+\item 
+\mbox{\Hypertarget{classArm__node_a8052be98c8a414ce95917a4395a683d5}\label{classArm__node_a8052be98c8a414ce95917a4395a683d5}} 
+Arm {\bfseries full\+\_\+arm}
+\item 
+\mbox{\Hypertarget{classArm__node_aededd217987fbc8c27dfcd6c82fb7dee}\label{classArm__node_aededd217987fbc8c27dfcd6c82fb7dee}} 
+double {\bfseries targ\+\_\+x}
+\item 
+\mbox{\Hypertarget{classArm__node_a86fc07df0bd6578084fe2a009a55b187}\label{classArm__node_a86fc07df0bd6578084fe2a009a55b187}} 
+double {\bfseries targ\+\_\+y}
+\item 
+\mbox{\Hypertarget{classArm__node_a31e9f9dd75564edf7ec9c5de55a2ea04}\label{classArm__node_a31e9f9dd75564edf7ec9c5de55a2ea04}} 
+double {\bfseries targ\+\_\+z}
+\item 
+\mbox{\Hypertarget{classArm__node_aacd1962cf7b71403f01c8520d31f44dc}\label{classArm__node_aacd1962cf7b71403f01c8520d31f44dc}} 
+double {\bfseries x}
+\item 
+\mbox{\Hypertarget{classArm__node_a7b616d9c8b18676e0f8c63ade613ad6e}\label{classArm__node_a7b616d9c8b18676e0f8c63ade613ad6e}} 
+double {\bfseries y}
+\item 
+\mbox{\Hypertarget{classArm__node_a43556c591dba522991a8726410033b34}\label{classArm__node_a43556c591dba522991a8726410033b34}} 
+double {\bfseries z}
+\item 
+\mbox{\Hypertarget{classArm__node_aad2716a24880860f565a70e0be98905c}\label{classArm__node_aad2716a24880860f565a70e0be98905c}} 
+double {\bfseries target\+\_\+yaw}
+\item 
+\mbox{\Hypertarget{classArm__node_a3b65d082eec88caaa19f093a007d1578}\label{classArm__node_a3b65d082eec88caaa19f093a007d1578}} 
+double {\bfseries target\+\_\+pitch}
+\item 
+\mbox{\Hypertarget{classArm__node_a8d2c8d0abf8a9d216dee7f41e2110d79}\label{classArm__node_a8d2c8d0abf8a9d216dee7f41e2110d79}} 
+double {\bfseries target\+\_\+roll}
+\item 
+\mbox{\Hypertarget{classArm__node_a7191ac1b065e2d15b440b61c78f40c6b}\label{classArm__node_a7191ac1b065e2d15b440b61c78f40c6b}} 
+double {\bfseries yaw}
+\item 
+\mbox{\Hypertarget{classArm__node_aab4df9cc3b3603ba0fdc6de2a0fc71ec}\label{classArm__node_aab4df9cc3b3603ba0fdc6de2a0fc71ec}} 
+double {\bfseries pitch}
+\item 
+\mbox{\Hypertarget{classArm__node_a449272c1d21a4d985194584b21e778af}\label{classArm__node_a449272c1d21a4d985194584b21e778af}} 
+double {\bfseries roll}
+\item 
+\mbox{\Hypertarget{classArm__node_a206b4df75c47f148bcf4c1d47584b4d7}\label{classArm__node_a206b4df75c47f148bcf4c1d47584b4d7}} 
+double {\bfseries target\+\_\+grip}
+\item 
+\mbox{\Hypertarget{classArm__node_a645102201eb5737b2735f8f16301ca6a}\label{classArm__node_a645102201eb5737b2735f8f16301ca6a}} 
+double {\bfseries grip}
+\item 
+\mbox{\Hypertarget{classArm__node_a1a0c186534ca31c784b0c22f18e5dc11}\label{classArm__node_a1a0c186534ca31c784b0c22f18e5dc11}} 
+rclcpp\+::\+Timer\+Base\+::\+Shared\+Ptr {\bfseries timer\+\_\+}
+\item 
+\mbox{\Hypertarget{classArm__node_a18e212ff8aa6622d27f6ab0f6035ccea}\label{classArm__node_a18e212ff8aa6622d27f6ab0f6035ccea}} 
+rclcpp\+::\+Subscription$<$ sensor\+\_\+msgs\+::msg\+::\+Joint\+State $>$\+::Shared\+Ptr {\bfseries subscription\+\_\+commands}
+\item 
+\mbox{\Hypertarget{classArm__node_ab4b0bc2fe3c5e921cba23d3f337109e0}\label{classArm__node_ab4b0bc2fe3c5e921cba23d3f337109e0}} 
+rclcpp\+::\+Subscription$<$ geometry\+\_\+msgs\+::msg\+::\+Point $>$\+::Shared\+Ptr {\bfseries position\+\_\+subscription}
+\item 
+\mbox{\Hypertarget{classArm__node_a00307350adf203cd5f78cd3bc4f06c85}\label{classArm__node_a00307350adf203cd5f78cd3bc4f06c85}} 
+rclcpp\+::\+Subscription$<$ geometry\+\_\+msgs\+::msg\+::\+Vector3 $>$\+::Shared\+Ptr {\bfseries angles\+\_\+subscription}
+\item 
+\mbox{\Hypertarget{classArm__node_a1cdb7bf022711923c58dc939d254dbe9}\label{classArm__node_a1cdb7bf022711923c58dc939d254dbe9}} 
+rclcpp\+::\+Subscription$<$ std\+\_\+msgs\+::msg\+::\+Float32 $>$\+::Shared\+Ptr {\bfseries grip\+\_\+subscription}
+\item 
+\mbox{\Hypertarget{classArm__node_ab0816ca97808050f5c25e0815ff590af}\label{classArm__node_ab0816ca97808050f5c25e0815ff590af}} 
+rclcpp\+::\+Publisher$<$ std\+\_\+msgs\+::msg\+::\+String $>$\+::Shared\+Ptr {\bfseries publisher\+\_\+params}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classArm__node_ab30d900522967fe5a46503e924914892}\label{classArm__node_ab30d900522967fe5a46503e924914892}} 
+\index{Arm\_node@{Arm\_node}!get\_angles@{get\_angles}}
+\index{get\_angles@{get\_angles}!Arm\_node@{Arm\_node}}
+\doxysubsubsection{\texorpdfstring{get\_angles()}{get\_angles()}}
+{\footnotesize\ttfamily void Arm\+\_\+node\+::get\+\_\+angles (\begin{DoxyParamCaption}\item[{const geometry\+\_\+msgs\+::msg\+::\+Vector3\+::\+Shared\+Ptr}]{msg }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Get the targeted orientation. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em msg} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classArm__node_acc453461607d25c4b927b9e1c751554f}\label{classArm__node_acc453461607d25c4b927b9e1c751554f}} 
+\index{Arm\_node@{Arm\_node}!get\_commands@{get\_commands}}
+\index{get\_commands@{get\_commands}!Arm\_node@{Arm\_node}}
+\doxysubsubsection{\texorpdfstring{get\_commands()}{get\_commands()}}
+{\footnotesize\ttfamily void Arm\+\_\+node\+::get\+\_\+commands (\begin{DoxyParamCaption}\item[{const sensor\+\_\+msgs\+::msg\+::\+Joint\+State\+::\+Shared\+Ptr}]{msg }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Get the commands that will be sent to the arm. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em msg} & States of the joints required to reach the desired position \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classArm__node_a8951f9bafb8f671b81a35a7331f841eb}\label{classArm__node_a8951f9bafb8f671b81a35a7331f841eb}} 
+\index{Arm\_node@{Arm\_node}!get\_grip@{get\_grip}}
+\index{get\_grip@{get\_grip}!Arm\_node@{Arm\_node}}
+\doxysubsubsection{\texorpdfstring{get\_grip()}{get\_grip()}}
+{\footnotesize\ttfamily void Arm\+\_\+node\+::get\+\_\+grip (\begin{DoxyParamCaption}\item[{const std\+\_\+msgs\+::msg\+::\+Float32\+::\+Shared\+Ptr}]{msg }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Get the targeted grip. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em msg} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classArm__node_af0870610cbd2e4d775a9b6b2aa969571}\label{classArm__node_af0870610cbd2e4d775a9b6b2aa969571}} 
+\index{Arm\_node@{Arm\_node}!get\_params@{get\_params}}
+\index{get\_params@{get\_params}!Arm\_node@{Arm\_node}}
+\doxysubsubsection{\texorpdfstring{get\_params()}{get\_params()}}
+{\footnotesize\ttfamily void Arm\+\_\+node\+::get\+\_\+params (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Get the joints\textquotesingle{} parameters. 
+
+\mbox{\Hypertarget{classArm__node_a3bee829f26dedfcd030e04100fe92d87}\label{classArm__node_a3bee829f26dedfcd030e04100fe92d87}} 
+\index{Arm\_node@{Arm\_node}!get\_position@{get\_position}}
+\index{get\_position@{get\_position}!Arm\_node@{Arm\_node}}
+\doxysubsubsection{\texorpdfstring{get\_position()}{get\_position()}}
+{\footnotesize\ttfamily void Arm\+\_\+node\+::get\+\_\+position (\begin{DoxyParamCaption}\item[{const geometry\+\_\+msgs\+::msg\+::\+Point\+::\+Shared\+Ptr}]{msg }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Get the targeted position. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em msg} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classArm__node_ac76f87573b3f4e925b7cfe2a0ee50593}\label{classArm__node_ac76f87573b3f4e925b7cfe2a0ee50593}} 
+\index{Arm\_node@{Arm\_node}!params2msg@{params2msg}}
+\index{params2msg@{params2msg}!Arm\_node@{Arm\_node}}
+\doxysubsubsection{\texorpdfstring{params2msg()}{params2msg()}}
+{\footnotesize\ttfamily string Arm\+\_\+node\+::params2msg (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Converts motors\+\_\+params into a string to publish more easily. 
+
+\begin{DoxyReturn}{Returns}
+string 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classArm__node_ab8fe5a73a65a723fc8ebcc74cb60d25d}\label{classArm__node_ab8fe5a73a65a723fc8ebcc74cb60d25d}} 
+\index{Arm\_node@{Arm\_node}!set\_motors@{set\_motors}}
+\index{set\_motors@{set\_motors}!Arm\_node@{Arm\_node}}
+\doxysubsubsection{\texorpdfstring{set\_motors()}{set\_motors()}}
+{\footnotesize\ttfamily void Arm\+\_\+node\+::set\+\_\+motors (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Set the motors/joints to their required state to reach the desired position. 
+
 
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}

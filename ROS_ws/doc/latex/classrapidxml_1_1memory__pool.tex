@@ -4,6 +4,11 @@
 
 {\ttfamily \#include $<$rapidxml.\+hpp$>$}
 
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structrapidxml_1_1memory__pool_1_1header}{header}}
+\end{DoxyCompactItemize}
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -23,6 +28,42 @@ Ch $\ast$ \mbox{\hyperlink{classrapidxml_1_1memory__pool_a171941b39d55b868358da9
 void \mbox{\hyperlink{classrapidxml_1_1memory__pool_aad377c835fdaed1cb2cc9df194cf84e4}{clear}} ()
 \item 
 void \mbox{\hyperlink{classrapidxml_1_1memory__pool_a84d3d8d2cdfc00501e1dcf26d889ae03}{set\+\_\+allocator}} (alloc\+\_\+func $\ast$af, free\+\_\+func $\ast$ff)
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classrapidxml_1_1memory__pool_a1076043ef092e327e59dd988c1ba82fb}\label{classrapidxml_1_1memory__pool_a1076043ef092e327e59dd988c1ba82fb}} 
+void {\bfseries init} ()
+\item 
+\mbox{\Hypertarget{classrapidxml_1_1memory__pool_a317396afc1812f08b64a1dd9cde4039b}\label{classrapidxml_1_1memory__pool_a317396afc1812f08b64a1dd9cde4039b}} 
+char $\ast$ {\bfseries align} (char $\ast$ptr)
+\item 
+\mbox{\Hypertarget{classrapidxml_1_1memory__pool_a1aed504a747303352e05f61c6ccbbebb}\label{classrapidxml_1_1memory__pool_a1aed504a747303352e05f61c6ccbbebb}} 
+char $\ast$ {\bfseries allocate\+\_\+raw} (std\+::size\+\_\+t size)
+\item 
+\mbox{\Hypertarget{classrapidxml_1_1memory__pool_a4e9cf53fa5f9da3a8f31b754bd94b4ec}\label{classrapidxml_1_1memory__pool_a4e9cf53fa5f9da3a8f31b754bd94b4ec}} 
+void $\ast$ {\bfseries allocate\+\_\+aligned} (std\+::size\+\_\+t size)
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classrapidxml_1_1memory__pool_a775205c5faa60b63385c24368d26d4e1}\label{classrapidxml_1_1memory__pool_a775205c5faa60b63385c24368d26d4e1}} 
+char $\ast$ {\bfseries m\+\_\+begin}
+\item 
+\mbox{\Hypertarget{classrapidxml_1_1memory__pool_a4a89ff677c72afc163d1855cefc28013}\label{classrapidxml_1_1memory__pool_a4a89ff677c72afc163d1855cefc28013}} 
+char $\ast$ {\bfseries m\+\_\+ptr}
+\item 
+\mbox{\Hypertarget{classrapidxml_1_1memory__pool_a6c9a83514446842518c9ffb7a38b76eb}\label{classrapidxml_1_1memory__pool_a6c9a83514446842518c9ffb7a38b76eb}} 
+char $\ast$ {\bfseries m\+\_\+end}
+\item 
+\mbox{\Hypertarget{classrapidxml_1_1memory__pool_aacc5ca734ebfbef7f42251764eb396f4}\label{classrapidxml_1_1memory__pool_aacc5ca734ebfbef7f42251764eb396f4}} 
+char {\bfseries m\+\_\+static\+\_\+memory} \mbox{[}R\+A\+P\+I\+D\+X\+M\+L\+\_\+\+S\+T\+A\+T\+I\+C\+\_\+\+P\+O\+O\+L\+\_\+\+S\+I\+ZE\mbox{]}
+\item 
+\mbox{\Hypertarget{classrapidxml_1_1memory__pool_ae8964773675d24f77a808356be773c1d}\label{classrapidxml_1_1memory__pool_ae8964773675d24f77a808356be773c1d}} 
+alloc\+\_\+func $\ast$ {\bfseries m\+\_\+alloc\+\_\+func}
+\item 
+\mbox{\Hypertarget{classrapidxml_1_1memory__pool_af8f41565f4de167eb2f40ca20695f24d}\label{classrapidxml_1_1memory__pool_af8f41565f4de167eb2f40ca20695f24d}} 
+free\+\_\+func $\ast$ {\bfseries m\+\_\+free\+\_\+func}
 \end{DoxyCompactItemize}
 
 

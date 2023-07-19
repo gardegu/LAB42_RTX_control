@@ -63,6 +63,8 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
+<a href="#pri-methods">Private Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="classCamera__API-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">Camera_API Class Reference</div>  </div>
@@ -82,10 +84,99 @@ Collaboration diagram for Camera_API:</div>
 <div class="dyncontent">
 <div class="center"><img src="classCamera__API__coll__graph.png" border="0" usemap="#Camera__API_coll__map" alt="Collaboration graph"/></div>
 <map name="Camera__API_coll__map" id="Camera__API_coll__map">
-<area shape="rect" title=" " alt="" coords="5,80,103,107"/>
-<area shape="rect" title=" " alt="" coords="27,5,81,32"/>
+<area shape="rect" title=" " alt="" coords="5,171,103,197"/>
+<area shape="rect" title=" " alt="" coords="22,5,75,32"/>
+<area shape="rect" href="classCamera.html" title=" " alt="" coords="71,81,139,108"/>
 </map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:a58f0ea05da32d7908d9dad46fb744cd4"><td class="memItemLeft" align="right" valign="top"><a id="a58f0ea05da32d7908d9dad46fb744cd4"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>timer_callback</b> ()</td></tr>
+<tr class="separator:a58f0ea05da32d7908d9dad46fb744cd4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a280311b05b5872043fa0ca8901598a8f"><td class="memItemLeft" align="right" valign="top"><a id="a280311b05b5872043fa0ca8901598a8f"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>init_interfaces</b> ()</td></tr>
+<tr class="separator:a280311b05b5872043fa0ca8901598a8f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a811035bc5d0fac2ed7d72ea44d93631a"><td class="memItemLeft" align="right" valign="top"><a id="a811035bc5d0fac2ed7d72ea44d93631a"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>init_camera</b> ()</td></tr>
+<tr class="separator:a811035bc5d0fac2ed7d72ea44d93631a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aedd9e93f88a37b7b31df7875f5e64b26"><td class="memItemLeft" align="right" valign="top"><a id="aedd9e93f88a37b7b31df7875f5e64b26"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>get_banana_and_angles</b> (geometry_msgs::msg::Point coord_msg, geometry_msgs::msg::Vector3 angles_msg)</td></tr>
+<tr class="separator:aedd9e93f88a37b7b31df7875f5e64b26"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a795b2c1ffb5f946fe6eb85c65b25bcb0"><td class="memItemLeft" align="right" valign="top"><a id="a795b2c1ffb5f946fe6eb85c65b25bcb0"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>get_angles</b> (vector&lt; vector&lt; cv::Point &gt;&gt; &amp;contours)</td></tr>
+<tr class="separator:a795b2c1ffb5f946fe6eb85c65b25bcb0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:a672be9bee95c12080c8d0ca5846411b5"><td class="memItemLeft" align="right" valign="top"><a id="a672be9bee95c12080c8d0ca5846411b5"></a>
+std::chrono::milliseconds&#160;</td><td class="memItemRight" valign="bottom"><b>loop_dt_</b> = 40ms</td></tr>
+<tr class="separator:a672be9bee95c12080c8d0ca5846411b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae52e953be129c89c59ce9d038b133f83"><td class="memItemLeft" align="right" valign="top"><a id="ae52e953be129c89c59ce9d038b133f83"></a>
+rclcpp::TimerBase::SharedPtr&#160;</td><td class="memItemRight" valign="bottom"><b>timer_</b></td></tr>
+<tr class="separator:ae52e953be129c89c59ce9d038b133f83"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a60bb810ff7e2c4a4c167d2537048b04c"><td class="memItemLeft" align="right" valign="top"><a id="a60bb810ff7e2c4a4c167d2537048b04c"></a>
+rclcpp::Publisher&lt; sensor_msgs::msg::Image &gt;::SharedPtr&#160;</td><td class="memItemRight" valign="bottom"><b>image_publisher</b></td></tr>
+<tr class="separator:a60bb810ff7e2c4a4c167d2537048b04c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a840a893199ff820f3e04be59846c92b3"><td class="memItemLeft" align="right" valign="top"><a id="a840a893199ff820f3e04be59846c92b3"></a>
+rclcpp::Publisher&lt; geometry_msgs::msg::Point &gt;::SharedPtr&#160;</td><td class="memItemRight" valign="bottom"><b>coord_publisher</b></td></tr>
+<tr class="separator:a840a893199ff820f3e04be59846c92b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a21473dea286f8cf0c01087e2a0040f02"><td class="memItemLeft" align="right" valign="top"><a id="a21473dea286f8cf0c01087e2a0040f02"></a>
+rclcpp::Publisher&lt; geometry_msgs::msg::Vector3 &gt;::SharedPtr&#160;</td><td class="memItemRight" valign="bottom"><b>angles_publisher</b></td></tr>
+<tr class="separator:a21473dea286f8cf0c01087e2a0040f02"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa4ef9f91c852e7c760222ee56281c761"><td class="memItemLeft" align="right" valign="top"><a id="aa4ef9f91c852e7c760222ee56281c761"></a>
+rclcpp::Publisher&lt; sensor_msgs::msg::Image &gt;::SharedPtr&#160;</td><td class="memItemRight" valign="bottom"><b>depth_publisher</b></td></tr>
+<tr class="separator:aa4ef9f91c852e7c760222ee56281c761"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a45ef2ffed1fe957bc654556171dd9ad0"><td class="memItemLeft" align="right" valign="top"><a id="a45ef2ffed1fe957bc654556171dd9ad0"></a>
+rclcpp::Publisher&lt; std_msgs::msg::Float64 &gt;::SharedPtr&#160;</td><td class="memItemRight" valign="bottom"><b>double_publisher</b></td></tr>
+<tr class="separator:a45ef2ffed1fe957bc654556171dd9ad0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac0e1db26d7ff09f31f60d95dbee8aa54"><td class="memItemLeft" align="right" valign="top"><a id="ac0e1db26d7ff09f31f60d95dbee8aa54"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><b>m_cx</b></td></tr>
+<tr class="separator:ac0e1db26d7ff09f31f60d95dbee8aa54"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2706eece84306dbebe1d7344cf98ede8"><td class="memItemLeft" align="right" valign="top"><a id="a2706eece84306dbebe1d7344cf98ede8"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><b>m_cy</b></td></tr>
+<tr class="separator:a2706eece84306dbebe1d7344cf98ede8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa0bd46d2861a04cdc21b06eb7cff69fb"><td class="memItemLeft" align="right" valign="top"><a id="aa0bd46d2861a04cdc21b06eb7cff69fb"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><b>m_cz</b></td></tr>
+<tr class="separator:aa0bd46d2861a04cdc21b06eb7cff69fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a833851b11a3f7091e339c71c51d017c0"><td class="memItemLeft" align="right" valign="top"><a id="a833851b11a3f7091e339c71c51d017c0"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><b>yaw</b></td></tr>
+<tr class="separator:a833851b11a3f7091e339c71c51d017c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0b6a3ceb0c70d47586496fd930bf08e1"><td class="memItemLeft" align="right" valign="top"><a id="a0b6a3ceb0c70d47586496fd930bf08e1"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><b>pitch</b></td></tr>
+<tr class="separator:a0b6a3ceb0c70d47586496fd930bf08e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a08154b8cdffb47b3fa7bbb51be32825b"><td class="memItemLeft" align="right" valign="top"><a id="a08154b8cdffb47b3fa7bbb51be32825b"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><b>roll</b></td></tr>
+<tr class="separator:a08154b8cdffb47b3fa7bbb51be32825b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a46ce48789e57ff67dc5ecf5e9229e009"><td class="memItemLeft" align="right" valign="top"><a id="a46ce48789e57ff67dc5ecf5e9229e009"></a>
+<a class="el" href="classCamera.html">Camera</a>&#160;</td><td class="memItemRight" valign="bottom"><b>zed</b></td></tr>
+<tr class="separator:a46ce48789e57ff67dc5ecf5e9229e009"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abdbbc24c63c461e9a911278a7c062785"><td class="memItemLeft" align="right" valign="top"><a id="abdbbc24c63c461e9a911278a7c062785"></a>
+InitParameters&#160;</td><td class="memItemRight" valign="bottom"><b>init_parameters</b></td></tr>
+<tr class="separator:abdbbc24c63c461e9a911278a7c062785"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad74e6685e08dfad31fab7c6f5ccfebeb"><td class="memItemLeft" align="right" valign="top"><a id="ad74e6685e08dfad31fab7c6f5ccfebeb"></a>
+sl::Mat&#160;</td><td class="memItemRight" valign="bottom"><b>zed_image</b></td></tr>
+<tr class="separator:ad74e6685e08dfad31fab7c6f5ccfebeb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a26fbce82df8e30b8759682888ac3b92d"><td class="memItemLeft" align="right" valign="top"><a id="a26fbce82df8e30b8759682888ac3b92d"></a>
+sl::Mat&#160;</td><td class="memItemRight" valign="bottom"><b>zed_image_left</b></td></tr>
+<tr class="separator:a26fbce82df8e30b8759682888ac3b92d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af5b497ffba7b3a9d9747c526b1f44dbf"><td class="memItemLeft" align="right" valign="top"><a id="af5b497ffba7b3a9d9747c526b1f44dbf"></a>
+sl::Mat&#160;</td><td class="memItemRight" valign="bottom"><b>zed_image_right</b></td></tr>
+<tr class="separator:af5b497ffba7b3a9d9747c526b1f44dbf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af0ad0f03da69880363c375e43deef1bb"><td class="memItemLeft" align="right" valign="top"><a id="af0ad0f03da69880363c375e43deef1bb"></a>
+sl::Mat&#160;</td><td class="memItemRight" valign="bottom"><b>zed_depth</b></td></tr>
+<tr class="separator:af0ad0f03da69880363c375e43deef1bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af90c50b250742bc751a253cf58388197"><td class="memItemLeft" align="right" valign="top"><a id="af90c50b250742bc751a253cf58388197"></a>
+sl::Mat&#160;</td><td class="memItemRight" valign="bottom"><b>zed_point_cloud</b></td></tr>
+<tr class="separator:af90c50b250742bc751a253cf58388197"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad0728287cf5fdeab0daba809ee10101e"><td class="memItemLeft" align="right" valign="top"><a id="ad0728287cf5fdeab0daba809ee10101e"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>zed_image_left_width</b></td></tr>
+<tr class="separator:ad0728287cf5fdeab0daba809ee10101e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a90c01187d14974bc248f7d31832fd64a"><td class="memItemLeft" align="right" valign="top"><a id="a90c01187d14974bc248f7d31832fd64a"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>zed_image_left_height</b></td></tr>
+<tr class="separator:a90c01187d14974bc248f7d31832fd64a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li>src/ros_interface_umi_rtx/include/ros_interface_umi_rtx/<a class="el" href="node__camera__API_8h_source.html">node_camera_API.h</a></li>
 </ul>
