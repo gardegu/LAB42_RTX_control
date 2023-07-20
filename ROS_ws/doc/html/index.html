@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.17"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>ROS2 Interface for the UMI-RTX Arm: Main Page</title>
+<title>ROS2 Interface for the UMI-RTX Arm: ROS2 Interface for the UMI-RTX Arm</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -61,11 +61,46 @@ $(function() {
 </iframe>
 </div>
 
-<div class="header">
+<div class="PageDoc"><div class="header">
   <div class="headertitle">
-<div class="title">ROS2 Interface for the UMI-RTX Arm Documentation</div>  </div>
+<div class="title">ROS2 Interface for the UMI-RTX Arm </div>  </div>
 </div><!--header-->
 <div class="contents">
+<div class="textblock"><h1><a class="anchor" id="authors_sec"></a>
+Authors</h1>
+<ul>
+<li>GARDE Guillaume &lt;<a href="#" onclick="location.href='mai'+'lto:'+'gui'+'ll'+'aum'+'e.'+'gar'+'de'+'@en'+'st'+'a-b'+'re'+'tag'+'ne'+'.or'+'g'; return false;">guill<span style="display: none;">.nosp@m.</span>aume<span style="display: none;">.nosp@m.</span>.gard<span style="display: none;">.nosp@m.</span>e@en<span style="display: none;">.nosp@m.</span>sta-b<span style="display: none;">.nosp@m.</span>reta<span style="display: none;">.nosp@m.</span>gne.o<span style="display: none;">.nosp@m.</span>rg</a>&gt; (Promotion ENSTA Bretagne 2024 - Spécialité Robotique Autonome)</li>
+<li>MASSA Théo &lt;<a href="#" onclick="location.href='mai'+'lto:'+'the'+'o.'+'mas'+'sa'+'@en'+'st'+'a-b'+'re'+'tag'+'ne'+'.or'+'g'; return false;">theo.<span style="display: none;">.nosp@m.</span>mass<span style="display: none;">.nosp@m.</span>a@ens<span style="display: none;">.nosp@m.</span>ta-b<span style="display: none;">.nosp@m.</span>retag<span style="display: none;">.nosp@m.</span>ne.o<span style="display: none;">.nosp@m.</span>rg</a>&gt; (Promotion ENSTA Bretagne 2024 - Spécialité Robotique Autonome)</li>
+</ul>
+<h1><a class="anchor" id="description_sec"></a>
+Description</h1>
+<p>This repository has for purpose to set up a ROS2 interface in order to use the UMI-RTX Arm.</p>
+<h1><a class="anchor" id="config_sec"></a>
+Configuration</h1>
+<p>This project is built and tested with <b>Ubuntu 20.04</b> and <b>ROS2 Foxy</b>.</p>
+<h1><a class="anchor" id="usage_sec"></a>
+Usage</h1>
+<h2><a class="anchor" id="real_arm_sec"></a>
+Real Arm</h2>
+<p>To use the interface, all you have to do is: </p><div class="fragment"><div class="line">git clone https://github.com/gardegu/LAB42_RTX_control</div>
+<div class="line">cd LAB42_RTX_control</div>
+<div class="line">## install the required dependencies</div>
+<div class="line">./install_dependencies.sh</div>
+<div class="line">cd ROS_ws</div>
+<div class="line">## Build the package</div>
+<div class="line">colcon build</div>
+<div class="line">cd..</div>
+<div class="line">## Launch the arm</div>
+<div class="line">./start_arm</div>
+</div><!-- fragment --><p>The custom GUI will launch at the same time as the arm.</p>
+<p>If you want to monitor the nodes and topics or interact with them, all you have to do is logging as root: </p><div class="fragment"><div class="line">sudo -i</div>
+</div><!-- fragment --><p>And then sourcing ROS: </p><div class="fragment"><div class="line">source /opt/ros/foxy/setup.bash</div>
+</div><!-- fragment --><h2><a class="anchor" id="simulation_sec"></a>
+Simulation</h2>
+<p>In order to start only the simulation, just place yourself in LAB42_RTX_control and do: If you are on bash: </p><div class="fragment"><div class="line">source ROS_ws/install/setup.bash</div>
+</div><!-- fragment --><p> If you are on zsh: </p><div class="fragment"><div class="line">source ROS_ws/install/setup.zsh</div>
+</div><!-- fragment --><p> and then: </p><div class="fragment"><div class="line">ros2 launch ros_interface_umi_rtx simu.launch.py</div>
+</div><!-- fragment --> </div></div><!-- PageDoc -->
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

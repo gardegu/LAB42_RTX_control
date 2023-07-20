@@ -1,0 +1,50 @@
+\hypertarget{index_authors_sec}{}\doxysection{Authors}\label{index_authors_sec}
+
+\begin{DoxyItemize}
+\item G\+A\+R\+DE Guillaume $<$\href{mailto:guillaume.garde@ensta-bretagne.org}{\texttt{ guillaume.\+garde@ensta-\/bretagne.\+org}}$>$ (Promotion E\+N\+S\+TA Bretagne 2024 -\/ Spécialité Robotique Autonome)
+\item M\+A\+S\+SA Théo $<$\href{mailto:theo.massa@ensta-bretagne.org}{\texttt{ theo.\+massa@ensta-\/bretagne.\+org}}$>$ (Promotion E\+N\+S\+TA Bretagne 2024 -\/ Spécialité Robotique Autonome)
+\end{DoxyItemize}\hypertarget{index_description_sec}{}\doxysection{Description}\label{index_description_sec}
+This repository has for purpose to set up a R\+O\+S2 interface in order to use the U\+M\+I-\/\+R\+TX Arm.\hypertarget{index_config_sec}{}\doxysection{Configuration}\label{index_config_sec}
+This project is built and tested with {\bfseries{Ubuntu 20.\+04}} and {\bfseries{R\+O\+S2 Foxy}}.\hypertarget{index_usage_sec}{}\doxysection{Usage}\label{index_usage_sec}
+\hypertarget{index_real_arm_sec}{}\doxysubsection{Real Arm}\label{index_real_arm_sec}
+To use the interface, all you have to do is\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{git clone https://github.com/gardegu/LAB42\_RTX\_control}
+\DoxyCodeLine{cd LAB42\_RTX\_control}
+\DoxyCodeLine{\#\# install the required dependencies}
+\DoxyCodeLine{./install\_dependencies.sh}
+\DoxyCodeLine{cd ROS\_ws}
+\DoxyCodeLine{\#\# Build the package}
+\DoxyCodeLine{colcon build}
+\DoxyCodeLine{cd..}
+\DoxyCodeLine{\#\# Launch the arm}
+\DoxyCodeLine{./start\_arm}
+\end{DoxyCode}
+
+
+The custom G\+UI will launch at the same time as the arm.
+
+If you want to monitor the nodes and topics or interact with them, all you have to do is logging as root\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{sudo -\/i}
+\end{DoxyCode}
+
+
+And then sourcing R\+OS\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{source /opt/ros/foxy/setup.bash}
+\end{DoxyCode}
+\hypertarget{index_simulation_sec}{}\doxysubsection{Simulation}\label{index_simulation_sec}
+In order to start only the simulation, just place yourself in L\+A\+B42\+\_\+\+R\+T\+X\+\_\+control and do\+: If you are on bash\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{source ROS\_ws/install/setup.bash}
+\end{DoxyCode}
+ If you are on zsh\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{source ROS\_ws/install/setup.zsh}
+\end{DoxyCode}
+ and then\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{ros2 launch ros\_interface\_umi\_rtx simu.launch.py}
+\end{DoxyCode}
+ 
