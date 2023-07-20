@@ -51,6 +51,9 @@ using namespace std::placeholders;
 using namespace std;
 
 
+/**
+ * @brief Node that communicates with the arm, intermediary between ROS architecture and arm's drivers 
+ */
 class Arm_node : public rclcpp::Node{
 public:
     /**

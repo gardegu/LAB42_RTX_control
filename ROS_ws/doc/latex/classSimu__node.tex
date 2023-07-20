@@ -2,7 +2,17 @@
 \label{classSimu__node}\index{Simu\_node@{Simu\_node}}
 
 
-Inheritance diagram for Simu\+\_\+node\+:\nopagebreak
+R\+O\+S2 node that gather the result of the inverse kinematics process, read the U\+R\+DF description of the arm and send information to the R\+Viz2 node.  
+
+
+
+
+{\ttfamily \#include $<$node\+\_\+simu.\+hpp$>$}
+
+
+
+Inheritance diagram for Simu\+\_\+node\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -11,7 +21,8 @@ Inheritance diagram for Simu\+\_\+node\+:\nopagebreak
 \end{figure}
 
 
-Collaboration diagram for Simu\+\_\+node\+:\nopagebreak
+Collaboration diagram for Simu\+\_\+node\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -79,6 +90,9 @@ rclcpp\+::\+Subscription$<$ std\+\_\+msgs\+::msg\+::\+String $>$\+::Shared\+Ptr 
 rclcpp\+::\+Publisher$<$ sensor\+\_\+msgs\+::msg\+::\+Joint\+State $>$\+::Shared\+Ptr {\bfseries simu\+\_\+publisher}
 \end{DoxyCompactItemize}
 
+
+\doxysubsection{Detailed Description}
+R\+O\+S2 node that gather the result of the inverse kinematics process, read the U\+R\+DF description of the arm and send information to the R\+Viz2 node. 
 
 \doxysubsection{Constructor \& Destructor Documentation}
 \mbox{\Hypertarget{classSimu__node_a46ef5e86a9c108db642f09f6e4f0f646}\label{classSimu__node_a46ef5e86a9c108db642f09f6e4f0f646}} 

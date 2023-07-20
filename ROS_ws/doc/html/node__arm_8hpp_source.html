@@ -115,51 +115,51 @@ $(function() {
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="keyword">using namespace </span>std;</div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
-<div class="line"><a name="l00054"></a><span class="lineno"><a class="line" href="classArm__node.html">   54</a></span>&#160;<span class="keyword">class </span><a class="code" href="classArm__node.html">Arm_node</a> : <span class="keyword">public</span> rclcpp::Node{</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00059"></a><span class="lineno"><a class="line" href="classArm__node.html#a9cf932084033ba3988983df301c45492">   59</a></span>&#160;    <a class="code" href="classArm__node.html#a9cf932084033ba3988983df301c45492">Arm_node</a>() : Node(<span class="stringliteral">&quot;arm_node&quot;</span>) {</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        init_interfaces();</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        </div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        <span class="comment">// Initialize the arm</span></div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        umi_init();</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    };</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <span class="keywordtype">void</span> timer_callback();</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="keywordtype">void</span> init_interfaces();</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="keywordtype">void</span> get_commands(<span class="keyword">const</span> sensor_msgs::msg::JointState::SharedPtr msg);</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    <span class="keywordtype">void</span> get_position(<span class="keyword">const</span> geometry_msgs::msg::Point::SharedPtr msg);</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    <span class="keywordtype">void</span> get_angles(<span class="keyword">const</span> geometry_msgs::msg::Vector3::SharedPtr msg);</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    <span class="keywordtype">void</span> get_grip(<span class="keyword">const</span> std_msgs::msg::Float32::SharedPtr msg);</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    <span class="keywordtype">void</span> set_motors();</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    <span class="keywordtype">void</span> get_params();</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160; </div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    <span class="keywordtype">string</span> params2msg();</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    </div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    std::chrono::milliseconds loop_dt_ = 40ms; <span class="comment">// Timer of the node</span></div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    map&lt;int,double&gt; commands_motor; <span class="comment">// Map that stores the commands for each motor</span></div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    map&lt;int,map&lt;int,int&gt;&gt; motors_params; <span class="comment">// Keeps in memory the parameters of the motors</span></div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160; </div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    Arm full_arm;</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;    <span class="keywordtype">double</span> targ_x,targ_y,targ_z, x,y,z;</div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;    <span class="keywordtype">double</span> target_yaw, target_pitch, target_roll, yaw, pitch, roll;</div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    <span class="keywordtype">double</span> target_grip, grip;</div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160; </div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;    rclcpp::TimerBase::SharedPtr timer_;</div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;    rclcpp::Subscription&lt;sensor_msgs::msg::JointState&gt;::SharedPtr subscription_commands;</div>
+<div class="line"><a name="l00057"></a><span class="lineno"><a class="line" href="classArm__node.html">   57</a></span>&#160;<span class="keyword">class </span><a class="code" href="classArm__node.html">Arm_node</a> : <span class="keyword">public</span> rclcpp::Node{</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00062"></a><span class="lineno"><a class="line" href="classArm__node.html#a9cf932084033ba3988983df301c45492">   62</a></span>&#160;    <a class="code" href="classArm__node.html#a9cf932084033ba3988983df301c45492">Arm_node</a>() : Node(<span class="stringliteral">&quot;arm_node&quot;</span>) {</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        init_interfaces();</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        </div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        <span class="comment">// Initialize the arm</span></div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        umi_init();</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    };</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="keywordtype">void</span> timer_callback();</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    <span class="keywordtype">void</span> init_interfaces();</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    <span class="keywordtype">void</span> get_commands(<span class="keyword">const</span> sensor_msgs::msg::JointState::SharedPtr msg);</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    <span class="keywordtype">void</span> get_position(<span class="keyword">const</span> geometry_msgs::msg::Point::SharedPtr msg);</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    <span class="keywordtype">void</span> get_angles(<span class="keyword">const</span> geometry_msgs::msg::Vector3::SharedPtr msg);</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    <span class="keywordtype">void</span> get_grip(<span class="keyword">const</span> std_msgs::msg::Float32::SharedPtr msg);</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    <span class="keywordtype">void</span> set_motors();</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    <span class="keywordtype">void</span> get_params();</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160; </div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    <span class="keywordtype">string</span> params2msg();</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    </div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;    std::chrono::milliseconds loop_dt_ = 40ms; <span class="comment">// Timer of the node</span></div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    map&lt;int,double&gt; commands_motor; <span class="comment">// Map that stores the commands for each motor</span></div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;    map&lt;int,map&lt;int,int&gt;&gt; motors_params; <span class="comment">// Keeps in memory the parameters of the motors</span></div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160; </div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    Arm full_arm;</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;    <span class="keywordtype">double</span> targ_x,targ_y,targ_z, x,y,z;</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;    <span class="keywordtype">double</span> target_yaw, target_pitch, target_roll, yaw, pitch, roll;</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;    <span class="keywordtype">double</span> target_grip, grip;</div>
 <div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160; </div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;    rclcpp::Subscription&lt;geometry_msgs::msg::Point&gt;::SharedPtr position_subscription;</div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;    rclcpp::Subscription&lt;geometry_msgs::msg::Vector3&gt;::SharedPtr angles_subscription;</div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;    rclcpp::Subscription&lt;std_msgs::msg::Float32&gt;::SharedPtr grip_subscription;</div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;    </div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;    rclcpp::Publisher&lt;std_msgs::msg::String&gt;::SharedPtr publisher_params;</div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;};</div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160; </div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;    rclcpp::TimerBase::SharedPtr timer_;</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;    rclcpp::Subscription&lt;sensor_msgs::msg::JointState&gt;::SharedPtr subscription_commands;</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160; </div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;    rclcpp::Subscription&lt;geometry_msgs::msg::Point&gt;::SharedPtr position_subscription;</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;    rclcpp::Subscription&lt;geometry_msgs::msg::Vector3&gt;::SharedPtr angles_subscription;</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;    rclcpp::Subscription&lt;std_msgs::msg::Float32&gt;::SharedPtr grip_subscription;</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;    </div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;    rclcpp::Publisher&lt;std_msgs::msg::String&gt;::SharedPtr publisher_params;</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;};</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160; </div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="aclassArm__node_html_a9cf932084033ba3988983df301c45492"><div class="ttname"><a href="classArm__node.html#a9cf932084033ba3988983df301c45492">Arm_node::Arm_node</a></div><div class="ttdeci">Arm_node()</div><div class="ttdoc">Construct a new Arm_node object.</div><div class="ttdef"><b>Definition:</b> node_arm.hpp:59</div></div>
-<div class="ttc" id="aclassArm__node_html"><div class="ttname"><a href="classArm__node.html">Arm_node</a></div><div class="ttdef"><b>Definition:</b> node_arm.hpp:54</div></div>
+<div class="ttc" id="aclassArm__node_html_a9cf932084033ba3988983df301c45492"><div class="ttname"><a href="classArm__node.html#a9cf932084033ba3988983df301c45492">Arm_node::Arm_node</a></div><div class="ttdeci">Arm_node()</div><div class="ttdoc">Construct a new Arm_node object.</div><div class="ttdef"><b>Definition:</b> node_arm.hpp:62</div></div>
+<div class="ttc" id="aclassArm__node_html"><div class="ttname"><a href="classArm__node.html">Arm_node</a></div><div class="ttdoc">Node that communicates with the arm, intermediary between ROS architecture and arm's drivers.</div><div class="ttdef"><b>Definition:</b> node_arm.hpp:57</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

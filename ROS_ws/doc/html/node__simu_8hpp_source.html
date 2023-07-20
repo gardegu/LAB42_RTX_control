@@ -95,45 +95,45 @@ $(function() {
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="keyword">using namespace </span>std;</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="keyword">using namespace </span>rapidxml;</div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
-<div class="line"><a name="l00034"></a><span class="lineno"><a class="line" href="classSimu__node.html">   34</a></span>&#160;<span class="keyword">class </span><a class="code" href="classSimu__node.html">Simu_node</a> : <span class="keyword">public</span> rclcpp::Node{</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="classSimu__node.html#a46ef5e86a9c108db642f09f6e4f0f646">   40</a></span>&#160;    <a class="code" href="classSimu__node.html#a46ef5e86a9c108db642f09f6e4f0f646">Simu_node</a>() : Node(<span class="stringliteral">&quot;simulation&quot;</span>){</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        init_interfaces();</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        init_urdf();</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    };</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;private :</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="keywordtype">void</span> init_interfaces();</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="keywordtype">void</span> timer_callback();</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="keywordtype">void</span> init_urdf();</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="keywordtype">void</span> get_commands(<span class="keyword">const</span> sensor_msgs::msg::JointState::SharedPtr msg);</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="keywordtype">void</span> get_mission(<span class="keyword">const</span> std_msgs::msg::String::SharedPtr msg);</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    std::chrono::milliseconds loop_dt_ = 40ms;</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160; </div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    map&lt;string,map&lt;string, double&gt;&gt; dependent_joints;</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    map&lt;string,map&lt;string, double&gt;&gt; free_joints;</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    map&lt;string,double&gt; zeros;</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    vector&lt;string&gt; joint_list;</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    vector&lt;string&gt; names;</div>
+<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="classSimu__node.html">   37</a></span>&#160;<span class="keyword">class </span><a class="code" href="classSimu__node.html">Simu_node</a> : <span class="keyword">public</span> rclcpp::Node{</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00043"></a><span class="lineno"><a class="line" href="classSimu__node.html#a46ef5e86a9c108db642f09f6e4f0f646">   43</a></span>&#160;    <a class="code" href="classSimu__node.html#a46ef5e86a9c108db642f09f6e4f0f646">Simu_node</a>() : Node(<span class="stringliteral">&quot;simulation&quot;</span>){</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        init_interfaces();</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        init_urdf();</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    };</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;private :</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="keywordtype">void</span> init_interfaces();</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="keywordtype">void</span> timer_callback();</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="keywordtype">void</span> init_urdf();</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="keywordtype">void</span> get_commands(<span class="keyword">const</span> sensor_msgs::msg::JointState::SharedPtr msg);</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <span class="keywordtype">void</span> get_mission(<span class="keyword">const</span> std_msgs::msg::String::SharedPtr msg);</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; </div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    std::chrono::milliseconds loop_dt_ = 40ms;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160; </div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    map&lt;string,map&lt;string, double&gt;&gt; dependent_joints;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    map&lt;string,map&lt;string, double&gt;&gt; free_joints;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    map&lt;string,double&gt; zeros;</div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160; </div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <span class="keywordtype">string</span> urdf_file = ament_index_cpp::get_package_share_directory(<span class="stringliteral">&quot;ros_interface_umi_rtx&quot;</span>)+<span class="stringliteral">&quot;/urdf/umi_rtx.urdf&quot;</span>;</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="keywordtype">string</span> mission;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    vector&lt;string&gt; joint_list;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    vector&lt;string&gt; names;</div>
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160; </div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    rclcpp::TimerBase::SharedPtr timer_;</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    rclcpp::Subscription&lt;sensor_msgs::msg::JointState&gt;::SharedPtr invkin_subscriber;</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    rclcpp::Subscription&lt;std_msgs::msg::String&gt;::SharedPtr mission_subscriber;</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    rclcpp::Publisher&lt;sensor_msgs::msg::JointState&gt;::SharedPtr simu_publisher;</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    </div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;};</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160; </div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    <span class="keywordtype">string</span> urdf_file = ament_index_cpp::get_package_share_directory(<span class="stringliteral">&quot;ros_interface_umi_rtx&quot;</span>)+<span class="stringliteral">&quot;/urdf/umi_rtx.urdf&quot;</span>;</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    <span class="keywordtype">string</span> mission;</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160; </div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160; </div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    rclcpp::TimerBase::SharedPtr timer_;</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    rclcpp::Subscription&lt;sensor_msgs::msg::JointState&gt;::SharedPtr invkin_subscriber;</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    rclcpp::Subscription&lt;std_msgs::msg::String&gt;::SharedPtr mission_subscriber;</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    rclcpp::Publisher&lt;sensor_msgs::msg::JointState&gt;::SharedPtr simu_publisher;</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    </div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;};</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160; </div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="aclassSimu__node_html"><div class="ttname"><a href="classSimu__node.html">Simu_node</a></div><div class="ttdef"><b>Definition:</b> node_simu.hpp:34</div></div>
+<div class="ttc" id="aclassSimu__node_html"><div class="ttname"><a href="classSimu__node.html">Simu_node</a></div><div class="ttdoc">ROS2 node that gather the result of the inverse kinematics process, read the URDF description of the ...</div><div class="ttdef"><b>Definition:</b> node_simu.hpp:37</div></div>
 <div class="ttc" id="arapidxml_8hpp_html"><div class="ttname"><a href="rapidxml_8hpp.html">rapidxml.hpp</a></div></div>
-<div class="ttc" id="aclassSimu__node_html_a46ef5e86a9c108db642f09f6e4f0f646"><div class="ttname"><a href="classSimu__node.html#a46ef5e86a9c108db642f09f6e4f0f646">Simu_node::Simu_node</a></div><div class="ttdeci">Simu_node()</div><div class="ttdoc">Construct a new Simu_node object.</div><div class="ttdef"><b>Definition:</b> node_simu.hpp:40</div></div>
+<div class="ttc" id="aclassSimu__node_html_a46ef5e86a9c108db642f09f6e4f0f646"><div class="ttname"><a href="classSimu__node.html#a46ef5e86a9c108db642f09f6e4f0f646">Simu_node::Simu_node</a></div><div class="ttdeci">Simu_node()</div><div class="ttdoc">Construct a new Simu_node object.</div><div class="ttdef"><b>Definition:</b> node_simu.hpp:43</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

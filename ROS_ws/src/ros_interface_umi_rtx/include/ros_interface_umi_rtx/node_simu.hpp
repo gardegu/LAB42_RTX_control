@@ -31,6 +31,9 @@ using namespace std::placeholders;
 using namespace std;
 using namespace rapidxml;
 
+/**
+ * @brief ROS2 node that gather the result of the inverse kinematics process, read the URDF description of the arm and send information to the RViz2 node 
+ */
 class Simu_node : public rclcpp::Node{
 public:
     /**

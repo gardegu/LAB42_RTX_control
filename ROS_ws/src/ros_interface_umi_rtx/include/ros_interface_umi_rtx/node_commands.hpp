@@ -35,6 +35,9 @@ using namespace std::chrono_literals;
 using namespace std::placeholders;
 using namespace std;
 
+/**
+ * @brief Node that works in pair with the GUI, manage the targeted pose and the command we send to the arm. 
+ */
 class Objective_node : public rclcpp::Node{
 public:
     /**
