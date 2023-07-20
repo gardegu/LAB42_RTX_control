@@ -16,6 +16,7 @@
   <depend>pinocchio</depend>
   <depend>qt_gui_cpp</depend>
   <depend>rviz2</depend>
+  <depend>sl</depend>
   
   <exec_depend>robot_state_publisher</exec_depend>
   <exec_depend>xacro</exec_depend>
