@@ -71,14 +71,14 @@ RUN wget "https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2004/x8
 RUN sudo mv cuda-ubuntu2004.pin /etc/apt/preferences.d/cuda-repository-pin-600
 RUN wget "https://developer.download.nvidia.com/compute/cuda/12.2.0/local_installers/cuda-repo-ubuntu2004-12-2-local_12.2.0-535.54.03-1_amd64.deb"
 RUN sudo dpkg -i cuda-repo-ubuntu2004-12-2-local_12.2.0-535.54.03-1_amd64.deb
-RUN cp /var/cuda-repo-ubuntu2004-12-2-local/cuda-*-keyring.gpg /usr/share/keyrings/
+RUN sudo cp /var/cuda-repo-ubuntu2004-12-2-local/cuda-*-keyring.gpg /usr/share/keyrings/
 RUN sudo apt-get update
 RUN sudo apt-get -y install cuda
 
 
 RUN source /etc/lsb-release
 RUN UBUNTU_VERSION=ubuntu${DISTRIB_RELEASE/./}
-RUN wget "https://developer.download.nvidia.com/compute/cuda/repos/${UBUNTU_VERSION}/x86_64/cuda-keyring_1.0-1_all.deb"
+RUN wget "https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2004/x86_64/cuda-keyring_1.0-1_all.deb"
 RUN sudo dpkg -i cuda-keyring_1.0-1_all.deb
 
 
