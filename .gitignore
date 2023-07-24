@@ -59,6 +59,7 @@ ROS_ws/install
 ROS_ws/brouillon.cpp
 
 .vscode
+*.idea
 Traitement_image/
 
 umi-rtx/logs/rtxlog
