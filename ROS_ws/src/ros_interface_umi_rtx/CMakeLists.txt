@@ -38,6 +38,7 @@ find_package(rviz_common REQUIRED)
 find_package(rviz_rendering REQUIRED)
 find_package(rviz_default_plugins REQUIRED)
 find_package(rviz_ogre_vendor REQUIRED)
+find_package(sl REQUIRED)
 
 
 include_directories(
@@ -82,7 +83,27 @@ target_include_directories(armerror PUBLIC
  target_include_directories(nodeCamera PUBLIC
 $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
 $<INSTALL_INTERFACE:include>)
- 
+
+##################################### Node camera API
+add_executable(nodeCameraAPI
+        src/node_camera_API.cpp
+        )
+
+ament_target_dependencies(nodeCameraAPI
+        rclcpp
+        sensor_msgs
+        OpenCV
+        cv_bridge
+        geometry_msgs
+        ament_index_cpp
+        std_msgs
+        sl
+        )
+
+target_link_libraries(nodeCameraAPI "${cpp_typesupport_target}" ${OpenCV_LIBS})
+target_include_directories(nodeCameraAPI PUBLIC
+        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+        $<INSTALL_INTERFACE:include>)
 
  ##################################### Node Arm
 add_executable(nodeArm
