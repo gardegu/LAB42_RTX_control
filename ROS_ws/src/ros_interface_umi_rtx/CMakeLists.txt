@@ -37,7 +37,8 @@ find_package(rviz_common REQUIRED)
 find_package(rviz_rendering REQUIRED)
 find_package(rviz_default_plugins REQUIRED)
 find_package(rviz_ogre_vendor REQUIRED)
-find_package(sl REQUIRED)
+find_package(ZED 3 REQUIRED)
+find_package(CUDA ${ZED_CUDA_VERSION} REQUIRED)
 
 
 include_directories(
@@ -46,6 +47,8 @@ include_directories(
   ${rviz_common_INCLUDE_DIRS}
   ${Qt5Core_INCLUDE_DIRS}
   ${Qt5Widgets_INCLUDE_DIRS}
+  ${CUDA_INCLUDE_DIRS}
+  ${ZED_INCLUDE_DIRS}
 )
 
 add_library(armcmds src/drivers/armlib/armcmds.cpp)
@@ -96,10 +99,9 @@ ament_target_dependencies(nodeCameraAPI
         geometry_msgs
         ament_index_cpp
         std_msgs
-        sl
         )
 
-target_link_libraries(nodeCameraAPI "${cpp_typesupport_target}" ${OpenCV_LIBS})
+target_link_libraries(nodeCameraAPI "${cpp_typesupport_target}" ${OpenCV_LIBS} ${ZED_LIBRARY_DIR} ${CUDA_LIBRARY_DIRS})
 target_include_directories(nodeCameraAPI PUBLIC
         $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
         $<INSTALL_INTERFACE:include>)
