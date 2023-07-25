@@ -12,9 +12,9 @@ echo export PYTHONPATH=/opt/openrobots/lib/python3.8/site-packages:$PYTHONPATH >
 echo export CMAKE_PREFIX_PATH=/opt/openrobots:$CMAKE_PREFIX_PATH >> ~/.bashrc
 
 cd /opt/ros/foxy/include/rviz_common
-if [-e tool_manager.hpp ]
+if [-e ./tool_manager.hpp ]
 then 
-    sudo rm tool_manager.hpp
+    rm ./tool_manager.hpp
 fi
 wget "https://raw.githubusercontent.com/ros2/rviz/foxy/rviz_common/src/rviz_common/tool_manager.hpp"
 
