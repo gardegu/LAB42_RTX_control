@@ -12,7 +12,7 @@ echo export PYTHONPATH=/opt/openrobots/lib/python3.8/site-packages:$PYTHONPATH >
 echo export CMAKE_PREFIX_PATH=/opt/openrobots:$CMAKE_PREFIX_PATH >> ~/.bashrc
 
 cd /opt/ros/foxy/include/rviz_common
-if [-f tool_manager.hpp ]
+if [-e ./tool_manager.hpp ]
 then 
     rm tool_manager.hpp
 fi
