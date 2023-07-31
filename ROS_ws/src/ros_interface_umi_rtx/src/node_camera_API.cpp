@@ -62,7 +62,7 @@ void Camera_API::timer_callback(){
         std::cout << "The distance could not be computed at {"<<m_cx<<";"<<m_cy<<"}" << std::endl;
     }
 
-    sensor_msgs::msg::Image::SharePtr depth_msg = cv_bridge::CvImage(std_msgs::msg::Header(),"mono8",cv_depth).toImageMsg();
+    sensor_msgs::msg::Image::SharedPtr depth_msg = cv_bridge::CvImage(std_msgs::msg::Header(),"mono8",cv_depth).toImageMsg();
     depth_publisher->publish(*depth_msg);
 
 }
