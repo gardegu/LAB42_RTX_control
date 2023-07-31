@@ -185,7 +185,7 @@ void Camera_API::getOCVtype(sl::MAT_TYPE type){
 }
 
 cv::Mat Camera_API::slMat2cvMat(sl::Mat& input){
-    return cv::Mat(input.getHeight(), input.getWidth(), getOCVtype(input.getDataType()), input.getPtr<sl::uchar1>(MEM::CPU), input.getStepBytes(sl::MEM::CPU));
+    return cv::Mat(input.getHeight(), input.getWidth(), getOCVtype(input.getDataType()), input.getPtr<sl::uchar1>(sl::MEM::CPU), input.getStepBytes(sl::MEM::CPU));
 }
 
 
