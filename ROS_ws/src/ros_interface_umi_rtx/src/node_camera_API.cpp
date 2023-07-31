@@ -48,9 +48,6 @@ void Camera_API::timer_callback(){
 
     get_banana_and_angles(coord_msg,angles_msg);
 
-    sensor_msgs::msg::Image depth_msg = cv_bridge::CvImage(std_msgs::msg::Header(),"mono8",zed_depth).toImageMsg();
-    depth_publisher->publish(depth_msg);
-
     zed_point_cloud.getValue(m_cx,m_cy,&point_cloud_value);
 
     if(std::isfinite(point_coud_value.z)){
@@ -61,6 +58,9 @@ void Camera_API::timer_callback(){
     else{
         std::cout << "The distance could not be computed at {"<<m_cx<<";"<<m_cy<<"}" << std::endl;
     }
+
+    sensor_msgs::msg::Image depth_msg = cv_bridge::CvImage(std_msgs::msg::Header(),"mono8",zed_depth).toImageMsg();
+    depth_publisher->publish(depth_msg);
 
 }
 
