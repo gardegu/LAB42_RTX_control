@@ -62,8 +62,8 @@ void Camera_API::timer_callback(){
         std::cout << "The distance could not be computed at {"<<m_cx<<";"<<m_cy<<"}" << std::endl;
     }
 
-    sensor_msgs::msg::Image depth_msg = cv_bridge::CvImage(std_msgs::msg::Header(),"mono8",cv_depth).toImageMsg();
-    depth_publisher->publish(depth_msg);
+    sensor_msgs::msg::Image::SharePtr depth_msg = cv_bridge::CvImage(std_msgs::msg::Header(),"mono8",cv_depth).toImageMsg();
+    depth_publisher->publish(*depth_msg);
 
 }
 
@@ -82,8 +82,8 @@ void Camera_API::get_banana_and_angles(geometry_msgs::msg::Point coord_msg, geom
 
     if(contours.empty()){
         //std::cout << "Cannot detect the target" << std::endl;
-        sensor_msgs::msg::Image img_msg = cv_bridge::CvImage(std_msgs::msg::Header(),"bgr8",cv_image_left).toImageMsg();
-        image_publisher->publish(img_msg);
+        sensor_msgs::msg::Image::SharedPtr img_msg = cv_bridge::CvImage(std_msgs::msg::Header(),"bgr8",cv_image_left).toImageMsg();
+        image_publisher->publish(*img_msg);
     }
 
     else{
@@ -134,8 +134,8 @@ void Camera_API::get_banana_and_angles(geometry_msgs::msg::Point coord_msg, geom
             coord_msg.y = m_cy;
         }
 
-        sensor_msgs::msg::Image img_msg = cv_bridge::CvImage(std_msgs::msg::Header(), "bgr8", cv_image_left).toImageMsg();
-        image_publisher->publish(img_msg);
+        sensor_msgs::msg::Image::SharedPtr img_msg = cv_bridge::CvImage(std_msgs::msg::Header(), "bgr8", cv_image_left).toImageMsg();
+        image_publisher->publish(*img_msg);
     }
 
     coord_publisher->publish(coord_msg);
@@ -168,6 +168,20 @@ void Camera_API::get_angles(vector<vector<cv::Point>> &contours){
     pitch = 90.;
     roll = theta*180/M_PI;
 
+}
+
+void Camera_API::getOCVtype(sl::MAT_TYPE type){
+    switch (type) {
+        case MAT_TYPE::F32_C1: cv_type = CV_32FC1; break;
+        case MAT_TYPE::F32_C2: cv_type = CV_32FC2; break;
+        case MAT_TYPE::F32_C3: cv_type = CV_32FC3; break;
+        case MAT_TYPE::F32_C4: cv_type = CV_32FC4; break;
+        case MAT_TYPE::U8_C1: cv_type = CV_8UC1; break;
+        case MAT_TYPE::U8_C2: cv_type = CV_8UC2; break;
+        case MAT_TYPE::U8_C3: cv_type = CV_8UC3; break;
+        case MAT_TYPE::U8_C4: cv_type = CV_8UC4; break;
+        default: break;
+    }
 }
 
 void Camera_API::slMat2cvMat(sl::Mat& input, cv::Mat& output){
