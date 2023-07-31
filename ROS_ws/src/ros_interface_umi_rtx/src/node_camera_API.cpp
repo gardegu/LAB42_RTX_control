@@ -1,9 +1,6 @@
 #include "ros_interface_umi_rtx/node_camera_API.hpp"
 
 void Camera_API::init_interfaces(){
-    m_cx = 0;
-    m_cy = 0;
-
     stereo = cv::StereoSGBM::create(min_disp,num_disp,blockSize,iP1,iP2,disp12MaxDiff,0,uniquenessRatio,speckleWindowSize,speckleRange);
 
     timer_ = this->create_wall_timer(loop_dt_,std::bind(&Camera_API::timer_callback,this));
@@ -22,7 +19,6 @@ void Camera_API::init_camera(){
     init_parameters.coordinate_units = UNIT::MILLIMETER;
     init_parameters.depth_minimum_distance = 0; // set it to the minimum authorized value (should be 100 mm)
 
-
     auto returned_state = zed.open(init_parameters);
     if (returned_state != ERROR_CODE::SUCCESS){
         std::cout << "Error " << returned_state << ", exit program." << std::endl;
@@ -33,9 +29,6 @@ void Camera_API::init_camera(){
 }
 
 void Camera_API::timer_callback(){
-    geometry_msgs::msg::Point coord_msg;
-    geometry_msgs::msg::Vector3 angles_msg;
-
     if (zed.grab() == ERROR_CODE::SUCCESS){
         zed.retrieveImage(zed_image_left,VIEW::LEFT);
         zed.retrieveImage(zed_image_right,VIEW::RIGHT);
@@ -46,18 +39,28 @@ void Camera_API::timer_callback(){
         zed_image_left_height = zed_image_left.getHeight();
 
     }
+    else{
+        std::cout << "Could read the scene" << std::endl;
+    }
+
+    geometry_msgs::msg::Point coord_msg;
+    geometry_msgs::msg::Vector3 angles_msg;
 
     get_banana_and_angles(coord_msg,angles_msg);
 
-    sensor_msgs::msg::Image::SharedPtr depth_msg = cv_bridge::CvImage(std_msgs::msg::Header(),"mono8",zed_depth).toImageMsg();
-    depth_publisher->publish(*depth_msg);
+    sensor_msgs::msg::Image depth_msg = cv_bridge::CvImage(std_msgs::msg::Header(),"mono8",zed_depth).toImageMsg();
+    depth_publisher->publish(depth_msg);
 
-    sl::float4 point_cloud_value;
     zed_point_cloud.getValue(m_cx,m_cy,&point_cloud_value);
 
-    std_msgs::msg::Float64 target_depth_msg;
-    target_depth_msg.data = point_cloud_value;
-    double_publisher->publish(target_depth_msg);
+    if(std::isfinite(point_coud_value.z)){
+        std_msgs::msg::Float64 target_depth_msg;
+        target_depth_msg.data = sqrt(point_cloud_value.x * point_cloud_value.x + point_cloud_value.y * point_cloud_value.y + point_cloud_value.z * point_cloud_value.z);
+        double_publisher->publish(target_depth_msg);
+    }
+    else{
+        std::cout << "The distance could not be computed at {"<<m_cx<<";"<<m_cy<<"}" << std::endl;
+    }
 
 }
 
@@ -76,8 +79,8 @@ void Camera_API::get_banana_and_angles(geometry_msgs::msg::Point coord_msg, geom
 
     if(contours.empty()){
         //std::cout << "Cannot detect the target" << std::endl;
-        sensor_msgs::msg::Image::SharedPtr img_msg = cv_bridge::CvImage(std_msgs::msg::Header(),"bgr8",zed_image_left).toImageMsg();
-        image_publisher->publish(*img_msg);
+        sensor_msgs::msg::Image img_msg = cv_bridge::CvImage(std_msgs::msg::Header(),"bgr8",zed_image_left).toImageMsg();
+        image_publisher->publish(img_msg);
     }
 
     else{
@@ -128,8 +131,8 @@ void Camera_API::get_banana_and_angles(geometry_msgs::msg::Point coord_msg, geom
             coord_msg.y = m_cy;
         }
 
-        sensor_msgs::msg::Image::SharedPtr img_msg = cv_bridge::CvImage(std_msgs::msg::Header(), "bgr8", zed_image_left).toImageMsg();
-        image_publisher->publish(*img_msg);
+        sensor_msgs::msg::Image img_msg = cv_bridge::CvImage(std_msgs::msg::Header(), "bgr8", zed_image_left).toImageMsg();
+        image_publisher->publish(img_msg);
     }
 
     coord_publisher->publish(coord_msg);

@@ -70,6 +70,7 @@ private:
     InitParameters init_parameters;
     sl::Mat zed_image, zed_image_left, zed_image_right;
     sl::Mat zed_depth, zed_point_cloud;
+    sl::float4 point_cloud_value;
 
     int zed_image_left_width, zed_image_left_height;
 
