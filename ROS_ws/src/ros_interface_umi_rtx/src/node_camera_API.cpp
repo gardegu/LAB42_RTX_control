@@ -38,9 +38,9 @@ void Camera_API::timer_callback(){
         zed_image_left_width = zed_image_left.getWidth();
         zed_image_left_height = zed_image_left.getHeight();
 
-        cv_image_left = slMat2cvMat(zed_image_left);
-        cv_image_right = slMat2cvMat(zed_image_right);
-        cv_depth = slMat2cvMat(zed_depth);
+        cv_image_left = sl::slMat2cvMat(zed_image_left);
+        cv_image_right = sl::slMat2cvMat(zed_image_right);
+        cv_depth = sl::slMat2cvMat(zed_depth);
     }
     else{
         std::cout << "Could read the scene" << std::endl;
