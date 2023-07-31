@@ -99,6 +99,8 @@ ament_target_dependencies(nodeCameraAPI
         geometry_msgs
         ament_index_cpp
         std_msgs
+        ZED
+        CUDA
         )
 
 target_link_libraries(nodeCameraAPI "${cpp_typesupport_target}" ${OpenCV_LIBS} ${ZED_LIBRARY_DIR} ${CUDA_LIBRARY_DIRS})
