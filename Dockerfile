@@ -37,16 +37,15 @@ RUN sudo curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.ke
 RUN echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] http://packages.ros.org/ros2/ubuntu $(. /etc/os-release && echo $UBUNTU_CODENAME) main" | sudo tee /etc/apt/sources.list.d/ros2.list > /dev/null
 
 
-RUN sudo apt-get update
-RUN sudo apt upgrade
+RUN sudo apt update
+RUN sudo apt upgrade -y
 
 
-RUN sudo DEBIAN_FRONTEND=noninteractive apt install ros-foxy-desktop python3-argcomplete -y --fix-missing
+RUN sudo DEBIAN_FRONTEND=noninteractive apt install ros-foxy-desktop python3-argcomplete -y
 
 
-RUN echo \"source /opt/ros/foxy/setup.bash\" >> ~/.bashrc
-RUN source /opt/ros/foxy/setup.bash
-
+RUN echo "source /opt/ros/foxy/setup.bash" >> ~/.bashrc
+RUN source ~/.bashrc
 
 RUN sudo apt-get install git -y
 RUN sudo apt-get install wget -y
@@ -56,41 +55,63 @@ WORKDIR /home/Stage
 RUN git clone https://github.com/gardegu/LAB42_RTX_control.git
 WORKDIR /home/Stage/LAB42_RTX_control
 RUN sudo ./install_dependencies.sh
-WORKDIR ROS_ws
-
 
 WORKDIR /home/Stage
 RUN wget "https://download.stereolabs.com/zedsdk/4.0/cu121/ubuntu20"
 RUN sudo apt install zstd -y
-#RUN chmod +x ZED_SDK_Ubuntu20_cuda12.1_v4.0.5.zstd.run
 RUN sudo chmod +x ubuntu20
-RUN DEBIAN_FRONTEND=noninteractive ./ubuntu20
+# RUN DEBIAN_FRONTEND=noninteractive ./ubuntu20
+RUN DEBIAN_FRONTEND=noninteractive ./ubuntu20 -- silent
+
+# RUN wget "https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2004/x86_64/cuda-ubuntu2004.pin"
+# RUN sudo mv cuda-ubuntu2004.pin /etc/apt/preferences.d/cuda-repository-pin-600
+# RUN wget "https://developer.download.nvidia.com/compute/cuda/12.2.0/local_installers/cuda-repo-ubuntu2004-12-2-local_12.2.0-535.54.03-1_amd64.deb"
+# RUN sudo dpkg -i cuda-repo-ubuntu2004-12-2-local_12.2.0-535.54.03-1_amd64.deb
+# RUN sudo cp /var/cuda-repo-ubuntu2004-12-2-local/cuda-*-keyring.gpg /usr/share/keyrings/
+# RUN sudo apt-get update
+# RUN sudo apt-get -y install cuda
 
 
-RUN wget "https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2004/x86_64/cuda-ubuntu2004.pin"
-RUN sudo mv cuda-ubuntu2004.pin /etc/apt/preferences.d/cuda-repository-pin-600
-RUN wget "https://developer.download.nvidia.com/compute/cuda/12.2.0/local_installers/cuda-repo-ubuntu2004-12-2-local_12.2.0-535.54.03-1_amd64.deb"
-RUN sudo dpkg -i cuda-repo-ubuntu2004-12-2-local_12.2.0-535.54.03-1_amd64.deb
-RUN sudo cp /var/cuda-repo-ubuntu2004-12-2-local/cuda-*-keyring.gpg /usr/share/keyrings/
-RUN sudo apt-get update
-RUN sudo apt-get -y install cuda
+# RUN source /etc/lsb-release
+# RUN wget "https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2004/x86_64/cuda-keyring_1.0-1_all.deb"
+# RUN sudo dpkg -i cuda-keyring_1.0-1_all.deb
 
 
-RUN source /etc/lsb-release
-RUN UBUNTU_VERSION=ubuntu${DISTRIB_RELEASE/./}
-RUN wget "https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2004/x86_64/cuda-keyring_1.0-1_all.deb"
-RUN sudo dpkg -i cuda-keyring_1.0-1_all.deb
+# RUN sudo apt-get update
+# RUN sudo apt-get -y install cuda-11-8
 
 
-RUN sudo apt-get update
-RUN sudo apt-get -y install cuda-11-8
+RUN sudo apt update && sudo apt upgrade -y
+RUN sudo apt install software-properties-common apt-transport-https wget -y
+RUN wget -O- https://packages.microsoft.com/keys/microsoft.asc | sudo gpg --dearmor | sudo tee /usr/share/keyrings/vscode.gpg
+RUN echo deb [arch=amd64 signed-by=/usr/share/keyrings/vscode.gpg] https://packages.microsoft.com/repos/vscode stable main | sudo tee /etc/apt/sources.list.d/vscode.list
+RUN sudo apt update
+RUN sudo apt install code -y
 
+RUN sudo apt install python3-colcon-common-extensions -y
 
-RUN sudo snap install --classic code
+WORKDIR /home/Stage/LAB42_RTX_control
+RUN sudo apt install nano -y
 
+#ENTRYPOINT [ "git", "pull" ]
+# RUN sudo chmod 777 -R .
+# RUN /bin/bash -c "source /opt/ros/foxy/setup.bash; colcon build" 
 
-WORKDIR /home/Stage/LAB42_RTX_control/ROS_ws
-RUN colcon build
+# RUN sudo apt-get install -y xserver-xorg xinit
+# RUN sudo apt-get install -y mesa-utils libegl1-mesa libegl1-mesa-dev libgbm-dev libgbm1 libgl1-mesa-dev libgl1-mesa-dri libgl1-mesa-glx libglu1-mesa libglu1-mesa-dev
+
+# RUN sudo apt-get update && sudo DEBIAN_FRONTEND=noninteractive apt-get install -y \
+#     ubuntu-desktop \
+#     xserver-xorg \
+#     x11-xserver-utils \
+#     xinit \
+#     xfce4 \
+#     xfce4-terminal \
+#     && sudo apt-get clean \
+#     && sudo rm -rf /var/lib/apt/lists/*
+
+# CMD startxfce4
+
 
 
 
