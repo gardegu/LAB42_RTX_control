@@ -38,6 +38,9 @@ void Camera_API::timer_callback(){
         zed_image_left_width = zed_image_left.getWidth();
         zed_image_left_height = zed_image_left.getHeight();
 
+        cv_image_left = slMat2cvMat(zed_image_left);
+        cv_image_right = slMat2cvMat(zed_image_right);
+        cv_depth = slMat2cvMat(zed_depth);
     }
     else{
         std::cout << "Could read the scene" << std::endl;
@@ -59,14 +62,14 @@ void Camera_API::timer_callback(){
         std::cout << "The distance could not be computed at {"<<m_cx<<";"<<m_cy<<"}" << std::endl;
     }
 
-    sensor_msgs::msg::Image depth_msg = cv_bridge::CvImage(std_msgs::msg::Header(),"mono8",zed_depth).toImageMsg();
+    sensor_msgs::msg::Image depth_msg = cv_bridge::CvImage(std_msgs::msg::Header(),"mono8",cv_depth).toImageMsg();
     depth_publisher->publish(depth_msg);
 
 }
 
 void Camera_API::get_banana_and_angles(geometry_msgs::msg::Point coord_msg, geometry_msgs::msg::Vector3 angles_msg){
     cv::Mat hsv_img;
-    cv::cvtColor(zed_image_left,hsv_img,cv::COLOR_BGR2HSV);
+    cv::cvtColor(cv_image_left,hsv_img,cv::COLOR_BGR2HSV);
 
     cv::Scalar lower_bound = cv::Scalar(20,100,100);
     cv::Scalar upper_bound = cv::Scalar(60,255,255);
@@ -79,7 +82,7 @@ void Camera_API::get_banana_and_angles(geometry_msgs::msg::Point coord_msg, geom
 
     if(contours.empty()){
         //std::cout << "Cannot detect the target" << std::endl;
-        sensor_msgs::msg::Image img_msg = cv_bridge::CvImage(std_msgs::msg::Header(),"bgr8",zed_image_left).toImageMsg();
+        sensor_msgs::msg::Image img_msg = cv_bridge::CvImage(std_msgs::msg::Header(),"bgr8",cv_image_left).toImageMsg();
         image_publisher->publish(img_msg);
     }
 
@@ -103,7 +106,7 @@ void Camera_API::get_banana_and_angles(geometry_msgs::msg::Point coord_msg, geom
 
         if(maxAreaIdx > -1) {
             get_angles(contours);
-            cv::drawContours(zed_image_left, contours, maxAreaIdx, cv::Scalar(255, 255, 255), 2);
+            cv::drawContours(cv_image_left, contours, maxAreaIdx, cv::Scalar(255, 255, 255), 2);
 
             cv::Moments moments = cv::moments(contours[maxAreaIdx]);
 
@@ -131,7 +134,7 @@ void Camera_API::get_banana_and_angles(geometry_msgs::msg::Point coord_msg, geom
             coord_msg.y = m_cy;
         }
 
-        sensor_msgs::msg::Image img_msg = cv_bridge::CvImage(std_msgs::msg::Header(), "bgr8", zed_image_left).toImageMsg();
+        sensor_msgs::msg::Image img_msg = cv_bridge::CvImage(std_msgs::msg::Header(), "bgr8", cv_image_left).toImageMsg();
         image_publisher->publish(img_msg);
     }
 
