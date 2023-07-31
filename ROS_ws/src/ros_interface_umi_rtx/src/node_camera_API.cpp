@@ -170,7 +170,8 @@ void Camera_API::get_angles(vector<vector<cv::Point>> &contours){
 
 }
 
-void Camera_API::getOCVtype(sl::MAT_TYPE type){
+int Camera_API::getOCVtype(sl::MAT_TYPE type){
+    int cv_type = -1;
     switch (type) {
         case MAT_TYPE::F32_C1: cv_type = CV_32FC1; break;
         case MAT_TYPE::F32_C2: cv_type = CV_32FC2; break;
@@ -182,10 +183,11 @@ void Camera_API::getOCVtype(sl::MAT_TYPE type){
         case MAT_TYPE::U8_C4: cv_type = CV_8UC4; break;
         default: break;
     }
+    return cv_type
 }
 
 cv::Mat Camera_API::slMat2cvMat(sl::Mat& input){
-    return cv::Mat(input.getHeight(), input.getWidth(), getOCVtype(input.getDataType()), *input.getPtr<sl::uchar1>(sl::MEM::CPU), input.getStepBytes(sl::MEM::CPU));
+    return cv::Mat(input.getHeight(), input.getWidth(), getOCVtype(input.getDataType()), input.getPtr<sl::uchar1>(sl::MEM::CPU), input.getStepBytes(sl::MEM::CPU));
 }
 
 
