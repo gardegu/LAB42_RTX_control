@@ -40,6 +40,7 @@ private:
     void init_camera();
     void get_banana_and_angles(geometry_msgs::msg::Point coord_msg, geometry_msgs::msg::Vector3 angles_msg);
     void get_angles(vector<vector<cv::Point>> &contours);
+    void slMat2cvMat(sl::Mat& input, cv::Mat& output);
 
     std::chrono::milliseconds loop_dt_ = 40ms;
 
