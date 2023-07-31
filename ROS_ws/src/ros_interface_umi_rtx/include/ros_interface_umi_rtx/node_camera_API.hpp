@@ -64,6 +64,8 @@ private:
     int iP1 = 8 * 1 * blockSize * blockSize;
     int iP2 = 16 * 1 * blockSize * blockSize;
 
+    cv::Ptr<cv::StereoSGBM> stereo;
+
     Camera zed;
     InitParameters init_parameters;
     sl::Mat zed_image, zed_image_left, zed_image_right;

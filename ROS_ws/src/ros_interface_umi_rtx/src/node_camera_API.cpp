@@ -17,9 +17,9 @@ void Camera_API::init_interfaces(){
 
 void Camera_API::init_camera(){
     init_parameters.camera_resolution = RESOLUTION::HD720;
-    init_parameters.camera_fps_ = 15;
+    init_parameters.camera_fps = 15;
     init_parameters.depth_mode = DEPTH_MODE::ULTRA;
-    init_parameters.coordinates_units = UNIT::MILLIMETER;
+    init_parameters.coordinate_units = UNIT::MILLIMETER;
     init_parameters.depth_minimum_distance = 0; // set it to the minimum authorized value (should be 100 mm)
 
 
