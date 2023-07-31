@@ -183,7 +183,7 @@ int Camera_API::getOCVtype(sl::MAT_TYPE type){
         case MAT_TYPE::U8_C4: cv_type = CV_8UC4; break;
         default: break;
     }
-    return cv_type
+    return cv_type;
 }
 
 cv::Mat Camera_API::slMat2cvMat(sl::Mat& input){
