@@ -23,6 +23,7 @@ void Camera_API::init_camera(){
     if (returned_state != ERROR_CODE::SUCCESS){
         std::cout << "Error " << returned_state << ", exit program." << std::endl;
         //return EXIT_FAILURE;
+        printHelp();
     }
 
     //std::cout << "init done" << std::endl;
