@@ -57,6 +57,7 @@ void Camera_API::timer_callback(){
         std_msgs::msg::Float64 target_depth_msg;
         target_depth_msg.data = sqrt(point_cloud_value.x * point_cloud_value.x + point_cloud_value.y * point_cloud_value.y + point_cloud_value.z * point_cloud_value.z);
         double_publisher->publish(target_depth_msg);
+        std::cout << "Distance published" << std::endl;
     }
     else{
         std::cout << "The distance could not be computed at {"<<m_cx<<";"<<m_cy<<"}" << std::endl;
