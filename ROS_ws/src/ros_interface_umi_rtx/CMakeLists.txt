@@ -216,7 +216,7 @@ if(BUILD_TESTING)
   ament_lint_auto_find_test_dependencies()
 endif()
 
-install(TARGETS nodeCamera nodeArm nodeInverseKinematics nodeSimu GUI
+install(TARGETS nodeCamera nodeArm nodeInverseKinematics nodeSimu GUI nodeCameraAPI
 DESTINATION lib/${PROJECT_NAME})
 
 install(DIRECTORY include
