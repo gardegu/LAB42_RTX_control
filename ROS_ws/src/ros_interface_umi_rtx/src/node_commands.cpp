@@ -12,7 +12,9 @@ void Objective_node::init_interfaces(){
         std::bind(&Objective_node::get_processed_position, this, _1));
     angles_subscriber = this->create_subscription<geometry_msgs::msg::Vector3>("processed_angles",10,
         std::bind(&Objective_node::get_processed_angles, this, _1));
-    image_subscriber = this->create_subscription<sensor_msgs::msg::Image>("processed_image",10,
+    // image_subscriber = this->create_subscription<sensor_msgs::msg::Image>("processed_image",10,
+    //     std::bind(&Objective_node::get_image, this, _1));
+    image_subscriber = this->create_subscription<sensor_msgs::msg::Image>("depth_image",10,
         std::bind(&Objective_node::get_image, this, _1));
 }
 
