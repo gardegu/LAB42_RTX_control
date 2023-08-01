@@ -99,6 +99,8 @@ ament_target_dependencies(nodeCameraAPI
         geometry_msgs
         ament_index_cpp
         std_msgs
+        ZED
+        CUDA
         )
 
 target_link_libraries(nodeCameraAPI "${cpp_typesupport_target}" ${OpenCV_LIBS} ${ZED_LIBRARY_DIR} ${CUDA_LIBRARY_DIRS})
@@ -214,7 +216,7 @@ if(BUILD_TESTING)
   ament_lint_auto_find_test_dependencies()
 endif()
 
-install(TARGETS nodeCamera nodeArm nodeInverseKinematics nodeSimu GUI
+install(TARGETS nodeCamera nodeArm nodeInverseKinematics nodeSimu GUI nodeCameraAPI
 DESTINATION lib/${PROJECT_NAME})
 
 install(DIRECTORY include

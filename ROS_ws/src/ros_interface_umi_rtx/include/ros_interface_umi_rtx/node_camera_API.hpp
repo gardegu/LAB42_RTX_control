@@ -40,6 +40,8 @@ private:
     void init_camera();
     void get_banana_and_angles(geometry_msgs::msg::Point coord_msg, geometry_msgs::msg::Vector3 angles_msg);
     void get_angles(vector<vector<cv::Point>> &contours);
+    int getOCVtype(sl::MAT_TYPE type);
+    cv::Mat slMat2cvMat(sl::Mat& input);
 
     std::chrono::milliseconds loop_dt_ = 40ms;
 
@@ -53,10 +55,26 @@ private:
 
     double m_cx, m_cy, m_cz, yaw, pitch, roll;
 
+    int blockSize = 7;
+    int min_disp = 0;
+    int max_disp = 80;
+    int num_disp = max_disp - min_disp;
+    int uniquenessRatio = 10;
+    int speckleWindowSize = 200;
+    int speckleRange = 2;
+    int disp12MaxDiff = 0;
+    int iP1 = 8 * 1 * blockSize * blockSize;
+    int iP2 = 16 * 1 * blockSize * blockSize;
+
+    cv::Ptr<cv::StereoSGBM> stereo;
+
     Camera zed;
     InitParameters init_parameters;
     sl::Mat zed_image, zed_image_left, zed_image_right;
     sl::Mat zed_depth, zed_point_cloud;
+    sl::float4 point_cloud_value;
+
+    cv::Mat cv_image, cv_image_left, cv_image_right, cv_depth;
 
     int zed_image_left_width, zed_image_left_height;
 

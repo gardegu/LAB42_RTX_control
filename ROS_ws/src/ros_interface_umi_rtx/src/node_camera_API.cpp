@@ -1,9 +1,6 @@
 #include "ros_interface_umi_rtx/node_camera_API.hpp"
 
 void Camera_API::init_interfaces(){
-    m_cx = 0;
-    m_cy = 0;
-
     stereo = cv::StereoSGBM::create(min_disp,num_disp,blockSize,iP1,iP2,disp12MaxDiff,0,uniquenessRatio,speckleWindowSize,speckleRange);
 
     timer_ = this->create_wall_timer(loop_dt_,std::bind(&Camera_API::timer_callback,this));
@@ -17,11 +14,10 @@ void Camera_API::init_interfaces(){
 
 void Camera_API::init_camera(){
     init_parameters.camera_resolution = RESOLUTION::HD720;
-    init_parameters.camera_fps_ = 15;
+    init_parameters.camera_fps = 15;
     init_parameters.depth_mode = DEPTH_MODE::ULTRA;
-    init_parameters.coordinates_units = UNIT::MILLIMETER;
+    init_parameters.coordinate_units = UNIT::MILLIMETER;
     init_parameters.depth_minimum_distance = 0; // set it to the minimum authorized value (should be 100 mm)
-
 
     auto returned_state = zed.open(init_parameters);
     if (returned_state != ERROR_CODE::SUCCESS){
@@ -33,9 +29,6 @@ void Camera_API::init_camera(){
 }
 
 void Camera_API::timer_callback(){
-    geometry_msgs::msg::Point coord_msg;
-    geometry_msgs::msg::Vector3 angles_msg;
-
     if (zed.grab() == ERROR_CODE::SUCCESS){
         zed.retrieveImage(zed_image_left,VIEW::LEFT);
         zed.retrieveImage(zed_image_right,VIEW::RIGHT);
@@ -45,25 +38,39 @@ void Camera_API::timer_callback(){
         zed_image_left_width = zed_image_left.getWidth();
         zed_image_left_height = zed_image_left.getHeight();
 
+        cv_image_left = slMat2cvMat(zed_image_left);
+        cv_image_right = slMat2cvMat(zed_image_right);
+        cv_depth = slMat2cvMat(zed_depth);
     }
+    else{
+        std::cout << "Could read the scene" << std::endl;
+    }
+
+    geometry_msgs::msg::Point coord_msg;
+    geometry_msgs::msg::Vector3 angles_msg;
 
     get_banana_and_angles(coord_msg,angles_msg);
 
-    sensor_msgs::msg::Image::SharedPtr depth_msg = cv_bridge::CvImage(std_msgs::msg::Header(),"mono8",zed_depth).toImageMsg();
-    depth_publisher->publish(*depth_msg);
-
-    sl::float4 point_cloud_value;
     zed_point_cloud.getValue(m_cx,m_cy,&point_cloud_value);
 
-    std_msgs::msg::Float64 target_depth_msg;
-    target_depth_msg.data = point_cloud_value;
-    double_publisher->publish(target_depth_msg);
+    if(std::isfinite(point_cloud_value.z)){
+        std_msgs::msg::Float64 target_depth_msg;
+        target_depth_msg.data = sqrt(point_cloud_value.x * point_cloud_value.x + point_cloud_value.y * point_cloud_value.y + point_cloud_value.z * point_cloud_value.z);
+        double_publisher->publish(target_depth_msg);
+        std::cout << "Distance published" << std::endl;
+    }
+    else{
+        std::cout << "The distance could not be computed at {"<<m_cx<<";"<<m_cy<<"}" << std::endl;
+    }
+
+    sensor_msgs::msg::Image::SharedPtr depth_msg = cv_bridge::CvImage(std_msgs::msg::Header(),"mono8",cv_depth).toImageMsg();
+    depth_publisher->publish(*depth_msg);
 
 }
 
 void Camera_API::get_banana_and_angles(geometry_msgs::msg::Point coord_msg, geometry_msgs::msg::Vector3 angles_msg){
     cv::Mat hsv_img;
-    cv::cvtColor(zed_image_left,hsv_img,cv::COLOR_BGR2HSV);
+    cv::cvtColor(cv_image_left,hsv_img,cv::COLOR_BGR2HSV);
 
     cv::Scalar lower_bound = cv::Scalar(20,100,100);
     cv::Scalar upper_bound = cv::Scalar(60,255,255);
@@ -76,7 +83,7 @@ void Camera_API::get_banana_and_angles(geometry_msgs::msg::Point coord_msg, geom
 
     if(contours.empty()){
         //std::cout << "Cannot detect the target" << std::endl;
-        sensor_msgs::msg::Image::SharedPtr img_msg = cv_bridge::CvImage(std_msgs::msg::Header(),"bgr8",zed_image_left).toImageMsg();
+        sensor_msgs::msg::Image::SharedPtr img_msg = cv_bridge::CvImage(std_msgs::msg::Header(),"bgr8",cv_image_left).toImageMsg();
         image_publisher->publish(*img_msg);
     }
 
@@ -100,7 +107,7 @@ void Camera_API::get_banana_and_angles(geometry_msgs::msg::Point coord_msg, geom
 
         if(maxAreaIdx > -1) {
             get_angles(contours);
-            cv::drawContours(zed_image_left, contours, maxAreaIdx, cv::Scalar(255, 255, 255), 2);
+            cv::drawContours(cv_image_left, contours, maxAreaIdx, cv::Scalar(255, 255, 255), 2);
 
             cv::Moments moments = cv::moments(contours[maxAreaIdx]);
 
@@ -128,7 +135,7 @@ void Camera_API::get_banana_and_angles(geometry_msgs::msg::Point coord_msg, geom
             coord_msg.y = m_cy;
         }
 
-        sensor_msgs::msg::Image::SharedPtr img_msg = cv_bridge::CvImage(std_msgs::msg::Header(), "bgr8", zed_image_left).toImageMsg();
+        sensor_msgs::msg::Image::SharedPtr img_msg = cv_bridge::CvImage(std_msgs::msg::Header(), "bgr8", cv_image_left).toImageMsg();
         image_publisher->publish(*img_msg);
     }
 
@@ -162,6 +169,26 @@ void Camera_API::get_angles(vector<vector<cv::Point>> &contours){
     pitch = 90.;
     roll = theta*180/M_PI;
 
+}
+
+int Camera_API::getOCVtype(sl::MAT_TYPE type){
+    int cv_type = -1;
+    switch (type) {
+        case MAT_TYPE::F32_C1: cv_type = CV_32FC1; break;
+        case MAT_TYPE::F32_C2: cv_type = CV_32FC2; break;
+        case MAT_TYPE::F32_C3: cv_type = CV_32FC3; break;
+        case MAT_TYPE::F32_C4: cv_type = CV_32FC4; break;
+        case MAT_TYPE::U8_C1: cv_type = CV_8UC1; break;
+        case MAT_TYPE::U8_C2: cv_type = CV_8UC2; break;
+        case MAT_TYPE::U8_C3: cv_type = CV_8UC3; break;
+        case MAT_TYPE::U8_C4: cv_type = CV_8UC4; break;
+        default: break;
+    }
+    return cv_type;
+}
+
+cv::Mat Camera_API::slMat2cvMat(sl::Mat& input){
+    return cv::Mat(input.getHeight(), input.getWidth(), getOCVtype(input.getDataType()), input.getPtr<sl::uchar1>(sl::MEM::CPU), input.getStepBytes(sl::MEM::CPU));
 }
 
 
