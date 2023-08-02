@@ -44,6 +44,7 @@ void Camera_API::timer_callback(){
         cv::cvtColor(cv_image_left,cv::COLOR_BGRA2BGR);
         cv::cvtColor(cv_image_right,cv::COLOR_BGRA2BGR);
         cv::cvtColor(cv_depth,cv::COLOR_BGRA2BGR);
+#conv
     }
     else{
         std::cout << "Could read the scene" << std::endl;
