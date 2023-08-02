@@ -80,7 +80,7 @@ void Camera_API::timer_callback(){
 
 }
 
-void Camera_API::get_banana_and_angles(geometry_msgs::msg::Point coord_msg, geometry_msgs::msg::Vector3 angles_msg){
+void Camera_API::get_banana_and_angles(geometry_msgs::msg::Vector3 angles_msg){
     cv::Mat hsv_img;
     cv::cvtColor(cv_image_left,hsv_img,cv::COLOR_BGR2HSV);
 
