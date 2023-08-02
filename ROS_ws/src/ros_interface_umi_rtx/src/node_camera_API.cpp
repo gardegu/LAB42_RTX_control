@@ -61,11 +61,15 @@ void Camera_API::timer_callback(){
         std_msgs::msg::Float64 target_depth_msg;
         target_depth_msg.data = sqrt(point_cloud_value.x * point_cloud_value.x + point_cloud_value.y * point_cloud_value.y + point_cloud_value.z * point_cloud_value.z);
         double_publisher->publish(target_depth_msg);
-        std::cout << "Distance at {"<<m_cx<<";"<<m_cy<<"}: " << target_depth_msg.data << std::endl;
+
+        coord_msg.z = sqrt(point_cloud_value.x * point_cloud_value.x + point_cloud_value.y * point_cloud_value.y + point_cloud_value.z * point_cloud_value.z);
+//        std::cout << "Distance at {"<<m_cx<<";"<<m_cy<<"}: " << target_depth_msg.data << std::endl;
     }
     else{
-        std::cout << "The distance could not be computed at {"<<m_cx<<";"<<m_cy<<"}" << std::endl;
+//        std::cout << "The distance could not be computed at {"<<m_cx<<";"<<m_cy<<"}" << std::endl;
     }
+
+    coord_publisher->publish(coord_msg);
 
     sensor_msgs::msg::Image::SharedPtr depth_msg = cv_bridge::CvImage(std_msgs::msg::Header(),"bgr8",cv_depth).toImageMsg();
     depth_publisher->publish(*depth_msg);
@@ -142,8 +146,6 @@ void Camera_API::get_banana_and_angles(geometry_msgs::msg::Point coord_msg, geom
         sensor_msgs::msg::Image::SharedPtr img_msg = cv_bridge::CvImage(std_msgs::msg::Header(), "bgr8", cv_image_left).toImageMsg();
         image_publisher->publish(*img_msg);
     }
-
-    coord_publisher->publish(coord_msg);
 
     angles_msg.x = yaw;
     angles_msg.y = pitch;
