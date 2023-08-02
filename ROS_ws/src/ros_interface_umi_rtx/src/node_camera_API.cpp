@@ -31,7 +31,8 @@ void Camera_API::init_camera(){
 void Camera_API::timer_callback(){
     if (zed.grab() == ERROR_CODE::SUCCESS){
         zed.retrieveImage(zed_image_left,VIEW::LEFT);
-        zed.retrieveMeasure(zed_depth,MEASURE::DEPTH);
+        // zed.retrieveMeasure(zed_depth,MEASURE::DEPTH);
+        zed.retrieveImage(zed_depth,VIEW::DEPTH);
         zed.retrieveMeasure(zed_point_cloud,MEASURE::XYZRGBA);
 
         zed_image_left_width = zed_image_left.getWidth();
