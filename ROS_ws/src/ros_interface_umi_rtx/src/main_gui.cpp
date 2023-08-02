@@ -202,7 +202,7 @@ MainGUI::MainGUI(QApplication * app,
     imageButton->setCheckable(true);
     imageButton->setChecked(false);
     // Personnalisation de l'apparence du image
-    imageButton->setFixedSize(120, 50);
+    imageButton->setFixedSize(1200, 50);
     imageButton->setText("Image displayed");
     imageButton->setStyleSheet("QPushButton {"
                                 "border: none;"
@@ -260,7 +260,6 @@ MainGUI::MainGUI(QApplication * app,
     timer->start(40);
     rviz_layout->addWidget(videoLabel);
     rviz_layout->addWidget(imageButton);
-    rviz_layout->setAlignment(Qt::AlignCenter);
 
     QHBoxLayout* glob_layout = new QHBoxLayout;
     glob_layout->addLayout(rviz_layout);
