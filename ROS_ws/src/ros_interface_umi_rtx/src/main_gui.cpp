@@ -235,7 +235,6 @@ MainGUI::MainGUI(QApplication * app,
     // Add RViz widget to the interface
     QVBoxLayout* rviz_layout = new QVBoxLayout;
     rviz_layout->addWidget(render_panel_);
-    rviz_layout->addWidget(imageButton);
 
 
     videoLabel = new QLabel("");
@@ -260,6 +259,7 @@ MainGUI::MainGUI(QApplication * app,
     });
     timer->start(40);
     rviz_layout->addWidget(videoLabel);
+    rviz_layout->addWidget(imageButton);
 
     QHBoxLayout* glob_layout = new QHBoxLayout;
     glob_layout->addLayout(rviz_layout);
