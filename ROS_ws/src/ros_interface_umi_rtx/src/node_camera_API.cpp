@@ -31,7 +31,6 @@ void Camera_API::init_camera(){
 void Camera_API::timer_callback(){
     if (zed.grab() == ERROR_CODE::SUCCESS){
         zed.retrieveImage(zed_image_left,VIEW::LEFT);
-        zed.retrieveImage(zed_image_right,VIEW::RIGHT);
         zed.retrieveMeasure(zed_depth,MEASURE::DEPTH);
         zed.retrieveMeasure(zed_point_cloud,MEASURE::XYZRGBA);
 
@@ -39,11 +38,10 @@ void Camera_API::timer_callback(){
         zed_image_left_height = zed_image_left.getHeight();
 
         cv_image_left = slMat2cvMat(zed_image_left);
-        cv_image_right = slMat2cvMat(zed_image_right);
         cv_depth = slMat2cvMat(zed_depth);
-        cv::cvtColor(cv_image_left,cv::COLOR_BGRA2BGR);
-        cv::cvtColor(cv_image_right,cv::COLOR_BGRA2BGR);
-        cv::cvtColor(cv_depth,cv::COLOR_BGRA2BGR);
+
+        cv::cvtColor(cv_image_left,cv_image_left,cv::COLOR_BGRA2BGR);
+        cv::cvtColor(cv_depth,cv_depth,cv::COLOR_BGRA2BGR);
     }
     else{
         std::cout << "Could read the scene" << std::endl;
