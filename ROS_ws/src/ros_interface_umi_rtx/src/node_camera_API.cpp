@@ -41,6 +41,9 @@ void Camera_API::timer_callback(){
         cv_image_left = slMat2cvMat(zed_image_left);
         cv_image_right = slMat2cvMat(zed_image_right);
         cv_depth = slMat2cvMat(zed_depth);
+        cv::cvtColor(cv_image_left,cv::COLOR_BGRA2BGR);
+        cv::cvtColor(cv_image_right,cv::COLOR_BGRA2BGR);
+        cv::cvtColor(cv_depth,cv::COLOR_BGRA2BGR);
     }
     else{
         std::cout << "Could read the scene" << std::endl;
