@@ -200,10 +200,10 @@ MainGUI::MainGUI(QApplication * app,
     // Button to switch between depth and processed image
     QPushButton* imageButton = new QPushButton(this);
     imageButton->setCheckable(true);
-    imageButton->setChecked(true);
+    imageButton->setChecked(false);
     // Personnalisation de l'apparence du image
-    imageButton->setFixedSize(120, 50);
-    imageButton->setText("Manual mode");
+    // imageButton->setFixedSize(120, 50);
+    imageButton->setText("Image displayed");
     imageButton->setStyleSheet("QPushButton {"
                                 "border: none;"
                                 "background-color: #ccc;"
@@ -228,7 +228,6 @@ MainGUI::MainGUI(QApplication * app,
     });
 
     main_layout->addWidget(switchButton,0,3);
-    main_layout->addWidget(imageButton,2,3);
 
     // Initialize RViz configuration
     initializeRViz();
@@ -236,6 +235,7 @@ MainGUI::MainGUI(QApplication * app,
     // Add RViz widget to the interface
     QVBoxLayout* rviz_layout = new QVBoxLayout;
     rviz_layout->addWidget(render_panel_);
+    rviz_layout->addWidget(imageButton);
 
 
     videoLabel = new QLabel("");
