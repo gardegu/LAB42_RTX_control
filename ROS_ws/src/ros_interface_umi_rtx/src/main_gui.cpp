@@ -202,7 +202,7 @@ MainGUI::MainGUI(QApplication * app,
     imageButton->setCheckable(true);
     imageButton->setChecked(false);
     // Personnalisation de l'apparence du image
-    imageButton->setFixedSize(1200, 50);
+    imageButton->setFixedSize(650, 50);
     imageButton->setText("Image displayed");
     imageButton->setStyleSheet("QPushButton {"
                                 "border: none;"
