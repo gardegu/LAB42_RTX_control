@@ -61,7 +61,7 @@ public:
     void update_state(double new_x, double new_y, double new_z, double new_yaw, double new_pitch, double new_roll, double new_grip);
 
     string mode="manual";
-    cv::Mat frame;
+    cv::Mat processed_frame, depth_frame;
     double x=0., y=0.6, z=0.6, yaw=0.,pitch=0.,roll=0., grip=0.2;
 
 private :
@@ -91,11 +91,17 @@ private :
      */
     void get_processed_angles(const geometry_msgs::msg::Vector3::SharedPtr msg);
     /**
-     * @brief Get the images published
+     * @brief Get the processed images published
      * 
      * @param msg 
      */
-    void get_image(const sensor_msgs::msg::Image::SharedPtr msg);
+    void get_processed_image(const sensor_msgs::msg::Image::SharedPtr msg);
+    /**
+     * @brief Get the depth images published
+     * 
+     * @param msg 
+     */
+    void get_depth_image(const sensor_msgs::msg::Image::SharedPtr msg);
     
     std::chrono::milliseconds loop_dt_ = 40ms;
 
@@ -113,7 +119,8 @@ private :
 
     rclcpp::Subscription<geometry_msgs::msg::Point>::SharedPtr position_subscriber;
     rclcpp::Subscription<geometry_msgs::msg::Vector3>::SharedPtr angles_subscriber;
-    rclcpp::Subscription<sensor_msgs::msg::Image>::SharedPtr image_subscriber;
+    rclcpp::Subscription<sensor_msgs::msg::Image>::SharedPtr processed_image_subscriber;
+    rclcpp::Subscription<sensor_msgs::msg::Image>::SharedPtr depth_image_subscriber;
     
 };
 

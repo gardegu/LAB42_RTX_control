@@ -12,10 +12,10 @@ void Objective_node::init_interfaces(){
         std::bind(&Objective_node::get_processed_position, this, _1));
     angles_subscriber = this->create_subscription<geometry_msgs::msg::Vector3>("processed_angles",10,
         std::bind(&Objective_node::get_processed_angles, this, _1));
-    // image_subscriber = this->create_subscription<sensor_msgs::msg::Image>("processed_image",10,
-    //     std::bind(&Objective_node::get_image, this, _1));
-    image_subscriber = this->create_subscription<sensor_msgs::msg::Image>("depth_image",10,
-        std::bind(&Objective_node::get_image, this, _1));
+    processed_image_subscriber = this->create_subscription<sensor_msgs::msg::Image>("processed_image",10,
+        std::bind(&Objective_node::get_processed_image, this, _1));
+    depth_image_subscriber = this->create_subscription<sensor_msgs::msg::Image>("depth_image",10,
+        std::bind(&Objective_node::get_depth_image, this, _1));
 }
 
 void Objective_node::timer_callback(){
@@ -146,9 +146,14 @@ void Objective_node::get_processed_angles(const geometry_msgs::msg::Vector3::Sha
     processed_roll = msg->z;
 }
 
-void Objective_node::get_image(const sensor_msgs::msg::Image::SharedPtr msg){
+void Objective_node::get_processed_image(const sensor_msgs::msg::Image::SharedPtr msg){
     cv_bridge::CvImagePtr cv_ptr = cv_bridge::toCvCopy(msg, "bgr8");
-    frame = cv_ptr->image;
+    processed_frame = cv_ptr->image;
+}
+
+void Objective_node::get_depth_image(const sensor_msgs::msg::Image::SharedPtr msg){
+    cv_bridge::CvImagePtr cv_ptr = cv_bridge::toCvCopy(msg, "bgr8");
+    depth_frame = cv_ptr->image;
 }
 
 void Objective_node::Lissajou(){

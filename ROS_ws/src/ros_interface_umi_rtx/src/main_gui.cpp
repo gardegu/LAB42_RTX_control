@@ -196,7 +196,39 @@ MainGUI::MainGUI(QApplication * app,
         }
     });
 
+
+    // Button to switch between depth and processed image
+    QPushButton* imageButton = new QPushButton(this);
+    imageButton->setCheckable(true);
+    imageButton->setChecked(true);
+    // Personnalisation de l'apparence du image
+    imageButton->setFixedSize(120, 50);
+    imageButton->setText("Manual mode");
+    imageButton->setStyleSheet("QPushButton {"
+                                "border: none;"
+                                "background-color: #ccc;"
+                                "border-radius: 10px"
+                                "}"
+                                "QPushButton:checked {"
+                                    "background-color: #6c6;"
+                                "}"
+                                "QPushButton:!checked {"
+                                    "background-color: #ccc;"
+                                "}");
+
+    // Connection of the clicked signal to the corresponding slot to react to clicks on the image
+    connect(imageButton, &QPushButton::clicked, this, [=]() {
+        depth_frame = imageButton->isChecked();
+        if (depth_frame){
+            imageButton->setText("Depth displayed");
+        }
+        else {
+            imageButton->setText("Image displayed");
+        }
+    });
+
     main_layout->addWidget(switchButton,0,3);
+    main_layout->addWidget(imageButton,2,3);
 
     // Initialize RViz configuration
     initializeRViz();
@@ -278,7 +310,12 @@ void MainGUI::initializeRViz()
 void MainGUI::updateFrame()
 {   
     // capture.read(*frame); // get current frame
-    *frame = ros2_node->frame;
+    if {depth_frame}{
+        *frame = ros2_node->depth_frame;
+    }
+    else {
+        *frame = ros2_node->processed_frame;
+    }
     int w = frame->cols,h = frame->rows;
     cv::Size newSize(w / 2, h / 2); // resize frame to do less calculations
     if (newSize.area() > 0){
