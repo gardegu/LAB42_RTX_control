@@ -310,7 +310,7 @@ void MainGUI::initializeRViz()
 void MainGUI::updateFrame()
 {   
     // capture.read(*frame); // get current frame
-    if {depth_frame}{
+    if (depth_frame){
         *frame = ros2_node->depth_frame;
     }
     else {
