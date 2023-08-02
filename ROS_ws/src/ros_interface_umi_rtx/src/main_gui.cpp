@@ -260,6 +260,7 @@ MainGUI::MainGUI(QApplication * app,
     timer->start(40);
     rviz_layout->addWidget(videoLabel);
     rviz_layout->addWidget(imageButton);
+    rviz_layout->setAlignment(Qt::AlignCenter);
 
     QHBoxLayout* glob_layout = new QHBoxLayout;
     glob_layout->addLayout(rviz_layout);
