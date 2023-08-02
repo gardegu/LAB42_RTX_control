@@ -53,9 +53,12 @@ void Camera_API::timer_callback(){
     geometry_msgs::msg::Point coord_msg;
     geometry_msgs::msg::Vector3 angles_msg;
 
-    get_banana_and_angles(coord_msg,angles_msg);
+    get_banana_and_angles(angles_msg);
 
     zed_point_cloud.getValue(m_cx,m_cy,&point_cloud_value);
+
+    coord_msg.x = m_cx;
+    coord_msg.y = m_cy;
 
     if(std::isfinite(point_cloud_value.z)){
         std_msgs::msg::Float64 target_depth_msg;
@@ -124,23 +127,13 @@ void Camera_API::get_banana_and_angles(geometry_msgs::msg::Point coord_msg, geom
                 double cy = moments.m01 / moments.m00;
                 //std::cout << "Centroid : (" << cx << ", " << cy << ")" << std::endl;
 
-                coord_msg.x = cx;
-                coord_msg.y = cy;
                 m_cx = cx;
                 m_cy = cy;
             }
 
             else {
                 std::cout << "Impossible centroid calculation" << std::endl;
-
-                coord_msg.x = m_cx;
-                coord_msg.y = m_cy;
             }
-        }
-
-        else{
-            coord_msg.x = m_cx;
-            coord_msg.y = m_cy;
         }
 
         sensor_msgs::msg::Image::SharedPtr img_msg = cv_bridge::CvImage(std_msgs::msg::Header(), "bgr8", cv_image_left).toImageMsg();

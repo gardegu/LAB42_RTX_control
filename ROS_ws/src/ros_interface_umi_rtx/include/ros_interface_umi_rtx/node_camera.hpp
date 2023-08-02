@@ -35,7 +35,7 @@ private:
     void timer_callback();
     void init_interfaces();
     void init_camera();
-    void get_banana_and_angles(geometry_msgs::msg::Point coord_msg, geometry_msgs::msg::Vector3 angles_msg);
+    void get_banana_and_angles(geometry_msgs::msg::Vector3 angles_msg);
     void get_angles(vector<vector<cv::Point>> &contours);
     void stereo_calibration();
     void stereo_rectification();
