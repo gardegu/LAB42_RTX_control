@@ -31,16 +31,20 @@ void Camera_API::init_camera(){
 void Camera_API::timer_callback(){
     if (zed.grab() == ERROR_CODE::SUCCESS){
         zed.retrieveImage(zed_image_left,VIEW::LEFT);
-        zed.retrieveImage(zed_image_right,VIEW::RIGHT);
-        zed.retrieveMeasure(zed_depth,MEASURE::DEPTH);
+        // zed.retrieveMeasure(zed_depth,MEASURE::DEPTH);
+        zed.retrieveImage(zed_depth,VIEW::DEPTH);
         zed.retrieveMeasure(zed_point_cloud,MEASURE::XYZRGBA);
 
         zed_image_left_width = zed_image_left.getWidth();
         zed_image_left_height = zed_image_left.getHeight();
 
         cv_image_left = slMat2cvMat(zed_image_left);
-        cv_image_right = slMat2cvMat(zed_image_right);
         cv_depth = slMat2cvMat(zed_depth);
+
+        cv::cvtColor(cv_image_left,cv_image_left,cv::COLOR_BGRA2BGR);
+        cv::cvtColor(cv_depth,cv_depth,cv::COLOR_BGRA2BGR);
+
+        cv::resize(cv_depth,cv_depth,cv::Size(1280,720));
     }
     else{
         std::cout << "Could read the scene" << std::endl;
@@ -49,26 +53,34 @@ void Camera_API::timer_callback(){
     geometry_msgs::msg::Point coord_msg;
     geometry_msgs::msg::Vector3 angles_msg;
 
-    get_banana_and_angles(coord_msg,angles_msg);
+    get_banana_and_angles(angles_msg);
 
     zed_point_cloud.getValue(m_cx,m_cy,&point_cloud_value);
+
+    coord_msg.x = m_cx;
+    coord_msg.y = m_cy;
 
     if(std::isfinite(point_cloud_value.z)){
         std_msgs::msg::Float64 target_depth_msg;
         target_depth_msg.data = sqrt(point_cloud_value.x * point_cloud_value.x + point_cloud_value.y * point_cloud_value.y + point_cloud_value.z * point_cloud_value.z);
         double_publisher->publish(target_depth_msg);
-        std::cout << "Distance at {"<<m_cx<<";"<<m_cy<<"}: " << target_depth_msg.data << std::endl;
+
+        m_cz = sqrt(point_cloud_value.x * point_cloud_value.x + point_cloud_value.y * point_cloud_value.y + point_cloud_value.z * point_cloud_value.z);
+        coord_msg.z = m_cz;
+//        std::cout << "Distance at {"<<m_cx<<";"<<m_cy<<"}: " << target_depth_msg.data << std::endl;
     }
     else{
-        std::cout << "The distance could not be computed at {"<<m_cx<<";"<<m_cy<<"}" << std::endl;
+//        std::cout << "The distance could not be computed at {"<<m_cx<<";"<<m_cy<<"}" << std::endl;
     }
 
-    sensor_msgs::msg::Image::SharedPtr depth_msg = cv_bridge::CvImage(std_msgs::msg::Header(),"mono8",cv_depth).toImageMsg();
+    coord_publisher->publish(coord_msg);
+
+    sensor_msgs::msg::Image::SharedPtr depth_msg = cv_bridge::CvImage(std_msgs::msg::Header(),"bgr8",cv_depth).toImageMsg();
     depth_publisher->publish(*depth_msg);
 
 }
 
-void Camera_API::get_banana_and_angles(geometry_msgs::msg::Point coord_msg, geometry_msgs::msg::Vector3 angles_msg){
+void Camera_API::get_banana_and_angles(geometry_msgs::msg::Vector3 angles_msg){
     cv::Mat hsv_img;
     cv::cvtColor(cv_image_left,hsv_img,cv::COLOR_BGR2HSV);
 
@@ -116,30 +128,18 @@ void Camera_API::get_banana_and_angles(geometry_msgs::msg::Point coord_msg, geom
                 double cy = moments.m01 / moments.m00;
                 //std::cout << "Centroid : (" << cx << ", " << cy << ")" << std::endl;
 
-                coord_msg.x = cx;
-                coord_msg.y = cy;
                 m_cx = cx;
                 m_cy = cy;
             }
 
             else {
                 std::cout << "Impossible centroid calculation" << std::endl;
-
-                coord_msg.x = m_cx;
-                coord_msg.y = m_cy;
             }
-        }
-
-        else{
-            coord_msg.x = m_cx;
-            coord_msg.y = m_cy;
         }
 
         sensor_msgs::msg::Image::SharedPtr img_msg = cv_bridge::CvImage(std_msgs::msg::Header(), "bgr8", cv_image_left).toImageMsg();
         image_publisher->publish(*img_msg);
     }
-
-    coord_publisher->publish(coord_msg);
 
     angles_msg.x = yaw;
     angles_msg.y = pitch;
