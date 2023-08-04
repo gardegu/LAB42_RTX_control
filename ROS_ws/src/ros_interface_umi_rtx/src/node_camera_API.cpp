@@ -73,7 +73,7 @@ void Camera_API::timer_callback(){
 //        std::cout << "The distance could not be computed at {"<<m_cx<<";"<<m_cy<<"}" << std::endl;
     }
 
-    convert_pix2coords(coord_msg.x,coord_msg.y,coord_msg.z)
+    convert_pix2coords(coord_msg.x,coord_msg.y,coord_msg.z);
 
     coord_publisher->publish(coord_msg);
 
