@@ -57,6 +57,7 @@ private:
 
     double m_cx, m_cy, m_cz, yaw, pitch, roll;
     double h=1.26,k=0.0001; //TODO put good value for k
+    float fx = 1543.25, fy = 1543.29;
 
     int blockSize = 7;
     int min_disp = 0;
