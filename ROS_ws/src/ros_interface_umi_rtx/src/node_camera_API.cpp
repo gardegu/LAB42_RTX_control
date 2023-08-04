@@ -24,11 +24,6 @@ void Camera_API::init_camera(){
         std::cout << "Error " << returned_state << ", exit program." << std::endl;
         //return EXIT_FAILURE;
     }
-    else{
-        cam_info = sl::getCameraInformation(sl::Resolution(0,0));
-        std::cout << "Camera information : " << std::endl;
-        std::cout << cam_info << std::endl;
-    }
 
     //std::cout << "init done" << std::endl;
 }

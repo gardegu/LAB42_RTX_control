@@ -77,7 +77,6 @@ private:
     sl::Mat zed_image, zed_image_left, zed_image_right;
     sl::Mat zed_depth, zed_point_cloud;
     sl::float4 point_cloud_value;
-    sl::CameraInformation cam_info;
 
     cv::Mat cv_image, cv_image_left, cv_image_right, cv_depth;
 
