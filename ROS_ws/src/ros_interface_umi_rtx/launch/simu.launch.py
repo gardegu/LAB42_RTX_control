@@ -93,7 +93,6 @@ def generate_launch_description():
         namespace='',
         executable='nodeCameraAPI',
         name='camera_api',
-        output='screen'
     )
     
             

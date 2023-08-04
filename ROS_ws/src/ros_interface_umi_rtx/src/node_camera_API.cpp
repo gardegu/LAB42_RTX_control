@@ -197,9 +197,6 @@ void Camera_API::convert_pix2coords(double &px, double &py, double &z){
     px = (px-zed_image_left_width/2)*z/fx;
     py = (py-zed_image_left_height/2)*z/fy+0.37;
     z = h-z;
-    cout << px << "," << py << "," << z << endl;
-    // px = k*(px-zed_image_left_width/2)*(h-z)/h;
-    // py = k*(py-zed_image_left_height/2)*(h-z)/h + k*zed_image_left_height/2;
 }
 
 
