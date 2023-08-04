@@ -47,7 +47,7 @@ void Camera_API::timer_callback(){
         cv::resize(cv_depth,cv_depth,cv::Size(1280,720));
     }
     else{
-        std::cout << "Could read the scene" << std::endl;
+        std::cout << "Could not read the scene" << std::endl;
     }
 
     geometry_msgs::msg::Point coord_msg;
