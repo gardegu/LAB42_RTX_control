@@ -43,6 +43,8 @@ private:
     int getOCVtype(sl::MAT_TYPE type);
     cv::Mat slMat2cvMat(sl::Mat& input);
 
+    void convert_pix2coords(double &px, double &py, double &z);
+
     std::chrono::milliseconds loop_dt_ = 40ms;
 
     rclcpp::TimerBase::SharedPtr timer_;
@@ -54,6 +56,7 @@ private:
     rclcpp::Publisher<std_msgs::msg::Float64>::SharedPtr double_publisher;
 
     double m_cx, m_cy, m_cz, yaw, pitch, roll;
+    double h=1.26,k=0.0001; //TODO put good value for k
 
     int blockSize = 7;
     int min_disp = 0;
