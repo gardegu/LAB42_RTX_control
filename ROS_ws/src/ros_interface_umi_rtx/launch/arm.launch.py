@@ -98,12 +98,19 @@ def generate_launch_description():
         name='GUI',
     )
     
+    nodeCameraAPI = Node(
+        package = 'ros_interface_umi_rtx',
+        namespace='',
+        executable='nodeCameraAPI',
+        name='camera_api',
+    )
+    
     return LaunchDescription([declare_rviz_config_file_cmd, declare_use_robot_state_pub_cmd,
                               declare_use_sim_time_cmd, declare_urdf_model_path_cmd,
                               start_robot_state_publisher_cmd,
                               nodeArm, nodeInvKin,
                               nodeSimu,
-                              nodeCamera,
+                              nodeCameraAPI,
                               GUI
                               ])
 
