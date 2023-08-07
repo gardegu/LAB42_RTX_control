@@ -2,8 +2,8 @@
 
 
 # Pinocchio for the inverse kinematics
-sudo apt install ros-foxy-pinocchio
-sudo apt install ros-foxy-xacro
+sudo apt install ros-foxy-pinocchio -y
+sudo apt install ros-foxy-xacro -y
 
 echo export PATH=/opt/openrobots/bin:$PATH >> ~/.bashrc
 echo export PKG_CONFIG_PATH=/opt/openrobots/lib/pkgconfig:$PKG_CONFIG_PATH >> ~/.bashrc
