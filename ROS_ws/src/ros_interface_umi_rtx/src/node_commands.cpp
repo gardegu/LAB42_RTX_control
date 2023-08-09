@@ -30,81 +30,81 @@ void Objective_node::timer_callback(){
     */
     if (mode != "manual"){  
         // Lissajou();
-        x = processed_x;
-        y = processed_y;
-        z = processed_z;
-        yaw = atan2(y,x)*180/M_PI;
+        // x = processed_x;
+        // y = processed_y;
+        // z = processed_z;
+        // yaw = atan2(y,x)*180/M_PI;
 
         // double target_x = 0.21, target_y = 0.42, target_z = 0.22;
-        // double target_x = processed_x, target_y = processed_y, target_z = processed_z;
-        // double initial_x = target_x, initial_y = target_y, ,initial_z = target_z
-        // // TODO replace objective by target position
-        // if ((t-t0)<dt1){
-        //     x = x0 + (target_x-x0)*(t-t0)/dt1;
-        //     y = y0 + (target_y-y0)*(t-t0)/dt1;
-        //     z = z0 + (target_z-z0)*(t-t0)/dt1;
+        double target_x = processed_x, target_y = processed_y, target_z = processed_z;
+        double initial_x = target_x, initial_y = target_y, ,initial_z = target_z
+        
+        if ((t-t0)<dt1){
+            x = x0 + (target_x-x0)*(t-t0)/dt1;
+            y = y0 + (target_y-y0)*(t-t0)/dt1;
+            z = z0 + (target_z-z0)*(t-t0)/dt1;
 
-        //     pitch = pitch0 + (90.-pitch0)*(t-t0)/dt1;
-        //     roll = roll0 + (0.-roll0)*(t-t0)/dt1;
-        //     grip = 0.08;
-        // }
+            pitch = pitch0 + (90.-pitch0)*(t-t0)/dt1;
+            roll = roll0 + (0.-roll0)*(t-t0)/dt1;
+            grip = 0.08;
+        }
 
-        // else if ((t-t0)>=dt1 and (t-t0)<12){
-        //     x0 = x;
-        //     y0 = y;
-        //     z0 = z;
+        else if ((t-t0)>=dt1 and (t-t0)<12){
+            x0 = x;
+            y0 = y;
+            z0 = z;
 
-        //     roll0 = roll;
-        //     pitch0 = pitch;
-        //     grip = 0.02;
-        // }
+            roll0 = roll;
+            pitch0 = pitch;
+            grip = 0.02;
+        }
 
-        // else if ((t-t0)>=12 and (t-t0)<18){
-        //     x = x0 + (0.-x0)*(t-t0-12)/6;
-        //     y = y0 + (0.5-y0)*(t-t0-12)/6;
-        //     z = z0 + (0.8-z0)*(t-t0-12)/6;
+        else if ((t-t0)>=12 and (t-t0)<18){
+            x = x0 + (0.-x0)*(t-t0-12)/6;
+            y = y0 + (0.5-y0)*(t-t0-12)/6;
+            z = z0 + (0.8-z0)*(t-t0-12)/6;
 
-        //     pitch = pitch0 + (0.-pitch0)*(t-t0-12)/6;
-        //     roll = roll0 + (0.-roll0)*(t-t0-12)/6;
-        // } 
+            pitch = pitch0 + (0.-pitch0)*(t-t0-12)/6;
+            roll = roll0 + (0.-roll0)*(t-t0-12)/6;
+        } 
 
-        // else if ((t-t0)>=18 and (t-t0)<24){
-        //     x0 = x;
-        //     y0 = y;
-        //     z0 = z;
+        else if ((t-t0)>=18 and (t-t0)<24){
+            x0 = x;
+            y0 = y;
+            z0 = z;
 
-        //     roll0 = roll;
-        //     pitch0 = pitch;
-        // } 
+            roll0 = roll;
+            pitch0 = pitch;
+        } 
 
-        // else if ((t-t0)>=24 and (t-t0)<30){
-        //     x = x0 + (initial_x-x0)*(t-t0-24)/6;
-        //     y = y0 + (initial_y-y0)*(t-t0-24)/6;
-        //     z = z0 + (initial_z-z0)*(t-t0-24)/6;
+        else if ((t-t0)>=24 and (t-t0)<30){
+            x = x0 + (initial_x-x0)*(t-t0-24)/6;
+            y = y0 + (initial_y-y0)*(t-t0-24)/6;
+            z = z0 + (initial_z-z0)*(t-t0-24)/6;
 
-        //     pitch = pitch0 + (90.-pitch0)*(t-t0-24)/6;
-        //     roll = roll0 + (0.-roll0)*(t-t0-24)/6;
-        // } 
+            pitch = pitch0 + (90.-pitch0)*(t-t0-24)/6;
+            roll = roll0 + (0.-roll0)*(t-t0-24)/6;
+        } 
 
-        // else if ((t-t0)>=30 and (t-t0)<34){
-        //     x0 = x;
-        //     y0 = y;
-        //     z0 = z;
+        else if ((t-t0)>=30 and (t-t0)<34){
+            x0 = x;
+            y0 = y;
+            z0 = z;
 
-        //     roll0 = roll;
-        //     pitch0 = pitch;
-        //     grip = 0.08;
-        // }
+            roll0 = roll;
+            pitch0 = pitch;
+            grip = 0.08;
+        }
 
-        // else if ((t-t0)>=34 and (t-t0)<40){
-        //     x = x0 + (0.-x0)*(t-t0-34)/6;
-        //     y = y0 + (0.5-y0)*(t-t0-34)/6;
-        //     z = z0 + (0.8-z0)*(t-t0-34)/6;
+        else if ((t-t0)>=34 and (t-t0)<40){
+            x = x0 + (0.-x0)*(t-t0-34)/6;
+            y = y0 + (0.5-y0)*(t-t0-34)/6;
+            z = z0 + (0.8-z0)*(t-t0-34)/6;
 
-        //     pitch = pitch0 + (0.-pitch0)*(t-t0-34)/6;
-        //     roll = roll0 + (0.-roll0)*(t-t0-34)/6;
-        //     grip = 0.08 + (0.02-0.08)*(t-t0-34)/6;
-        // } 
+            pitch = pitch0 + (0.-pitch0)*(t-t0-34)/6;
+            roll = roll0 + (0.-roll0)*(t-t0-34)/6;
+            grip = 0.08 + (0.02-0.08)*(t-t0-34)/6;
+        } 
     }
 
     else {
