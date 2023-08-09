@@ -37,7 +37,7 @@ void Objective_node::timer_callback(){
 
         // double target_x = 0.21, target_y = 0.42, target_z = 0.22;
         // double target_x = processed_x, target_y = processed_y, target_z = processed_z;
-
+        // double initial_x = target_x, initial_y = target_y, ,initial_z = target_z
         // // TODO replace objective by target position
         // if ((t-t0)<dt1){
         //     x = x0 + (target_x-x0)*(t-t0)/dt1;
@@ -78,9 +78,9 @@ void Objective_node::timer_callback(){
         // } 
 
         // else if ((t-t0)>=24 and (t-t0)<30){
-        //     x = x0 + (target_x-x0)*(t-t0-24)/6;
-        //     y = y0 + (target_y-y0)*(t-t0-24)/6;
-        //     z = z0 + (target_z-z0)*(t-t0-24)/6;
+        //     x = x0 + (initial_x-x0)*(t-t0-24)/6;
+        //     y = y0 + (initial_y-y0)*(t-t0-24)/6;
+        //     z = z0 + (initial_z-z0)*(t-t0-24)/6;
 
         //     pitch = pitch0 + (90.-pitch0)*(t-t0-24)/6;
         //     roll = roll0 + (0.-roll0)*(t-t0-24)/6;
