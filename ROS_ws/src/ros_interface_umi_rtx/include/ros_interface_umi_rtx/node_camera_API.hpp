@@ -3,8 +3,7 @@
 
 #include "rclcpp/rclcpp.hpp"
 #include "sensor_msgs/msg/image.hpp"
-#include "geometry_msgs/msg/point.hpp"
-#include "geometry_msgs/msg/vector3.hpp"
+#include "geometry_msgs/msg/pose.hpp"
 #include "std_msgs/msg/float64.hpp"
 #include <cv_bridge/cv_bridge.h>
 #include <opencv2/opencv.hpp>
@@ -38,7 +37,7 @@ private:
     void timer_callback();
     void init_interfaces();
     void init_camera();
-    void get_banana_and_angles(geometry_msgs::msg::Vector3 angles_msg);
+    void get_banana_and_angles(geometry_msgs::msg::Pose msg);
     void get_angles(vector<vector<cv::Point>> &contours);
     int getOCVtype(sl::MAT_TYPE type);
     cv::Mat slMat2cvMat(sl::Mat& input);
@@ -50,10 +49,8 @@ private:
     rclcpp::TimerBase::SharedPtr timer_;
 
     rclcpp::Publisher<sensor_msgs::msg::Image>::SharedPtr image_publisher;
-    rclcpp::Publisher<geometry_msgs::msg::Point>::SharedPtr coord_publisher;
-    rclcpp::Publisher<geometry_msgs::msg::Vector3>::SharedPtr angles_publisher;
+    rclcpp::Publisher<geometry_msgs::msg::Pose>::SharedPtr processed_pose_publisher;
     rclcpp::Publisher<sensor_msgs::msg::Image>::SharedPtr depth_publisher;
-    rclcpp::Publisher<std_msgs::msg::Float64>::SharedPtr double_publisher;
 
     double m_cx, m_cy, m_cz, yaw, pitch, roll;
     double h=1.26;

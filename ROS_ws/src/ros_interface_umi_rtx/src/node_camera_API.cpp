@@ -6,10 +6,8 @@ void Camera_API::init_interfaces(){
     timer_ = this->create_wall_timer(loop_dt_,std::bind(&Camera_API::timer_callback,this));
 
     image_publisher = this->create_publisher<sensor_msgs::msg::Image>("processed_image",10);
-    coord_publisher = this->create_publisher<geometry_msgs::msg::Point>("processed_position",10);
-    angles_publisher = this->create_publisher<geometry_msgs::msg::Vector3>("processed_angles",10);
+    coord_publisher = this->create_publisher<geometry_msgs::msg::Pose>("processed_pose",10);
     depth_publisher = this->create_publisher<sensor_msgs::msg::Image>("depth_image",10);
-    double_publisher = this->create_publisher<std_msgs::msg::Float64>("target_depth",10);
 }
 
 void Camera_API::init_camera(){
@@ -50,15 +48,14 @@ void Camera_API::timer_callback(){
         std::cout << "Could not read the scene" << std::endl;
     }
 
-    geometry_msgs::msg::Point coord_msg;
-    geometry_msgs::msg::Vector3 angles_msg;
+    geometry_msgs::msg::Pose pose_msg;
 
-    get_banana_and_angles(angles_msg);
+    get_banana_and_angles(pose_msg);
 
     zed_point_cloud.getValue(m_cx,m_cy,&point_cloud_value);
 
-    coord_msg.x = m_cx;
-    coord_msg.y = m_cy;
+    pose_msg.position.x = m_cx;
+    pose_msg.position.y = m_cy;
 
     if(std::isfinite(point_cloud_value.z)){
         std_msgs::msg::Float64 target_depth_msg;
@@ -66,23 +63,23 @@ void Camera_API::timer_callback(){
         double_publisher->publish(target_depth_msg);
 
         m_cz = sqrt(point_cloud_value.x * point_cloud_value.x + point_cloud_value.y * point_cloud_value.y + point_cloud_value.z * point_cloud_value.z);
-        coord_msg.z = m_cz/1000;
+        pose_msg.position.z = m_cz/1000;
 //        std::cout << "Distance at {"<<m_cx<<";"<<m_cy<<"}: " << target_depth_msg.data << std::endl;
     }
     else{
 //        std::cout << "The distance could not be computed at {"<<m_cx<<";"<<m_cy<<"}" << std::endl;
     }
 
-    convert_pix2coords(coord_msg.x,coord_msg.y,coord_msg.z);
+    convert_pix2coords(pose_msg.position.x,pose_msg.position.y,pose_msg.position.z);
 
-    coord_publisher->publish(coord_msg);
+    processed_pose_publisher->publish(pose_msg);
 
     sensor_msgs::msg::Image::SharedPtr depth_msg = cv_bridge::CvImage(std_msgs::msg::Header(),"bgr8",cv_depth).toImageMsg();
     depth_publisher->publish(*depth_msg);
 
 }
 
-void Camera_API::get_banana_and_angles(geometry_msgs::msg::Vector3 angles_msg){
+void Camera_API::get_banana_and_angles(geometry_msgs::msg::Pose msg){
     cv::Mat hsv_img;
     cv::cvtColor(cv_image_left,hsv_img,cv::COLOR_BGR2HSV);
 
@@ -143,10 +140,9 @@ void Camera_API::get_banana_and_angles(geometry_msgs::msg::Vector3 angles_msg){
         image_publisher->publish(*img_msg);
     }
 
-    angles_msg.x = yaw;
-    angles_msg.y = pitch;
-    angles_msg.z = roll;
-    angles_publisher->publish(angles_msg);
+    msg.orientation.x = yaw;
+    msg.orientation.y = pitch;
+    msg.orientation.z = roll;
 }
 
 void Camera_API::get_angles(vector<vector<cv::Point>> &contours){
