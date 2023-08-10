@@ -64,12 +64,6 @@ private :
      * @param msg States of the joints required to reach the desired position sent through 
      */
     void get_commands(const sensor_msgs::msg::JointState::SharedPtr msg);
-    /**
-     * @brief Get the mission (manual or grab for now)
-     * 
-     * @param msg 
-     */
-    void get_mission(const std_msgs::msg::String::SharedPtr msg);
 
     std::chrono::milliseconds loop_dt_ = 40ms;
 
@@ -81,12 +75,9 @@ private :
     vector<string> names;
 
     string urdf_file = ament_index_cpp::get_package_share_directory("ros_interface_umi_rtx")+"/urdf/umi_rtx.urdf";
-    string mission;
-
 
     rclcpp::TimerBase::SharedPtr timer_;
     rclcpp::Subscription<sensor_msgs::msg::JointState>::SharedPtr invkin_subscriber;
-    rclcpp::Subscription<std_msgs::msg::String>::SharedPtr mission_subscriber;
     rclcpp::Publisher<sensor_msgs::msg::JointState>::SharedPtr simu_publisher;
     
 };

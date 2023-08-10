@@ -13,6 +13,7 @@
 #include "rclcpp/rclcpp.hpp"
 #include "geometry_msgs/msg/point.hpp"
 #include "geometry_msgs/msg/vector3.hpp"
+#include "geometry_msgs/msg/pose.hpp"
 #include "std_msgs/msg/float32.hpp"
 #include "std_msgs/msg/string.hpp"
 #include "sensor_msgs/msg/image.hpp"
@@ -83,13 +84,7 @@ private :
      * 
      * @param msg 
      */
-    void get_processed_position(const geometry_msgs::msg::Point::SharedPtr msg);
-    /**
-     * @brief Get the targeted angles processed by the camera.
-     * 
-     * @param msg 
-     */
-    void get_processed_angles(const geometry_msgs::msg::Vector3::SharedPtr msg);
+    void get_processed_pose(const geometry_msgs::msg::Pose::SharedPtr msg);
     /**
      * @brief Get the processed images published
      * 
@@ -112,13 +107,10 @@ private :
 
 
     rclcpp::TimerBase::SharedPtr timer_;
-    rclcpp::Publisher<geometry_msgs::msg::Point>::SharedPtr objective_publisher;
-    rclcpp::Publisher<geometry_msgs::msg::Vector3>::SharedPtr angles_publisher;
-    rclcpp::Publisher<std_msgs::msg::String>::SharedPtr mission_publisher;
+    rclcpp::Publisher<geometry_msgs::msg::Pose>::SharedPtr pose_publisher;
     rclcpp::Publisher<std_msgs::msg::Float32>::SharedPtr grip_publisher;
 
-    rclcpp::Subscription<geometry_msgs::msg::Point>::SharedPtr position_subscriber;
-    rclcpp::Subscription<geometry_msgs::msg::Vector3>::SharedPtr angles_subscriber;
+    rclcpp::Subscription<geometry_msgs::msg::Pose>::SharedPtr pose_subscriber;
     rclcpp::Subscription<sensor_msgs::msg::Image>::SharedPtr processed_image_subscriber;
     rclcpp::Subscription<sensor_msgs::msg::Image>::SharedPtr depth_image_subscriber;
     

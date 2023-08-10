@@ -11,8 +11,7 @@
 #define __INVKIN_H__
 
 #include "rclcpp/rclcpp.hpp"
-#include "geometry_msgs/msg/point.hpp"
-#include "geometry_msgs/msg/vector3.hpp"
+#include "geometry_msgs/msg/pose.hpp"
 #include "std_msgs/msg/float32.hpp"
 #include "sensor_msgs/msg/joint_state.hpp"
 
@@ -66,13 +65,7 @@ private:
      *
      * @param msg 
      */
-    void get_position(const geometry_msgs::msg::Point::SharedPtr msg);
-    /**
-     * @brief Get the targeted orientation
-     * 
-     * @param msg 
-     */
-    void get_angles(const geometry_msgs::msg::Vector3::SharedPtr msg);
+    void get_pose(const geometry_msgs::msg::Pose::SharedPtr msg);
     /**
      * @brief Get the targeted grip
      * 
@@ -124,8 +117,7 @@ private:
 
 
     rclcpp::TimerBase::SharedPtr timer_;
-    rclcpp::Subscription<geometry_msgs::msg::Point>::SharedPtr position_subscription;
-    rclcpp::Subscription<geometry_msgs::msg::Vector3>::SharedPtr angles_subscription;
+    rclcpp::Subscription<geometry_msgs::msg::Pose>::SharedPtr pose_subscription;
     rclcpp::Subscription<std_msgs::msg::Float32>::SharedPtr grip_subscription;
 
     rclcpp::Publisher<sensor_msgs::msg::JointState>::SharedPtr angles_publisher;

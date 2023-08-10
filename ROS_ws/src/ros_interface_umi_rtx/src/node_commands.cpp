@@ -3,15 +3,11 @@
 void Objective_node::init_interfaces(){
     timer_ = this->create_wall_timer(loop_dt_, std::bind(&Objective_node::timer_callback, this));
 
-    objective_publisher  = this->create_publisher<geometry_msgs::msg::Point>("target_position",10);
-    angles_publisher  = this->create_publisher<geometry_msgs::msg::Vector3>("target_angles",10);
+    pose_publisher  = this->create_publisher<geometry_msgs::msg::Pose>("target_pose",10);
     grip_publisher  = this->create_publisher<std_msgs::msg::Float32>("target_grip",10);
-    mission_publisher  = this->create_publisher<std_msgs::msg::String>("mission",10);
 
-    position_subscriber = this->create_subscription<geometry_msgs::msg::Point>("processed_position",10,
-        std::bind(&Objective_node::get_processed_position, this, _1));
-    angles_subscriber = this->create_subscription<geometry_msgs::msg::Vector3>("processed_angles",10,
-        std::bind(&Objective_node::get_processed_angles, this, _1));
+    pose_subscriber = this->create_subscription<geometry_msgs::msg::Pose>("processed_pose",10,
+        std::bind(&Objective_node::get_processed_pose, this, _1));
     processed_image_subscriber = this->create_subscription<sensor_msgs::msg::Image>("processed_image",10,
         std::bind(&Objective_node::get_processed_image, this, _1));
     depth_image_subscriber = this->create_subscription<sensor_msgs::msg::Image>("depth_image",10,
@@ -37,7 +33,7 @@ void Objective_node::timer_callback(){
 
         // double target_x = 0.21, target_y = 0.42, target_z = 0.22;
         double target_x = processed_x, target_y = processed_y, target_z = processed_z;
-        double initial_x = target_x, initial_y = target_y, ,initial_z = target_z
+        double initial_x = target_x, initial_y = target_y, initial_z = target_z;
         
         if ((t-t0)<dt1){
             x = x0 + (target_x-x0)*(t-t0)/dt1;
@@ -122,33 +118,30 @@ void Objective_node::timer_callback(){
     }
     t+=dt;
 
-    geometry_msgs::msg::Point position_msg;
-    position_msg.x = x;
-    position_msg.y = y;
-    position_msg.z = z;
-    objective_publisher->publish(position_msg);
+    geometry_msgs::msg::Pose pose_msg;
+    pose_msg.position.x = x;
+    pose_msg.position.y = y;
+    pose_msg.position.z = z;
 
-    geometry_msgs::msg::Vector3 angles_msg;
-    angles_msg.x = yaw; 
-    angles_msg.y = pitch;
-    angles_msg.z = roll;
-    angles_publisher->publish(angles_msg);
+    pose_msg.orientation.x = yaw; 
+    pose_msg.orientation.y = pitch;
+    pose_msg.orientation.z = roll;
+
+    pose_publisher->publish(pose_msg);
 
     std_msgs::msg::Float32 grip_msg;
     grip_msg.data = grip;
     grip_publisher->publish(grip_msg);
 }
 
-void Objective_node::get_processed_position(const geometry_msgs::msg::Point::SharedPtr msg){
-    processed_x = msg->x;
-    processed_y = msg->y;
-    processed_z = msg->z;
-}
+void Objective_node::get_processed_pose(const geometry_msgs::msg::Pose::SharedPtr msg){
+    processed_x = msg->position.x;
+    processed_y = msg->position.y;
+    processed_z = msg->position.z;
 
-void Objective_node::get_processed_angles(const geometry_msgs::msg::Vector3::SharedPtr msg){
-    processed_yaw = msg->x;
-    processed_pitch = msg->y;
-    processed_roll = msg->z;
+    processed_yaw = msg->orientation.x;
+    processed_pitch = msg->orientation.y;
+    processed_roll = msg->orientation.z;
 }
 
 void Objective_node::get_processed_image(const sensor_msgs::msg::Image::SharedPtr msg){
@@ -176,11 +169,3 @@ void Objective_node::update_state(double new_x, double new_y, double new_z, doub
     roll = new_roll;
     grip = new_grip;
 }
-
-// int main(int argc, char *argv[]){
-//     rclcpp::init(argc,argv);
-//     shared_ptr<rclcpp::Node> node = make_shared<Objective_node>();
-//     rclcpp::spin(node);
-//     rclcpp::shutdown();
-//     return EXIT_SUCCESS;
-// }

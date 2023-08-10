@@ -4,8 +4,6 @@ void Simu_node::init_interfaces(){
     timer_ = this->create_wall_timer(loop_dt_, std::bind(&Simu_node::timer_callback, this));
     invkin_subscriber = this->create_subscription<sensor_msgs::msg::JointState>("motor_commands",10,
         std::bind(&Simu_node::get_commands, this, _1));
-    mission_subscriber = this->create_subscription<std_msgs::msg::String>("mission",10,
-        std::bind(&Simu_node::get_mission, this, _1));
     simu_publisher = this->create_publisher<sensor_msgs::msg::JointState>("joint_states",10);
 }
 
@@ -160,11 +158,6 @@ void Simu_node::get_commands(const sensor_msgs::msg::JointState::SharedPtr msg){
     joint = &free_joints[name];
     (*joint)["position"] = min(max(msg->position[7],(*joint)["min"]),(*joint)["max"]);
 }
-
-void Simu_node::get_mission(const std_msgs::msg::String::SharedPtr msg){
-    mission = msg->data;
-}
-
 
 
 int main(int argc, char *argv[]){
