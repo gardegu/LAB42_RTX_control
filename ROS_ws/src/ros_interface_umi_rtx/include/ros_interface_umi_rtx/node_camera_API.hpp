@@ -56,19 +56,6 @@ private:
     double h=1.26;
     float fx = 1543.25, fy = 1543.29;
 
-    int blockSize = 7;
-    int min_disp = 0;
-    int max_disp = 80;
-    int num_disp = max_disp - min_disp;
-    int uniquenessRatio = 10;
-    int speckleWindowSize = 200;
-    int speckleRange = 2;
-    int disp12MaxDiff = 0;
-    int iP1 = 8 * 1 * blockSize * blockSize;
-    int iP2 = 16 * 1 * blockSize * blockSize;
-
-    cv::Ptr<cv::StereoSGBM> stereo;
-
     Camera zed;
     InitParameters init_parameters;
     sl::Mat zed_image, zed_image_left, zed_image_right;
