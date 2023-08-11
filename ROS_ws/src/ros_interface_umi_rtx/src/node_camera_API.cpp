@@ -6,7 +6,7 @@ void Camera_API::init_interfaces(){
     timer_ = this->create_wall_timer(loop_dt_,std::bind(&Camera_API::timer_callback,this));
 
     image_publisher = this->create_publisher<sensor_msgs::msg::Image>("processed_image",10);
-    coord_publisher = this->create_publisher<geometry_msgs::msg::Pose>("processed_pose",10);
+    processed_pose_publisher = this->create_publisher<geometry_msgs::msg::Pose>("processed_pose",10);
     depth_publisher = this->create_publisher<sensor_msgs::msg::Image>("depth_image",10);
 }
 
@@ -58,9 +58,9 @@ void Camera_API::timer_callback(){
     pose_msg.position.y = m_cy;
 
     if(std::isfinite(point_cloud_value.z)){
-        std_msgs::msg::Float64 target_depth_msg;
-        target_depth_msg.data = sqrt(point_cloud_value.x * point_cloud_value.x + point_cloud_value.y * point_cloud_value.y + point_cloud_value.z * point_cloud_value.z);
-        double_publisher->publish(target_depth_msg);
+        // std_msgs::msg::Float64 target_depth_msg;
+        // target_depth_msg.data = sqrt(point_cloud_value.x * point_cloud_value.x + point_cloud_value.y * point_cloud_value.y + point_cloud_value.z * point_cloud_value.z);
+        // double_publisher->publish(target_depth_msg);
 
         m_cz = sqrt(point_cloud_value.x * point_cloud_value.x + point_cloud_value.y * point_cloud_value.y + point_cloud_value.z * point_cloud_value.z);
         pose_msg.position.z = m_cz/1000;
