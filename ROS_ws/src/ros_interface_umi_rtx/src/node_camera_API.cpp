@@ -1,8 +1,6 @@
 #include "ros_interface_umi_rtx/node_camera_API.hpp"
 
 void Camera_API::init_interfaces(){
-    stereo = cv::StereoSGBM::create(min_disp,num_disp,blockSize,iP1,iP2,disp12MaxDiff,0,uniquenessRatio,speckleWindowSize,speckleRange);
-
     timer_ = this->create_wall_timer(loop_dt_,std::bind(&Camera_API::timer_callback,this));
 
     image_publisher = this->create_publisher<sensor_msgs::msg::Image>("processed_image",10);
