@@ -1,8 +1,9 @@
-FROM stereolabs/zed:4.0-devel-cuda12.1-ubuntu20.04
+FROM stereolabs/zed:4.0-gl-devel-cuda11.4-ubuntu20.04
 
 ARG DEBIAN_FRONTEND=noninteractive
 SHELL ["/bin/bash", "-c"]
 
+ENV USER=root
 # Setlocale
 RUN apt update && apt install locales
 RUN locale-gen en_US en_US.UTF-8
@@ -37,13 +38,7 @@ WORKDIR /home/Stage
 RUN git clone https://github.com/gardegu/LAB42_RTX_control.git
 WORKDIR /home/Stage/LAB42_RTX_control
 RUN ./install_dependencies.sh
-
-RUN apt update && apt upgrade -y
-RUN apt install software-properties-common apt-transport-https wget -y
-RUN wget -O- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor | tee /usr/share/keyrings/vscode.gpg
-RUN echo deb [arch=amd64 signed-by=/usr/share/keyrings/vscode.gpg] https://packages.microsoft.com/repos/vscode stable main | tee /etc/apt/sources.list.d/vscode.list
-RUN apt update
-RUN apt install code -y
+RUN mkdir logs
 
 RUN apt install python3-colcon-common-extensions -y
 RUN echo 'export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/ros/foxy/lib:/opt/ros/foxy/opt/rviz_ogre_vendor:/opt/ros/foxy/opt/aml_cpp_vendor' >> ~/.bashrc

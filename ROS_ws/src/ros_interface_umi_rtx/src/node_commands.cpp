@@ -31,9 +31,14 @@ void Objective_node::timer_callback(){
         // z = processed_z;
         // yaw = atan2(y,x)*180/M_PI;
 
-        // double target_x = 0.21, target_y = 0.42, target_z = 0.22;
         double target_x = processed_x, target_y = processed_y, target_z = processed_z;
-        double initial_x = target_x, initial_y = target_y, initial_z = target_z;
+        
+        if (!is_initialized){
+            initial_x = target_x;
+            initial_y = target_y;
+            initial_z = target_z;
+            is_initialized=true;
+        }
         
         if ((t-t0)<dt1){
             x = x0 + (target_x-x0)*(t-t0)/dt1;
@@ -104,6 +109,7 @@ void Objective_node::timer_callback(){
     }
 
     else {
+        is_initialized=false;
         /*
         If the arm is controlled manually we adapt the origin pose of the automatical procedure of grab mode
         */
