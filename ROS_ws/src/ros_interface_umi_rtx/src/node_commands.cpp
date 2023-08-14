@@ -30,8 +30,6 @@ void Objective_node::timer_callback(){
         // y = processed_y;
         // z = processed_z;
         // yaw = atan2(y,x)*180/M_PI;
-
-        double target_x = processed_x, target_y = processed_y, target_z = processed_z;
         
         if (!is_initialized){
             target_x = processed_x;
