@@ -34,6 +34,10 @@ void Objective_node::timer_callback(){
         double target_x = processed_x, target_y = processed_y, target_z = processed_z;
         
         if (!is_initialized){
+            target_x = processed_x;
+            target_y = processed_y;
+            target_z = processed_z;
+
             initial_x = target_x;
             initial_y = target_y;
             initial_z = target_z;

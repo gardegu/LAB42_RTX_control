@@ -104,7 +104,7 @@ private :
     float t=0,dt=0.04;
 
     double processed_x,processed_y,processed_z,processed_yaw,processed_pitch,processed_roll;
-    double initial_x,initial_y,initial_z;
+    double target_x,target_y,target_z, initial_x,initial_y,initial_z;
 
     bool is_initialized=false;
 
