@@ -53,7 +53,7 @@ private:
     rclcpp::Publisher<sensor_msgs::msg::Image>::SharedPtr depth_publisher;
 
     double m_cx, m_cy, m_cz, yaw, pitch, roll;
-    double h=1.26;
+    double h=1.19;
     float fx = 1543.25, fy = 1543.29;
 
     Camera zed;
