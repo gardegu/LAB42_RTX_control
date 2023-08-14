@@ -61,7 +61,11 @@ void Camera_API::timer_callback(){
         // double_publisher->publish(target_depth_msg);
 
         // m_cz = sqrt(point_cloud_value.x * point_cloud_value.x + point_cloud_value.y * point_cloud_value.y + point_cloud_value.z * point_cloud_value.z);
+        m_cx = point_cloud_value.x;
+        m_cy = point_cloud_value.y;
         m_cz = point_cloud_value.z;
+        pose_msg.position.x = m_cx/1000;
+        pose_msg.position.y = m_cy/1000;
         pose_msg.position.z = m_cz/1000;
 //        std::cout << "Distance at {"<<m_cx<<";"<<m_cy<<"}: " << target_depth_msg.data << std::endl;
     }
@@ -69,7 +73,7 @@ void Camera_API::timer_callback(){
 //        std::cout << "The distance could not be computed at {"<<m_cx<<";"<<m_cy<<"}" << std::endl;
     }
 
-    convert_pix2coords(pose_msg.position.x,pose_msg.position.y,pose_msg.position.z);
+    // convert_pix2coords(pose_msg.position.x,pose_msg.position.y,pose_msg.position.z);
 
     processed_pose_publisher->publish(pose_msg);
 
