@@ -112,9 +112,9 @@ void Camera_API::get_banana_and_angles(geometry_msgs::msg::Pose msg){
             }
         }
 
-        std::cout << "aire max : " << maxArea << std::endl;
+        // std::cout << "aire max : " << maxArea << std::endl;
 
-        if(maxAreaIdx > -1) {
+        if(maxAreaIdx > -1 and maxArea>700) {
             get_angles(contours);
             cv::drawContours(cv_image_left, contours, maxAreaIdx, cv::Scalar(255, 255, 255), 2);
 
