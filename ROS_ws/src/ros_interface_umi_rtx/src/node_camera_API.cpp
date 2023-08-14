@@ -65,7 +65,7 @@ void Camera_API::timer_callback(){
         m_cy = point_cloud_value.y;
         m_cz = point_cloud_value.z;
         pose_msg.position.x = m_cx/1000;
-        pose_msg.position.y = m_cy/1000;
+        pose_msg.position.y = m_cy/1000 + 0.37;
         pose_msg.position.z = m_cz/1000;
 //        std::cout << "Distance at {"<<m_cx<<";"<<m_cy<<"}: " << target_depth_msg.data << std::endl;
     }
