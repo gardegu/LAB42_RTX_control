@@ -73,8 +73,6 @@ void Camera_API::timer_callback(){
 //        std::cout << "The distance could not be computed at {"<<m_cx<<";"<<m_cy<<"}" << std::endl;
     }
 
-    // convert_pix2coords(pose_msg.position.x,pose_msg.position.y,pose_msg.position.z);
-
     processed_pose_publisher->publish(pose_msg);
 
     sensor_msgs::msg::Image::SharedPtr depth_msg = cv_bridge::CvImage(std_msgs::msg::Header(),"bgr8",cv_depth).toImageMsg();
@@ -192,11 +190,6 @@ cv::Mat Camera_API::slMat2cvMat(sl::Mat& input){
     return cv::Mat(input.getHeight(), input.getWidth(), getOCVtype(input.getDataType()), input.getPtr<sl::uchar1>(sl::MEM::CPU), input.getStepBytes(sl::MEM::CPU));
 }
 
-void Camera_API::convert_pix2coords(double &px, double &py, double &z){
-    px = (px-zed_image_left_width/2)*z/fx;
-    py = (py-zed_image_left_height/2)*z/fy+0.37;
-    z = h-z;
-}
 
 
 int main(int argc, char * argv[]){
