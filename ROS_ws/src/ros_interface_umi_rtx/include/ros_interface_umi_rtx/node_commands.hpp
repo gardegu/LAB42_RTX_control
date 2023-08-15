@@ -74,10 +74,6 @@ private :
      * @brief Timer callback, actions that will be done at every iterations
      */
     void timer_callback();
-    /**
-     * @brief Lissajou's trajectory for the target, function to delete
-     */
-    void Lissajou(); //TODO delete
 
     /**
      * @brief Get the targeted position processed by the camera.
@@ -104,7 +100,7 @@ private :
     float t=0,dt=0.04;
 
     double processed_x,processed_y,processed_z,processed_yaw,processed_pitch,processed_roll;
-    double target_x,target_y,target_z, initial_x,initial_y,initial_z;
+    double target_x,target_y,target_z, final_x,final_y,final_z;
 
     bool is_initialized=false;
 

@@ -36,9 +36,9 @@ void Objective_node::timer_callback(){
             target_y = processed_y;
             target_z = processed_z;
 
-            initial_x = target_x;
-            initial_y = target_y;
-            initial_z = target_z;
+            final_x = 0.5;
+            final_y = 0.4;
+            final_z = 0.2;
             is_initialized=true;
         }
         
@@ -81,11 +81,11 @@ void Objective_node::timer_callback(){
         } 
 
         else if ((t-t0)>=24 and (t-t0)<30){
-            x = x0 + (initial_x-x0)*(t-t0-24)/6;
-            y = y0 + (initial_y-y0)*(t-t0-24)/6;
-            z = z0 + (initial_z-z0)*(t-t0-24)/6;
+            x = x0 + (final_x-x0)*(t-t0-24)/6;
+            y = y0 + (final_y-y0)*(t-t0-24)/6;
+            z = z0 + (final_z-z0)*(t-t0-24)/6;
 
-            pitch = pitch0 + (90.-pitch0)*(t-t0-24)/6;
+            pitch = pitch0 + (0.-pitch0)*(t-t0-24)/6;
             roll = roll0 + (0.-roll0)*(t-t0-24)/6;
         } 
 
@@ -160,12 +160,6 @@ void Objective_node::get_processed_image(const sensor_msgs::msg::Image::SharedPt
 void Objective_node::get_depth_image(const sensor_msgs::msg::Image::SharedPtr msg){
     cv_bridge::CvImagePtr cv_ptr = cv_bridge::toCvCopy(msg, "bgr8");
     depth_frame = cv_ptr->image;
-}
-
-void Objective_node::Lissajou(){
-    x = 0.2*sin(0.5*t);
-    y = 0.3+0.1*sin(0.3*t);
-    z = 0.3+0.2*sin(0.2*t);
 }
 
 void Objective_node::update_state(double new_x, double new_y, double new_z, double new_yaw, double new_pitch, double new_roll, double new_grip){
