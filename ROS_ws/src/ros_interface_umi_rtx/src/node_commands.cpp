@@ -15,7 +15,7 @@ void Objective_node::init_interfaces(){
 }
 
 void Objective_node::timer_callback(){
-    double dt1 = 6;
+    double dt1 = 8;
     /*
     We follow a simple trajectory between each step :
         - Open the grip and goes to the target
@@ -36,8 +36,8 @@ void Objective_node::timer_callback(){
             target_y = processed_y;
             target_z = processed_z;
 
-            final_x = 0.35;
-            final_y = 0.4;
+            final_x = 0.3;
+            final_y = 0.39;
             final_z = 0.2;
             is_initialized=true;
         }
@@ -52,7 +52,7 @@ void Objective_node::timer_callback(){
             grip = 0.08;
         }
 
-        else if ((t-t0)>=dt1 and (t-t0)<12){
+        else if ((t-t0)>=dt1 and (t-t0)<14){
             x0 = x;
             y0 = y;
             z0 = z;
@@ -62,7 +62,7 @@ void Objective_node::timer_callback(){
             grip = 0.02;
         }
 
-        else if ((t-t0)>=12 and (t-t0)<18){
+        else if ((t-t0)>=14 and (t-t0)<20){
             x = x0 + (0.-x0)*(t-t0-12)/6;
             y = y0 + (0.5-y0)*(t-t0-12)/6;
             z = z0 + (0.8-z0)*(t-t0-12)/6;
@@ -71,7 +71,7 @@ void Objective_node::timer_callback(){
             roll = roll0 + (0.-roll0)*(t-t0-12)/6;
         } 
 
-        else if ((t-t0)>=18 and (t-t0)<24){
+        else if ((t-t0)>=20 and (t-t0)<26){
             x0 = x;
             y0 = y;
             z0 = z;
@@ -80,7 +80,7 @@ void Objective_node::timer_callback(){
             pitch0 = pitch;
         } 
 
-        else if ((t-t0)>=24 and (t-t0)<30){
+        else if ((t-t0)>=26 and (t-t0)<32){
             x = x0 + (final_x-x0)*(t-t0-24)/6;
             y = y0 + (final_y-y0)*(t-t0-24)/6;
             z = z0 + (final_z-z0)*(t-t0-24)/6;
@@ -89,7 +89,7 @@ void Objective_node::timer_callback(){
             roll = roll0 + (0.-roll0)*(t-t0-24)/6;
         } 
 
-        else if ((t-t0)>=30 and (t-t0)<34){
+        else if ((t-t0)>=32 and (t-t0)<36){
             x0 = x;
             y0 = y;
             z0 = z;
@@ -99,7 +99,7 @@ void Objective_node::timer_callback(){
             grip = 0.08;
         }
 
-        else if ((t-t0)>=34 and (t-t0)<40){
+        else if ((t-t0)>=36 and (t-t0)<42){
             x = x0 + (0.-x0)*(t-t0-34)/6;
             y = y0 + (0.5-y0)*(t-t0-34)/6;
             z = z0 + (0.8-z0)*(t-t0-34)/6;
