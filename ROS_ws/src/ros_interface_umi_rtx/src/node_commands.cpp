@@ -36,7 +36,7 @@ void Objective_node::timer_callback(){
             target_y = processed_y;
             target_z = processed_z;
 
-            final_x = 0.5;
+            final_x = 0.35;
             final_y = 0.4;
             final_z = 0.2;
             is_initialized=true;

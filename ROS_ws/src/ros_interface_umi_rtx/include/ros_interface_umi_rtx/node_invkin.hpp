@@ -92,7 +92,7 @@ private:
     std::chrono::milliseconds loop_dt_ = 40ms; // Timer of the node
     map<int,double> state;
 
-    float L = 0.18; // Length of the hand
+    float L = 0.15; // Length of the hand
 
     double last_x,last_y,last_z;
     int ROLL=6, PITCH=7;
