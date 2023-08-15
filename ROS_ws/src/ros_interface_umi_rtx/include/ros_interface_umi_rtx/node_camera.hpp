@@ -91,32 +91,35 @@ private:
 
     /**
      * @brief Uses stereo images with easy-to-detect points on a chessboard and applies correspondence
-    algorithms to compute the intrinsic and extrinsic parameters of the stereo camera. It will look for 
-    an inner pattern. 
+     * algorithms to compute the intrinsic and extrinsic parameters of the stereo camera. It will look for 
+     * an inner pattern. 
      * 
      */
     void stereo_calibration();
 
     /**
-     * @brief 
+     * @brief Computes rectification parameters. Computes the rotation
+     * matrices for each camera that (virtually) make both camera image planes the same plane.
+     * Computes the joint undistortion and rectification transformation.
      * 
      */
     void stereo_rectification();
 
     /**
-     * @brief 
+     * @brief Splits the stereo image (concatenation of the left and right views) into 
+     * two separate images.
      * 
      */
     void stereo_split_views();
 
     /**
-     * @brief 
+     * @brief Performs horizontal block matching between the views to compute disparity.
      * 
      */
     void stereo_get_disparity();
 
     /**
-     * @brief 
+     * @brief Computes depth from disparity.
      * 
      */
     void stereo_get_depth();
