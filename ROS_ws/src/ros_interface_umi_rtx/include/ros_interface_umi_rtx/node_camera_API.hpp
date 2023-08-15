@@ -42,8 +42,6 @@ private:
     int getOCVtype(sl::MAT_TYPE type);
     cv::Mat slMat2cvMat(sl::Mat& input);
 
-    void convert_pix2coords(double &px, double &py, double &z);
-
     std::chrono::milliseconds loop_dt_ = 40ms;
 
     rclcpp::TimerBase::SharedPtr timer_;
