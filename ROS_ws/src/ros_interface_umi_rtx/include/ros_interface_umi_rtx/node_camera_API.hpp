@@ -43,63 +43,64 @@ using namespace sl;
  */
 class Camera_API : public rclcpp::Node{
 public:
-/**
- * @brief Construct a new Camera_API object.
- * 
- */
-    Camera_API() : Node("API_node") {
-        /**
-         * @brief Construct a new init interfaces object.
-         * 
-         */
+    Camera_API() : Node("API_node") { /**
+     * @brief Creates the publishers, sets up the camera.
+     * 
+     */
         init_interfaces();
-        /**
-         * @brief Construct a new init camera object.
-         * 
-         */
-        init_camera();
+        init_camera(); 
     };
 
 private:
     /**
-     * @brief 
+     * @brief Work loop. This method tries to read the scene, computes depth,
+     * converts images from SL format to OpenCV format, get the target's position
+     * and orientation, computes the 3D coordinates of the target and publish them.
      * 
      */
     void timer_callback();
+
     /**
-     * @brief 
+     * @brief Sets up the work loop and instantiates the publishers.
      * 
      */
     void init_interfaces();
+
     /**
-     * @brief 
+     * @brief Sets up the chosen parameters of the stereo camera and tries to open it.
      * 
      */
     void init_camera();
+
     /**
-     * @brief Get the banana and angles object.
+     * @brief Binarizes the image to find the banana, finds it, computes its area,
+     * computes its centroid's coordinates, gets its orientation and publish this data.
      * 
-     * @param msg 
+     * @param msg Message to publish the pose of the banana.
      */
     void get_banana_and_angles(geometry_msgs::msg::Pose msg);
+
     /**
-     * @brief Get the angles object.
+     * @brief Finds the fittest line with respect to the contour of the target and
+     * computes its orientation.
      * 
-     * @param contours 
+     * @param contours The set of detected contours in the binarized image.
      */
     void get_angles(vector<vector<cv::Point>> &contours);
+
     /**
-     * @brief 
+     * @brief Associates the corresponding OpenCV format for a SL image.
      * 
-     * @param type 
-     * @return int 
+     * @param type SL format of the image to convert.
+     * @return int OpenCV format of the image to convert.
      */
     int getOCVtype(sl::MAT_TYPE type);
+
     /**
-     * @brief 
+     * @brief Converts a SL image to OpenCV format.
      * 
-     * @param input 
-     * @return cv::Mat 
+     * @param input Image to convert.
+     * @return cv::Mat Converted image.
      */
     cv::Mat slMat2cvMat(sl::Mat& input);
     
