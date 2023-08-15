@@ -119,12 +119,12 @@ private:
     Camera zed; //! Instance of SDK's Camera class.
     InitParameters init_parameters; //! Instance of the SDK's InitParameters class used to set the device up.
     sl::Mat zed_image_left; //! Image captured by the left lens.
-    sl::Mat zed_depth, zed_point_cloud;
-    sl::float4 point_cloud_value;
+    sl::Mat zed_depth, zed_point_cloud; //! Depth map of the scene and associated 3D point cloud.
+    sl::float4 point_cloud_value; //! Variable to get the values of one point of the point cloud.
 
-    cv::Mat cv_image, cv_image_left, cv_image_right, cv_depth;
+    cv::Mat cv_image_left, cv_depth; //! Image captured by the left lens and associated depth map with OpenCV format.
 
-    int zed_image_left_width, zed_image_left_height;
+    int zed_image_left_width, zed_image_left_height; //! Size of the captured image.
 
 };
 
