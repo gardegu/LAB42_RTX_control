@@ -63,12 +63,12 @@ void Objective_node::timer_callback(){
         }
 
         else if ((t-t0)>=14 and (t-t0)<20){
-            x = x0 + (0.-x0)*(t-t0-12)/6;
-            y = y0 + (0.5-y0)*(t-t0-12)/6;
-            z = z0 + (0.8-z0)*(t-t0-12)/6;
+            x = x0 + (0.-x0)*(t-t0-14)/6;
+            y = y0 + (0.5-y0)*(t-t0-14)/6;
+            z = z0 + (0.8-z0)*(t-t0-14)/6;
 
-            pitch = pitch0 + (0.-pitch0)*(t-t0-12)/6;
-            roll = roll0 + (0.-roll0)*(t-t0-12)/6;
+            pitch = pitch0 + (0.-pitch0)*(t-t0-14)/6;
+            roll = roll0 + (0.-roll0)*(t-t0-14)/6;
         } 
 
         else if ((t-t0)>=20 and (t-t0)<26){
@@ -80,16 +80,16 @@ void Objective_node::timer_callback(){
             pitch0 = pitch;
         } 
 
-        else if ((t-t0)>=26 and (t-t0)<32){
-            x = x0 + (final_x-x0)*(t-t0-24)/6;
-            y = y0 + (final_y-y0)*(t-t0-24)/6;
-            z = z0 + (final_z-z0)*(t-t0-24)/6;
+        else if ((t-t0)>=26 and (t-t0)<40){
+            x = x0 + (final_x-x0)*(t-t0-26)/6;
+            y = y0 + (final_y-y0)*(t-t0-26)/6;
+            z = z0 + (final_z-z0)*(t-t0-26)/6;
 
-            pitch = pitch0 + (0.-pitch0)*(t-t0-24)/6;
-            roll = roll0 + (0.-roll0)*(t-t0-24)/6;
+            pitch = pitch0 + (0.-pitch0)*(t-t0-26)/6;
+            roll = roll0 + (0.-roll0)*(t-t0-26)/6;
         } 
 
-        else if ((t-t0)>=32 and (t-t0)<36){
+        else if ((t-t0)>=40 and (t-t0)<44){
             x0 = x;
             y0 = y;
             z0 = z;
@@ -99,14 +99,14 @@ void Objective_node::timer_callback(){
             grip = 0.08;
         }
 
-        else if ((t-t0)>=36 and (t-t0)<42){
-            x = x0 + (0.-x0)*(t-t0-34)/6;
-            y = y0 + (0.5-y0)*(t-t0-34)/6;
-            z = z0 + (0.8-z0)*(t-t0-34)/6;
+        else if ((t-t0)>=44 and (t-t0)<50){
+            x = x0 + (0.-x0)*(t-t0-44)/6;
+            y = y0 + (0.5-y0)*(t-t0-44)/6;
+            z = z0 + (0.8-z0)*(t-t0-44)/6;
 
-            pitch = pitch0 + (0.-pitch0)*(t-t0-34)/6;
-            roll = roll0 + (0.-roll0)*(t-t0-34)/6;
-            grip = 0.08 + (0.02-0.08)*(t-t0-34)/6;
+            pitch = pitch0 + (0.-pitch0)*(t-t0-44)/6;
+            roll = roll0 + (0.-roll0)*(t-t0-44)/6;
+            grip = 0.08 + (0.02-0.08)*(t-t0-44)/6;
         } 
     }
 
