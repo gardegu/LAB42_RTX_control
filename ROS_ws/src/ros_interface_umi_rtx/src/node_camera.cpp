@@ -1,9 +1,6 @@
 #include "ros_interface_umi_rtx/node_camera.hpp"
 
 void Camera::init_interfaces(){
-    m_cx = 0;
-    m_cy = 0;
-
     stereo = cv::StereoSGBM::create(min_disp,num_disp,blockSize,iP1,iP2,disp12MaxDiff,0,uniquenessRatio,speckleWindowSize,speckleRange);
 
     timer_ = this->create_wall_timer(loop_dt_,std::bind(&Camera::timer_callback,this));
