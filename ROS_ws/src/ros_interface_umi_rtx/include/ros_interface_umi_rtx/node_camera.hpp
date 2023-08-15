@@ -124,31 +124,31 @@ private:
      */
     void stereo_get_depth();
 
-    std::chrono::milliseconds loop_dt_ = 40ms;//!
+    std::chrono::milliseconds loop_dt_ = 40ms;//! Work loop timer.
 
-    rclcpp::TimerBase::SharedPtr timer_;//!
+    rclcpp::TimerBase::SharedPtr timer_;//! Pointer to the timer.
 
-    rclcpp::Publisher<sensor_msgs::msg::Image>::SharedPtr image_publisher;//!
-    rclcpp::Publisher<geometry_msgs::msg::Point>::SharedPtr coord_publisher;//!
-    rclcpp::Publisher<geometry_msgs::msg::Vector3>::SharedPtr angles_publisher;//!
-    rclcpp::Publisher<sensor_msgs::msg::Image>::SharedPtr disparity_publisher;//!
-    rclcpp::Publisher<sensor_msgs::msg::Image>::SharedPtr depth_publisher;//!
-    rclcpp::Publisher<std_msgs::msg::Float64>::SharedPtr double_publisher;//!
+    rclcpp::Publisher<sensor_msgs::msg::Image>::SharedPtr image_publisher;//! Publisher of the left view with target contour.
+    rclcpp::Publisher<geometry_msgs::msg::Point>::SharedPtr coord_publisher;//! Publisher of the target's coordinates.
+    rclcpp::Publisher<geometry_msgs::msg::Vector3>::SharedPtr angles_publisher;//! Publisher of the target's orientation.
+    rclcpp::Publisher<sensor_msgs::msg::Image>::SharedPtr disparity_publisher;//! Publisher of the disparity map of the scene.
+    rclcpp::Publisher<sensor_msgs::msg::Image>::SharedPtr depth_publisher;//! Publisher of the depth map of the scene.
+    rclcpp::Publisher<std_msgs::msg::Float64>::SharedPtr double_publisher;//! Publisher of depth value for a chosen point.
 
-    cv::VideoCapture cap;//!
+    cv::VideoCapture cap;//! Camera instance.
 
-    cv::Mat frame, frameLeft, frameRight;//!
-    cv::Mat m_cameraMatrixLeft, m_distCoeffsLeft, m_cameraMatrixRight, m_distCoeffsRight;//!
-    cv::Mat m_R, m_T, m_E, m_F;//!
-    cv::Mat m_R1, m_R2, m_P1, m_P2, m_Q;//!
-    cv::Mat m_map1Left, m_map2Left, m_map1Right, m_map2Right;//!
-    cv::Mat disparityMap;//!
-    cv::Mat depthMap;//!
+    cv::Mat frame, frameLeft, frameRight;//! Stereo, left and right images for the stereo camera.
+    cv::Mat m_cameraMatrixLeft, m_distCoeffsLeft, m_cameraMatrixRight, m_distCoeffsRight;//! Extrinsic parameters.
+    cv::Mat m_R, m_T, m_E, m_F;//! Extrinsic parameters.
+    cv::Mat m_R1, m_R2, m_P1, m_P2, m_Q;//! Extrinsic parameters.
+    cv::Mat m_map1Left, m_map2Left, m_map1Right, m_map2Right;//! Rectification parameters.
+    cv::Mat disparityMap;//! Disparity map.
+    cv::Mat depthMap;//! Depth map.
 
-    cv::Ptr<cv::StereoSGBM> stereo;//!
+    cv::Ptr<cv::StereoSGBM> stereo;//! Block-matching algorithm instance.
 
-    int m_frame_width, m_frame_height;//!
-    int m_frame_width_left, m_frame_height_left;//!
+    int m_frame_width, m_frame_height;//! Size of the stereo images.
+    int m_frame_width_left, m_frame_height_left;//! Size of the left images.
     int blockSize = 7;//!
     int min_disp = 0;//!
     int max_disp = 80;//!
@@ -161,13 +161,13 @@ private:
     int iP2 = 16 * 1 * blockSize * blockSize;//!
 
     //cv::Size m_patternSize(7,5);
-    float m_squareSize = 3.1;//!
+    float m_squareSize = 3.1;//! Size of the pattern used to calibrate.
 
-    double m_baseline = 6.3; // centimeters //!
-    double m_focalLength = 2.8;// millimeters //!
-    double m_rms_error;//!
-    double m_cx, m_cy, m_cz, yaw, pitch, roll;//!
-    double depth_factor = 1.5;//!
+    double m_baseline = 6.3; // centimeters //! Distance between the optical axes.
+    double m_focalLength = 2.8;// millimeters //! Focal length.
+    double m_rms_error;//! Calibration root-mean-square error.
+    double m_cx, m_cy, m_cz, yaw, pitch, roll;//! Pose coordinates of the target (position and orientation).
+    double depth_factor = 1.5;//! Proportionality factor to get depth from disparity.
 
 
 };
