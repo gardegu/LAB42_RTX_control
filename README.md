@@ -23,7 +23,7 @@ The computer vision part is split into two versions. One using only _OpenCV_, wh
 A vast majority of this project's code is in C++.
 
 ### Documentation
-A documentation of the code can be found [here](/ROS_ws/doc/html/index.html){:target="_blank"}
+A documentation of the code can be found in [/ROS_ws/doc/](/ROS_ws/doc/). To open the doc in html, just launch index.html.
 
 ### Configuration
 This project is built and tested with **Ubuntu 20.04** and **ROS2 Foxy**. In case these settings are not supported, see [this part](#docker).
