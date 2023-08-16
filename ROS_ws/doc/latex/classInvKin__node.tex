@@ -41,10 +41,8 @@ void \mbox{\hyperlink{classInvKin__node_ad8bb3e8d90b5be4befa048d79fc97e71}{init\
 \mbox{\Hypertarget{classInvKin__node_ad3585199cc81eb72cb160d26b51a3dc1}\label{classInvKin__node_ad3585199cc81eb72cb160d26b51a3dc1}} 
 void \mbox{\hyperlink{classInvKin__node_ad3585199cc81eb72cb160d26b51a3dc1}{timer\+\_\+callback}} ()
 \begin{DoxyCompactList}\small\item\em Timer callback, actions that will be done at every iterations. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classInvKin__node_a90293733a2cddfe1527340b61b487db0}{get\+\_\+position}} (const geometry\+\_\+msgs\+::msg\+::\+Point\+::\+Shared\+Ptr msg)
+void \mbox{\hyperlink{classInvKin__node_add2d606fbb003ec4f1bba5f83a52d644}{get\+\_\+pose}} (const geometry\+\_\+msgs\+::msg\+::\+Pose\+::\+Shared\+Ptr msg)
 \begin{DoxyCompactList}\small\item\em Get the targeted position. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classInvKin__node_a1a94abbdf9a686e28e5fa393217c167b}{get\+\_\+angles}} (const geometry\+\_\+msgs\+::msg\+::\+Vector3\+::\+Shared\+Ptr msg)
-\begin{DoxyCompactList}\small\item\em Get the targeted orientation. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classInvKin__node_afe4b94559a4a51da10a4c28ca189f0ab}{get\+\_\+grip}} (const std\+\_\+msgs\+::msg\+::\+Float32\+::\+Shared\+Ptr msg)
 \begin{DoxyCompactList}\small\item\em Get the targeted grip. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classInvKin__node_a412bf7be07f80f3b6d9e3a3304c3d67f}{get\+\_\+state}} (double x, double y, double z)
@@ -135,11 +133,8 @@ Eigen\+::\+Vector\+Xd {\bfseries q}
 \mbox{\Hypertarget{classInvKin__node_a445334266920e92b266823068b559a0a}\label{classInvKin__node_a445334266920e92b266823068b559a0a}} 
 rclcpp\+::\+Timer\+Base\+::\+Shared\+Ptr {\bfseries timer\+\_\+}
 \item 
-\mbox{\Hypertarget{classInvKin__node_a8a179a52607d7c77b4a304a1ce728ee1}\label{classInvKin__node_a8a179a52607d7c77b4a304a1ce728ee1}} 
-rclcpp\+::\+Subscription$<$ geometry\+\_\+msgs\+::msg\+::\+Point $>$\+::Shared\+Ptr {\bfseries position\+\_\+subscription}
-\item 
-\mbox{\Hypertarget{classInvKin__node_ad48b7cc4149fb14d68c33dc709b7f3d7}\label{classInvKin__node_ad48b7cc4149fb14d68c33dc709b7f3d7}} 
-rclcpp\+::\+Subscription$<$ geometry\+\_\+msgs\+::msg\+::\+Vector3 $>$\+::Shared\+Ptr {\bfseries angles\+\_\+subscription}
+\mbox{\Hypertarget{classInvKin__node_a188713a45a6f38bd2404f178b22627d9}\label{classInvKin__node_a188713a45a6f38bd2404f178b22627d9}} 
+rclcpp\+::\+Subscription$<$ geometry\+\_\+msgs\+::msg\+::\+Pose $>$\+::Shared\+Ptr {\bfseries pose\+\_\+subscription}
 \item 
 \mbox{\Hypertarget{classInvKin__node_ab9abf82dabd452b212471144fce55cca}\label{classInvKin__node_ab9abf82dabd452b212471144fce55cca}} 
 rclcpp\+::\+Subscription$<$ std\+\_\+msgs\+::msg\+::\+Float32 $>$\+::Shared\+Ptr {\bfseries grip\+\_\+subscription}
@@ -181,21 +176,6 @@ Put joints\textquotesingle{} angles in \mbox{[}-\/pi,pi\mbox{]}.
 {\em q} & \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{classInvKin__node_a1a94abbdf9a686e28e5fa393217c167b}\label{classInvKin__node_a1a94abbdf9a686e28e5fa393217c167b}} 
-\index{InvKin\_node@{InvKin\_node}!get\_angles@{get\_angles}}
-\index{get\_angles@{get\_angles}!InvKin\_node@{InvKin\_node}}
-\doxysubsubsection{\texorpdfstring{get\_angles()}{get\_angles()}}
-{\footnotesize\ttfamily void Inv\+Kin\+\_\+node\+::get\+\_\+angles (\begin{DoxyParamCaption}\item[{const geometry\+\_\+msgs\+::msg\+::\+Vector3\+::\+Shared\+Ptr}]{msg }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
-
-
-
-Get the targeted orientation. 
-
-
-\begin{DoxyParams}{Parameters}
-{\em msg} & \\
-\hline
-\end{DoxyParams}
 \mbox{\Hypertarget{classInvKin__node_afe4b94559a4a51da10a4c28ca189f0ab}\label{classInvKin__node_afe4b94559a4a51da10a4c28ca189f0ab}} 
 \index{InvKin\_node@{InvKin\_node}!get\_grip@{get\_grip}}
 \index{get\_grip@{get\_grip}!InvKin\_node@{InvKin\_node}}
@@ -211,11 +191,11 @@ Get the targeted grip.
 {\em msg} & \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{classInvKin__node_a90293733a2cddfe1527340b61b487db0}\label{classInvKin__node_a90293733a2cddfe1527340b61b487db0}} 
-\index{InvKin\_node@{InvKin\_node}!get\_position@{get\_position}}
-\index{get\_position@{get\_position}!InvKin\_node@{InvKin\_node}}
-\doxysubsubsection{\texorpdfstring{get\_position()}{get\_position()}}
-{\footnotesize\ttfamily void Inv\+Kin\+\_\+node\+::get\+\_\+position (\begin{DoxyParamCaption}\item[{const geometry\+\_\+msgs\+::msg\+::\+Point\+::\+Shared\+Ptr}]{msg }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+\mbox{\Hypertarget{classInvKin__node_add2d606fbb003ec4f1bba5f83a52d644}\label{classInvKin__node_add2d606fbb003ec4f1bba5f83a52d644}} 
+\index{InvKin\_node@{InvKin\_node}!get\_pose@{get\_pose}}
+\index{get\_pose@{get\_pose}!InvKin\_node@{InvKin\_node}}
+\doxysubsubsection{\texorpdfstring{get\_pose()}{get\_pose()}}
+{\footnotesize\ttfamily void Inv\+Kin\+\_\+node\+::get\+\_\+pose (\begin{DoxyParamCaption}\item[{const geometry\+\_\+msgs\+::msg\+::\+Pose\+::\+Shared\+Ptr}]{msg }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
 
 

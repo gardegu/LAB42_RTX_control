@@ -11,8 +11,7 @@ Node that communicates with the arm, intermediary between R\+OS architecture and
 
 
 
-Inheritance diagram for Arm\+\_\+node\+:
-\nopagebreak
+Inheritance diagram for Arm\+\_\+node\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -21,8 +20,7 @@ Inheritance diagram for Arm\+\_\+node\+:
 \end{figure}
 
 
-Collaboration diagram for Arm\+\_\+node\+:
-\nopagebreak
+Collaboration diagram for Arm\+\_\+node\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -46,10 +44,8 @@ void \mbox{\hyperlink{classArm__node_a2bf097e1bdf54194b1f2ba040bfd2b24}{init\+\_
 \begin{DoxyCompactList}\small\item\em Initialize the timer, subscribers and publishers. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classArm__node_acc453461607d25c4b927b9e1c751554f}{get\+\_\+commands}} (const sensor\+\_\+msgs\+::msg\+::\+Joint\+State\+::\+Shared\+Ptr msg)
 \begin{DoxyCompactList}\small\item\em Get the commands that will be sent to the arm. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classArm__node_a3bee829f26dedfcd030e04100fe92d87}{get\+\_\+position}} (const geometry\+\_\+msgs\+::msg\+::\+Point\+::\+Shared\+Ptr msg)
+void \mbox{\hyperlink{classArm__node_aff474c11e12cb85b77265a6f53c0071d}{get\+\_\+pose}} (const geometry\+\_\+msgs\+::msg\+::\+Pose\+::\+Shared\+Ptr msg)
 \begin{DoxyCompactList}\small\item\em Get the targeted position. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classArm__node_ab30d900522967fe5a46503e924914892}{get\+\_\+angles}} (const geometry\+\_\+msgs\+::msg\+::\+Vector3\+::\+Shared\+Ptr msg)
-\begin{DoxyCompactList}\small\item\em Get the targeted orientation. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classArm__node_a8951f9bafb8f671b81a35a7331f841eb}{get\+\_\+grip}} (const std\+\_\+msgs\+::msg\+::\+Float32\+::\+Shared\+Ptr msg)
 \begin{DoxyCompactList}\small\item\em Get the targeted grip. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classArm__node_ab8fe5a73a65a723fc8ebcc74cb60d25d}{set\+\_\+motors}} ()
@@ -121,11 +117,8 @@ rclcpp\+::\+Timer\+Base\+::\+Shared\+Ptr {\bfseries timer\+\_\+}
 \mbox{\Hypertarget{classArm__node_a18e212ff8aa6622d27f6ab0f6035ccea}\label{classArm__node_a18e212ff8aa6622d27f6ab0f6035ccea}} 
 rclcpp\+::\+Subscription$<$ sensor\+\_\+msgs\+::msg\+::\+Joint\+State $>$\+::Shared\+Ptr {\bfseries subscription\+\_\+commands}
 \item 
-\mbox{\Hypertarget{classArm__node_ab4b0bc2fe3c5e921cba23d3f337109e0}\label{classArm__node_ab4b0bc2fe3c5e921cba23d3f337109e0}} 
-rclcpp\+::\+Subscription$<$ geometry\+\_\+msgs\+::msg\+::\+Point $>$\+::Shared\+Ptr {\bfseries position\+\_\+subscription}
-\item 
-\mbox{\Hypertarget{classArm__node_a00307350adf203cd5f78cd3bc4f06c85}\label{classArm__node_a00307350adf203cd5f78cd3bc4f06c85}} 
-rclcpp\+::\+Subscription$<$ geometry\+\_\+msgs\+::msg\+::\+Vector3 $>$\+::Shared\+Ptr {\bfseries angles\+\_\+subscription}
+\mbox{\Hypertarget{classArm__node_a3879f5a3b9e7458b5d7dcb2c948e545c}\label{classArm__node_a3879f5a3b9e7458b5d7dcb2c948e545c}} 
+rclcpp\+::\+Subscription$<$ geometry\+\_\+msgs\+::msg\+::\+Pose $>$\+::Shared\+Ptr {\bfseries pose\+\_\+subscription}
 \item 
 \mbox{\Hypertarget{classArm__node_a1cdb7bf022711923c58dc939d254dbe9}\label{classArm__node_a1cdb7bf022711923c58dc939d254dbe9}} 
 rclcpp\+::\+Subscription$<$ std\+\_\+msgs\+::msg\+::\+Float32 $>$\+::Shared\+Ptr {\bfseries grip\+\_\+subscription}
@@ -139,21 +132,6 @@ rclcpp\+::\+Publisher$<$ std\+\_\+msgs\+::msg\+::\+String $>$\+::Shared\+Ptr {\b
 Node that communicates with the arm, intermediary between R\+OS architecture and arm\textquotesingle{}s drivers. 
 
 \doxysubsection{Member Function Documentation}
-\mbox{\Hypertarget{classArm__node_ab30d900522967fe5a46503e924914892}\label{classArm__node_ab30d900522967fe5a46503e924914892}} 
-\index{Arm\_node@{Arm\_node}!get\_angles@{get\_angles}}
-\index{get\_angles@{get\_angles}!Arm\_node@{Arm\_node}}
-\doxysubsubsection{\texorpdfstring{get\_angles()}{get\_angles()}}
-{\footnotesize\ttfamily void Arm\+\_\+node\+::get\+\_\+angles (\begin{DoxyParamCaption}\item[{const geometry\+\_\+msgs\+::msg\+::\+Vector3\+::\+Shared\+Ptr}]{msg }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
-
-
-
-Get the targeted orientation. 
-
-
-\begin{DoxyParams}{Parameters}
-{\em msg} & \\
-\hline
-\end{DoxyParams}
 \mbox{\Hypertarget{classArm__node_acc453461607d25c4b927b9e1c751554f}\label{classArm__node_acc453461607d25c4b927b9e1c751554f}} 
 \index{Arm\_node@{Arm\_node}!get\_commands@{get\_commands}}
 \index{get\_commands@{get\_commands}!Arm\_node@{Arm\_node}}
@@ -194,11 +172,11 @@ Get the targeted grip.
 
 Get the joints\textquotesingle{} parameters. 
 
-\mbox{\Hypertarget{classArm__node_a3bee829f26dedfcd030e04100fe92d87}\label{classArm__node_a3bee829f26dedfcd030e04100fe92d87}} 
-\index{Arm\_node@{Arm\_node}!get\_position@{get\_position}}
-\index{get\_position@{get\_position}!Arm\_node@{Arm\_node}}
-\doxysubsubsection{\texorpdfstring{get\_position()}{get\_position()}}
-{\footnotesize\ttfamily void Arm\+\_\+node\+::get\+\_\+position (\begin{DoxyParamCaption}\item[{const geometry\+\_\+msgs\+::msg\+::\+Point\+::\+Shared\+Ptr}]{msg }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+\mbox{\Hypertarget{classArm__node_aff474c11e12cb85b77265a6f53c0071d}\label{classArm__node_aff474c11e12cb85b77265a6f53c0071d}} 
+\index{Arm\_node@{Arm\_node}!get\_pose@{get\_pose}}
+\index{get\_pose@{get\_pose}!Arm\_node@{Arm\_node}}
+\doxysubsubsection{\texorpdfstring{get\_pose()}{get\_pose()}}
+{\footnotesize\ttfamily void Arm\+\_\+node\+::get\+\_\+pose (\begin{DoxyParamCaption}\item[{const geometry\+\_\+msgs\+::msg\+::\+Pose\+::\+Shared\+Ptr}]{msg }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
 
 

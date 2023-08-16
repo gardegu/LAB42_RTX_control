@@ -77,73 +77,74 @@ $(function() {
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &quot;rclcpp/rclcpp.hpp&quot;</span></div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &quot;geometry_msgs/msg/point.hpp&quot;</span></div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &quot;geometry_msgs/msg/vector3.hpp&quot;</span></div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &quot;std_msgs/msg/float32.hpp&quot;</span></div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#include &quot;std_msgs/msg/string.hpp&quot;</span></div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#include &quot;sensor_msgs/msg/image.hpp&quot;</span></div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include &lt;cv_bridge/cv_bridge.h&gt;</span></div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#include &lt;QApplication&gt;</span></div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#include &lt;QSlider&gt;</span></div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &lt;QLabel&gt;</span></div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include &lt;QVBoxLayout&gt;</span></div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#include &lt;QDoubleSpinBox&gt;</span></div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#include &lt;QHBoxLayout&gt;</span></div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#include &lt;QObject&gt;</span></div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#include &lt;math.h&gt;</span></div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="keyword">using namespace </span>std::chrono_literals;</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="keyword">using namespace </span>std::placeholders;</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="keyword">using namespace </span>std;</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
-<div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="classObjective__node.html">   41</a></span>&#160;<span class="keyword">class </span><a class="code" href="classObjective__node.html">Objective_node</a> : <span class="keyword">public</span> rclcpp::Node{</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00046"></a><span class="lineno"><a class="line" href="classObjective__node.html#a4fa0f76076bc654eabb8fc5cd4a49c18">   46</a></span>&#160;    <a class="code" href="classObjective__node.html#a4fa0f76076bc654eabb8fc5cd4a49c18">Objective_node</a>() : Node(<span class="stringliteral">&quot;objective&quot;</span>){</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        init_interfaces();</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    };</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="keywordtype">void</span> update_state(<span class="keywordtype">double</span> new_x, <span class="keywordtype">double</span> new_y, <span class="keywordtype">double</span> new_z, <span class="keywordtype">double</span> new_yaw, <span class="keywordtype">double</span> new_pitch, <span class="keywordtype">double</span> new_roll, <span class="keywordtype">double</span> new_grip);</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="keywordtype">string</span> mode=<span class="stringliteral">&quot;manual&quot;</span>;</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    cv::Mat frame;</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="keywordtype">double</span> x=0., y=0.6, z=0.6, yaw=0.,pitch=0.,roll=0., grip=0.2;</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;private :</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <span class="keywordtype">void</span> init_interfaces();</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="keywordtype">void</span> timer_callback();</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <span class="keywordtype">void</span> Lissajou(); <span class="comment">//TODO delete</span></div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160; </div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    <span class="keywordtype">void</span> get_processed_position(<span class="keyword">const</span> geometry_msgs::msg::Point::SharedPtr msg);</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    <span class="keywordtype">void</span> get_processed_angles(<span class="keyword">const</span> geometry_msgs::msg::Vector3::SharedPtr msg);</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    <span class="keywordtype">void</span> get_image(<span class="keyword">const</span> sensor_msgs::msg::Image::SharedPtr msg);</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    </div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    std::chrono::milliseconds loop_dt_ = 40ms;</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &quot;geometry_msgs/msg/pose.hpp&quot;</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#include &quot;std_msgs/msg/float32.hpp&quot;</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#include &quot;std_msgs/msg/string.hpp&quot;</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#include &quot;sensor_msgs/msg/image.hpp&quot;</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &lt;cv_bridge/cv_bridge.h&gt;</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#include &lt;QApplication&gt;</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &lt;QSlider&gt;</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include &lt;QLabel&gt;</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#include &lt;QVBoxLayout&gt;</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#include &lt;QDoubleSpinBox&gt;</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#include &lt;QHBoxLayout&gt;</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#include &lt;QObject&gt;</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#include &lt;math.h&gt;</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="keyword">using namespace </span>std::chrono_literals;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="keyword">using namespace </span>std::placeholders;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="keyword">using namespace </span>std;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
+<div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="classObjective__node.html">   42</a></span>&#160;<span class="keyword">class </span><a class="code" href="classObjective__node.html">Objective_node</a> : <span class="keyword">public</span> rclcpp::Node{</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="classObjective__node.html#a4fa0f76076bc654eabb8fc5cd4a49c18">   47</a></span>&#160;    <a class="code" href="classObjective__node.html#a4fa0f76076bc654eabb8fc5cd4a49c18">Objective_node</a>() : Node(<span class="stringliteral">&quot;objective&quot;</span>){</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        init_interfaces();</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    };</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="keywordtype">void</span> update_state(<span class="keywordtype">double</span> new_x, <span class="keywordtype">double</span> new_y, <span class="keywordtype">double</span> new_z, <span class="keywordtype">double</span> new_yaw, <span class="keywordtype">double</span> new_pitch, <span class="keywordtype">double</span> new_roll, <span class="keywordtype">double</span> new_grip);</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="keywordtype">string</span> mode=<span class="stringliteral">&quot;manual&quot;</span>;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    cv::Mat processed_frame, depth_frame;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="keywordtype">double</span> x=0., y=0.6, z=0.6, yaw=0.,pitch=0.,roll=0., grip=0.2;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;private :</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <span class="keywordtype">void</span> init_interfaces();</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <span class="keywordtype">void</span> timer_callback();</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160; </div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    <span class="keywordtype">void</span> get_processed_pose(<span class="keyword">const</span> geometry_msgs::msg::Pose::SharedPtr msg);</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    <span class="keywordtype">void</span> get_processed_image(<span class="keyword">const</span> sensor_msgs::msg::Image::SharedPtr msg);</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    <span class="keywordtype">void</span> get_depth_image(<span class="keyword">const</span> sensor_msgs::msg::Image::SharedPtr msg);</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    </div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    std::chrono::milliseconds loop_dt_ = 40ms;</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160; </div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    <span class="keywordtype">double</span> x0,y0,z0,yaw0,pitch0,roll0,t0;</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    <span class="keywordtype">float</span> t=0,dt=0.04;</div>
 <div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160; </div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    <span class="keywordtype">double</span> x0,y0,z0,yaw0,pitch0,roll0,t0;</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    <span class="keywordtype">float</span> t=0,dt=0.04;</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    <span class="keywordtype">double</span> processed_x,processed_y,processed_z,processed_yaw,processed_pitch,processed_roll;</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    <span class="keywordtype">double</span> target_x,target_y,target_z, final_x,final_y,final_z;</div>
 <div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160; </div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    <span class="keywordtype">double</span> processed_x,processed_y,processed_z,processed_yaw,processed_pitch,processed_roll;</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    <span class="keywordtype">bool</span> is_initialized=<span class="keyword">false</span>;</div>
 <div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160; </div>
 <div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160; </div>
 <div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    rclcpp::TimerBase::SharedPtr timer_;</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    rclcpp::Publisher&lt;geometry_msgs::msg::Point&gt;::SharedPtr objective_publisher;</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    rclcpp::Publisher&lt;geometry_msgs::msg::Vector3&gt;::SharedPtr angles_publisher;</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    rclcpp::Publisher&lt;std_msgs::msg::String&gt;::SharedPtr mission_publisher;</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    rclcpp::Publisher&lt;std_msgs::msg::Float32&gt;::SharedPtr grip_publisher;</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160; </div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    rclcpp::Subscription&lt;geometry_msgs::msg::Point&gt;::SharedPtr position_subscriber;</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    rclcpp::Subscription&lt;geometry_msgs::msg::Vector3&gt;::SharedPtr angles_subscriber;</div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    rclcpp::Subscription&lt;sensor_msgs::msg::Image&gt;::SharedPtr image_subscriber;</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    </div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;};</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160; </div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    rclcpp::Publisher&lt;geometry_msgs::msg::Pose&gt;::SharedPtr pose_publisher;</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    rclcpp::Publisher&lt;std_msgs::msg::Float32&gt;::SharedPtr grip_publisher;</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160; </div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    rclcpp::Subscription&lt;geometry_msgs::msg::Pose&gt;::SharedPtr pose_subscriber;</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    rclcpp::Subscription&lt;sensor_msgs::msg::Image&gt;::SharedPtr processed_image_subscriber;</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    rclcpp::Subscription&lt;sensor_msgs::msg::Image&gt;::SharedPtr depth_image_subscriber;</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    </div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;};</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160; </div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="aclassObjective__node_html_a4fa0f76076bc654eabb8fc5cd4a49c18"><div class="ttname"><a href="classObjective__node.html#a4fa0f76076bc654eabb8fc5cd4a49c18">Objective_node::Objective_node</a></div><div class="ttdeci">Objective_node()</div><div class="ttdoc">Construct a new Objective_node object.</div><div class="ttdef"><b>Definition:</b> node_commands.hpp:46</div></div>
-<div class="ttc" id="aclassObjective__node_html"><div class="ttname"><a href="classObjective__node.html">Objective_node</a></div><div class="ttdoc">Node that works in pair with the GUI, manage the targeted pose and the command we send to the arm.</div><div class="ttdef"><b>Definition:</b> node_commands.hpp:41</div></div>
+<div class="ttc" id="aclassObjective__node_html_a4fa0f76076bc654eabb8fc5cd4a49c18"><div class="ttname"><a href="classObjective__node.html#a4fa0f76076bc654eabb8fc5cd4a49c18">Objective_node::Objective_node</a></div><div class="ttdeci">Objective_node()</div><div class="ttdoc">Construct a new Objective_node object.</div><div class="ttdef"><b>Definition:</b> node_commands.hpp:47</div></div>
+<div class="ttc" id="aclassObjective__node_html"><div class="ttname"><a href="classObjective__node.html">Objective_node</a></div><div class="ttdoc">Node that works in pair with the GUI, manage the targeted pose and the command we send to the arm.</div><div class="ttdef"><b>Definition:</b> node_commands.hpp:42</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

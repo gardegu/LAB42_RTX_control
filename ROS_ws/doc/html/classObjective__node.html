@@ -82,8 +82,8 @@ Inheritance diagram for Objective_node:</div>
 <div class="dyncontent">
 <div class="center"><img src="classObjective__node__inherit__graph.png" border="0" usemap="#Objective__node_inherit__map" alt="Inheritance graph"/></div>
 <map name="Objective__node_inherit__map" id="Objective__node_inherit__map">
-<area shape="rect" title="Node that works in pair with the GUI, manage the targeted pose and the command we send to the arm." alt="" coords="5,80,117,107"/>
-<area shape="rect" title=" " alt="" coords="35,5,88,32"/>
+<area shape="rect" title=" " alt="" coords="5,80,128,107"/>
+<area shape="rect" title=" " alt="" coords="39,5,95,32"/>
 </map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <div class="dynheader">
@@ -91,8 +91,8 @@ Collaboration diagram for Objective_node:</div>
 <div class="dyncontent">
 <div class="center"><img src="classObjective__node__coll__graph.png" border="0" usemap="#Objective__node_coll__map" alt="Collaboration graph"/></div>
 <map name="Objective__node_coll__map" id="Objective__node_coll__map">
-<area shape="rect" title="Node that works in pair with the GUI, manage the targeted pose and the command we send to the arm." alt="" coords="5,80,117,107"/>
-<area shape="rect" title=" " alt="" coords="35,5,88,32"/>
+<area shape="rect" title=" " alt="" coords="5,80,128,107"/>
+<area shape="rect" title=" " alt="" coords="39,5,95,32"/>
 </map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
@@ -111,9 +111,12 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:aa23aa29aef11fb4fba3646dd135175a2"><td class="memItemLeft" align="right" valign="top"><a id="aa23aa29aef11fb4fba3646dd135175a2"></a>
 string&#160;</td><td class="memItemRight" valign="bottom"><b>mode</b> =&quot;manual&quot;</td></tr>
 <tr class="separator:aa23aa29aef11fb4fba3646dd135175a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8a4d604577a2522b1e7ce4cd4e738a49"><td class="memItemLeft" align="right" valign="top"><a id="a8a4d604577a2522b1e7ce4cd4e738a49"></a>
-cv::Mat&#160;</td><td class="memItemRight" valign="bottom"><b>frame</b></td></tr>
-<tr class="separator:a8a4d604577a2522b1e7ce4cd4e738a49"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6363a8cfbfa6bdb2d10593e4ea51c03b"><td class="memItemLeft" align="right" valign="top"><a id="a6363a8cfbfa6bdb2d10593e4ea51c03b"></a>
+cv::Mat&#160;</td><td class="memItemRight" valign="bottom"><b>processed_frame</b></td></tr>
+<tr class="separator:a6363a8cfbfa6bdb2d10593e4ea51c03b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afa551b43b3580c55d77890ef4746cdc3"><td class="memItemLeft" align="right" valign="top"><a id="afa551b43b3580c55d77890ef4746cdc3"></a>
+cv::Mat&#160;</td><td class="memItemRight" valign="bottom"><b>depth_frame</b></td></tr>
+<tr class="separator:afa551b43b3580c55d77890ef4746cdc3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:add2421a8b5d1df8b71ce9ef5310f4781"><td class="memItemLeft" align="right" valign="top"><a id="add2421a8b5d1df8b71ce9ef5310f4781"></a>
 double&#160;</td><td class="memItemRight" valign="bottom"><b>x</b> =0.</td></tr>
 <tr class="separator:add2421a8b5d1df8b71ce9ef5310f4781"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -146,19 +149,15 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classObjective__node.html#a50cde468c869dde93201b5ebd0d07717">timer_callback</a> ()</td></tr>
 <tr class="memdesc:a50cde468c869dde93201b5ebd0d07717"><td class="mdescLeft">&#160;</td><td class="mdescRight">Timer callback, actions that will be done at every iterations. <br /></td></tr>
 <tr class="separator:a50cde468c869dde93201b5ebd0d07717"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aedc074b9451057279b10f0f37902e90f"><td class="memItemLeft" align="right" valign="top"><a id="aedc074b9451057279b10f0f37902e90f"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classObjective__node.html#aedc074b9451057279b10f0f37902e90f">Lissajou</a> ()</td></tr>
-<tr class="memdesc:aedc074b9451057279b10f0f37902e90f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lissajou's trajectory for the target, function to delete. <br /></td></tr>
-<tr class="separator:aedc074b9451057279b10f0f37902e90f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad25f590c05a4065b3460f2de8f92f2c6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classObjective__node.html#ad25f590c05a4065b3460f2de8f92f2c6">get_processed_position</a> (const geometry_msgs::msg::Point::SharedPtr msg)</td></tr>
-<tr class="memdesc:ad25f590c05a4065b3460f2de8f92f2c6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the targeted position processed by the camera.  <a href="classObjective__node.html#ad25f590c05a4065b3460f2de8f92f2c6">More...</a><br /></td></tr>
-<tr class="separator:ad25f590c05a4065b3460f2de8f92f2c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aedb3e18a445335af1bfaf1c70dace9d2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classObjective__node.html#aedb3e18a445335af1bfaf1c70dace9d2">get_processed_angles</a> (const geometry_msgs::msg::Vector3::SharedPtr msg)</td></tr>
-<tr class="memdesc:aedb3e18a445335af1bfaf1c70dace9d2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the targeted angles processed by the camera.  <a href="classObjective__node.html#aedb3e18a445335af1bfaf1c70dace9d2">More...</a><br /></td></tr>
-<tr class="separator:aedb3e18a445335af1bfaf1c70dace9d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a88c37158402cd0f3fb8e1ff004e3aedf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classObjective__node.html#a88c37158402cd0f3fb8e1ff004e3aedf">get_image</a> (const sensor_msgs::msg::Image::SharedPtr msg)</td></tr>
-<tr class="memdesc:a88c37158402cd0f3fb8e1ff004e3aedf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the images published.  <a href="classObjective__node.html#a88c37158402cd0f3fb8e1ff004e3aedf">More...</a><br /></td></tr>
-<tr class="separator:a88c37158402cd0f3fb8e1ff004e3aedf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad520ebfb82892cd4196fbb149de68b66"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classObjective__node.html#ad520ebfb82892cd4196fbb149de68b66">get_processed_pose</a> (const geometry_msgs::msg::Pose::SharedPtr msg)</td></tr>
+<tr class="memdesc:ad520ebfb82892cd4196fbb149de68b66"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the targeted position processed by the camera.  <a href="classObjective__node.html#ad520ebfb82892cd4196fbb149de68b66">More...</a><br /></td></tr>
+<tr class="separator:ad520ebfb82892cd4196fbb149de68b66"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aea0c5f38349afd3a01dfeefcdd92b7db"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classObjective__node.html#aea0c5f38349afd3a01dfeefcdd92b7db">get_processed_image</a> (const sensor_msgs::msg::Image::SharedPtr msg)</td></tr>
+<tr class="memdesc:aea0c5f38349afd3a01dfeefcdd92b7db"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the processed images published.  <a href="classObjective__node.html#aea0c5f38349afd3a01dfeefcdd92b7db">More...</a><br /></td></tr>
+<tr class="separator:aea0c5f38349afd3a01dfeefcdd92b7db"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3446fc82a833039ddffd5e66cfe9812f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classObjective__node.html#a3446fc82a833039ddffd5e66cfe9812f">get_depth_image</a> (const sensor_msgs::msg::Image::SharedPtr msg)</td></tr>
+<tr class="memdesc:a3446fc82a833039ddffd5e66cfe9812f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the depth images published.  <a href="classObjective__node.html#a3446fc82a833039ddffd5e66cfe9812f">More...</a><br /></td></tr>
+<tr class="separator:a3446fc82a833039ddffd5e66cfe9812f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
@@ -210,36 +209,51 @@ double&#160;</td><td class="memItemRight" valign="bottom"><b>processed_pitch</b>
 <tr class="memitem:aadca213867f58d4e17c98d03b6686b11"><td class="memItemLeft" align="right" valign="top"><a id="aadca213867f58d4e17c98d03b6686b11"></a>
 double&#160;</td><td class="memItemRight" valign="bottom"><b>processed_roll</b></td></tr>
 <tr class="separator:aadca213867f58d4e17c98d03b6686b11"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad1825ad30d0dd963fa44ab492290398c"><td class="memItemLeft" align="right" valign="top"><a id="ad1825ad30d0dd963fa44ab492290398c"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><b>target_x</b></td></tr>
+<tr class="separator:ad1825ad30d0dd963fa44ab492290398c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae7bfb12e19b123d565ffe852f756012f"><td class="memItemLeft" align="right" valign="top"><a id="ae7bfb12e19b123d565ffe852f756012f"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><b>target_y</b></td></tr>
+<tr class="separator:ae7bfb12e19b123d565ffe852f756012f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aab6deacf92f6abe808589634fda49a61"><td class="memItemLeft" align="right" valign="top"><a id="aab6deacf92f6abe808589634fda49a61"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><b>target_z</b></td></tr>
+<tr class="separator:aab6deacf92f6abe808589634fda49a61"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a12c889464374e76f9d4d78421a833cd3"><td class="memItemLeft" align="right" valign="top"><a id="a12c889464374e76f9d4d78421a833cd3"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><b>final_x</b></td></tr>
+<tr class="separator:a12c889464374e76f9d4d78421a833cd3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abd15fb2a5acb52f4d8ac69f15b4644eb"><td class="memItemLeft" align="right" valign="top"><a id="abd15fb2a5acb52f4d8ac69f15b4644eb"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><b>final_y</b></td></tr>
+<tr class="separator:abd15fb2a5acb52f4d8ac69f15b4644eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a32030d52a513cdafabd672c95ffa9104"><td class="memItemLeft" align="right" valign="top"><a id="a32030d52a513cdafabd672c95ffa9104"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><b>final_z</b></td></tr>
+<tr class="separator:a32030d52a513cdafabd672c95ffa9104"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a832e50cf4e1ffd05d1f04f2f3cd601ff"><td class="memItemLeft" align="right" valign="top"><a id="a832e50cf4e1ffd05d1f04f2f3cd601ff"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>is_initialized</b> =false</td></tr>
+<tr class="separator:a832e50cf4e1ffd05d1f04f2f3cd601ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aab3f1460fb035632ec13f5fefea741df"><td class="memItemLeft" align="right" valign="top"><a id="aab3f1460fb035632ec13f5fefea741df"></a>
 rclcpp::TimerBase::SharedPtr&#160;</td><td class="memItemRight" valign="bottom"><b>timer_</b></td></tr>
 <tr class="separator:aab3f1460fb035632ec13f5fefea741df"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0a3142350d43a299873a3f51990c9cd4"><td class="memItemLeft" align="right" valign="top"><a id="a0a3142350d43a299873a3f51990c9cd4"></a>
-rclcpp::Publisher&lt; geometry_msgs::msg::Point &gt;::SharedPtr&#160;</td><td class="memItemRight" valign="bottom"><b>objective_publisher</b></td></tr>
-<tr class="separator:a0a3142350d43a299873a3f51990c9cd4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a62491f590a2cafe375351917f1d595cf"><td class="memItemLeft" align="right" valign="top"><a id="a62491f590a2cafe375351917f1d595cf"></a>
-rclcpp::Publisher&lt; geometry_msgs::msg::Vector3 &gt;::SharedPtr&#160;</td><td class="memItemRight" valign="bottom"><b>angles_publisher</b></td></tr>
-<tr class="separator:a62491f590a2cafe375351917f1d595cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a46f561bcede221a4e83bbd4fa2da6fcb"><td class="memItemLeft" align="right" valign="top"><a id="a46f561bcede221a4e83bbd4fa2da6fcb"></a>
-rclcpp::Publisher&lt; std_msgs::msg::String &gt;::SharedPtr&#160;</td><td class="memItemRight" valign="bottom"><b>mission_publisher</b></td></tr>
-<tr class="separator:a46f561bcede221a4e83bbd4fa2da6fcb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aed251e6d43ed53df70184d665b689e0a"><td class="memItemLeft" align="right" valign="top"><a id="aed251e6d43ed53df70184d665b689e0a"></a>
+rclcpp::Publisher&lt; geometry_msgs::msg::Pose &gt;::SharedPtr&#160;</td><td class="memItemRight" valign="bottom"><b>pose_publisher</b></td></tr>
+<tr class="separator:aed251e6d43ed53df70184d665b689e0a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad065742047ac8af4508eef5bb7282f92"><td class="memItemLeft" align="right" valign="top"><a id="ad065742047ac8af4508eef5bb7282f92"></a>
 rclcpp::Publisher&lt; std_msgs::msg::Float32 &gt;::SharedPtr&#160;</td><td class="memItemRight" valign="bottom"><b>grip_publisher</b></td></tr>
 <tr class="separator:ad065742047ac8af4508eef5bb7282f92"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0c9d4abb329719daf1a38c574ebad3a6"><td class="memItemLeft" align="right" valign="top"><a id="a0c9d4abb329719daf1a38c574ebad3a6"></a>
-rclcpp::Subscription&lt; geometry_msgs::msg::Point &gt;::SharedPtr&#160;</td><td class="memItemRight" valign="bottom"><b>position_subscriber</b></td></tr>
-<tr class="separator:a0c9d4abb329719daf1a38c574ebad3a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aadcfe5ee3b4e356a49ca96aea14336b7"><td class="memItemLeft" align="right" valign="top"><a id="aadcfe5ee3b4e356a49ca96aea14336b7"></a>
-rclcpp::Subscription&lt; geometry_msgs::msg::Vector3 &gt;::SharedPtr&#160;</td><td class="memItemRight" valign="bottom"><b>angles_subscriber</b></td></tr>
-<tr class="separator:aadcfe5ee3b4e356a49ca96aea14336b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acf2ea49da4efee6efb4d7e93f5fa4746"><td class="memItemLeft" align="right" valign="top"><a id="acf2ea49da4efee6efb4d7e93f5fa4746"></a>
-rclcpp::Subscription&lt; sensor_msgs::msg::Image &gt;::SharedPtr&#160;</td><td class="memItemRight" valign="bottom"><b>image_subscriber</b></td></tr>
-<tr class="separator:acf2ea49da4efee6efb4d7e93f5fa4746"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a762eaf770d6d447bf8b8a0f67bd81488"><td class="memItemLeft" align="right" valign="top"><a id="a762eaf770d6d447bf8b8a0f67bd81488"></a>
+rclcpp::Subscription&lt; geometry_msgs::msg::Pose &gt;::SharedPtr&#160;</td><td class="memItemRight" valign="bottom"><b>pose_subscriber</b></td></tr>
+<tr class="separator:a762eaf770d6d447bf8b8a0f67bd81488"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8d64b6d3dfbb9ba72aa8ca76a8cef5a5"><td class="memItemLeft" align="right" valign="top"><a id="a8d64b6d3dfbb9ba72aa8ca76a8cef5a5"></a>
+rclcpp::Subscription&lt; sensor_msgs::msg::Image &gt;::SharedPtr&#160;</td><td class="memItemRight" valign="bottom"><b>processed_image_subscriber</b></td></tr>
+<tr class="separator:a8d64b6d3dfbb9ba72aa8ca76a8cef5a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0bdfb4f9e160bd083e1d0363b89025d3"><td class="memItemLeft" align="right" valign="top"><a id="a0bdfb4f9e160bd083e1d0363b89025d3"></a>
+rclcpp::Subscription&lt; sensor_msgs::msg::Image &gt;::SharedPtr&#160;</td><td class="memItemRight" valign="bottom"><b>depth_image_subscriber</b></td></tr>
+<tr class="separator:a0bdfb4f9e160bd083e1d0363b89025d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Node that works in pair with the GUI, manage the targeted pose and the command we send to the arm. </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
-<a id="a88c37158402cd0f3fb8e1ff004e3aedf"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a88c37158402cd0f3fb8e1ff004e3aedf">&#9670;&nbsp;</a></span>get_image()</h2>
+<a id="a3446fc82a833039ddffd5e66cfe9812f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3446fc82a833039ddffd5e66cfe9812f">&#9670;&nbsp;</a></span>get_depth_image()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -248,7 +262,7 @@ rclcpp::Subscription&lt; sensor_msgs::msg::Image &gt;::SharedPtr&#160;</td><td c
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void Objective_node::get_image </td>
+          <td class="memname">void Objective_node::get_depth_image </td>
           <td>(</td>
           <td class="paramtype">const sensor_msgs::msg::Image::SharedPtr&#160;</td>
           <td class="paramname"><em>msg</em></td><td>)</td>
@@ -262,7 +276,7 @@ rclcpp::Subscription&lt; sensor_msgs::msg::Image &gt;::SharedPtr&#160;</td><td c
 </table>
 </div><div class="memdoc">
 
-<p>Get the images published. </p>
+<p>Get the depth images published. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">msg</td><td></td></tr>
@@ -272,8 +286,8 @@ rclcpp::Subscription&lt; sensor_msgs::msg::Image &gt;::SharedPtr&#160;</td><td c
 
 </div>
 </div>
-<a id="aedb3e18a445335af1bfaf1c70dace9d2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aedb3e18a445335af1bfaf1c70dace9d2">&#9670;&nbsp;</a></span>get_processed_angles()</h2>
+<a id="aea0c5f38349afd3a01dfeefcdd92b7db"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aea0c5f38349afd3a01dfeefcdd92b7db">&#9670;&nbsp;</a></span>get_processed_image()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -282,9 +296,9 @@ rclcpp::Subscription&lt; sensor_msgs::msg::Image &gt;::SharedPtr&#160;</td><td c
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void Objective_node::get_processed_angles </td>
+          <td class="memname">void Objective_node::get_processed_image </td>
           <td>(</td>
-          <td class="paramtype">const geometry_msgs::msg::Vector3::SharedPtr&#160;</td>
+          <td class="paramtype">const sensor_msgs::msg::Image::SharedPtr&#160;</td>
           <td class="paramname"><em>msg</em></td><td>)</td>
           <td></td>
         </tr>
@@ -296,7 +310,7 @@ rclcpp::Subscription&lt; sensor_msgs::msg::Image &gt;::SharedPtr&#160;</td><td c
 </table>
 </div><div class="memdoc">
 
-<p>Get the targeted angles processed by the camera. </p>
+<p>Get the processed images published. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">msg</td><td></td></tr>
@@ -306,8 +320,8 @@ rclcpp::Subscription&lt; sensor_msgs::msg::Image &gt;::SharedPtr&#160;</td><td c
 
 </div>
 </div>
-<a id="ad25f590c05a4065b3460f2de8f92f2c6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad25f590c05a4065b3460f2de8f92f2c6">&#9670;&nbsp;</a></span>get_processed_position()</h2>
+<a id="ad520ebfb82892cd4196fbb149de68b66"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad520ebfb82892cd4196fbb149de68b66">&#9670;&nbsp;</a></span>get_processed_pose()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -316,9 +330,9 @@ rclcpp::Subscription&lt; sensor_msgs::msg::Image &gt;::SharedPtr&#160;</td><td c
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void Objective_node::get_processed_position </td>
+          <td class="memname">void Objective_node::get_processed_pose </td>
           <td>(</td>
-          <td class="paramtype">const geometry_msgs::msg::Point::SharedPtr&#160;</td>
+          <td class="paramtype">const geometry_msgs::msg::Pose::SharedPtr&#160;</td>
           <td class="paramname"><em>msg</em></td><td>)</td>
           <td></td>
         </tr>

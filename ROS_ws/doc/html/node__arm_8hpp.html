@@ -79,8 +79,7 @@ $(function() {
 <code>#include &quot;std_msgs/msg/string.hpp&quot;</code><br />
 <code>#include &quot;std_msgs/msg/float32.hpp&quot;</code><br />
 <code>#include &quot;sensor_msgs/msg/joint_state.hpp&quot;</code><br />
-<code>#include &quot;geometry_msgs/msg/point.hpp&quot;</code><br />
-<code>#include &quot;geometry_msgs/msg/vector3.hpp&quot;</code><br />
+<code>#include &quot;geometry_msgs/msg/pose.hpp&quot;</code><br />
 <code>#include &quot;ros_interface_umi_rtx/umi-drivers/armlib.h&quot;</code><br />
 <code>#include &quot;ros_interface_umi_rtx/umi-drivers/rtx.h&quot;</code><br />
 <code>#include &quot;ros_interface_umi_rtx/umi-drivers/armraw.h&quot;</code><br />
@@ -113,40 +112,39 @@ Include dependency graph for node_arm.hpp:</div>
 <div class="dyncontent">
 <div class="center"><img src="node__arm_8hpp__incl.png" border="0" usemap="#src_2ros__interface__umi__rtx_2include_2ros__interface__umi__rtx_2node__arm_8hpp" alt=""/></div>
 <map name="src_2ros__interface__umi__rtx_2include_2ros__interface__umi__rtx_2node__arm_8hpp" id="src_2ros__interface__umi__rtx_2include_2ros__interface__umi__rtx_2node__arm_8hpp">
-<area shape="rect" title="ROS2 node that is connected to the arm and allows to send received commands to it." alt="" coords="2701,5,2869,61"/>
-<area shape="rect" title=" " alt="" coords="5,117,127,143"/>
-<area shape="rect" title=" " alt="" coords="151,117,320,143"/>
-<area shape="rect" title=" " alt="" coords="345,117,521,143"/>
-<area shape="rect" title=" " alt="" coords="545,109,702,151"/>
-<area shape="rect" title=" " alt="" coords="727,117,928,143"/>
-<area shape="rect" title=" " alt="" coords="953,117,1169,143"/>
-<area shape="rect" title=" " alt="" coords="1193,109,1339,151"/>
-<area shape="rect" title=" " alt="" coords="1363,109,1510,151"/>
-<area shape="rect" title=" " alt="" coords="1534,109,1681,151"/>
-<area shape="rect" title=" " alt="" coords="1705,109,1851,151"/>
-<area shape="rect" title=" " alt="" coords="1875,109,2022,151"/>
-<area shape="rect" title=" " alt="" coords="2046,109,2193,151"/>
-<area shape="rect" title=" " alt="" coords="2217,109,2363,151"/>
-<area shape="rect" title=" " alt="" coords="2387,117,2478,143"/>
-<area shape="rect" title=" " alt="" coords="2503,117,2597,143"/>
-<area shape="rect" title=" " alt="" coords="2621,117,2719,143"/>
-<area shape="rect" title=" " alt="" coords="2743,117,2826,143"/>
-<area shape="rect" title=" " alt="" coords="2850,117,2922,143"/>
-<area shape="rect" title=" " alt="" coords="2946,117,3021,143"/>
-<area shape="rect" title=" " alt="" coords="3045,117,3119,143"/>
-<area shape="rect" title=" " alt="" coords="3144,117,3231,143"/>
-<area shape="rect" title=" " alt="" coords="3255,117,3317,143"/>
-<area shape="rect" title=" " alt="" coords="3341,117,3405,143"/>
-<area shape="rect" title=" " alt="" coords="3429,117,3497,143"/>
-<area shape="rect" title=" " alt="" coords="3521,117,3584,143"/>
-<area shape="rect" title=" " alt="" coords="3608,117,3673,143"/>
-<area shape="rect" title=" " alt="" coords="3697,117,3763,143"/>
-<area shape="rect" title=" " alt="" coords="3787,117,3846,143"/>
-<area shape="rect" title=" " alt="" coords="3870,117,3937,143"/>
-<area shape="rect" title=" " alt="" coords="3961,117,4022,143"/>
-<area shape="rect" title=" " alt="" coords="4047,117,4093,143"/>
-<area shape="rect" title=" " alt="" coords="4118,117,4190,143"/>
-<area shape="rect" title=" " alt="" coords="4214,117,4283,143"/>
+<area shape="rect" title="ROS2 node that is connected to the arm and allows to send received commands to it." alt="" coords="2731,5,2918,61"/>
+<area shape="rect" title=" " alt="" coords="5,117,137,143"/>
+<area shape="rect" title=" " alt="" coords="161,117,347,143"/>
+<area shape="rect" title=" " alt="" coords="371,117,566,143"/>
+<area shape="rect" title=" " alt="" coords="591,109,763,151"/>
+<area shape="rect" title=" " alt="" coords="787,117,1009,143"/>
+<area shape="rect" title=" " alt="" coords="1033,109,1197,151"/>
+<area shape="rect" title=" " alt="" coords="1221,109,1385,151"/>
+<area shape="rect" title=" " alt="" coords="1409,109,1576,151"/>
+<area shape="rect" title=" " alt="" coords="1600,109,1764,151"/>
+<area shape="rect" title=" " alt="" coords="1788,109,1952,151"/>
+<area shape="rect" title=" " alt="" coords="1976,109,2140,151"/>
+<area shape="rect" title=" " alt="" coords="2164,109,2328,151"/>
+<area shape="rect" title=" " alt="" coords="2353,117,2449,143"/>
+<area shape="rect" title=" " alt="" coords="2473,117,2576,143"/>
+<area shape="rect" title=" " alt="" coords="2600,117,2703,143"/>
+<area shape="rect" title=" " alt="" coords="2727,117,2816,143"/>
+<area shape="rect" title=" " alt="" coords="2840,117,2916,143"/>
+<area shape="rect" title=" " alt="" coords="2941,117,3021,143"/>
+<area shape="rect" title=" " alt="" coords="3045,117,3127,143"/>
+<area shape="rect" title=" " alt="" coords="3151,117,3247,143"/>
+<area shape="rect" title=" " alt="" coords="3271,117,3338,143"/>
+<area shape="rect" title=" " alt="" coords="3363,117,3433,143"/>
+<area shape="rect" title=" " alt="" coords="3458,117,3533,143"/>
+<area shape="rect" title=" " alt="" coords="3557,117,3625,143"/>
+<area shape="rect" title=" " alt="" coords="3649,117,3720,143"/>
+<area shape="rect" title=" " alt="" coords="3744,117,3815,143"/>
+<area shape="rect" title=" " alt="" coords="3839,117,3901,143"/>
+<area shape="rect" title=" " alt="" coords="3925,117,3999,143"/>
+<area shape="rect" title=" " alt="" coords="4023,117,4090,143"/>
+<area shape="rect" title=" " alt="" coords="4114,117,4165,143"/>
+<area shape="rect" title=" " alt="" coords="4189,117,4269,143"/>
+<area shape="rect" title=" " alt="" coords="4293,117,4367,143"/>
 </map>
 </div>
 </div>

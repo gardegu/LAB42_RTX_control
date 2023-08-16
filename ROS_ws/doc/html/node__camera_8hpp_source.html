@@ -70,103 +70,133 @@ $(function() {
 <div class="title">node_camera.hpp</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef __CAMERA__</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define __CAMERA__</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;rclcpp/rclcpp.hpp&quot;</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;sensor_msgs/msg/image.hpp&quot;</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &quot;geometry_msgs/msg/point.hpp&quot;</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &quot;geometry_msgs/msg/vector3.hpp&quot;</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &quot;std_msgs/msg/float64.hpp&quot;</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &lt;cv_bridge/cv_bridge.h&gt;</span></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &lt;opencv2/opencv.hpp&gt;</span></div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &lt;math.h&gt;</span></div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &lt;chrono&gt;</span></div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &lt;opencv2/core.hpp&gt;</span></div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &lt;opencv2/imgproc.hpp&gt;</span></div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#include &lt;opencv2/calib3d.hpp&gt;</span></div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#include &lt;opencv2/highgui.hpp&gt;</span></div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#include &lt;opencv2/ximgproc.hpp&gt;</span></div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &lt;ament_index_cpp/get_package_share_directory.hpp&gt;</span></div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keyword">using namespace </span>std::chrono_literals;</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="keyword">using namespace </span>std::placeholders;</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="keyword">using namespace </span>std;</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
-<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="classCamera.html">   27</a></span>&#160;<span class="keyword">class </span><a class="code" href="classCamera.html">Camera</a> : <span class="keyword">public</span> rclcpp::Node{</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <a class="code" href="classCamera.html">Camera</a>() : Node(<span class="stringliteral">&quot;control&quot;</span>) {</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        init_interfaces();</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        init_camera();</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    };</div>
+<a href="node__camera_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#ifndef __CAMERA__</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#define __CAMERA__</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &quot;rclcpp/rclcpp.hpp&quot;</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &quot;sensor_msgs/msg/image.hpp&quot;</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#include &quot;geometry_msgs/msg/point.hpp&quot;</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#include &quot;geometry_msgs/msg/vector3.hpp&quot;</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#include &quot;std_msgs/msg/float64.hpp&quot;</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include &lt;cv_bridge/cv_bridge.h&gt;</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &lt;opencv2/opencv.hpp&gt;</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#include &lt;math.h&gt;</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include &lt;chrono&gt;</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#include &lt;opencv2/core.hpp&gt;</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#include &lt;opencv2/imgproc.hpp&gt;</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#include &lt;opencv2/calib3d.hpp&gt;</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#include &lt;opencv2/highgui.hpp&gt;</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#include &lt;opencv2/ximgproc.hpp&gt;</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#include &lt;ament_index_cpp/get_package_share_directory.hpp&gt;</span></div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="keywordtype">void</span> timer_callback();</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keywordtype">void</span> init_interfaces();</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keywordtype">void</span> init_camera();</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="keywordtype">void</span> get_banana_and_angles(geometry_msgs::msg::Point coord_msg, geometry_msgs::msg::Vector3 angles_msg);</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="keywordtype">void</span> get_angles(vector&lt;vector&lt;cv::Point&gt;&gt; &amp;contours);</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keywordtype">void</span> stereo_calibration();</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keywordtype">void</span> stereo_rectification();</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keywordtype">void</span> stereo_split_views();</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keywordtype">void</span> stereo_get_disparity();</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="keywordtype">void</span> stereo_get_depth();</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    std::chrono::milliseconds loop_dt_ = 40ms;</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    rclcpp::TimerBase::SharedPtr timer_;</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    rclcpp::Publisher&lt;sensor_msgs::msg::Image&gt;::SharedPtr image_publisher;</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    rclcpp::Publisher&lt;geometry_msgs::msg::Point&gt;::SharedPtr coord_publisher;</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    rclcpp::Publisher&lt;geometry_msgs::msg::Vector3&gt;::SharedPtr angles_publisher;</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    rclcpp::Publisher&lt;sensor_msgs::msg::Image&gt;::SharedPtr disparity_publisher;</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    rclcpp::Publisher&lt;sensor_msgs::msg::Image&gt;::SharedPtr depth_publisher;</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    rclcpp::Publisher&lt;std_msgs::msg::Float64&gt;::SharedPtr double_publisher;</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    cv::VideoCapture cap;</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    cv::Mat frame, frameLeft, frameRight;</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    cv::Mat m_cameraMatrixLeft, m_distCoeffsLeft, m_cameraMatrixRight, m_distCoeffsRight;</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    cv::Mat m_R, m_T, m_E, m_F;</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    cv::Mat m_R1, m_R2, m_P1, m_P2, m_Q;</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    cv::Mat m_map1Left, m_map2Left, m_map1Right, m_map2Right;</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    cv::Mat disparityMap;</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    cv::Mat depthMap;</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    cv::Ptr&lt;cv::StereoSGBM&gt; stereo;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="keyword">using namespace </span>std::chrono_literals;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="keyword">using namespace </span>std::placeholders;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="keyword">using namespace </span>std;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
+<div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="classCamera.html">   42</a></span>&#160;<span class="keyword">class </span><a class="code" href="classCamera.html">Camera</a> : <span class="keyword">public</span> rclcpp::Node{</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="classCamera.html#a01f94c3543f56ede7af49dc778f19331">   49</a></span>&#160;    <a class="code" href="classCamera.html#a01f94c3543f56ede7af49dc778f19331">Camera</a>() : Node(<span class="stringliteral">&quot;control&quot;</span>) {</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        init_interfaces();</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        init_camera();</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    };</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="keywordtype">void</span> timer_callback();</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <span class="keywordtype">void</span> init_interfaces();</div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="keywordtype">int</span> m_frame_width, m_frame_height;</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <span class="keywordtype">int</span> m_frame_width_left, m_frame_height_left;</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <span class="keywordtype">int</span> blockSize = 7;</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <span class="keywordtype">int</span> min_disp = 0;</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <span class="keywordtype">int</span> max_disp = 80;</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="keywordtype">int</span> num_disp = max_disp - min_disp;</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="keywordtype">int</span> uniquenessRatio = 10;</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <span class="keywordtype">int</span> speckleWindowSize = 200;</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="keywordtype">int</span> speckleRange = 2;</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    <span class="keywordtype">int</span> disp12MaxDiff = 0;</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <span class="keywordtype">int</span> iP1 = 8 * 1 * blockSize * blockSize;</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <span class="keywordtype">int</span> iP2 = 16 * 1 * blockSize * blockSize;</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160; </div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <span class="comment">//cv::Size m_patternSize(7,5);</span></div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    <span class="keywordtype">float</span> m_squareSize = 3.1;</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160; </div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <span class="keywordtype">double</span> m_baseline = 6.3; <span class="comment">// centimeters</span></div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    <span class="keywordtype">double</span> m_focalLength = 2.8; <span class="comment">// millimeters</span></div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    <span class="keywordtype">double</span> m_rms_error;</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    <span class="keywordtype">double</span> m_cx, m_cy, m_cz, yaw, pitch, roll;</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    <span class="keywordtype">double</span> depth_factor = 1.5;</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160; </div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <span class="keywordtype">void</span> init_camera();</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <span class="keywordtype">void</span> get_banana_and_angles(geometry_msgs::msg::Point coord_msg, geometry_msgs::msg::Vector3 angles_msg);</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160; </div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    <span class="keywordtype">void</span> get_angles(vector&lt;vector&lt;cv::Point&gt;&gt; &amp;contours);</div>
 <div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160; </div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;};</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160; </div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160; </div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    <span class="keywordtype">void</span> stereo_calibration();</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160; </div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    <span class="keywordtype">void</span> stereo_rectification();</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160; </div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    <span class="keywordtype">void</span> stereo_split_views();</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160; </div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    <span class="keywordtype">void</span> stereo_get_disparity();</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160; </div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    <span class="keywordtype">void</span> stereo_get_depth();</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160; </div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;    std::chrono::milliseconds loop_dt_ = 40ms;</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160; </div>
+<div class="line"><a name="l00129"></a><span class="lineno"><a class="line" href="classCamera.html#af41028d620482f99d902ebd53b767b2f">  129</a></span>&#160;    rclcpp::TimerBase::SharedPtr <a class="code" href="classCamera.html#af41028d620482f99d902ebd53b767b2f">timer_</a>;</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160; </div>
+<div class="line"><a name="l00131"></a><span class="lineno"><a class="line" href="classCamera.html#a0bc445723581f8276658cc93e6e9333a">  131</a></span>&#160;    rclcpp::Publisher&lt;sensor_msgs::msg::Image&gt;::SharedPtr <a class="code" href="classCamera.html#a0bc445723581f8276658cc93e6e9333a">image_publisher</a>;</div>
+<div class="line"><a name="l00132"></a><span class="lineno"><a class="line" href="classCamera.html#ad0a6abef59f3f72a80376ef24796d1f0">  132</a></span>&#160;    rclcpp::Publisher&lt;geometry_msgs::msg::Point&gt;::SharedPtr <a class="code" href="classCamera.html#ad0a6abef59f3f72a80376ef24796d1f0">coord_publisher</a>;</div>
+<div class="line"><a name="l00133"></a><span class="lineno"><a class="line" href="classCamera.html#a35c9c8a38dabbaf43086fb988e2773ef">  133</a></span>&#160;    rclcpp::Publisher&lt;geometry_msgs::msg::Vector3&gt;::SharedPtr <a class="code" href="classCamera.html#a35c9c8a38dabbaf43086fb988e2773ef">angles_publisher</a>;</div>
+<div class="line"><a name="l00134"></a><span class="lineno"><a class="line" href="classCamera.html#a87b0b1a09fadd82451aea18f7814860c">  134</a></span>&#160;    rclcpp::Publisher&lt;sensor_msgs::msg::Image&gt;::SharedPtr <a class="code" href="classCamera.html#a87b0b1a09fadd82451aea18f7814860c">disparity_publisher</a>;</div>
+<div class="line"><a name="l00135"></a><span class="lineno"><a class="line" href="classCamera.html#af1d37285c70a60b41e5d36d13fa2e461">  135</a></span>&#160;    rclcpp::Publisher&lt;sensor_msgs::msg::Image&gt;::SharedPtr <a class="code" href="classCamera.html#af1d37285c70a60b41e5d36d13fa2e461">depth_publisher</a>;</div>
+<div class="line"><a name="l00136"></a><span class="lineno"><a class="line" href="classCamera.html#aff13f8440d93a6d9679bf7ef356cabc2">  136</a></span>&#160;    rclcpp::Publisher&lt;std_msgs::msg::Float64&gt;::SharedPtr <a class="code" href="classCamera.html#aff13f8440d93a6d9679bf7ef356cabc2">double_publisher</a>;</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160; </div>
+<div class="line"><a name="l00138"></a><span class="lineno"><a class="line" href="classCamera.html#a725eb67c7b54fe20f29861f8f592bd7b">  138</a></span>&#160;    cv::VideoCapture <a class="code" href="classCamera.html#a725eb67c7b54fe20f29861f8f592bd7b">cap</a>;</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160; </div>
+<div class="line"><a name="l00140"></a><span class="lineno"><a class="line" href="classCamera.html#acc8a49d7d3b0dd46ac4a3af8f8196014">  140</a></span>&#160;    cv::Mat <a class="code" href="classCamera.html#acc8a49d7d3b0dd46ac4a3af8f8196014">frame</a>, frameLeft, frameRight;</div>
+<div class="line"><a name="l00141"></a><span class="lineno"><a class="line" href="classCamera.html#ae024c9507d78335efb54aa63fe17a477">  141</a></span>&#160;    cv::Mat <a class="code" href="classCamera.html#ae024c9507d78335efb54aa63fe17a477">m_cameraMatrixLeft</a>, m_distCoeffsLeft, m_cameraMatrixRight, m_distCoeffsRight;</div>
+<div class="line"><a name="l00142"></a><span class="lineno"><a class="line" href="classCamera.html#a7228bf9637a68c7fd81cb160cb818582">  142</a></span>&#160;    cv::Mat <a class="code" href="classCamera.html#a7228bf9637a68c7fd81cb160cb818582">m_R</a>, m_T, m_E, m_F;</div>
+<div class="line"><a name="l00143"></a><span class="lineno"><a class="line" href="classCamera.html#a2df4f35ae78bc3450ff2eb1087a2e5b5">  143</a></span>&#160;    cv::Mat <a class="code" href="classCamera.html#a2df4f35ae78bc3450ff2eb1087a2e5b5">m_R1</a>, m_R2, m_P1, m_P2, m_Q;</div>
+<div class="line"><a name="l00144"></a><span class="lineno"><a class="line" href="classCamera.html#aadd1182af539868cee6447507d678946">  144</a></span>&#160;    cv::Mat <a class="code" href="classCamera.html#aadd1182af539868cee6447507d678946">m_map1Left</a>, m_map2Left, m_map1Right, m_map2Right;</div>
+<div class="line"><a name="l00145"></a><span class="lineno"><a class="line" href="classCamera.html#a749e13b267db64bc7e9245c5c53b73f1">  145</a></span>&#160;    cv::Mat <a class="code" href="classCamera.html#a749e13b267db64bc7e9245c5c53b73f1">disparityMap</a>;</div>
+<div class="line"><a name="l00146"></a><span class="lineno"><a class="line" href="classCamera.html#a210d3ce1187eccfda2744ef31a6c6176">  146</a></span>&#160;    cv::Mat <a class="code" href="classCamera.html#a210d3ce1187eccfda2744ef31a6c6176">depthMap</a>;</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160; </div>
+<div class="line"><a name="l00148"></a><span class="lineno"><a class="line" href="classCamera.html#a6793980d27c384efb0b036866fdd8aaf">  148</a></span>&#160;    cv::Ptr&lt;cv::StereoSGBM&gt; <a class="code" href="classCamera.html#a6793980d27c384efb0b036866fdd8aaf">stereo</a>;</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160; </div>
+<div class="line"><a name="l00150"></a><span class="lineno"><a class="line" href="classCamera.html#a5e41a84265c9840f4ddfb2a596e58b02">  150</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classCamera.html#a5e41a84265c9840f4ddfb2a596e58b02">m_frame_width</a>, m_frame_height;</div>
+<div class="line"><a name="l00151"></a><span class="lineno"><a class="line" href="classCamera.html#a51e5da8eb163083a34f22cff857934b3">  151</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classCamera.html#a51e5da8eb163083a34f22cff857934b3">m_frame_width_left</a>, m_frame_height_left;</div>
+<div class="line"><a name="l00152"></a><span class="lineno"><a class="line" href="classCamera.html#a5b8263e4ef0b14f12d0129b3aba588a7">  152</a></span>&#160;    <span class="keywordtype">int</span> blockSize = 7;</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;    <span class="keywordtype">int</span> min_disp = 0;</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;    <span class="keywordtype">int</span> max_disp = 80;</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;    <span class="keywordtype">int</span> num_disp = max_disp - min_disp;</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;    <span class="keywordtype">int</span> uniquenessRatio = 10;</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;    <span class="keywordtype">int</span> speckleWindowSize = 200;</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;    <span class="keywordtype">int</span> speckleRange = 2;</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;    <span class="keywordtype">int</span> disp12MaxDiff = 0;</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;    <span class="keywordtype">int</span> iP1 = 8 * 1 * blockSize * blockSize;</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;    <span class="keywordtype">int</span> iP2 = 16 * 1 * blockSize * blockSize;</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160; </div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;    <span class="comment">//cv::Size m_patternSize(7,5);</span></div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;    <span class="keywordtype">float</span> m_squareSize = 3.1;</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160; </div>
+<div class="line"><a name="l00166"></a><span class="lineno"><a class="line" href="classCamera.html#ae8448fc63a0e82d64c1d2c615635ecfa">  166</a></span>&#160;    <span class="keywordtype">double</span> m_baseline = 6.3; <span class="comment">// centimeters //! Distance between the optical axes.</span></div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;    <span class="keywordtype">double</span> m_focalLength = 2.8;<span class="comment">// millimeters //! Focal length.</span></div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;    <span class="keywordtype">double</span> m_rms_error;</div>
+<div class="line"><a name="l00169"></a><span class="lineno"><a class="line" href="classCamera.html#a1af92eb015157bda610ff6a510282510">  169</a></span>&#160;    <span class="keywordtype">double</span> <a class="code" href="classCamera.html#a1af92eb015157bda610ff6a510282510">m_cx</a>, m_cy, m_cz, yaw, pitch, roll;</div>
+<div class="line"><a name="l00170"></a><span class="lineno"><a class="line" href="classCamera.html#a75406cf56aa6413208ec3bf3bebbeaf3">  170</a></span>&#160;    <span class="keywordtype">double</span> depth_factor = 1.5;</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160; </div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160; </div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;};</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160; </div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160; </div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="aclassCamera_html"><div class="ttname"><a href="classCamera.html">Camera</a></div><div class="ttdef"><b>Definition:</b> node_camera.hpp:27</div></div>
+<div class="ttc" id="aclassCamera_html_a725eb67c7b54fe20f29861f8f592bd7b"><div class="ttname"><a href="classCamera.html#a725eb67c7b54fe20f29861f8f592bd7b">Camera::cap</a></div><div class="ttdeci">cv::VideoCapture cap</div><div class="ttdoc">Publisher of depth value for a chosen point.</div><div class="ttdef"><b>Definition:</b> node_camera.hpp:138</div></div>
+<div class="ttc" id="aclassCamera_html_a210d3ce1187eccfda2744ef31a6c6176"><div class="ttname"><a href="classCamera.html#a210d3ce1187eccfda2744ef31a6c6176">Camera::depthMap</a></div><div class="ttdeci">cv::Mat depthMap</div><div class="ttdoc">Disparity map.</div><div class="ttdef"><b>Definition:</b> node_camera.hpp:146</div></div>
+<div class="ttc" id="aclassCamera_html_a1af92eb015157bda610ff6a510282510"><div class="ttname"><a href="classCamera.html#a1af92eb015157bda610ff6a510282510">Camera::m_cx</a></div><div class="ttdeci">double m_cx</div><div class="ttdoc">Calibration root-mean-square error.</div><div class="ttdef"><b>Definition:</b> node_camera.hpp:169</div></div>
+<div class="ttc" id="aclassCamera_html"><div class="ttname"><a href="classCamera.html">Camera</a></div><div class="ttdoc">This class uses OpenCV.</div><div class="ttdef"><b>Definition:</b> node_camera.hpp:42</div></div>
+<div class="ttc" id="aclassCamera_html_a35c9c8a38dabbaf43086fb988e2773ef"><div class="ttname"><a href="classCamera.html#a35c9c8a38dabbaf43086fb988e2773ef">Camera::angles_publisher</a></div><div class="ttdeci">rclcpp::Publisher&lt; geometry_msgs::msg::Vector3 &gt;::SharedPtr angles_publisher</div><div class="ttdoc">Publisher of the target's coordinates.</div><div class="ttdef"><b>Definition:</b> node_camera.hpp:133</div></div>
+<div class="ttc" id="aclassCamera_html_acc8a49d7d3b0dd46ac4a3af8f8196014"><div class="ttname"><a href="classCamera.html#acc8a49d7d3b0dd46ac4a3af8f8196014">Camera::frame</a></div><div class="ttdeci">cv::Mat frame</div><div class="ttdoc">Camera instance.</div><div class="ttdef"><b>Definition:</b> node_camera.hpp:140</div></div>
+<div class="ttc" id="aclassCamera_html_a6793980d27c384efb0b036866fdd8aaf"><div class="ttname"><a href="classCamera.html#a6793980d27c384efb0b036866fdd8aaf">Camera::stereo</a></div><div class="ttdeci">cv::Ptr&lt; cv::StereoSGBM &gt; stereo</div><div class="ttdoc">Depth map.</div><div class="ttdef"><b>Definition:</b> node_camera.hpp:148</div></div>
+<div class="ttc" id="aclassCamera_html_a01f94c3543f56ede7af49dc778f19331"><div class="ttname"><a href="classCamera.html#a01f94c3543f56ede7af49dc778f19331">Camera::Camera</a></div><div class="ttdeci">Camera()</div><div class="ttdoc">Sets up the block-matching algorithm and creates useful publishers. Tries to open the stereo camera,...</div><div class="ttdef"><b>Definition:</b> node_camera.hpp:49</div></div>
+<div class="ttc" id="aclassCamera_html_a749e13b267db64bc7e9245c5c53b73f1"><div class="ttname"><a href="classCamera.html#a749e13b267db64bc7e9245c5c53b73f1">Camera::disparityMap</a></div><div class="ttdeci">cv::Mat disparityMap</div><div class="ttdoc">Rectification parameters.</div><div class="ttdef"><b>Definition:</b> node_camera.hpp:145</div></div>
+<div class="ttc" id="aclassCamera_html_ad0a6abef59f3f72a80376ef24796d1f0"><div class="ttname"><a href="classCamera.html#ad0a6abef59f3f72a80376ef24796d1f0">Camera::coord_publisher</a></div><div class="ttdeci">rclcpp::Publisher&lt; geometry_msgs::msg::Point &gt;::SharedPtr coord_publisher</div><div class="ttdoc">Publisher of the left view with target contour.</div><div class="ttdef"><b>Definition:</b> node_camera.hpp:132</div></div>
+<div class="ttc" id="aclassCamera_html_aff13f8440d93a6d9679bf7ef356cabc2"><div class="ttname"><a href="classCamera.html#aff13f8440d93a6d9679bf7ef356cabc2">Camera::double_publisher</a></div><div class="ttdeci">rclcpp::Publisher&lt; std_msgs::msg::Float64 &gt;::SharedPtr double_publisher</div><div class="ttdoc">Publisher of the depth map of the scene.</div><div class="ttdef"><b>Definition:</b> node_camera.hpp:136</div></div>
+<div class="ttc" id="aclassCamera_html_a5e41a84265c9840f4ddfb2a596e58b02"><div class="ttname"><a href="classCamera.html#a5e41a84265c9840f4ddfb2a596e58b02">Camera::m_frame_width</a></div><div class="ttdeci">int m_frame_width</div><div class="ttdoc">Block-matching algorithm instance.</div><div class="ttdef"><b>Definition:</b> node_camera.hpp:150</div></div>
+<div class="ttc" id="aclassCamera_html_a2df4f35ae78bc3450ff2eb1087a2e5b5"><div class="ttname"><a href="classCamera.html#a2df4f35ae78bc3450ff2eb1087a2e5b5">Camera::m_R1</a></div><div class="ttdeci">cv::Mat m_R1</div><div class="ttdoc">Extrinsic parameters.</div><div class="ttdef"><b>Definition:</b> node_camera.hpp:143</div></div>
+<div class="ttc" id="aclassCamera_html_a51e5da8eb163083a34f22cff857934b3"><div class="ttname"><a href="classCamera.html#a51e5da8eb163083a34f22cff857934b3">Camera::m_frame_width_left</a></div><div class="ttdeci">int m_frame_width_left</div><div class="ttdoc">Size of the stereo images.</div><div class="ttdef"><b>Definition:</b> node_camera.hpp:151</div></div>
+<div class="ttc" id="aclassCamera_html_a7228bf9637a68c7fd81cb160cb818582"><div class="ttname"><a href="classCamera.html#a7228bf9637a68c7fd81cb160cb818582">Camera::m_R</a></div><div class="ttdeci">cv::Mat m_R</div><div class="ttdoc">Extrinsic parameters.</div><div class="ttdef"><b>Definition:</b> node_camera.hpp:142</div></div>
+<div class="ttc" id="aclassCamera_html_ae024c9507d78335efb54aa63fe17a477"><div class="ttname"><a href="classCamera.html#ae024c9507d78335efb54aa63fe17a477">Camera::m_cameraMatrixLeft</a></div><div class="ttdeci">cv::Mat m_cameraMatrixLeft</div><div class="ttdoc">Stereo, left and right images for the stereo camera.</div><div class="ttdef"><b>Definition:</b> node_camera.hpp:141</div></div>
+<div class="ttc" id="aclassCamera_html_aadd1182af539868cee6447507d678946"><div class="ttname"><a href="classCamera.html#aadd1182af539868cee6447507d678946">Camera::m_map1Left</a></div><div class="ttdeci">cv::Mat m_map1Left</div><div class="ttdoc">Extrinsic parameters.</div><div class="ttdef"><b>Definition:</b> node_camera.hpp:144</div></div>
+<div class="ttc" id="aclassCamera_html_a0bc445723581f8276658cc93e6e9333a"><div class="ttname"><a href="classCamera.html#a0bc445723581f8276658cc93e6e9333a">Camera::image_publisher</a></div><div class="ttdeci">rclcpp::Publisher&lt; sensor_msgs::msg::Image &gt;::SharedPtr image_publisher</div><div class="ttdoc">Pointer to the timer.</div><div class="ttdef"><b>Definition:</b> node_camera.hpp:131</div></div>
+<div class="ttc" id="aclassCamera_html_a87b0b1a09fadd82451aea18f7814860c"><div class="ttname"><a href="classCamera.html#a87b0b1a09fadd82451aea18f7814860c">Camera::disparity_publisher</a></div><div class="ttdeci">rclcpp::Publisher&lt; sensor_msgs::msg::Image &gt;::SharedPtr disparity_publisher</div><div class="ttdoc">Publisher of the target's orientation.</div><div class="ttdef"><b>Definition:</b> node_camera.hpp:134</div></div>
+<div class="ttc" id="aclassCamera_html_af41028d620482f99d902ebd53b767b2f"><div class="ttname"><a href="classCamera.html#af41028d620482f99d902ebd53b767b2f">Camera::timer_</a></div><div class="ttdeci">rclcpp::TimerBase::SharedPtr timer_</div><div class="ttdoc">Work loop timer.</div><div class="ttdef"><b>Definition:</b> node_camera.hpp:129</div></div>
+<div class="ttc" id="aclassCamera_html_af1d37285c70a60b41e5d36d13fa2e461"><div class="ttname"><a href="classCamera.html#af1d37285c70a60b41e5d36d13fa2e461">Camera::depth_publisher</a></div><div class="ttdeci">rclcpp::Publisher&lt; sensor_msgs::msg::Image &gt;::SharedPtr depth_publisher</div><div class="ttdoc">Publisher of the disparity map of the scene.</div><div class="ttdef"><b>Definition:</b> node_camera.hpp:135</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

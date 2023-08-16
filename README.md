@@ -10,6 +10,7 @@ This project was made during an internship at the [_University of Amsterdam_](ht
 ![The UMI-RTX robotic arm](Media/UMI-RTX-photo.png)
 
 This repository provides tools to set up a ROS 2 interface for controlling the UMI-RTX robotic arm.
+The mission of this project is to make the arm detect a target (we chose a banana plush) via computer vision and then move to grab it and lift it.
 The different nodes of the ROS architecture correspond to:
 * inverse kinematics
 * arm control 
@@ -75,6 +76,9 @@ And then sourcing ROS:
 
     source /opt/ros/foxy/setup.bash
 
+#### Computer vision
+They are two computer vision nodes
+
 #### Simulation
 In order to start only the simulation, just place yourself in LAB42_RTX_control and do:
 
@@ -90,10 +94,10 @@ and then :
     ros2 launch ros_interface_umi_rtx simu.launch.py
 
 ### Docker
-As told earlier, this project works under Ubuntu 20.04 and ROS2 Foxy. However, the usage of the interface is not limited only to this configuration thanks to a custom Docker image, that allow to use our interface with a different configuration.
+As told earlier, this project works under Ubuntu 20.04 and ROS2 Foxy. However, the usage of the interface is not limited to this configuration thanks to a custom Docker image that allows to use our interface with a different configuration.
 
 #### Installation
-The only requirement is to have Docker installed on your computer, to have a NVIDIA GPU with the necessary drivers for which the installation process is described [earlier](), and having installed the [nvidia-docker-toolkit](https://github.com/NVIDIA/nvidia-docker). 
+The only requirements are to have Docker installed on your computer, to have a NVIDIA GPU with the necessary drivers for which the installation process is described [earlier](), and having installed the [nvidia-docker-toolkit](https://github.com/NVIDIA/nvidia-docker). 
 
     distribution=$(. /etc/os-release;echo $ID$VERSION_ID)
     curl -s -L https://nvidia.github.io/nvidia-docker/gpgkey | sudo apt-key add -

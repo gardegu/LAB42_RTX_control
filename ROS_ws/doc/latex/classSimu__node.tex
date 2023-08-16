@@ -11,8 +11,7 @@ R\+O\+S2 node that gather the result of the inverse kinematics process, read the
 
 
 
-Inheritance diagram for Simu\+\_\+node\+:
-\nopagebreak
+Inheritance diagram for Simu\+\_\+node\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -21,8 +20,7 @@ Inheritance diagram for Simu\+\_\+node\+:
 \end{figure}
 
 
-Collaboration diagram for Simu\+\_\+node\+:
-\nopagebreak
+Collaboration diagram for Simu\+\_\+node\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -47,9 +45,7 @@ void \mbox{\hyperlink{classSimu__node_a1ea6667aa5501f814ce1677400ea8010}{timer\+
 void \mbox{\hyperlink{classSimu__node_a7483f71b747b8e7048a22ee878fe0acf}{init\+\_\+urdf}} ()
 \begin{DoxyCompactList}\small\item\em Read the U\+R\+DF description of the arm, to get the joints informations. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classSimu__node_a5fa5c67ce98785bd873f00cbf5d24913}{get\+\_\+commands}} (const sensor\+\_\+msgs\+::msg\+::\+Joint\+State\+::\+Shared\+Ptr msg)
-\begin{DoxyCompactList}\small\item\em Get the commands that will be sent to the arm. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classSimu__node_aa3984748e6022d866f67ec499f1c0ce4}{get\+\_\+mission}} (const std\+\_\+msgs\+::msg\+::\+String\+::\+Shared\+Ptr msg)
-\begin{DoxyCompactList}\small\item\em Get the mission (manual or grab for now) \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Get the commands that will be sent to the arm. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -74,17 +70,11 @@ vector$<$ string $>$ {\bfseries names}
 \mbox{\Hypertarget{classSimu__node_ab2df902eb1a6aa8f2bc397952f4b2292}\label{classSimu__node_ab2df902eb1a6aa8f2bc397952f4b2292}} 
 string {\bfseries urdf\+\_\+file} = ament\+\_\+index\+\_\+cpp\+::get\+\_\+package\+\_\+share\+\_\+directory(\char`\"{}ros\+\_\+interface\+\_\+umi\+\_\+rtx\char`\"{})+\char`\"{}/urdf/umi\+\_\+rtx.\+urdf\char`\"{}
 \item 
-\mbox{\Hypertarget{classSimu__node_a40982d737bd2735c9da7d6c795be2afe}\label{classSimu__node_a40982d737bd2735c9da7d6c795be2afe}} 
-string {\bfseries mission}
-\item 
 \mbox{\Hypertarget{classSimu__node_aa280be6b13086396c36feda13fe1fd52}\label{classSimu__node_aa280be6b13086396c36feda13fe1fd52}} 
 rclcpp\+::\+Timer\+Base\+::\+Shared\+Ptr {\bfseries timer\+\_\+}
 \item 
 \mbox{\Hypertarget{classSimu__node_a9514636511a9a1a7bfd86f692ef7cdf4}\label{classSimu__node_a9514636511a9a1a7bfd86f692ef7cdf4}} 
 rclcpp\+::\+Subscription$<$ sensor\+\_\+msgs\+::msg\+::\+Joint\+State $>$\+::Shared\+Ptr {\bfseries invkin\+\_\+subscriber}
-\item 
-\mbox{\Hypertarget{classSimu__node_a59627e1803a33043f4f1c75c2dd25458}\label{classSimu__node_a59627e1803a33043f4f1c75c2dd25458}} 
-rclcpp\+::\+Subscription$<$ std\+\_\+msgs\+::msg\+::\+String $>$\+::Shared\+Ptr {\bfseries mission\+\_\+subscriber}
 \item 
 \mbox{\Hypertarget{classSimu__node_adb83bdebd9f32822471ea12d217001ce}\label{classSimu__node_adb83bdebd9f32822471ea12d217001ce}} 
 rclcpp\+::\+Publisher$<$ sensor\+\_\+msgs\+::msg\+::\+Joint\+State $>$\+::Shared\+Ptr {\bfseries simu\+\_\+publisher}
@@ -121,21 +111,6 @@ Get the commands that will be sent to the arm.
 
 \begin{DoxyParams}{Parameters}
 {\em msg} & States of the joints required to reach the desired position sent through \\
-\hline
-\end{DoxyParams}
-\mbox{\Hypertarget{classSimu__node_aa3984748e6022d866f67ec499f1c0ce4}\label{classSimu__node_aa3984748e6022d866f67ec499f1c0ce4}} 
-\index{Simu\_node@{Simu\_node}!get\_mission@{get\_mission}}
-\index{get\_mission@{get\_mission}!Simu\_node@{Simu\_node}}
-\doxysubsubsection{\texorpdfstring{get\_mission()}{get\_mission()}}
-{\footnotesize\ttfamily void Simu\+\_\+node\+::get\+\_\+mission (\begin{DoxyParamCaption}\item[{const std\+\_\+msgs\+::msg\+::\+String\+::\+Shared\+Ptr}]{msg }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
-
-
-
-Get the mission (manual or grab for now) 
-
-
-\begin{DoxyParams}{Parameters}
-{\em msg} & \\
 \hline
 \end{DoxyParams}
 

@@ -1,21 +1,14 @@
 var searchData=
 [
-  ['name_43',['name',['../classrapidxml_1_1xml__base.html#aef8ae147fbee59209f714274afc80dc4',1,'rapidxml::xml_base::name() const'],['../classrapidxml_1_1xml__base.html#ae55060ae958c6e6465d6c8db852ec6ce',1,'rapidxml::xml_base::name(const Ch *name, std::size_t size)'],['../classrapidxml_1_1xml__base.html#a4611ddc82ac83a527c65606600eb2a0d',1,'rapidxml::xml_base::name(const Ch *name)']]],
-  ['name_5fsize_44',['name_size',['../classrapidxml_1_1xml__base.html#a20c8ffbe0c7a0b4231681ab8b99330a4',1,'rapidxml::xml_base']]],
-  ['next_5fattribute_45',['next_attribute',['../classrapidxml_1_1xml__attribute.html#affd0c8d0a9020df0998c507cae5474e5',1,'rapidxml::xml_attribute']]],
-  ['next_5fsibling_46',['next_sibling',['../classrapidxml_1_1xml__node.html#ad36aa4445ced578f93c3e06770cb3ef9',1,'rapidxml::xml_node']]],
-  ['node_5farm_2ehpp_47',['node_arm.hpp',['../node__arm_8hpp.html',1,'']]],
-  ['node_5fcdata_48',['node_cdata',['../rapidxml_8hpp.html#abb456db38f7efb746c4330eed6072a7caccf0b363d3876a3f83ff9b1bcdaaa536',1,'rapidxml']]],
-  ['node_5fcommands_2ehpp_49',['node_commands.hpp',['../node__commands_8hpp.html',1,'']]],
-  ['node_5fcomment_50',['node_comment',['../rapidxml_8hpp.html#abb456db38f7efb746c4330eed6072a7ca1a695e1384ec3bd4df3eff65ec609a96',1,'rapidxml']]],
-  ['node_5fdata_51',['node_data',['../rapidxml_8hpp.html#abb456db38f7efb746c4330eed6072a7ca9d669d8e1f4ba9c7eeada4c14a11ad1d',1,'rapidxml']]],
-  ['node_5fdeclaration_52',['node_declaration',['../rapidxml_8hpp.html#abb456db38f7efb746c4330eed6072a7cafe4ca44261e5fbedf0eab43131751212',1,'rapidxml']]],
-  ['node_5fdoctype_53',['node_doctype',['../rapidxml_8hpp.html#abb456db38f7efb746c4330eed6072a7cadf5002f2efabe231bed01d16f08f832c',1,'rapidxml']]],
-  ['node_5fdocument_54',['node_document',['../rapidxml_8hpp.html#abb456db38f7efb746c4330eed6072a7ca4023b6a1c7059fd8fbec2112d5c35424',1,'rapidxml']]],
-  ['node_5felement_55',['node_element',['../rapidxml_8hpp.html#abb456db38f7efb746c4330eed6072a7ca89cbeb4d28046326e4ee953d3c4047ff',1,'rapidxml']]],
-  ['node_5finvkin_2ehpp_56',['node_invkin.hpp',['../node__invkin_8hpp.html',1,'']]],
-  ['node_5fname_5fpred_57',['node_name_pred',['../structrapidxml_1_1xml__document_1_1node__name__pred.html',1,'rapidxml::xml_document']]],
-  ['node_5fpi_58',['node_pi',['../rapidxml_8hpp.html#abb456db38f7efb746c4330eed6072a7caeb73b472e77347b9aa89525f16493b87',1,'rapidxml']]],
-  ['node_5fsimu_2ehpp_59',['node_simu.hpp',['../node__simu_8hpp.html',1,'']]],
-  ['node_5ftype_60',['node_type',['../rapidxml_8hpp.html#abb456db38f7efb746c4330eed6072a7c',1,'rapidxml']]]
+  ['m_5fbaseline_57',['m_baseline',['../classCamera.html#ae8448fc63a0e82d64c1d2c615635ecfa',1,'Camera']]],
+  ['m_5fcameramatrixleft_58',['m_cameraMatrixLeft',['../classCamera.html#ae024c9507d78335efb54aa63fe17a477',1,'Camera']]],
+  ['m_5fcx_59',['m_cx',['../classCamera.html#a1af92eb015157bda610ff6a510282510',1,'Camera::m_cx()'],['../classCamera__API.html#ac0e1db26d7ff09f31f60d95dbee8aa54',1,'Camera_API::m_cx()']]],
+  ['m_5fframe_5fwidth_60',['m_frame_width',['../classCamera.html#a5e41a84265c9840f4ddfb2a596e58b02',1,'Camera']]],
+  ['m_5fframe_5fwidth_5fleft_61',['m_frame_width_left',['../classCamera.html#a51e5da8eb163083a34f22cff857934b3',1,'Camera']]],
+  ['m_5fmap1left_62',['m_map1Left',['../classCamera.html#aadd1182af539868cee6447507d678946',1,'Camera']]],
+  ['m_5fr_63',['m_R',['../classCamera.html#a7228bf9637a68c7fd81cb160cb818582',1,'Camera']]],
+  ['m_5fr1_64',['m_R1',['../classCamera.html#a2df4f35ae78bc3450ff2eb1087a2e5b5',1,'Camera']]],
+  ['main_5fgui_2ehpp_65',['main_gui.hpp',['../main__gui_8hpp.html',1,'']]],
+  ['maingui_66',['MainGUI',['../classMainGUI.html',1,'MainGUI'],['../classMainGUI.html#ac17290e6e604d280b2c1827510449302',1,'MainGUI::MainGUI()']]],
+  ['memory_5fpool_67',['memory_pool',['../classrapidxml_1_1memory__pool.html',1,'rapidxml::memory_pool&lt; Ch &gt;'],['../classrapidxml_1_1memory__pool.html#a0b609da81dff28a19ebd704400788429',1,'rapidxml::memory_pool::memory_pool()']]]
 ];

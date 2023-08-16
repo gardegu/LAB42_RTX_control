@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['what_109',['what',['../classrapidxml_1_1parse__error.html#a986003116ebcb49a69a20228da306232',1,'rapidxml::parse_error']]],
-  ['where_110',['where',['../classrapidxml_1_1parse__error.html#ab139528f4d9e960f0ee807d22d6c032d',1,'rapidxml::parse_error']]],
-  ['whitespace_5fpred_111',['whitespace_pred',['../structrapidxml_1_1xml__document_1_1whitespace__pred.html',1,'rapidxml::xml_document']]]
+  ['value_144',['value',['../classrapidxml_1_1xml__base.html#a6af65de5e59ac497cd69838f8a89d602',1,'rapidxml::xml_base::value() const'],['../classrapidxml_1_1xml__base.html#a3b183c2db7022a6d30494dd2f0ac11e9',1,'rapidxml::xml_base::value(const Ch *value, std::size_t size)'],['../classrapidxml_1_1xml__base.html#a81e63ec4bfd2d7ef0a6c2ed49be6e623',1,'rapidxml::xml_base::value(const Ch *value)']]],
+  ['value_5fsize_145',['value_size',['../classrapidxml_1_1xml__base.html#a2eb123d471b1567fa4832b6ee2b75493',1,'rapidxml::xml_base']]]
 ];

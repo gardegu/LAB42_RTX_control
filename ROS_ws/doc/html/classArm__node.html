@@ -81,8 +81,8 @@ Inheritance diagram for Arm_node:</div>
 <div class="dyncontent">
 <div class="center"><img src="classArm__node__inherit__graph.png" border="0" usemap="#Arm__node_inherit__map" alt="Inheritance graph"/></div>
 <map name="Arm__node_inherit__map" id="Arm__node_inherit__map">
-<area shape="rect" title="Node that communicates with the arm, intermediary between ROS architecture and arm&#39;s drivers." alt="" coords="13,80,94,107"/>
-<area shape="rect" title=" " alt="" coords="5,5,101,32"/>
+<area shape="rect" title=" " alt="" coords="13,80,101,107"/>
+<area shape="rect" title=" " alt="" coords="5,5,108,32"/>
 </map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <div class="dynheader">
@@ -90,8 +90,8 @@ Collaboration diagram for Arm_node:</div>
 <div class="dyncontent">
 <div class="center"><img src="classArm__node__coll__graph.png" border="0" usemap="#Arm__node_coll__map" alt="Collaboration graph"/></div>
 <map name="Arm__node_coll__map" id="Arm__node_coll__map">
-<area shape="rect" title="Node that communicates with the arm, intermediary between ROS architecture and arm&#39;s drivers." alt="" coords="13,80,94,107"/>
-<area shape="rect" title=" " alt="" coords="5,5,101,32"/>
+<area shape="rect" title=" " alt="" coords="13,80,101,107"/>
+<area shape="rect" title=" " alt="" coords="5,5,108,32"/>
 </map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
@@ -115,12 +115,9 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <tr class="memitem:acc453461607d25c4b927b9e1c751554f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classArm__node.html#acc453461607d25c4b927b9e1c751554f">get_commands</a> (const sensor_msgs::msg::JointState::SharedPtr msg)</td></tr>
 <tr class="memdesc:acc453461607d25c4b927b9e1c751554f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the commands that will be sent to the arm.  <a href="classArm__node.html#acc453461607d25c4b927b9e1c751554f">More...</a><br /></td></tr>
 <tr class="separator:acc453461607d25c4b927b9e1c751554f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3bee829f26dedfcd030e04100fe92d87"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classArm__node.html#a3bee829f26dedfcd030e04100fe92d87">get_position</a> (const geometry_msgs::msg::Point::SharedPtr msg)</td></tr>
-<tr class="memdesc:a3bee829f26dedfcd030e04100fe92d87"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the targeted position.  <a href="classArm__node.html#a3bee829f26dedfcd030e04100fe92d87">More...</a><br /></td></tr>
-<tr class="separator:a3bee829f26dedfcd030e04100fe92d87"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab30d900522967fe5a46503e924914892"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classArm__node.html#ab30d900522967fe5a46503e924914892">get_angles</a> (const geometry_msgs::msg::Vector3::SharedPtr msg)</td></tr>
-<tr class="memdesc:ab30d900522967fe5a46503e924914892"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the targeted orientation.  <a href="classArm__node.html#ab30d900522967fe5a46503e924914892">More...</a><br /></td></tr>
-<tr class="separator:ab30d900522967fe5a46503e924914892"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aff474c11e12cb85b77265a6f53c0071d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classArm__node.html#aff474c11e12cb85b77265a6f53c0071d">get_pose</a> (const geometry_msgs::msg::Pose::SharedPtr msg)</td></tr>
+<tr class="memdesc:aff474c11e12cb85b77265a6f53c0071d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the targeted position.  <a href="classArm__node.html#aff474c11e12cb85b77265a6f53c0071d">More...</a><br /></td></tr>
+<tr class="separator:aff474c11e12cb85b77265a6f53c0071d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8951f9bafb8f671b81a35a7331f841eb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classArm__node.html#a8951f9bafb8f671b81a35a7331f841eb">get_grip</a> (const std_msgs::msg::Float32::SharedPtr msg)</td></tr>
 <tr class="memdesc:a8951f9bafb8f671b81a35a7331f841eb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the targeted grip.  <a href="classArm__node.html#a8951f9bafb8f671b81a35a7331f841eb">More...</a><br /></td></tr>
 <tr class="separator:a8951f9bafb8f671b81a35a7331f841eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -196,12 +193,9 @@ rclcpp::TimerBase::SharedPtr&#160;</td><td class="memItemRight" valign="bottom">
 <tr class="memitem:a18e212ff8aa6622d27f6ab0f6035ccea"><td class="memItemLeft" align="right" valign="top"><a id="a18e212ff8aa6622d27f6ab0f6035ccea"></a>
 rclcpp::Subscription&lt; sensor_msgs::msg::JointState &gt;::SharedPtr&#160;</td><td class="memItemRight" valign="bottom"><b>subscription_commands</b></td></tr>
 <tr class="separator:a18e212ff8aa6622d27f6ab0f6035ccea"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab4b0bc2fe3c5e921cba23d3f337109e0"><td class="memItemLeft" align="right" valign="top"><a id="ab4b0bc2fe3c5e921cba23d3f337109e0"></a>
-rclcpp::Subscription&lt; geometry_msgs::msg::Point &gt;::SharedPtr&#160;</td><td class="memItemRight" valign="bottom"><b>position_subscription</b></td></tr>
-<tr class="separator:ab4b0bc2fe3c5e921cba23d3f337109e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a00307350adf203cd5f78cd3bc4f06c85"><td class="memItemLeft" align="right" valign="top"><a id="a00307350adf203cd5f78cd3bc4f06c85"></a>
-rclcpp::Subscription&lt; geometry_msgs::msg::Vector3 &gt;::SharedPtr&#160;</td><td class="memItemRight" valign="bottom"><b>angles_subscription</b></td></tr>
-<tr class="separator:a00307350adf203cd5f78cd3bc4f06c85"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3879f5a3b9e7458b5d7dcb2c948e545c"><td class="memItemLeft" align="right" valign="top"><a id="a3879f5a3b9e7458b5d7dcb2c948e545c"></a>
+rclcpp::Subscription&lt; geometry_msgs::msg::Pose &gt;::SharedPtr&#160;</td><td class="memItemRight" valign="bottom"><b>pose_subscription</b></td></tr>
+<tr class="separator:a3879f5a3b9e7458b5d7dcb2c948e545c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1cdb7bf022711923c58dc939d254dbe9"><td class="memItemLeft" align="right" valign="top"><a id="a1cdb7bf022711923c58dc939d254dbe9"></a>
 rclcpp::Subscription&lt; std_msgs::msg::Float32 &gt;::SharedPtr&#160;</td><td class="memItemRight" valign="bottom"><b>grip_subscription</b></td></tr>
 <tr class="separator:a1cdb7bf022711923c58dc939d254dbe9"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -212,40 +206,6 @@ rclcpp::Publisher&lt; std_msgs::msg::String &gt;::SharedPtr&#160;</td><td class=
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Node that communicates with the arm, intermediary between ROS architecture and arm's drivers. </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
-<a id="ab30d900522967fe5a46503e924914892"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab30d900522967fe5a46503e924914892">&#9670;&nbsp;</a></span>get_angles()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void Arm_node::get_angles </td>
-          <td>(</td>
-          <td class="paramtype">const geometry_msgs::msg::Vector3::SharedPtr&#160;</td>
-          <td class="paramname"><em>msg</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Get the targeted orientation. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">msg</td><td></td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
 <a id="acc453461607d25c4b927b9e1c751554f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#acc453461607d25c4b927b9e1c751554f">&#9670;&nbsp;</a></span>get_commands()</h2>
 
@@ -341,8 +301,8 @@ rclcpp::Publisher&lt; std_msgs::msg::String &gt;::SharedPtr&#160;</td><td class=
 
 </div>
 </div>
-<a id="a3bee829f26dedfcd030e04100fe92d87"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3bee829f26dedfcd030e04100fe92d87">&#9670;&nbsp;</a></span>get_position()</h2>
+<a id="aff474c11e12cb85b77265a6f53c0071d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aff474c11e12cb85b77265a6f53c0071d">&#9670;&nbsp;</a></span>get_pose()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -351,9 +311,9 @@ rclcpp::Publisher&lt; std_msgs::msg::String &gt;::SharedPtr&#160;</td><td class=
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void Arm_node::get_position </td>
+          <td class="memname">void Arm_node::get_pose </td>
           <td>(</td>
-          <td class="paramtype">const geometry_msgs::msg::Point::SharedPtr&#160;</td>
+          <td class="paramtype">const geometry_msgs::msg::Pose::SharedPtr&#160;</td>
           <td class="paramname"><em>msg</em></td><td>)</td>
           <td></td>
         </tr>

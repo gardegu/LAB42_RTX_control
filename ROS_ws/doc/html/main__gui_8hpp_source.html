@@ -134,10 +134,10 @@ $(function() {
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160; </div>
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    ~<a class="code" href="classMainGUI.html">MainGUI</a>() <span class="keyword">override</span>;</div>
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160; </div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    <span class="keywordtype">double</span> x=0., y=0.6, z=0.6, yaw=0., pitch=0., roll=0., grip=0.2;</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    <span class="keywordtype">double</span> x=0., y=0.6, z=0.6, yaw=0., pitch=0., roll=0., grip=0.02;</div>
 <div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    <span class="keywordtype">double</span> raw_yaw=0.;</div>
 <div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160; </div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    <span class="keywordtype">bool</span> manual_on = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    <span class="keywordtype">bool</span> manual_on = <span class="keyword">true</span>, depth_frame=<span class="keyword">false</span>;</div>
 <div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160; </div>
 <div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    QWidget * getParentWindow() <span class="keyword">override</span>;</div>
 <div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    rviz_common::PanelDockWidget * addPane(<span class="keyword">const</span> QString &amp; name, QWidget * pane, Qt::DockWidgetArea area, <span class="keywordtype">bool</span> floating) <span class="keyword">override</span>;</div>

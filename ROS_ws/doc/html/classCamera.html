@@ -63,6 +63,7 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
+<a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pri-methods">Private Member Functions</a> &#124;
 <a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="classCamera-members.html">List of all members</a>  </div>
@@ -70,13 +71,18 @@ $(function() {
 <div class="title">Camera Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>This class uses OpenCV.  
+ <a href="classCamera.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="node__camera_8hpp_source.html">node_camera.hpp</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for Camera:</div>
 <div class="dyncontent">
 <div class="center"><img src="classCamera__inherit__graph.png" border="0" usemap="#Camera_inherit__map" alt="Inheritance graph"/></div>
 <map name="Camera_inherit__map" id="Camera_inherit__map">
-<area shape="rect" title=" " alt="" coords="5,80,73,107"/>
-<area shape="rect" title=" " alt="" coords="13,5,66,32"/>
+<area shape="rect" title="This class uses OpenCV." alt="" coords="5,80,79,107"/>
+<area shape="rect" title=" " alt="" coords="14,5,70,32"/>
 </map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <div class="dynheader">
@@ -84,42 +90,48 @@ Collaboration diagram for Camera:</div>
 <div class="dyncontent">
 <div class="center"><img src="classCamera__coll__graph.png" border="0" usemap="#Camera_coll__map" alt="Collaboration graph"/></div>
 <map name="Camera_coll__map" id="Camera_coll__map">
-<area shape="rect" title=" " alt="" coords="5,80,73,107"/>
-<area shape="rect" title=" " alt="" coords="13,5,66,32"/>
+<area shape="rect" title="This class uses OpenCV." alt="" coords="5,80,79,107"/>
+<area shape="rect" title=" " alt="" coords="14,5,70,32"/>
 </map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:a01f94c3543f56ede7af49dc778f19331"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCamera.html#a01f94c3543f56ede7af49dc778f19331">Camera</a> ()</td></tr>
+<tr class="memdesc:a01f94c3543f56ede7af49dc778f19331"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets up the block-matching algorithm and creates useful publishers. Tries to open the stereo camera, calibrates it and rectifies the images.  <a href="classCamera.html#a01f94c3543f56ede7af49dc778f19331">More...</a><br /></td></tr>
+<tr class="separator:a01f94c3543f56ede7af49dc778f19331"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
-<tr class="memitem:a70904622004e46e451887da8c3dea1b5"><td class="memItemLeft" align="right" valign="top"><a id="a70904622004e46e451887da8c3dea1b5"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>timer_callback</b> ()</td></tr>
+<tr class="memitem:a70904622004e46e451887da8c3dea1b5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCamera.html#a70904622004e46e451887da8c3dea1b5">timer_callback</a> ()</td></tr>
+<tr class="memdesc:a70904622004e46e451887da8c3dea1b5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Work loop. Splits the views, computes the banana's pose(position and orientation), computes the disparity map of the scene, computes the depth map of the scene and publishes this data.  <a href="classCamera.html#a70904622004e46e451887da8c3dea1b5">More...</a><br /></td></tr>
 <tr class="separator:a70904622004e46e451887da8c3dea1b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aebcc15cf7ec6424b35e7c111ec1113fc"><td class="memItemLeft" align="right" valign="top"><a id="aebcc15cf7ec6424b35e7c111ec1113fc"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>init_interfaces</b> ()</td></tr>
+<tr class="memitem:aebcc15cf7ec6424b35e7c111ec1113fc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCamera.html#aebcc15cf7ec6424b35e7c111ec1113fc">init_interfaces</a> ()</td></tr>
+<tr class="memdesc:aebcc15cf7ec6424b35e7c111ec1113fc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates an object to use the block-matching algorithm and publishers to display useful images and coordinates.  <a href="classCamera.html#aebcc15cf7ec6424b35e7c111ec1113fc">More...</a><br /></td></tr>
 <tr class="separator:aebcc15cf7ec6424b35e7c111ec1113fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad24264a56f7dbef2ddd202b65e8a8cde"><td class="memItemLeft" align="right" valign="top"><a id="ad24264a56f7dbef2ddd202b65e8a8cde"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>init_camera</b> ()</td></tr>
+<tr class="memitem:ad24264a56f7dbef2ddd202b65e8a8cde"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCamera.html#ad24264a56f7dbef2ddd202b65e8a8cde">init_camera</a> ()</td></tr>
+<tr class="memdesc:ad24264a56f7dbef2ddd202b65e8a8cde"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tries to open the stereo camera, then calibrates it and rectifies the views.  <a href="classCamera.html#ad24264a56f7dbef2ddd202b65e8a8cde">More...</a><br /></td></tr>
 <tr class="separator:ad24264a56f7dbef2ddd202b65e8a8cde"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a75cad3459676975399a909d83e58b821"><td class="memItemLeft" align="right" valign="top"><a id="a75cad3459676975399a909d83e58b821"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>get_banana_and_angles</b> (geometry_msgs::msg::Point coord_msg, geometry_msgs::msg::Vector3 angles_msg)</td></tr>
+<tr class="memitem:a75cad3459676975399a909d83e58b821"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCamera.html#a75cad3459676975399a909d83e58b821">get_banana_and_angles</a> (geometry_msgs::msg::Point coord_msg, geometry_msgs::msg::Vector3 angles_msg)</td></tr>
+<tr class="memdesc:a75cad3459676975399a909d83e58b821"><td class="mdescLeft">&#160;</td><td class="mdescRight">Binarizes the image to find the banana, finds it, computes its area, computes its centroid's coordinates, gets its orientation and publish this data.  <a href="classCamera.html#a75cad3459676975399a909d83e58b821">More...</a><br /></td></tr>
 <tr class="separator:a75cad3459676975399a909d83e58b821"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af5b96b337adfb5bac839f819ae46fcbe"><td class="memItemLeft" align="right" valign="top"><a id="af5b96b337adfb5bac839f819ae46fcbe"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>get_angles</b> (vector&lt; vector&lt; cv::Point &gt;&gt; &amp;contours)</td></tr>
+<tr class="memitem:af5b96b337adfb5bac839f819ae46fcbe"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCamera.html#af5b96b337adfb5bac839f819ae46fcbe">get_angles</a> (vector&lt; vector&lt; cv::Point &gt;&gt; &amp;contours)</td></tr>
+<tr class="memdesc:af5b96b337adfb5bac839f819ae46fcbe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finds the fittest line with respect to the contour of the target and computes its orientation.  <a href="classCamera.html#af5b96b337adfb5bac839f819ae46fcbe">More...</a><br /></td></tr>
 <tr class="separator:af5b96b337adfb5bac839f819ae46fcbe"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8a3769f370ab087b8681357b91ba3e5e"><td class="memItemLeft" align="right" valign="top"><a id="a8a3769f370ab087b8681357b91ba3e5e"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>stereo_calibration</b> ()</td></tr>
+<tr class="memitem:a8a3769f370ab087b8681357b91ba3e5e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCamera.html#a8a3769f370ab087b8681357b91ba3e5e">stereo_calibration</a> ()</td></tr>
+<tr class="memdesc:a8a3769f370ab087b8681357b91ba3e5e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Uses stereo images with easy-to-detect points on a chessboard and applies correspondence algorithms to compute the intrinsic and extrinsic parameters of the stereo camera. It will look for an inner pattern.  <a href="classCamera.html#a8a3769f370ab087b8681357b91ba3e5e">More...</a><br /></td></tr>
 <tr class="separator:a8a3769f370ab087b8681357b91ba3e5e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae48b7ecd7b43154800e55294448ef8ec"><td class="memItemLeft" align="right" valign="top"><a id="ae48b7ecd7b43154800e55294448ef8ec"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>stereo_rectification</b> ()</td></tr>
+<tr class="memitem:ae48b7ecd7b43154800e55294448ef8ec"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCamera.html#ae48b7ecd7b43154800e55294448ef8ec">stereo_rectification</a> ()</td></tr>
+<tr class="memdesc:ae48b7ecd7b43154800e55294448ef8ec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes rectification parameters. Computes the rotation matrices for each camera that (virtually) make both camera image planes the same plane. Computes the joint undistortion and rectification transformation.  <a href="classCamera.html#ae48b7ecd7b43154800e55294448ef8ec">More...</a><br /></td></tr>
 <tr class="separator:ae48b7ecd7b43154800e55294448ef8ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af48e09e5122454cea4c697b332d7e476"><td class="memItemLeft" align="right" valign="top"><a id="af48e09e5122454cea4c697b332d7e476"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>stereo_split_views</b> ()</td></tr>
+<tr class="memitem:af48e09e5122454cea4c697b332d7e476"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCamera.html#af48e09e5122454cea4c697b332d7e476">stereo_split_views</a> ()</td></tr>
+<tr class="memdesc:af48e09e5122454cea4c697b332d7e476"><td class="mdescLeft">&#160;</td><td class="mdescRight">Splits the stereo image (concatenation of the left and right views) into two separate images.  <a href="classCamera.html#af48e09e5122454cea4c697b332d7e476">More...</a><br /></td></tr>
 <tr class="separator:af48e09e5122454cea4c697b332d7e476"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adf6c4c20dc68e1aafabe1c6b194b559d"><td class="memItemLeft" align="right" valign="top"><a id="adf6c4c20dc68e1aafabe1c6b194b559d"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>stereo_get_disparity</b> ()</td></tr>
+<tr class="memitem:adf6c4c20dc68e1aafabe1c6b194b559d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCamera.html#adf6c4c20dc68e1aafabe1c6b194b559d">stereo_get_disparity</a> ()</td></tr>
+<tr class="memdesc:adf6c4c20dc68e1aafabe1c6b194b559d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Performs horizontal block matching between the views to compute disparity.  <a href="classCamera.html#adf6c4c20dc68e1aafabe1c6b194b559d">More...</a><br /></td></tr>
 <tr class="separator:adf6c4c20dc68e1aafabe1c6b194b559d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aea5c4aacd244c8a48526c17c48b5bcd5"><td class="memItemLeft" align="right" valign="top"><a id="aea5c4aacd244c8a48526c17c48b5bcd5"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>stereo_get_depth</b> ()</td></tr>
+<tr class="memitem:aea5c4aacd244c8a48526c17c48b5bcd5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCamera.html#aea5c4aacd244c8a48526c17c48b5bcd5">stereo_get_depth</a> ()</td></tr>
+<tr class="memdesc:aea5c4aacd244c8a48526c17c48b5bcd5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes depth from disparity.  <a href="classCamera.html#aea5c4aacd244c8a48526c17c48b5bcd5">More...</a><br /></td></tr>
 <tr class="separator:aea5c4aacd244c8a48526c17c48b5bcd5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
@@ -128,31 +140,40 @@ Private Attributes</h2></td></tr>
 std::chrono::milliseconds&#160;</td><td class="memItemRight" valign="bottom"><b>loop_dt_</b> = 40ms</td></tr>
 <tr class="separator:a01f4f80453cfed00f0dc94e6b241295a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af41028d620482f99d902ebd53b767b2f"><td class="memItemLeft" align="right" valign="top"><a id="af41028d620482f99d902ebd53b767b2f"></a>
-rclcpp::TimerBase::SharedPtr&#160;</td><td class="memItemRight" valign="bottom"><b>timer_</b></td></tr>
+rclcpp::TimerBase::SharedPtr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCamera.html#af41028d620482f99d902ebd53b767b2f">timer_</a></td></tr>
+<tr class="memdesc:af41028d620482f99d902ebd53b767b2f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Work loop timer. <br /></td></tr>
 <tr class="separator:af41028d620482f99d902ebd53b767b2f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0bc445723581f8276658cc93e6e9333a"><td class="memItemLeft" align="right" valign="top"><a id="a0bc445723581f8276658cc93e6e9333a"></a>
-rclcpp::Publisher&lt; sensor_msgs::msg::Image &gt;::SharedPtr&#160;</td><td class="memItemRight" valign="bottom"><b>image_publisher</b></td></tr>
+rclcpp::Publisher&lt; sensor_msgs::msg::Image &gt;::SharedPtr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCamera.html#a0bc445723581f8276658cc93e6e9333a">image_publisher</a></td></tr>
+<tr class="memdesc:a0bc445723581f8276658cc93e6e9333a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pointer to the timer. <br /></td></tr>
 <tr class="separator:a0bc445723581f8276658cc93e6e9333a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad0a6abef59f3f72a80376ef24796d1f0"><td class="memItemLeft" align="right" valign="top"><a id="ad0a6abef59f3f72a80376ef24796d1f0"></a>
-rclcpp::Publisher&lt; geometry_msgs::msg::Point &gt;::SharedPtr&#160;</td><td class="memItemRight" valign="bottom"><b>coord_publisher</b></td></tr>
+rclcpp::Publisher&lt; geometry_msgs::msg::Point &gt;::SharedPtr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCamera.html#ad0a6abef59f3f72a80376ef24796d1f0">coord_publisher</a></td></tr>
+<tr class="memdesc:ad0a6abef59f3f72a80376ef24796d1f0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Publisher of the left view with target contour. <br /></td></tr>
 <tr class="separator:ad0a6abef59f3f72a80376ef24796d1f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a35c9c8a38dabbaf43086fb988e2773ef"><td class="memItemLeft" align="right" valign="top"><a id="a35c9c8a38dabbaf43086fb988e2773ef"></a>
-rclcpp::Publisher&lt; geometry_msgs::msg::Vector3 &gt;::SharedPtr&#160;</td><td class="memItemRight" valign="bottom"><b>angles_publisher</b></td></tr>
+rclcpp::Publisher&lt; geometry_msgs::msg::Vector3 &gt;::SharedPtr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCamera.html#a35c9c8a38dabbaf43086fb988e2773ef">angles_publisher</a></td></tr>
+<tr class="memdesc:a35c9c8a38dabbaf43086fb988e2773ef"><td class="mdescLeft">&#160;</td><td class="mdescRight">Publisher of the target's coordinates. <br /></td></tr>
 <tr class="separator:a35c9c8a38dabbaf43086fb988e2773ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a87b0b1a09fadd82451aea18f7814860c"><td class="memItemLeft" align="right" valign="top"><a id="a87b0b1a09fadd82451aea18f7814860c"></a>
-rclcpp::Publisher&lt; sensor_msgs::msg::Image &gt;::SharedPtr&#160;</td><td class="memItemRight" valign="bottom"><b>disparity_publisher</b></td></tr>
+rclcpp::Publisher&lt; sensor_msgs::msg::Image &gt;::SharedPtr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCamera.html#a87b0b1a09fadd82451aea18f7814860c">disparity_publisher</a></td></tr>
+<tr class="memdesc:a87b0b1a09fadd82451aea18f7814860c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Publisher of the target's orientation. <br /></td></tr>
 <tr class="separator:a87b0b1a09fadd82451aea18f7814860c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af1d37285c70a60b41e5d36d13fa2e461"><td class="memItemLeft" align="right" valign="top"><a id="af1d37285c70a60b41e5d36d13fa2e461"></a>
-rclcpp::Publisher&lt; sensor_msgs::msg::Image &gt;::SharedPtr&#160;</td><td class="memItemRight" valign="bottom"><b>depth_publisher</b></td></tr>
+rclcpp::Publisher&lt; sensor_msgs::msg::Image &gt;::SharedPtr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCamera.html#af1d37285c70a60b41e5d36d13fa2e461">depth_publisher</a></td></tr>
+<tr class="memdesc:af1d37285c70a60b41e5d36d13fa2e461"><td class="mdescLeft">&#160;</td><td class="mdescRight">Publisher of the disparity map of the scene. <br /></td></tr>
 <tr class="separator:af1d37285c70a60b41e5d36d13fa2e461"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aff13f8440d93a6d9679bf7ef356cabc2"><td class="memItemLeft" align="right" valign="top"><a id="aff13f8440d93a6d9679bf7ef356cabc2"></a>
-rclcpp::Publisher&lt; std_msgs::msg::Float64 &gt;::SharedPtr&#160;</td><td class="memItemRight" valign="bottom"><b>double_publisher</b></td></tr>
+rclcpp::Publisher&lt; std_msgs::msg::Float64 &gt;::SharedPtr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCamera.html#aff13f8440d93a6d9679bf7ef356cabc2">double_publisher</a></td></tr>
+<tr class="memdesc:aff13f8440d93a6d9679bf7ef356cabc2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Publisher of the depth map of the scene. <br /></td></tr>
 <tr class="separator:aff13f8440d93a6d9679bf7ef356cabc2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a725eb67c7b54fe20f29861f8f592bd7b"><td class="memItemLeft" align="right" valign="top"><a id="a725eb67c7b54fe20f29861f8f592bd7b"></a>
-cv::VideoCapture&#160;</td><td class="memItemRight" valign="bottom"><b>cap</b></td></tr>
+cv::VideoCapture&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCamera.html#a725eb67c7b54fe20f29861f8f592bd7b">cap</a></td></tr>
+<tr class="memdesc:a725eb67c7b54fe20f29861f8f592bd7b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Publisher of depth value for a chosen point. <br /></td></tr>
 <tr class="separator:a725eb67c7b54fe20f29861f8f592bd7b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acc8a49d7d3b0dd46ac4a3af8f8196014"><td class="memItemLeft" align="right" valign="top"><a id="acc8a49d7d3b0dd46ac4a3af8f8196014"></a>
-cv::Mat&#160;</td><td class="memItemRight" valign="bottom"><b>frame</b></td></tr>
+cv::Mat&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCamera.html#acc8a49d7d3b0dd46ac4a3af8f8196014">frame</a></td></tr>
+<tr class="memdesc:acc8a49d7d3b0dd46ac4a3af8f8196014"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classCamera.html" title="This class uses OpenCV.">Camera</a> instance. <br /></td></tr>
 <tr class="separator:acc8a49d7d3b0dd46ac4a3af8f8196014"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4b9ea24cb79e8651589213ce394d73b1"><td class="memItemLeft" align="right" valign="top"><a id="a4b9ea24cb79e8651589213ce394d73b1"></a>
 cv::Mat&#160;</td><td class="memItemRight" valign="bottom"><b>frameLeft</b></td></tr>
@@ -161,7 +182,8 @@ cv::Mat&#160;</td><td class="memItemRight" valign="bottom"><b>frameLeft</b></td>
 cv::Mat&#160;</td><td class="memItemRight" valign="bottom"><b>frameRight</b></td></tr>
 <tr class="separator:a47b87229a2fbf18be1b7bde649a4dfa7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae024c9507d78335efb54aa63fe17a477"><td class="memItemLeft" align="right" valign="top"><a id="ae024c9507d78335efb54aa63fe17a477"></a>
-cv::Mat&#160;</td><td class="memItemRight" valign="bottom"><b>m_cameraMatrixLeft</b></td></tr>
+cv::Mat&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCamera.html#ae024c9507d78335efb54aa63fe17a477">m_cameraMatrixLeft</a></td></tr>
+<tr class="memdesc:ae024c9507d78335efb54aa63fe17a477"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stereo, left and right images for the stereo camera. <br /></td></tr>
 <tr class="separator:ae024c9507d78335efb54aa63fe17a477"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3727c74a72387bd2c6c32f704d9034f1"><td class="memItemLeft" align="right" valign="top"><a id="a3727c74a72387bd2c6c32f704d9034f1"></a>
 cv::Mat&#160;</td><td class="memItemRight" valign="bottom"><b>m_distCoeffsLeft</b></td></tr>
@@ -173,7 +195,8 @@ cv::Mat&#160;</td><td class="memItemRight" valign="bottom"><b>m_cameraMatrixRigh
 cv::Mat&#160;</td><td class="memItemRight" valign="bottom"><b>m_distCoeffsRight</b></td></tr>
 <tr class="separator:a80c73227d54560a8794765657f866239"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7228bf9637a68c7fd81cb160cb818582"><td class="memItemLeft" align="right" valign="top"><a id="a7228bf9637a68c7fd81cb160cb818582"></a>
-cv::Mat&#160;</td><td class="memItemRight" valign="bottom"><b>m_R</b></td></tr>
+cv::Mat&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCamera.html#a7228bf9637a68c7fd81cb160cb818582">m_R</a></td></tr>
+<tr class="memdesc:a7228bf9637a68c7fd81cb160cb818582"><td class="mdescLeft">&#160;</td><td class="mdescRight">Extrinsic parameters. <br /></td></tr>
 <tr class="separator:a7228bf9637a68c7fd81cb160cb818582"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a90d76d1510912ae32b808f2aebb8f3e4"><td class="memItemLeft" align="right" valign="top"><a id="a90d76d1510912ae32b808f2aebb8f3e4"></a>
 cv::Mat&#160;</td><td class="memItemRight" valign="bottom"><b>m_T</b></td></tr>
@@ -185,7 +208,8 @@ cv::Mat&#160;</td><td class="memItemRight" valign="bottom"><b>m_E</b></td></tr>
 cv::Mat&#160;</td><td class="memItemRight" valign="bottom"><b>m_F</b></td></tr>
 <tr class="separator:af9c12ee219270080ee4dec7f6013b309"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2df4f35ae78bc3450ff2eb1087a2e5b5"><td class="memItemLeft" align="right" valign="top"><a id="a2df4f35ae78bc3450ff2eb1087a2e5b5"></a>
-cv::Mat&#160;</td><td class="memItemRight" valign="bottom"><b>m_R1</b></td></tr>
+cv::Mat&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCamera.html#a2df4f35ae78bc3450ff2eb1087a2e5b5">m_R1</a></td></tr>
+<tr class="memdesc:a2df4f35ae78bc3450ff2eb1087a2e5b5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Extrinsic parameters. <br /></td></tr>
 <tr class="separator:a2df4f35ae78bc3450ff2eb1087a2e5b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac82d6b400c56c3edcde94ea2c485bdae"><td class="memItemLeft" align="right" valign="top"><a id="ac82d6b400c56c3edcde94ea2c485bdae"></a>
 cv::Mat&#160;</td><td class="memItemRight" valign="bottom"><b>m_R2</b></td></tr>
@@ -200,7 +224,8 @@ cv::Mat&#160;</td><td class="memItemRight" valign="bottom"><b>m_P2</b></td></tr>
 cv::Mat&#160;</td><td class="memItemRight" valign="bottom"><b>m_Q</b></td></tr>
 <tr class="separator:ae53e405ad1634261901a66e4b3a6af19"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aadd1182af539868cee6447507d678946"><td class="memItemLeft" align="right" valign="top"><a id="aadd1182af539868cee6447507d678946"></a>
-cv::Mat&#160;</td><td class="memItemRight" valign="bottom"><b>m_map1Left</b></td></tr>
+cv::Mat&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCamera.html#aadd1182af539868cee6447507d678946">m_map1Left</a></td></tr>
+<tr class="memdesc:aadd1182af539868cee6447507d678946"><td class="mdescLeft">&#160;</td><td class="mdescRight">Extrinsic parameters. <br /></td></tr>
 <tr class="separator:aadd1182af539868cee6447507d678946"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a16e425403c05a4a474039db91ea645ec"><td class="memItemLeft" align="right" valign="top"><a id="a16e425403c05a4a474039db91ea645ec"></a>
 cv::Mat&#160;</td><td class="memItemRight" valign="bottom"><b>m_map2Left</b></td></tr>
@@ -212,28 +237,34 @@ cv::Mat&#160;</td><td class="memItemRight" valign="bottom"><b>m_map1Right</b></t
 cv::Mat&#160;</td><td class="memItemRight" valign="bottom"><b>m_map2Right</b></td></tr>
 <tr class="separator:acded2e6824fd05d5aec9052f444781cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a749e13b267db64bc7e9245c5c53b73f1"><td class="memItemLeft" align="right" valign="top"><a id="a749e13b267db64bc7e9245c5c53b73f1"></a>
-cv::Mat&#160;</td><td class="memItemRight" valign="bottom"><b>disparityMap</b></td></tr>
+cv::Mat&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCamera.html#a749e13b267db64bc7e9245c5c53b73f1">disparityMap</a></td></tr>
+<tr class="memdesc:a749e13b267db64bc7e9245c5c53b73f1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Rectification parameters. <br /></td></tr>
 <tr class="separator:a749e13b267db64bc7e9245c5c53b73f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a210d3ce1187eccfda2744ef31a6c6176"><td class="memItemLeft" align="right" valign="top"><a id="a210d3ce1187eccfda2744ef31a6c6176"></a>
-cv::Mat&#160;</td><td class="memItemRight" valign="bottom"><b>depthMap</b></td></tr>
+cv::Mat&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCamera.html#a210d3ce1187eccfda2744ef31a6c6176">depthMap</a></td></tr>
+<tr class="memdesc:a210d3ce1187eccfda2744ef31a6c6176"><td class="mdescLeft">&#160;</td><td class="mdescRight">Disparity map. <br /></td></tr>
 <tr class="separator:a210d3ce1187eccfda2744ef31a6c6176"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6793980d27c384efb0b036866fdd8aaf"><td class="memItemLeft" align="right" valign="top"><a id="a6793980d27c384efb0b036866fdd8aaf"></a>
-cv::Ptr&lt; cv::StereoSGBM &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>stereo</b></td></tr>
+cv::Ptr&lt; cv::StereoSGBM &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCamera.html#a6793980d27c384efb0b036866fdd8aaf">stereo</a></td></tr>
+<tr class="memdesc:a6793980d27c384efb0b036866fdd8aaf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Depth map. <br /></td></tr>
 <tr class="separator:a6793980d27c384efb0b036866fdd8aaf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5e41a84265c9840f4ddfb2a596e58b02"><td class="memItemLeft" align="right" valign="top"><a id="a5e41a84265c9840f4ddfb2a596e58b02"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>m_frame_width</b></td></tr>
+int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCamera.html#a5e41a84265c9840f4ddfb2a596e58b02">m_frame_width</a></td></tr>
+<tr class="memdesc:a5e41a84265c9840f4ddfb2a596e58b02"><td class="mdescLeft">&#160;</td><td class="mdescRight">Block-matching algorithm instance. <br /></td></tr>
 <tr class="separator:a5e41a84265c9840f4ddfb2a596e58b02"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a867038b0ab2508aca44122bca7d34b35"><td class="memItemLeft" align="right" valign="top"><a id="a867038b0ab2508aca44122bca7d34b35"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>m_frame_height</b></td></tr>
 <tr class="separator:a867038b0ab2508aca44122bca7d34b35"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a51e5da8eb163083a34f22cff857934b3"><td class="memItemLeft" align="right" valign="top"><a id="a51e5da8eb163083a34f22cff857934b3"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>m_frame_width_left</b></td></tr>
+int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCamera.html#a51e5da8eb163083a34f22cff857934b3">m_frame_width_left</a></td></tr>
+<tr class="memdesc:a51e5da8eb163083a34f22cff857934b3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Size of the stereo images. <br /></td></tr>
 <tr class="separator:a51e5da8eb163083a34f22cff857934b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a13e26e39a7bb50f5bb028aaa80318634"><td class="memItemLeft" align="right" valign="top"><a id="a13e26e39a7bb50f5bb028aaa80318634"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>m_frame_height_left</b></td></tr>
 <tr class="separator:a13e26e39a7bb50f5bb028aaa80318634"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5b8263e4ef0b14f12d0129b3aba588a7"><td class="memItemLeft" align="right" valign="top"><a id="a5b8263e4ef0b14f12d0129b3aba588a7"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>blockSize</b> = 7</td></tr>
+int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCamera.html#a5b8263e4ef0b14f12d0129b3aba588a7">blockSize</a> = 7</td></tr>
+<tr class="memdesc:a5b8263e4ef0b14f12d0129b3aba588a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Size of the left images. <br /></td></tr>
 <tr class="separator:a5b8263e4ef0b14f12d0129b3aba588a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac14ad6d9ec3e1edf3b10021763ba0fd3"><td class="memItemLeft" align="right" valign="top"><a id="ac14ad6d9ec3e1edf3b10021763ba0fd3"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>min_disp</b> = 0</td></tr>
@@ -257,16 +288,17 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>speckleRange</b> = 2</
 int&#160;</td><td class="memItemRight" valign="bottom"><b>disp12MaxDiff</b> = 0</td></tr>
 <tr class="separator:a2f668c5dc75ca1a3a4d7251c5eeb305e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad1b44903cfadb4e8d7a098980dfa8728"><td class="memItemLeft" align="right" valign="top"><a id="ad1b44903cfadb4e8d7a098980dfa8728"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>iP1</b> = 8 * 1 * blockSize * blockSize</td></tr>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>iP1</b> = 8 * 1 * <a class="el" href="classCamera.html#a5b8263e4ef0b14f12d0129b3aba588a7">blockSize</a> * <a class="el" href="classCamera.html#a5b8263e4ef0b14f12d0129b3aba588a7">blockSize</a></td></tr>
 <tr class="separator:ad1b44903cfadb4e8d7a098980dfa8728"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af6c9c03b79982f64dfc06b99dc899b57"><td class="memItemLeft" align="right" valign="top"><a id="af6c9c03b79982f64dfc06b99dc899b57"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>iP2</b> = 16 * 1 * blockSize * blockSize</td></tr>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>iP2</b> = 16 * 1 * <a class="el" href="classCamera.html#a5b8263e4ef0b14f12d0129b3aba588a7">blockSize</a> * <a class="el" href="classCamera.html#a5b8263e4ef0b14f12d0129b3aba588a7">blockSize</a></td></tr>
 <tr class="separator:af6c9c03b79982f64dfc06b99dc899b57"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad82ccda409bba5414ce96600d2883e2b"><td class="memItemLeft" align="right" valign="top"><a id="ad82ccda409bba5414ce96600d2883e2b"></a>
 float&#160;</td><td class="memItemRight" valign="bottom"><b>m_squareSize</b> = 3.1</td></tr>
 <tr class="separator:ad82ccda409bba5414ce96600d2883e2b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae8448fc63a0e82d64c1d2c615635ecfa"><td class="memItemLeft" align="right" valign="top"><a id="ae8448fc63a0e82d64c1d2c615635ecfa"></a>
-double&#160;</td><td class="memItemRight" valign="bottom"><b>m_baseline</b> = 6.3</td></tr>
+double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCamera.html#ae8448fc63a0e82d64c1d2c615635ecfa">m_baseline</a> = 6.3</td></tr>
+<tr class="memdesc:ae8448fc63a0e82d64c1d2c615635ecfa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Size of the pattern used to calibrate. <br /></td></tr>
 <tr class="separator:ae8448fc63a0e82d64c1d2c615635ecfa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab6a27b7a88b3f236337066ccb4148806"><td class="memItemLeft" align="right" valign="top"><a id="ab6a27b7a88b3f236337066ccb4148806"></a>
 double&#160;</td><td class="memItemRight" valign="bottom"><b>m_focalLength</b> = 2.8</td></tr>
@@ -275,7 +307,8 @@ double&#160;</td><td class="memItemRight" valign="bottom"><b>m_focalLength</b> =
 double&#160;</td><td class="memItemRight" valign="bottom"><b>m_rms_error</b></td></tr>
 <tr class="separator:a9c4a15d3bcef2ef6299765e18385cfbc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1af92eb015157bda610ff6a510282510"><td class="memItemLeft" align="right" valign="top"><a id="a1af92eb015157bda610ff6a510282510"></a>
-double&#160;</td><td class="memItemRight" valign="bottom"><b>m_cx</b></td></tr>
+double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCamera.html#a1af92eb015157bda610ff6a510282510">m_cx</a></td></tr>
+<tr class="memdesc:a1af92eb015157bda610ff6a510282510"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calibration root-mean-square error. <br /></td></tr>
 <tr class="separator:a1af92eb015157bda610ff6a510282510"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4f3fd163cec52638fa4d847f430e0b35"><td class="memItemLeft" align="right" valign="top"><a id="a4f3fd163cec52638fa4d847f430e0b35"></a>
 double&#160;</td><td class="memItemRight" valign="bottom"><b>m_cy</b></td></tr>
@@ -293,9 +326,336 @@ double&#160;</td><td class="memItemRight" valign="bottom"><b>pitch</b></td></tr>
 double&#160;</td><td class="memItemRight" valign="bottom"><b>roll</b></td></tr>
 <tr class="separator:a4159be1fbc48e36fddf6720475450a0c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a75406cf56aa6413208ec3bf3bebbeaf3"><td class="memItemLeft" align="right" valign="top"><a id="a75406cf56aa6413208ec3bf3bebbeaf3"></a>
-double&#160;</td><td class="memItemRight" valign="bottom"><b>depth_factor</b> = 1.5</td></tr>
+double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCamera.html#a75406cf56aa6413208ec3bf3bebbeaf3">depth_factor</a> = 1.5</td></tr>
+<tr class="memdesc:a75406cf56aa6413208ec3bf3bebbeaf3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pose coordinates of the target (position and orientation). <br /></td></tr>
 <tr class="separator:a75406cf56aa6413208ec3bf3bebbeaf3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>This class uses OpenCV. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a01f94c3543f56ede7af49dc778f19331"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a01f94c3543f56ede7af49dc778f19331">&#9670;&nbsp;</a></span>Camera()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Camera::Camera </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Sets up the block-matching algorithm and creates useful publishers. Tries to open the stereo camera, calibrates it and rectifies the images. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="af5b96b337adfb5bac839f819ae46fcbe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af5b96b337adfb5bac839f819ae46fcbe">&#9670;&nbsp;</a></span>get_angles()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Camera::get_angles </td>
+          <td>(</td>
+          <td class="paramtype">vector&lt; vector&lt; cv::Point &gt;&gt; &amp;&#160;</td>
+          <td class="paramname"><em>contours</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Finds the fittest line with respect to the contour of the target and computes its orientation. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">contours</td><td>The set of detected contours in the binarized image. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a75cad3459676975399a909d83e58b821"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a75cad3459676975399a909d83e58b821">&#9670;&nbsp;</a></span>get_banana_and_angles()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Camera::get_banana_and_angles </td>
+          <td>(</td>
+          <td class="paramtype">geometry_msgs::msg::Point&#160;</td>
+          <td class="paramname"><em>coord_msg</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">geometry_msgs::msg::Vector3&#160;</td>
+          <td class="paramname"><em>angles_msg</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Binarizes the image to find the banana, finds it, computes its area, computes its centroid's coordinates, gets its orientation and publish this data. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">coord_msg</td><td>Message to publish the position of the banana. </td></tr>
+    <tr><td class="paramname">angles_msg</td><td>Message to publish the orientation of the banana. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ad24264a56f7dbef2ddd202b65e8a8cde"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad24264a56f7dbef2ddd202b65e8a8cde">&#9670;&nbsp;</a></span>init_camera()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Camera::init_camera </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Tries to open the stereo camera, then calibrates it and rectifies the views. </p>
+
+</div>
+</div>
+<a id="aebcc15cf7ec6424b35e7c111ec1113fc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aebcc15cf7ec6424b35e7c111ec1113fc">&#9670;&nbsp;</a></span>init_interfaces()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Camera::init_interfaces </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Creates an object to use the block-matching algorithm and publishers to display useful images and coordinates. </p>
+
+</div>
+</div>
+<a id="a8a3769f370ab087b8681357b91ba3e5e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8a3769f370ab087b8681357b91ba3e5e">&#9670;&nbsp;</a></span>stereo_calibration()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Camera::stereo_calibration </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Uses stereo images with easy-to-detect points on a chessboard and applies correspondence algorithms to compute the intrinsic and extrinsic parameters of the stereo camera. It will look for an inner pattern. </p>
+
+</div>
+</div>
+<a id="aea5c4aacd244c8a48526c17c48b5bcd5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aea5c4aacd244c8a48526c17c48b5bcd5">&#9670;&nbsp;</a></span>stereo_get_depth()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Camera::stereo_get_depth </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Computes depth from disparity. </p>
+
+</div>
+</div>
+<a id="adf6c4c20dc68e1aafabe1c6b194b559d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adf6c4c20dc68e1aafabe1c6b194b559d">&#9670;&nbsp;</a></span>stereo_get_disparity()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Camera::stereo_get_disparity </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Performs horizontal block matching between the views to compute disparity. </p>
+
+</div>
+</div>
+<a id="ae48b7ecd7b43154800e55294448ef8ec"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae48b7ecd7b43154800e55294448ef8ec">&#9670;&nbsp;</a></span>stereo_rectification()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Camera::stereo_rectification </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Computes rectification parameters. Computes the rotation matrices for each camera that (virtually) make both camera image planes the same plane. Computes the joint undistortion and rectification transformation. </p>
+
+</div>
+</div>
+<a id="af48e09e5122454cea4c697b332d7e476"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af48e09e5122454cea4c697b332d7e476">&#9670;&nbsp;</a></span>stereo_split_views()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Camera::stereo_split_views </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Splits the stereo image (concatenation of the left and right views) into two separate images. </p>
+
+</div>
+</div>
+<a id="a70904622004e46e451887da8c3dea1b5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a70904622004e46e451887da8c3dea1b5">&#9670;&nbsp;</a></span>timer_callback()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Camera::timer_callback </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Work loop. Splits the views, computes the banana's pose(position and orientation), computes the disparity map of the scene, computes the depth map of the scene and publishes this data. </p>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li>src/ros_interface_umi_rtx/include/ros_interface_umi_rtx/<a class="el" href="node__camera_8hpp_source.html">node_camera.hpp</a></li>
 </ul>

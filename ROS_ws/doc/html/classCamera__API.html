@@ -63,6 +63,7 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
+<a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pri-methods">Private Member Functions</a> &#124;
 <a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="classCamera__API-members.html">List of all members</a>  </div>
@@ -70,13 +71,18 @@ $(function() {
 <div class="title">Camera_API Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>This class uses Stereolabs' SDK and OpenCV.  
+ <a href="classCamera__API.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="node__camera__API_8hpp_source.html">node_camera_API.hpp</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for Camera_API:</div>
 <div class="dyncontent">
 <div class="center"><img src="classCamera__API__inherit__graph.png" border="0" usemap="#Camera__API_inherit__map" alt="Inheritance graph"/></div>
 <map name="Camera__API_inherit__map" id="Camera__API_inherit__map">
-<area shape="rect" title=" " alt="" coords="5,80,103,107"/>
-<area shape="rect" title=" " alt="" coords="27,5,81,32"/>
+<area shape="rect" title="This class uses Stereolabs&#39; SDK and OpenCV." alt="" coords="5,80,107,107"/>
+<area shape="rect" title=" " alt="" coords="28,5,84,32"/>
 </map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <div class="dynheader">
@@ -84,29 +90,41 @@ Collaboration diagram for Camera_API:</div>
 <div class="dyncontent">
 <div class="center"><img src="classCamera__API__coll__graph.png" border="0" usemap="#Camera__API_coll__map" alt="Collaboration graph"/></div>
 <map name="Camera__API_coll__map" id="Camera__API_coll__map">
-<area shape="rect" title=" " alt="" coords="5,171,103,197"/>
-<area shape="rect" title=" " alt="" coords="22,5,75,32"/>
-<area shape="rect" href="classCamera.html" title=" " alt="" coords="71,81,139,108"/>
+<area shape="rect" title="This class uses Stereolabs&#39; SDK and OpenCV." alt="" coords="5,171,107,197"/>
+<area shape="rect" title=" " alt="" coords="23,5,79,32"/>
+<area shape="rect" href="classCamera.html" title="This class uses OpenCV." alt="" coords="73,81,146,108"/>
 </map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:a839c550e06b2bbfc941a1dab41361470"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCamera__API.html#a839c550e06b2bbfc941a1dab41361470">Camera_API</a> ()</td></tr>
+<tr class="memdesc:a839c550e06b2bbfc941a1dab41361470"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates the publishers, sets up the camera.  <a href="classCamera__API.html#a839c550e06b2bbfc941a1dab41361470">More...</a><br /></td></tr>
+<tr class="separator:a839c550e06b2bbfc941a1dab41361470"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
-<tr class="memitem:a58f0ea05da32d7908d9dad46fb744cd4"><td class="memItemLeft" align="right" valign="top"><a id="a58f0ea05da32d7908d9dad46fb744cd4"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>timer_callback</b> ()</td></tr>
+<tr class="memitem:a58f0ea05da32d7908d9dad46fb744cd4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCamera__API.html#a58f0ea05da32d7908d9dad46fb744cd4">timer_callback</a> ()</td></tr>
+<tr class="memdesc:a58f0ea05da32d7908d9dad46fb744cd4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Work loop. This method tries to read the scene, computes depth, converts images from SL format to OpenCV format, get the target's position and orientation, computes the 3D coordinates of the target and publish them.  <a href="classCamera__API.html#a58f0ea05da32d7908d9dad46fb744cd4">More...</a><br /></td></tr>
 <tr class="separator:a58f0ea05da32d7908d9dad46fb744cd4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a280311b05b5872043fa0ca8901598a8f"><td class="memItemLeft" align="right" valign="top"><a id="a280311b05b5872043fa0ca8901598a8f"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>init_interfaces</b> ()</td></tr>
+<tr class="memitem:a280311b05b5872043fa0ca8901598a8f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCamera__API.html#a280311b05b5872043fa0ca8901598a8f">init_interfaces</a> ()</td></tr>
+<tr class="memdesc:a280311b05b5872043fa0ca8901598a8f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets up the work loop and instantiates the publishers.  <a href="classCamera__API.html#a280311b05b5872043fa0ca8901598a8f">More...</a><br /></td></tr>
 <tr class="separator:a280311b05b5872043fa0ca8901598a8f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a811035bc5d0fac2ed7d72ea44d93631a"><td class="memItemLeft" align="right" valign="top"><a id="a811035bc5d0fac2ed7d72ea44d93631a"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>init_camera</b> ()</td></tr>
+<tr class="memitem:a811035bc5d0fac2ed7d72ea44d93631a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCamera__API.html#a811035bc5d0fac2ed7d72ea44d93631a">init_camera</a> ()</td></tr>
+<tr class="memdesc:a811035bc5d0fac2ed7d72ea44d93631a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets up the chosen parameters of the stereo camera and tries to open it.  <a href="classCamera__API.html#a811035bc5d0fac2ed7d72ea44d93631a">More...</a><br /></td></tr>
 <tr class="separator:a811035bc5d0fac2ed7d72ea44d93631a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aedd9e93f88a37b7b31df7875f5e64b26"><td class="memItemLeft" align="right" valign="top"><a id="aedd9e93f88a37b7b31df7875f5e64b26"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>get_banana_and_angles</b> (geometry_msgs::msg::Point coord_msg, geometry_msgs::msg::Vector3 angles_msg)</td></tr>
-<tr class="separator:aedd9e93f88a37b7b31df7875f5e64b26"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a795b2c1ffb5f946fe6eb85c65b25bcb0"><td class="memItemLeft" align="right" valign="top"><a id="a795b2c1ffb5f946fe6eb85c65b25bcb0"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>get_angles</b> (vector&lt; vector&lt; cv::Point &gt;&gt; &amp;contours)</td></tr>
+<tr class="memitem:a270eb99639b54f91d9740d24fa42724f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCamera__API.html#a270eb99639b54f91d9740d24fa42724f">get_banana_and_angles</a> (geometry_msgs::msg::Pose msg)</td></tr>
+<tr class="memdesc:a270eb99639b54f91d9740d24fa42724f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Binarizes the image to find the banana, finds it, computes its area, computes its centroid's coordinates, gets its orientation and publish this data.  <a href="classCamera__API.html#a270eb99639b54f91d9740d24fa42724f">More...</a><br /></td></tr>
+<tr class="separator:a270eb99639b54f91d9740d24fa42724f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a795b2c1ffb5f946fe6eb85c65b25bcb0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCamera__API.html#a795b2c1ffb5f946fe6eb85c65b25bcb0">get_angles</a> (vector&lt; vector&lt; cv::Point &gt;&gt; &amp;contours)</td></tr>
+<tr class="memdesc:a795b2c1ffb5f946fe6eb85c65b25bcb0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finds the fittest line with respect to the contour of the target and computes its orientation.  <a href="classCamera__API.html#a795b2c1ffb5f946fe6eb85c65b25bcb0">More...</a><br /></td></tr>
 <tr class="separator:a795b2c1ffb5f946fe6eb85c65b25bcb0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad2961d183674fc10c399fc4836d0f63a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCamera__API.html#ad2961d183674fc10c399fc4836d0f63a">getOCVtype</a> (sl::MAT_TYPE type)</td></tr>
+<tr class="memdesc:ad2961d183674fc10c399fc4836d0f63a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Associates the corresponding OpenCV format for a SL image.  <a href="classCamera__API.html#ad2961d183674fc10c399fc4836d0f63a">More...</a><br /></td></tr>
+<tr class="separator:ad2961d183674fc10c399fc4836d0f63a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab5da5bd704fd44aa95f35bbff872d393"><td class="memItemLeft" align="right" valign="top">cv::Mat&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCamera__API.html#ab5da5bd704fd44aa95f35bbff872d393">slMat2cvMat</a> (sl::Mat &amp;input)</td></tr>
+<tr class="memdesc:ab5da5bd704fd44aa95f35bbff872d393"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts a SL image to OpenCV format.  <a href="classCamera__API.html#ab5da5bd704fd44aa95f35bbff872d393">More...</a><br /></td></tr>
+<tr class="separator:ab5da5bd704fd44aa95f35bbff872d393"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
@@ -114,25 +132,23 @@ Private Attributes</h2></td></tr>
 std::chrono::milliseconds&#160;</td><td class="memItemRight" valign="bottom"><b>loop_dt_</b> = 40ms</td></tr>
 <tr class="separator:a672be9bee95c12080c8d0ca5846411b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae52e953be129c89c59ce9d038b133f83"><td class="memItemLeft" align="right" valign="top"><a id="ae52e953be129c89c59ce9d038b133f83"></a>
-rclcpp::TimerBase::SharedPtr&#160;</td><td class="memItemRight" valign="bottom"><b>timer_</b></td></tr>
+rclcpp::TimerBase::SharedPtr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCamera__API.html#ae52e953be129c89c59ce9d038b133f83">timer_</a></td></tr>
+<tr class="memdesc:ae52e953be129c89c59ce9d038b133f83"><td class="mdescLeft">&#160;</td><td class="mdescRight">Loop timer of the node. <br /></td></tr>
 <tr class="separator:ae52e953be129c89c59ce9d038b133f83"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a60bb810ff7e2c4a4c167d2537048b04c"><td class="memItemLeft" align="right" valign="top"><a id="a60bb810ff7e2c4a4c167d2537048b04c"></a>
 rclcpp::Publisher&lt; sensor_msgs::msg::Image &gt;::SharedPtr&#160;</td><td class="memItemRight" valign="bottom"><b>image_publisher</b></td></tr>
 <tr class="separator:a60bb810ff7e2c4a4c167d2537048b04c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a840a893199ff820f3e04be59846c92b3"><td class="memItemLeft" align="right" valign="top"><a id="a840a893199ff820f3e04be59846c92b3"></a>
-rclcpp::Publisher&lt; geometry_msgs::msg::Point &gt;::SharedPtr&#160;</td><td class="memItemRight" valign="bottom"><b>coord_publisher</b></td></tr>
-<tr class="separator:a840a893199ff820f3e04be59846c92b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a21473dea286f8cf0c01087e2a0040f02"><td class="memItemLeft" align="right" valign="top"><a id="a21473dea286f8cf0c01087e2a0040f02"></a>
-rclcpp::Publisher&lt; geometry_msgs::msg::Vector3 &gt;::SharedPtr&#160;</td><td class="memItemRight" valign="bottom"><b>angles_publisher</b></td></tr>
-<tr class="separator:a21473dea286f8cf0c01087e2a0040f02"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a70e1df892235f2afb460b9c22966b93b"><td class="memItemLeft" align="right" valign="top"><a id="a70e1df892235f2afb460b9c22966b93b"></a>
+rclcpp::Publisher&lt; geometry_msgs::msg::Pose &gt;::SharedPtr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCamera__API.html#a70e1df892235f2afb460b9c22966b93b">processed_pose_publisher</a></td></tr>
+<tr class="memdesc:a70e1df892235f2afb460b9c22966b93b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Image publisher of the left view with the contour of the target. <br /></td></tr>
+<tr class="separator:a70e1df892235f2afb460b9c22966b93b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa4ef9f91c852e7c760222ee56281c761"><td class="memItemLeft" align="right" valign="top"><a id="aa4ef9f91c852e7c760222ee56281c761"></a>
-rclcpp::Publisher&lt; sensor_msgs::msg::Image &gt;::SharedPtr&#160;</td><td class="memItemRight" valign="bottom"><b>depth_publisher</b></td></tr>
+rclcpp::Publisher&lt; sensor_msgs::msg::Image &gt;::SharedPtr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCamera__API.html#aa4ef9f91c852e7c760222ee56281c761">depth_publisher</a></td></tr>
+<tr class="memdesc:aa4ef9f91c852e7c760222ee56281c761"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pose publisher of the position and orientation of the target. <br /></td></tr>
 <tr class="separator:aa4ef9f91c852e7c760222ee56281c761"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a45ef2ffed1fe957bc654556171dd9ad0"><td class="memItemLeft" align="right" valign="top"><a id="a45ef2ffed1fe957bc654556171dd9ad0"></a>
-rclcpp::Publisher&lt; std_msgs::msg::Float64 &gt;::SharedPtr&#160;</td><td class="memItemRight" valign="bottom"><b>double_publisher</b></td></tr>
-<tr class="separator:a45ef2ffed1fe957bc654556171dd9ad0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac0e1db26d7ff09f31f60d95dbee8aa54"><td class="memItemLeft" align="right" valign="top"><a id="ac0e1db26d7ff09f31f60d95dbee8aa54"></a>
-double&#160;</td><td class="memItemRight" valign="bottom"><b>m_cx</b></td></tr>
+double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCamera__API.html#ac0e1db26d7ff09f31f60d95dbee8aa54">m_cx</a></td></tr>
+<tr class="memdesc:ac0e1db26d7ff09f31f60d95dbee8aa54"><td class="mdescLeft">&#160;</td><td class="mdescRight">Image publisher of the depth map of the scene. <br /></td></tr>
 <tr class="separator:ac0e1db26d7ff09f31f60d95dbee8aa54"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2706eece84306dbebe1d7344cf98ede8"><td class="memItemLeft" align="right" valign="top"><a id="a2706eece84306dbebe1d7344cf98ede8"></a>
 double&#160;</td><td class="memItemRight" valign="bottom"><b>m_cy</b></td></tr>
@@ -149,36 +165,307 @@ double&#160;</td><td class="memItemRight" valign="bottom"><b>pitch</b></td></tr>
 <tr class="memitem:a08154b8cdffb47b3fa7bbb51be32825b"><td class="memItemLeft" align="right" valign="top"><a id="a08154b8cdffb47b3fa7bbb51be32825b"></a>
 double&#160;</td><td class="memItemRight" valign="bottom"><b>roll</b></td></tr>
 <tr class="separator:a08154b8cdffb47b3fa7bbb51be32825b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad6711af7bf38f4b859f42dd0a9c3eebe"><td class="memItemLeft" align="right" valign="top"><a id="ad6711af7bf38f4b859f42dd0a9c3eebe"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCamera__API.html#ad6711af7bf38f4b859f42dd0a9c3eebe">h</a> =1.19</td></tr>
+<tr class="memdesc:ad6711af7bf38f4b859f42dd0a9c3eebe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Coordinates of the target's centroid and associated Euler angles. <br /></td></tr>
+<tr class="separator:ad6711af7bf38f4b859f42dd0a9c3eebe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6f50816ffbbc78e6fecb16944d1162a5"><td class="memItemLeft" align="right" valign="top"><a id="a6f50816ffbbc78e6fecb16944d1162a5"></a>
+float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCamera__API.html#a6f50816ffbbc78e6fecb16944d1162a5">fx</a> = 1543.25</td></tr>
+<tr class="memdesc:a6f50816ffbbc78e6fecb16944d1162a5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Height of the stereo camera in meters with respect to the arm's support. <br /></td></tr>
+<tr class="separator:a6f50816ffbbc78e6fecb16944d1162a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3bf3ba143a317c235c5dc70093b0fde4"><td class="memItemLeft" align="right" valign="top"><a id="a3bf3ba143a317c235c5dc70093b0fde4"></a>
+float&#160;</td><td class="memItemRight" valign="bottom"><b>fy</b> = 1543.29</td></tr>
+<tr class="separator:a3bf3ba143a317c235c5dc70093b0fde4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a46ce48789e57ff67dc5ecf5e9229e009"><td class="memItemLeft" align="right" valign="top"><a id="a46ce48789e57ff67dc5ecf5e9229e009"></a>
-<a class="el" href="classCamera.html">Camera</a>&#160;</td><td class="memItemRight" valign="bottom"><b>zed</b></td></tr>
+<a class="el" href="classCamera.html">Camera</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCamera__API.html#a46ce48789e57ff67dc5ecf5e9229e009">zed</a></td></tr>
+<tr class="memdesc:a46ce48789e57ff67dc5ecf5e9229e009"><td class="mdescLeft">&#160;</td><td class="mdescRight">Horizontal and vertical focal lengthes. <br /></td></tr>
 <tr class="separator:a46ce48789e57ff67dc5ecf5e9229e009"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abdbbc24c63c461e9a911278a7c062785"><td class="memItemLeft" align="right" valign="top"><a id="abdbbc24c63c461e9a911278a7c062785"></a>
-InitParameters&#160;</td><td class="memItemRight" valign="bottom"><b>init_parameters</b></td></tr>
+InitParameters&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCamera__API.html#abdbbc24c63c461e9a911278a7c062785">init_parameters</a></td></tr>
+<tr class="memdesc:abdbbc24c63c461e9a911278a7c062785"><td class="mdescLeft">&#160;</td><td class="mdescRight">Instance of SDK's <a class="el" href="classCamera.html" title="This class uses OpenCV.">Camera</a> class. <br /></td></tr>
 <tr class="separator:abdbbc24c63c461e9a911278a7c062785"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad74e6685e08dfad31fab7c6f5ccfebeb"><td class="memItemLeft" align="right" valign="top"><a id="ad74e6685e08dfad31fab7c6f5ccfebeb"></a>
-sl::Mat&#160;</td><td class="memItemRight" valign="bottom"><b>zed_image</b></td></tr>
-<tr class="separator:ad74e6685e08dfad31fab7c6f5ccfebeb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a26fbce82df8e30b8759682888ac3b92d"><td class="memItemLeft" align="right" valign="top"><a id="a26fbce82df8e30b8759682888ac3b92d"></a>
-sl::Mat&#160;</td><td class="memItemRight" valign="bottom"><b>zed_image_left</b></td></tr>
+sl::Mat&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCamera__API.html#a26fbce82df8e30b8759682888ac3b92d">zed_image_left</a></td></tr>
+<tr class="memdesc:a26fbce82df8e30b8759682888ac3b92d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Instance of the SDK's InitParameters class used to set the device up. <br /></td></tr>
 <tr class="separator:a26fbce82df8e30b8759682888ac3b92d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af5b497ffba7b3a9d9747c526b1f44dbf"><td class="memItemLeft" align="right" valign="top"><a id="af5b497ffba7b3a9d9747c526b1f44dbf"></a>
-sl::Mat&#160;</td><td class="memItemRight" valign="bottom"><b>zed_image_right</b></td></tr>
-<tr class="separator:af5b497ffba7b3a9d9747c526b1f44dbf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af0ad0f03da69880363c375e43deef1bb"><td class="memItemLeft" align="right" valign="top"><a id="af0ad0f03da69880363c375e43deef1bb"></a>
-sl::Mat&#160;</td><td class="memItemRight" valign="bottom"><b>zed_depth</b></td></tr>
+sl::Mat&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCamera__API.html#af0ad0f03da69880363c375e43deef1bb">zed_depth</a></td></tr>
+<tr class="memdesc:af0ad0f03da69880363c375e43deef1bb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Image captured by the left lens. <br /></td></tr>
 <tr class="separator:af0ad0f03da69880363c375e43deef1bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af90c50b250742bc751a253cf58388197"><td class="memItemLeft" align="right" valign="top"><a id="af90c50b250742bc751a253cf58388197"></a>
 sl::Mat&#160;</td><td class="memItemRight" valign="bottom"><b>zed_point_cloud</b></td></tr>
 <tr class="separator:af90c50b250742bc751a253cf58388197"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac36ede850d472bf63cb968255e3d7ec4"><td class="memItemLeft" align="right" valign="top"><a id="ac36ede850d472bf63cb968255e3d7ec4"></a>
+sl::float4&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCamera__API.html#ac36ede850d472bf63cb968255e3d7ec4">point_cloud_value</a></td></tr>
+<tr class="memdesc:ac36ede850d472bf63cb968255e3d7ec4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Depth map of the scene and associated 3D point cloud. <br /></td></tr>
+<tr class="separator:ac36ede850d472bf63cb968255e3d7ec4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a58133d57b172794e863aad1d14deb404"><td class="memItemLeft" align="right" valign="top"><a id="a58133d57b172794e863aad1d14deb404"></a>
+cv::Mat&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCamera__API.html#a58133d57b172794e863aad1d14deb404">cv_image_left</a></td></tr>
+<tr class="memdesc:a58133d57b172794e863aad1d14deb404"><td class="mdescLeft">&#160;</td><td class="mdescRight">Variable to get the values of one point of the point cloud. <br /></td></tr>
+<tr class="separator:a58133d57b172794e863aad1d14deb404"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa1aed5867c6f53d796ed9124dbb1eda0"><td class="memItemLeft" align="right" valign="top"><a id="aa1aed5867c6f53d796ed9124dbb1eda0"></a>
+cv::Mat&#160;</td><td class="memItemRight" valign="bottom"><b>cv_depth</b></td></tr>
+<tr class="separator:aa1aed5867c6f53d796ed9124dbb1eda0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad0728287cf5fdeab0daba809ee10101e"><td class="memItemLeft" align="right" valign="top"><a id="ad0728287cf5fdeab0daba809ee10101e"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>zed_image_left_width</b></td></tr>
+int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCamera__API.html#ad0728287cf5fdeab0daba809ee10101e">zed_image_left_width</a></td></tr>
+<tr class="memdesc:ad0728287cf5fdeab0daba809ee10101e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Image captured by the left lens and associated depth map with OpenCV format. <br /></td></tr>
 <tr class="separator:ad0728287cf5fdeab0daba809ee10101e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a90c01187d14974bc248f7d31832fd64a"><td class="memItemLeft" align="right" valign="top"><a id="a90c01187d14974bc248f7d31832fd64a"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>zed_image_left_height</b></td></tr>
 <tr class="separator:a90c01187d14974bc248f7d31832fd64a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>This class uses Stereolabs' SDK and OpenCV. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a839c550e06b2bbfc941a1dab41361470"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a839c550e06b2bbfc941a1dab41361470">&#9670;&nbsp;</a></span>Camera_API()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Camera_API::Camera_API </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Creates the publishers, sets up the camera. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a795b2c1ffb5f946fe6eb85c65b25bcb0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a795b2c1ffb5f946fe6eb85c65b25bcb0">&#9670;&nbsp;</a></span>get_angles()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Camera_API::get_angles </td>
+          <td>(</td>
+          <td class="paramtype">vector&lt; vector&lt; cv::Point &gt;&gt; &amp;&#160;</td>
+          <td class="paramname"><em>contours</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Finds the fittest line with respect to the contour of the target and computes its orientation. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">contours</td><td>The set of detected contours in the binarized image. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a270eb99639b54f91d9740d24fa42724f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a270eb99639b54f91d9740d24fa42724f">&#9670;&nbsp;</a></span>get_banana_and_angles()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Camera_API::get_banana_and_angles </td>
+          <td>(</td>
+          <td class="paramtype">geometry_msgs::msg::Pose&#160;</td>
+          <td class="paramname"><em>msg</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Binarizes the image to find the banana, finds it, computes its area, computes its centroid's coordinates, gets its orientation and publish this data. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">msg</td><td>Message to publish the pose of the banana. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ad2961d183674fc10c399fc4836d0f63a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad2961d183674fc10c399fc4836d0f63a">&#9670;&nbsp;</a></span>getOCVtype()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Camera_API::getOCVtype </td>
+          <td>(</td>
+          <td class="paramtype">sl::MAT_TYPE&#160;</td>
+          <td class="paramname"><em>type</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Associates the corresponding OpenCV format for a SL image. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">type</td><td>SL format of the image to convert. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>int OpenCV format of the image to convert. </dd></dl>
+
+</div>
+</div>
+<a id="a811035bc5d0fac2ed7d72ea44d93631a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a811035bc5d0fac2ed7d72ea44d93631a">&#9670;&nbsp;</a></span>init_camera()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Camera_API::init_camera </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Sets up the chosen parameters of the stereo camera and tries to open it. </p>
+
+</div>
+</div>
+<a id="a280311b05b5872043fa0ca8901598a8f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a280311b05b5872043fa0ca8901598a8f">&#9670;&nbsp;</a></span>init_interfaces()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Camera_API::init_interfaces </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Sets up the work loop and instantiates the publishers. </p>
+
+</div>
+</div>
+<a id="ab5da5bd704fd44aa95f35bbff872d393"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab5da5bd704fd44aa95f35bbff872d393">&#9670;&nbsp;</a></span>slMat2cvMat()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">cv::Mat Camera_API::slMat2cvMat </td>
+          <td>(</td>
+          <td class="paramtype">sl::Mat &amp;&#160;</td>
+          <td class="paramname"><em>input</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Converts a SL image to OpenCV format. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">input</td><td>Image to convert. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>cv::Mat Converted image. </dd></dl>
+
+</div>
+</div>
+<a id="a58f0ea05da32d7908d9dad46fb744cd4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a58f0ea05da32d7908d9dad46fb744cd4">&#9670;&nbsp;</a></span>timer_callback()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Camera_API::timer_callback </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Work loop. This method tries to read the scene, computes depth, converts images from SL format to OpenCV format, get the target's position and orientation, computes the 3D coordinates of the target and publish them. </p>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>src/ros_interface_umi_rtx/include/ros_interface_umi_rtx/<a class="el" href="node__camera__API_8h_source.html">node_camera_API.h</a></li>
+<li>src/ros_interface_umi_rtx/include/ros_interface_umi_rtx/<a class="el" href="node__camera__API_8hpp_source.html">node_camera_API.hpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

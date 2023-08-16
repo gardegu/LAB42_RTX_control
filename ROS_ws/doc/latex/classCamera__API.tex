@@ -2,40 +2,55 @@
 \label{classCamera__API}\index{Camera\_API@{Camera\_API}}
 
 
-Inheritance diagram for Camera\+\_\+\+A\+PI\+:\nopagebreak
+This class uses Stereolabs\textquotesingle{} S\+DK and Open\+CV.  
+
+
+
+
+{\ttfamily \#include $<$node\+\_\+camera\+\_\+\+A\+P\+I.\+hpp$>$}
+
+
+
+Inheritance diagram for Camera\+\_\+\+A\+PI\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=153pt]{classCamera__API__inherit__graph}
+\includegraphics[width=156pt]{classCamera__API__inherit__graph}
 \end{center}
 \end{figure}
 
 
-Collaboration diagram for Camera\+\_\+\+A\+PI\+:\nopagebreak
+Collaboration diagram for Camera\+\_\+\+A\+PI\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=180pt]{classCamera__API__coll__graph}
+\includegraphics[width=186pt]{classCamera__API__coll__graph}
 \end{center}
 \end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classCamera__API_a839c550e06b2bbfc941a1dab41361470}{Camera\+\_\+\+A\+PI}} ()
+\begin{DoxyCompactList}\small\item\em Creates the publishers, sets up the camera. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Private Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classCamera__API_a58f0ea05da32d7908d9dad46fb744cd4}\label{classCamera__API_a58f0ea05da32d7908d9dad46fb744cd4}} 
-void {\bfseries timer\+\_\+callback} ()
-\item 
-\mbox{\Hypertarget{classCamera__API_a280311b05b5872043fa0ca8901598a8f}\label{classCamera__API_a280311b05b5872043fa0ca8901598a8f}} 
-void {\bfseries init\+\_\+interfaces} ()
-\item 
-\mbox{\Hypertarget{classCamera__API_a811035bc5d0fac2ed7d72ea44d93631a}\label{classCamera__API_a811035bc5d0fac2ed7d72ea44d93631a}} 
-void {\bfseries init\+\_\+camera} ()
-\item 
-\mbox{\Hypertarget{classCamera__API_aedd9e93f88a37b7b31df7875f5e64b26}\label{classCamera__API_aedd9e93f88a37b7b31df7875f5e64b26}} 
-void {\bfseries get\+\_\+banana\+\_\+and\+\_\+angles} (geometry\+\_\+msgs\+::msg\+::\+Point coord\+\_\+msg, geometry\+\_\+msgs\+::msg\+::\+Vector3 angles\+\_\+msg)
-\item 
-\mbox{\Hypertarget{classCamera__API_a795b2c1ffb5f946fe6eb85c65b25bcb0}\label{classCamera__API_a795b2c1ffb5f946fe6eb85c65b25bcb0}} 
-void {\bfseries get\+\_\+angles} (vector$<$ vector$<$ cv\+::\+Point $>$$>$ \&contours)
-\end{DoxyCompactItemize}
+void \mbox{\hyperlink{classCamera__API_a58f0ea05da32d7908d9dad46fb744cd4}{timer\+\_\+callback}} ()
+\begin{DoxyCompactList}\small\item\em Work loop. This method tries to read the scene, computes depth, converts images from SL format to Open\+CV format, get the target\textquotesingle{}s position and orientation, computes the 3D coordinates of the target and publish them. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classCamera__API_a280311b05b5872043fa0ca8901598a8f}{init\+\_\+interfaces}} ()
+\begin{DoxyCompactList}\small\item\em Sets up the work loop and instantiates the publishers. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classCamera__API_a811035bc5d0fac2ed7d72ea44d93631a}{init\+\_\+camera}} ()
+\begin{DoxyCompactList}\small\item\em Sets up the chosen parameters of the stereo camera and tries to open it. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classCamera__API_a270eb99639b54f91d9740d24fa42724f}{get\+\_\+banana\+\_\+and\+\_\+angles}} (geometry\+\_\+msgs\+::msg\+::\+Pose msg)
+\begin{DoxyCompactList}\small\item\em Binarizes the image to find the banana, finds it, computes its area, computes its centroid\textquotesingle{}s coordinates, gets its orientation and publish this data. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classCamera__API_a795b2c1ffb5f946fe6eb85c65b25bcb0}{get\+\_\+angles}} (vector$<$ vector$<$ cv\+::\+Point $>$$>$ \&contours)
+\begin{DoxyCompactList}\small\item\em Finds the fittest line with respect to the contour of the target and computes its orientation. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classCamera__API_ad2961d183674fc10c399fc4836d0f63a}{get\+O\+C\+Vtype}} (sl\+::\+M\+A\+T\+\_\+\+T\+Y\+PE type)
+\begin{DoxyCompactList}\small\item\em Associates the corresponding Open\+CV format for a SL image. \end{DoxyCompactList}\item 
+cv\+::\+Mat \mbox{\hyperlink{classCamera__API_ab5da5bd704fd44aa95f35bbff872d393}{sl\+Mat2cv\+Mat}} (sl\+::\+Mat \&input)
+\begin{DoxyCompactList}\small\item\em Converts a SL image to Open\+CV format. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -43,26 +58,20 @@ void {\bfseries get\+\_\+angles} (vector$<$ vector$<$ cv\+::\+Point $>$$>$ \&con
 std\+::chrono\+::milliseconds {\bfseries loop\+\_\+dt\+\_\+} = 40ms
 \item 
 \mbox{\Hypertarget{classCamera__API_ae52e953be129c89c59ce9d038b133f83}\label{classCamera__API_ae52e953be129c89c59ce9d038b133f83}} 
-rclcpp\+::\+Timer\+Base\+::\+Shared\+Ptr {\bfseries timer\+\_\+}
-\item 
+rclcpp\+::\+Timer\+Base\+::\+Shared\+Ptr \mbox{\hyperlink{classCamera__API_ae52e953be129c89c59ce9d038b133f83}{timer\+\_\+}}
+\begin{DoxyCompactList}\small\item\em Loop timer of the node. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classCamera__API_a60bb810ff7e2c4a4c167d2537048b04c}\label{classCamera__API_a60bb810ff7e2c4a4c167d2537048b04c}} 
 rclcpp\+::\+Publisher$<$ sensor\+\_\+msgs\+::msg\+::\+Image $>$\+::Shared\+Ptr {\bfseries image\+\_\+publisher}
 \item 
-\mbox{\Hypertarget{classCamera__API_a840a893199ff820f3e04be59846c92b3}\label{classCamera__API_a840a893199ff820f3e04be59846c92b3}} 
-rclcpp\+::\+Publisher$<$ geometry\+\_\+msgs\+::msg\+::\+Point $>$\+::Shared\+Ptr {\bfseries coord\+\_\+publisher}
-\item 
-\mbox{\Hypertarget{classCamera__API_a21473dea286f8cf0c01087e2a0040f02}\label{classCamera__API_a21473dea286f8cf0c01087e2a0040f02}} 
-rclcpp\+::\+Publisher$<$ geometry\+\_\+msgs\+::msg\+::\+Vector3 $>$\+::Shared\+Ptr {\bfseries angles\+\_\+publisher}
-\item 
+\mbox{\Hypertarget{classCamera__API_a70e1df892235f2afb460b9c22966b93b}\label{classCamera__API_a70e1df892235f2afb460b9c22966b93b}} 
+rclcpp\+::\+Publisher$<$ geometry\+\_\+msgs\+::msg\+::\+Pose $>$\+::Shared\+Ptr \mbox{\hyperlink{classCamera__API_a70e1df892235f2afb460b9c22966b93b}{processed\+\_\+pose\+\_\+publisher}}
+\begin{DoxyCompactList}\small\item\em Image publisher of the left view with the contour of the target. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classCamera__API_aa4ef9f91c852e7c760222ee56281c761}\label{classCamera__API_aa4ef9f91c852e7c760222ee56281c761}} 
-rclcpp\+::\+Publisher$<$ sensor\+\_\+msgs\+::msg\+::\+Image $>$\+::Shared\+Ptr {\bfseries depth\+\_\+publisher}
-\item 
-\mbox{\Hypertarget{classCamera__API_a45ef2ffed1fe957bc654556171dd9ad0}\label{classCamera__API_a45ef2ffed1fe957bc654556171dd9ad0}} 
-rclcpp\+::\+Publisher$<$ std\+\_\+msgs\+::msg\+::\+Float64 $>$\+::Shared\+Ptr {\bfseries double\+\_\+publisher}
-\item 
+rclcpp\+::\+Publisher$<$ sensor\+\_\+msgs\+::msg\+::\+Image $>$\+::Shared\+Ptr \mbox{\hyperlink{classCamera__API_aa4ef9f91c852e7c760222ee56281c761}{depth\+\_\+publisher}}
+\begin{DoxyCompactList}\small\item\em Pose publisher of the position and orientation of the target. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classCamera__API_ac0e1db26d7ff09f31f60d95dbee8aa54}\label{classCamera__API_ac0e1db26d7ff09f31f60d95dbee8aa54}} 
-double {\bfseries m\+\_\+cx}
-\item 
+double \mbox{\hyperlink{classCamera__API_ac0e1db26d7ff09f31f60d95dbee8aa54}{m\+\_\+cx}}
+\begin{DoxyCompactList}\small\item\em Image publisher of the depth map of the scene. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classCamera__API_a2706eece84306dbebe1d7344cf98ede8}\label{classCamera__API_a2706eece84306dbebe1d7344cf98ede8}} 
 double {\bfseries m\+\_\+cy}
 \item 
@@ -78,35 +87,164 @@ double {\bfseries pitch}
 \mbox{\Hypertarget{classCamera__API_a08154b8cdffb47b3fa7bbb51be32825b}\label{classCamera__API_a08154b8cdffb47b3fa7bbb51be32825b}} 
 double {\bfseries roll}
 \item 
+\mbox{\Hypertarget{classCamera__API_ad6711af7bf38f4b859f42dd0a9c3eebe}\label{classCamera__API_ad6711af7bf38f4b859f42dd0a9c3eebe}} 
+double \mbox{\hyperlink{classCamera__API_ad6711af7bf38f4b859f42dd0a9c3eebe}{h}} =1.\+19
+\begin{DoxyCompactList}\small\item\em Coordinates of the target\textquotesingle{}s centroid and associated Euler angles. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classCamera__API_a6f50816ffbbc78e6fecb16944d1162a5}\label{classCamera__API_a6f50816ffbbc78e6fecb16944d1162a5}} 
+float \mbox{\hyperlink{classCamera__API_a6f50816ffbbc78e6fecb16944d1162a5}{fx}} = 1543.\+25
+\begin{DoxyCompactList}\small\item\em Height of the stereo camera in meters with respect to the arm\textquotesingle{}s support. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classCamera__API_a3bf3ba143a317c235c5dc70093b0fde4}\label{classCamera__API_a3bf3ba143a317c235c5dc70093b0fde4}} 
+float {\bfseries fy} = 1543.\+29
+\item 
 \mbox{\Hypertarget{classCamera__API_a46ce48789e57ff67dc5ecf5e9229e009}\label{classCamera__API_a46ce48789e57ff67dc5ecf5e9229e009}} 
-\mbox{\hyperlink{classCamera}{Camera}} {\bfseries zed}
-\item 
+\mbox{\hyperlink{classCamera}{Camera}} \mbox{\hyperlink{classCamera__API_a46ce48789e57ff67dc5ecf5e9229e009}{zed}}
+\begin{DoxyCompactList}\small\item\em Horizontal and vertical focal lengthes. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classCamera__API_abdbbc24c63c461e9a911278a7c062785}\label{classCamera__API_abdbbc24c63c461e9a911278a7c062785}} 
-Init\+Parameters {\bfseries init\+\_\+parameters}
-\item 
-\mbox{\Hypertarget{classCamera__API_ad74e6685e08dfad31fab7c6f5ccfebeb}\label{classCamera__API_ad74e6685e08dfad31fab7c6f5ccfebeb}} 
-sl\+::\+Mat {\bfseries zed\+\_\+image}
-\item 
+Init\+Parameters \mbox{\hyperlink{classCamera__API_abdbbc24c63c461e9a911278a7c062785}{init\+\_\+parameters}}
+\begin{DoxyCompactList}\small\item\em Instance of S\+DK\textquotesingle{}s \mbox{\hyperlink{classCamera}{Camera}} class. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classCamera__API_a26fbce82df8e30b8759682888ac3b92d}\label{classCamera__API_a26fbce82df8e30b8759682888ac3b92d}} 
-sl\+::\+Mat {\bfseries zed\+\_\+image\+\_\+left}
-\item 
-\mbox{\Hypertarget{classCamera__API_af5b497ffba7b3a9d9747c526b1f44dbf}\label{classCamera__API_af5b497ffba7b3a9d9747c526b1f44dbf}} 
-sl\+::\+Mat {\bfseries zed\+\_\+image\+\_\+right}
-\item 
+sl\+::\+Mat \mbox{\hyperlink{classCamera__API_a26fbce82df8e30b8759682888ac3b92d}{zed\+\_\+image\+\_\+left}}
+\begin{DoxyCompactList}\small\item\em Instance of the S\+DK\textquotesingle{}s Init\+Parameters class used to set the device up. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classCamera__API_af0ad0f03da69880363c375e43deef1bb}\label{classCamera__API_af0ad0f03da69880363c375e43deef1bb}} 
-sl\+::\+Mat {\bfseries zed\+\_\+depth}
-\item 
+sl\+::\+Mat \mbox{\hyperlink{classCamera__API_af0ad0f03da69880363c375e43deef1bb}{zed\+\_\+depth}}
+\begin{DoxyCompactList}\small\item\em Image captured by the left lens. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classCamera__API_af90c50b250742bc751a253cf58388197}\label{classCamera__API_af90c50b250742bc751a253cf58388197}} 
 sl\+::\+Mat {\bfseries zed\+\_\+point\+\_\+cloud}
 \item 
-\mbox{\Hypertarget{classCamera__API_ad0728287cf5fdeab0daba809ee10101e}\label{classCamera__API_ad0728287cf5fdeab0daba809ee10101e}} 
-int {\bfseries zed\+\_\+image\+\_\+left\+\_\+width}
+\mbox{\Hypertarget{classCamera__API_ac36ede850d472bf63cb968255e3d7ec4}\label{classCamera__API_ac36ede850d472bf63cb968255e3d7ec4}} 
+sl\+::float4 \mbox{\hyperlink{classCamera__API_ac36ede850d472bf63cb968255e3d7ec4}{point\+\_\+cloud\+\_\+value}}
+\begin{DoxyCompactList}\small\item\em Depth map of the scene and associated 3D point cloud. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classCamera__API_a58133d57b172794e863aad1d14deb404}\label{classCamera__API_a58133d57b172794e863aad1d14deb404}} 
+cv\+::\+Mat \mbox{\hyperlink{classCamera__API_a58133d57b172794e863aad1d14deb404}{cv\+\_\+image\+\_\+left}}
+\begin{DoxyCompactList}\small\item\em Variable to get the values of one point of the point cloud. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classCamera__API_aa1aed5867c6f53d796ed9124dbb1eda0}\label{classCamera__API_aa1aed5867c6f53d796ed9124dbb1eda0}} 
+cv\+::\+Mat {\bfseries cv\+\_\+depth}
 \item 
+\mbox{\Hypertarget{classCamera__API_ad0728287cf5fdeab0daba809ee10101e}\label{classCamera__API_ad0728287cf5fdeab0daba809ee10101e}} 
+int \mbox{\hyperlink{classCamera__API_ad0728287cf5fdeab0daba809ee10101e}{zed\+\_\+image\+\_\+left\+\_\+width}}
+\begin{DoxyCompactList}\small\item\em Image captured by the left lens and associated depth map with Open\+CV format. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classCamera__API_a90c01187d14974bc248f7d31832fd64a}\label{classCamera__API_a90c01187d14974bc248f7d31832fd64a}} 
 int {\bfseries zed\+\_\+image\+\_\+left\+\_\+height}
 \end{DoxyCompactItemize}
 
 
+\doxysubsection{Detailed Description}
+This class uses Stereolabs\textquotesingle{} S\+DK and Open\+CV. 
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classCamera__API_a839c550e06b2bbfc941a1dab41361470}\label{classCamera__API_a839c550e06b2bbfc941a1dab41361470}} 
+\index{Camera\_API@{Camera\_API}!Camera\_API@{Camera\_API}}
+\index{Camera\_API@{Camera\_API}!Camera\_API@{Camera\_API}}
+\doxysubsubsection{\texorpdfstring{Camera\_API()}{Camera\_API()}}
+{\footnotesize\ttfamily Camera\+\_\+\+A\+P\+I\+::\+Camera\+\_\+\+A\+PI (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Creates the publishers, sets up the camera. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classCamera__API_a795b2c1ffb5f946fe6eb85c65b25bcb0}\label{classCamera__API_a795b2c1ffb5f946fe6eb85c65b25bcb0}} 
+\index{Camera\_API@{Camera\_API}!get\_angles@{get\_angles}}
+\index{get\_angles@{get\_angles}!Camera\_API@{Camera\_API}}
+\doxysubsubsection{\texorpdfstring{get\_angles()}{get\_angles()}}
+{\footnotesize\ttfamily void Camera\+\_\+\+A\+P\+I\+::get\+\_\+angles (\begin{DoxyParamCaption}\item[{vector$<$ vector$<$ cv\+::\+Point $>$$>$ \&}]{contours }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Finds the fittest line with respect to the contour of the target and computes its orientation. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em contours} & The set of detected contours in the binarized image. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classCamera__API_a270eb99639b54f91d9740d24fa42724f}\label{classCamera__API_a270eb99639b54f91d9740d24fa42724f}} 
+\index{Camera\_API@{Camera\_API}!get\_banana\_and\_angles@{get\_banana\_and\_angles}}
+\index{get\_banana\_and\_angles@{get\_banana\_and\_angles}!Camera\_API@{Camera\_API}}
+\doxysubsubsection{\texorpdfstring{get\_banana\_and\_angles()}{get\_banana\_and\_angles()}}
+{\footnotesize\ttfamily void Camera\+\_\+\+A\+P\+I\+::get\+\_\+banana\+\_\+and\+\_\+angles (\begin{DoxyParamCaption}\item[{geometry\+\_\+msgs\+::msg\+::\+Pose}]{msg }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Binarizes the image to find the banana, finds it, computes its area, computes its centroid\textquotesingle{}s coordinates, gets its orientation and publish this data. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em msg} & Message to publish the pose of the banana. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classCamera__API_ad2961d183674fc10c399fc4836d0f63a}\label{classCamera__API_ad2961d183674fc10c399fc4836d0f63a}} 
+\index{Camera\_API@{Camera\_API}!getOCVtype@{getOCVtype}}
+\index{getOCVtype@{getOCVtype}!Camera\_API@{Camera\_API}}
+\doxysubsubsection{\texorpdfstring{getOCVtype()}{getOCVtype()}}
+{\footnotesize\ttfamily int Camera\+\_\+\+A\+P\+I\+::get\+O\+C\+Vtype (\begin{DoxyParamCaption}\item[{sl\+::\+M\+A\+T\+\_\+\+T\+Y\+PE}]{type }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Associates the corresponding Open\+CV format for a SL image. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em type} & SL format of the image to convert. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int Open\+CV format of the image to convert. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classCamera__API_a811035bc5d0fac2ed7d72ea44d93631a}\label{classCamera__API_a811035bc5d0fac2ed7d72ea44d93631a}} 
+\index{Camera\_API@{Camera\_API}!init\_camera@{init\_camera}}
+\index{init\_camera@{init\_camera}!Camera\_API@{Camera\_API}}
+\doxysubsubsection{\texorpdfstring{init\_camera()}{init\_camera()}}
+{\footnotesize\ttfamily void Camera\+\_\+\+A\+P\+I\+::init\+\_\+camera (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Sets up the chosen parameters of the stereo camera and tries to open it. 
+
+\mbox{\Hypertarget{classCamera__API_a280311b05b5872043fa0ca8901598a8f}\label{classCamera__API_a280311b05b5872043fa0ca8901598a8f}} 
+\index{Camera\_API@{Camera\_API}!init\_interfaces@{init\_interfaces}}
+\index{init\_interfaces@{init\_interfaces}!Camera\_API@{Camera\_API}}
+\doxysubsubsection{\texorpdfstring{init\_interfaces()}{init\_interfaces()}}
+{\footnotesize\ttfamily void Camera\+\_\+\+A\+P\+I\+::init\+\_\+interfaces (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Sets up the work loop and instantiates the publishers. 
+
+\mbox{\Hypertarget{classCamera__API_ab5da5bd704fd44aa95f35bbff872d393}\label{classCamera__API_ab5da5bd704fd44aa95f35bbff872d393}} 
+\index{Camera\_API@{Camera\_API}!slMat2cvMat@{slMat2cvMat}}
+\index{slMat2cvMat@{slMat2cvMat}!Camera\_API@{Camera\_API}}
+\doxysubsubsection{\texorpdfstring{slMat2cvMat()}{slMat2cvMat()}}
+{\footnotesize\ttfamily cv\+::\+Mat Camera\+\_\+\+A\+P\+I\+::sl\+Mat2cv\+Mat (\begin{DoxyParamCaption}\item[{sl\+::\+Mat \&}]{input }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Converts a SL image to Open\+CV format. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em input} & Image to convert. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+cv\+::\+Mat Converted image. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classCamera__API_a58f0ea05da32d7908d9dad46fb744cd4}\label{classCamera__API_a58f0ea05da32d7908d9dad46fb744cd4}} 
+\index{Camera\_API@{Camera\_API}!timer\_callback@{timer\_callback}}
+\index{timer\_callback@{timer\_callback}!Camera\_API@{Camera\_API}}
+\doxysubsubsection{\texorpdfstring{timer\_callback()}{timer\_callback()}}
+{\footnotesize\ttfamily void Camera\+\_\+\+A\+P\+I\+::timer\+\_\+callback (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Work loop. This method tries to read the scene, computes depth, converts images from SL format to Open\+CV format, get the target\textquotesingle{}s position and orientation, computes the 3D coordinates of the target and publish them. 
+
+
+
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-src/ros\+\_\+interface\+\_\+umi\+\_\+rtx/include/ros\+\_\+interface\+\_\+umi\+\_\+rtx/node\+\_\+camera\+\_\+\+A\+P\+I.\+h\end{DoxyCompactItemize}
+src/ros\+\_\+interface\+\_\+umi\+\_\+rtx/include/ros\+\_\+interface\+\_\+umi\+\_\+rtx/\mbox{\hyperlink{node__camera__API_8hpp}{node\+\_\+camera\+\_\+\+A\+P\+I.\+hpp}}\end{DoxyCompactItemize}

@@ -2,55 +2,61 @@
 \label{classCamera}\index{Camera@{Camera}}
 
 
-Inheritance diagram for Camera\+:\nopagebreak
+This class uses Open\+CV.  
+
+
+
+
+{\ttfamily \#include $<$node\+\_\+camera.\+hpp$>$}
+
+
+
+Inheritance diagram for Camera\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=131pt]{classCamera__inherit__graph}
+\includegraphics[width=135pt]{classCamera__inherit__graph}
 \end{center}
 \end{figure}
 
 
-Collaboration diagram for Camera\+:\nopagebreak
+Collaboration diagram for Camera\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=131pt]{classCamera__coll__graph}
+\includegraphics[width=135pt]{classCamera__coll__graph}
 \end{center}
 \end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classCamera_a01f94c3543f56ede7af49dc778f19331}{Camera}} ()
+\begin{DoxyCompactList}\small\item\em Sets up the block-\/matching algorithm and creates useful publishers. Tries to open the stereo camera, calibrates it and rectifies the images. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Private Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classCamera_a70904622004e46e451887da8c3dea1b5}\label{classCamera_a70904622004e46e451887da8c3dea1b5}} 
-void {\bfseries timer\+\_\+callback} ()
-\item 
-\mbox{\Hypertarget{classCamera_aebcc15cf7ec6424b35e7c111ec1113fc}\label{classCamera_aebcc15cf7ec6424b35e7c111ec1113fc}} 
-void {\bfseries init\+\_\+interfaces} ()
-\item 
-\mbox{\Hypertarget{classCamera_ad24264a56f7dbef2ddd202b65e8a8cde}\label{classCamera_ad24264a56f7dbef2ddd202b65e8a8cde}} 
-void {\bfseries init\+\_\+camera} ()
-\item 
-\mbox{\Hypertarget{classCamera_a75cad3459676975399a909d83e58b821}\label{classCamera_a75cad3459676975399a909d83e58b821}} 
-void {\bfseries get\+\_\+banana\+\_\+and\+\_\+angles} (geometry\+\_\+msgs\+::msg\+::\+Point coord\+\_\+msg, geometry\+\_\+msgs\+::msg\+::\+Vector3 angles\+\_\+msg)
-\item 
-\mbox{\Hypertarget{classCamera_af5b96b337adfb5bac839f819ae46fcbe}\label{classCamera_af5b96b337adfb5bac839f819ae46fcbe}} 
-void {\bfseries get\+\_\+angles} (vector$<$ vector$<$ cv\+::\+Point $>$$>$ \&contours)
-\item 
-\mbox{\Hypertarget{classCamera_a8a3769f370ab087b8681357b91ba3e5e}\label{classCamera_a8a3769f370ab087b8681357b91ba3e5e}} 
-void {\bfseries stereo\+\_\+calibration} ()
-\item 
-\mbox{\Hypertarget{classCamera_ae48b7ecd7b43154800e55294448ef8ec}\label{classCamera_ae48b7ecd7b43154800e55294448ef8ec}} 
-void {\bfseries stereo\+\_\+rectification} ()
-\item 
-\mbox{\Hypertarget{classCamera_af48e09e5122454cea4c697b332d7e476}\label{classCamera_af48e09e5122454cea4c697b332d7e476}} 
-void {\bfseries stereo\+\_\+split\+\_\+views} ()
-\item 
-\mbox{\Hypertarget{classCamera_adf6c4c20dc68e1aafabe1c6b194b559d}\label{classCamera_adf6c4c20dc68e1aafabe1c6b194b559d}} 
-void {\bfseries stereo\+\_\+get\+\_\+disparity} ()
-\item 
-\mbox{\Hypertarget{classCamera_aea5c4aacd244c8a48526c17c48b5bcd5}\label{classCamera_aea5c4aacd244c8a48526c17c48b5bcd5}} 
-void {\bfseries stereo\+\_\+get\+\_\+depth} ()
-\end{DoxyCompactItemize}
+void \mbox{\hyperlink{classCamera_a70904622004e46e451887da8c3dea1b5}{timer\+\_\+callback}} ()
+\begin{DoxyCompactList}\small\item\em Work loop. Splits the views, computes the banana\textquotesingle{}s pose(position and orientation), computes the disparity map of the scene, computes the depth map of the scene and publishes this data. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classCamera_aebcc15cf7ec6424b35e7c111ec1113fc}{init\+\_\+interfaces}} ()
+\begin{DoxyCompactList}\small\item\em Creates an object to use the block-\/matching algorithm and publishers to display useful images and coordinates. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classCamera_ad24264a56f7dbef2ddd202b65e8a8cde}{init\+\_\+camera}} ()
+\begin{DoxyCompactList}\small\item\em Tries to open the stereo camera, then calibrates it and rectifies the views. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classCamera_a75cad3459676975399a909d83e58b821}{get\+\_\+banana\+\_\+and\+\_\+angles}} (geometry\+\_\+msgs\+::msg\+::\+Point coord\+\_\+msg, geometry\+\_\+msgs\+::msg\+::\+Vector3 angles\+\_\+msg)
+\begin{DoxyCompactList}\small\item\em Binarizes the image to find the banana, finds it, computes its area, computes its centroid\textquotesingle{}s coordinates, gets its orientation and publish this data. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classCamera_af5b96b337adfb5bac839f819ae46fcbe}{get\+\_\+angles}} (vector$<$ vector$<$ cv\+::\+Point $>$$>$ \&contours)
+\begin{DoxyCompactList}\small\item\em Finds the fittest line with respect to the contour of the target and computes its orientation. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classCamera_a8a3769f370ab087b8681357b91ba3e5e}{stereo\+\_\+calibration}} ()
+\begin{DoxyCompactList}\small\item\em Uses stereo images with easy-\/to-\/detect points on a chessboard and applies correspondence algorithms to compute the intrinsic and extrinsic parameters of the stereo camera. It will look for an inner pattern. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classCamera_ae48b7ecd7b43154800e55294448ef8ec}{stereo\+\_\+rectification}} ()
+\begin{DoxyCompactList}\small\item\em Computes rectification parameters. Computes the rotation matrices for each camera that (virtually) make both camera image planes the same plane. Computes the joint undistortion and rectification transformation. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classCamera_af48e09e5122454cea4c697b332d7e476}{stereo\+\_\+split\+\_\+views}} ()
+\begin{DoxyCompactList}\small\item\em Splits the stereo image (concatenation of the left and right views) into two separate images. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classCamera_adf6c4c20dc68e1aafabe1c6b194b559d}{stereo\+\_\+get\+\_\+disparity}} ()
+\begin{DoxyCompactList}\small\item\em Performs horizontal block matching between the views to compute disparity. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classCamera_aea5c4aacd244c8a48526c17c48b5bcd5}{stereo\+\_\+get\+\_\+depth}} ()
+\begin{DoxyCompactList}\small\item\em Computes depth from disparity. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -58,32 +64,32 @@ void {\bfseries stereo\+\_\+get\+\_\+depth} ()
 std\+::chrono\+::milliseconds {\bfseries loop\+\_\+dt\+\_\+} = 40ms
 \item 
 \mbox{\Hypertarget{classCamera_af41028d620482f99d902ebd53b767b2f}\label{classCamera_af41028d620482f99d902ebd53b767b2f}} 
-rclcpp\+::\+Timer\+Base\+::\+Shared\+Ptr {\bfseries timer\+\_\+}
-\item 
+rclcpp\+::\+Timer\+Base\+::\+Shared\+Ptr \mbox{\hyperlink{classCamera_af41028d620482f99d902ebd53b767b2f}{timer\+\_\+}}
+\begin{DoxyCompactList}\small\item\em Work loop timer. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classCamera_a0bc445723581f8276658cc93e6e9333a}\label{classCamera_a0bc445723581f8276658cc93e6e9333a}} 
-rclcpp\+::\+Publisher$<$ sensor\+\_\+msgs\+::msg\+::\+Image $>$\+::Shared\+Ptr {\bfseries image\+\_\+publisher}
-\item 
+rclcpp\+::\+Publisher$<$ sensor\+\_\+msgs\+::msg\+::\+Image $>$\+::Shared\+Ptr \mbox{\hyperlink{classCamera_a0bc445723581f8276658cc93e6e9333a}{image\+\_\+publisher}}
+\begin{DoxyCompactList}\small\item\em Pointer to the timer. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classCamera_ad0a6abef59f3f72a80376ef24796d1f0}\label{classCamera_ad0a6abef59f3f72a80376ef24796d1f0}} 
-rclcpp\+::\+Publisher$<$ geometry\+\_\+msgs\+::msg\+::\+Point $>$\+::Shared\+Ptr {\bfseries coord\+\_\+publisher}
-\item 
+rclcpp\+::\+Publisher$<$ geometry\+\_\+msgs\+::msg\+::\+Point $>$\+::Shared\+Ptr \mbox{\hyperlink{classCamera_ad0a6abef59f3f72a80376ef24796d1f0}{coord\+\_\+publisher}}
+\begin{DoxyCompactList}\small\item\em Publisher of the left view with target contour. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classCamera_a35c9c8a38dabbaf43086fb988e2773ef}\label{classCamera_a35c9c8a38dabbaf43086fb988e2773ef}} 
-rclcpp\+::\+Publisher$<$ geometry\+\_\+msgs\+::msg\+::\+Vector3 $>$\+::Shared\+Ptr {\bfseries angles\+\_\+publisher}
-\item 
+rclcpp\+::\+Publisher$<$ geometry\+\_\+msgs\+::msg\+::\+Vector3 $>$\+::Shared\+Ptr \mbox{\hyperlink{classCamera_a35c9c8a38dabbaf43086fb988e2773ef}{angles\+\_\+publisher}}
+\begin{DoxyCompactList}\small\item\em Publisher of the target\textquotesingle{}s coordinates. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classCamera_a87b0b1a09fadd82451aea18f7814860c}\label{classCamera_a87b0b1a09fadd82451aea18f7814860c}} 
-rclcpp\+::\+Publisher$<$ sensor\+\_\+msgs\+::msg\+::\+Image $>$\+::Shared\+Ptr {\bfseries disparity\+\_\+publisher}
-\item 
+rclcpp\+::\+Publisher$<$ sensor\+\_\+msgs\+::msg\+::\+Image $>$\+::Shared\+Ptr \mbox{\hyperlink{classCamera_a87b0b1a09fadd82451aea18f7814860c}{disparity\+\_\+publisher}}
+\begin{DoxyCompactList}\small\item\em Publisher of the target\textquotesingle{}s orientation. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classCamera_af1d37285c70a60b41e5d36d13fa2e461}\label{classCamera_af1d37285c70a60b41e5d36d13fa2e461}} 
-rclcpp\+::\+Publisher$<$ sensor\+\_\+msgs\+::msg\+::\+Image $>$\+::Shared\+Ptr {\bfseries depth\+\_\+publisher}
-\item 
+rclcpp\+::\+Publisher$<$ sensor\+\_\+msgs\+::msg\+::\+Image $>$\+::Shared\+Ptr \mbox{\hyperlink{classCamera_af1d37285c70a60b41e5d36d13fa2e461}{depth\+\_\+publisher}}
+\begin{DoxyCompactList}\small\item\em Publisher of the disparity map of the scene. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classCamera_aff13f8440d93a6d9679bf7ef356cabc2}\label{classCamera_aff13f8440d93a6d9679bf7ef356cabc2}} 
-rclcpp\+::\+Publisher$<$ std\+\_\+msgs\+::msg\+::\+Float64 $>$\+::Shared\+Ptr {\bfseries double\+\_\+publisher}
-\item 
+rclcpp\+::\+Publisher$<$ std\+\_\+msgs\+::msg\+::\+Float64 $>$\+::Shared\+Ptr \mbox{\hyperlink{classCamera_aff13f8440d93a6d9679bf7ef356cabc2}{double\+\_\+publisher}}
+\begin{DoxyCompactList}\small\item\em Publisher of the depth map of the scene. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classCamera_a725eb67c7b54fe20f29861f8f592bd7b}\label{classCamera_a725eb67c7b54fe20f29861f8f592bd7b}} 
-cv\+::\+Video\+Capture {\bfseries cap}
-\item 
+cv\+::\+Video\+Capture \mbox{\hyperlink{classCamera_a725eb67c7b54fe20f29861f8f592bd7b}{cap}}
+\begin{DoxyCompactList}\small\item\em Publisher of depth value for a chosen point. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classCamera_acc8a49d7d3b0dd46ac4a3af8f8196014}\label{classCamera_acc8a49d7d3b0dd46ac4a3af8f8196014}} 
-cv\+::\+Mat {\bfseries frame}
-\item 
+cv\+::\+Mat \mbox{\hyperlink{classCamera_acc8a49d7d3b0dd46ac4a3af8f8196014}{frame}}
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{classCamera}{Camera}} instance. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classCamera_a4b9ea24cb79e8651589213ce394d73b1}\label{classCamera_a4b9ea24cb79e8651589213ce394d73b1}} 
 cv\+::\+Mat {\bfseries frame\+Left}
 \item 
@@ -91,8 +97,8 @@ cv\+::\+Mat {\bfseries frame\+Left}
 cv\+::\+Mat {\bfseries frame\+Right}
 \item 
 \mbox{\Hypertarget{classCamera_ae024c9507d78335efb54aa63fe17a477}\label{classCamera_ae024c9507d78335efb54aa63fe17a477}} 
-cv\+::\+Mat {\bfseries m\+\_\+camera\+Matrix\+Left}
-\item 
+cv\+::\+Mat \mbox{\hyperlink{classCamera_ae024c9507d78335efb54aa63fe17a477}{m\+\_\+camera\+Matrix\+Left}}
+\begin{DoxyCompactList}\small\item\em Stereo, left and right images for the stereo camera. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classCamera_a3727c74a72387bd2c6c32f704d9034f1}\label{classCamera_a3727c74a72387bd2c6c32f704d9034f1}} 
 cv\+::\+Mat {\bfseries m\+\_\+dist\+Coeffs\+Left}
 \item 
@@ -103,8 +109,8 @@ cv\+::\+Mat {\bfseries m\+\_\+camera\+Matrix\+Right}
 cv\+::\+Mat {\bfseries m\+\_\+dist\+Coeffs\+Right}
 \item 
 \mbox{\Hypertarget{classCamera_a7228bf9637a68c7fd81cb160cb818582}\label{classCamera_a7228bf9637a68c7fd81cb160cb818582}} 
-cv\+::\+Mat {\bfseries m\+\_\+R}
-\item 
+cv\+::\+Mat \mbox{\hyperlink{classCamera_a7228bf9637a68c7fd81cb160cb818582}{m\+\_\+R}}
+\begin{DoxyCompactList}\small\item\em Extrinsic parameters. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classCamera_a90d76d1510912ae32b808f2aebb8f3e4}\label{classCamera_a90d76d1510912ae32b808f2aebb8f3e4}} 
 cv\+::\+Mat {\bfseries m\+\_\+T}
 \item 
@@ -115,8 +121,8 @@ cv\+::\+Mat {\bfseries m\+\_\+E}
 cv\+::\+Mat {\bfseries m\+\_\+F}
 \item 
 \mbox{\Hypertarget{classCamera_a2df4f35ae78bc3450ff2eb1087a2e5b5}\label{classCamera_a2df4f35ae78bc3450ff2eb1087a2e5b5}} 
-cv\+::\+Mat {\bfseries m\+\_\+\+R1}
-\item 
+cv\+::\+Mat \mbox{\hyperlink{classCamera_a2df4f35ae78bc3450ff2eb1087a2e5b5}{m\+\_\+\+R1}}
+\begin{DoxyCompactList}\small\item\em Extrinsic parameters. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classCamera_ac82d6b400c56c3edcde94ea2c485bdae}\label{classCamera_ac82d6b400c56c3edcde94ea2c485bdae}} 
 cv\+::\+Mat {\bfseries m\+\_\+\+R2}
 \item 
@@ -130,8 +136,8 @@ cv\+::\+Mat {\bfseries m\+\_\+\+P2}
 cv\+::\+Mat {\bfseries m\+\_\+Q}
 \item 
 \mbox{\Hypertarget{classCamera_aadd1182af539868cee6447507d678946}\label{classCamera_aadd1182af539868cee6447507d678946}} 
-cv\+::\+Mat {\bfseries m\+\_\+map1\+Left}
-\item 
+cv\+::\+Mat \mbox{\hyperlink{classCamera_aadd1182af539868cee6447507d678946}{m\+\_\+map1\+Left}}
+\begin{DoxyCompactList}\small\item\em Extrinsic parameters. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classCamera_a16e425403c05a4a474039db91ea645ec}\label{classCamera_a16e425403c05a4a474039db91ea645ec}} 
 cv\+::\+Mat {\bfseries m\+\_\+map2\+Left}
 \item 
@@ -142,29 +148,29 @@ cv\+::\+Mat {\bfseries m\+\_\+map1\+Right}
 cv\+::\+Mat {\bfseries m\+\_\+map2\+Right}
 \item 
 \mbox{\Hypertarget{classCamera_a749e13b267db64bc7e9245c5c53b73f1}\label{classCamera_a749e13b267db64bc7e9245c5c53b73f1}} 
-cv\+::\+Mat {\bfseries disparity\+Map}
-\item 
+cv\+::\+Mat \mbox{\hyperlink{classCamera_a749e13b267db64bc7e9245c5c53b73f1}{disparity\+Map}}
+\begin{DoxyCompactList}\small\item\em Rectification parameters. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classCamera_a210d3ce1187eccfda2744ef31a6c6176}\label{classCamera_a210d3ce1187eccfda2744ef31a6c6176}} 
-cv\+::\+Mat {\bfseries depth\+Map}
-\item 
+cv\+::\+Mat \mbox{\hyperlink{classCamera_a210d3ce1187eccfda2744ef31a6c6176}{depth\+Map}}
+\begin{DoxyCompactList}\small\item\em Disparity map. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classCamera_a6793980d27c384efb0b036866fdd8aaf}\label{classCamera_a6793980d27c384efb0b036866fdd8aaf}} 
-cv\+::\+Ptr$<$ cv\+::\+Stereo\+S\+G\+BM $>$ {\bfseries stereo}
-\item 
+cv\+::\+Ptr$<$ cv\+::\+Stereo\+S\+G\+BM $>$ \mbox{\hyperlink{classCamera_a6793980d27c384efb0b036866fdd8aaf}{stereo}}
+\begin{DoxyCompactList}\small\item\em Depth map. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classCamera_a5e41a84265c9840f4ddfb2a596e58b02}\label{classCamera_a5e41a84265c9840f4ddfb2a596e58b02}} 
-int {\bfseries m\+\_\+frame\+\_\+width}
-\item 
+int \mbox{\hyperlink{classCamera_a5e41a84265c9840f4ddfb2a596e58b02}{m\+\_\+frame\+\_\+width}}
+\begin{DoxyCompactList}\small\item\em Block-\/matching algorithm instance. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classCamera_a867038b0ab2508aca44122bca7d34b35}\label{classCamera_a867038b0ab2508aca44122bca7d34b35}} 
 int {\bfseries m\+\_\+frame\+\_\+height}
 \item 
 \mbox{\Hypertarget{classCamera_a51e5da8eb163083a34f22cff857934b3}\label{classCamera_a51e5da8eb163083a34f22cff857934b3}} 
-int {\bfseries m\+\_\+frame\+\_\+width\+\_\+left}
-\item 
+int \mbox{\hyperlink{classCamera_a51e5da8eb163083a34f22cff857934b3}{m\+\_\+frame\+\_\+width\+\_\+left}}
+\begin{DoxyCompactList}\small\item\em Size of the stereo images. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classCamera_a13e26e39a7bb50f5bb028aaa80318634}\label{classCamera_a13e26e39a7bb50f5bb028aaa80318634}} 
 int {\bfseries m\+\_\+frame\+\_\+height\+\_\+left}
 \item 
 \mbox{\Hypertarget{classCamera_a5b8263e4ef0b14f12d0129b3aba588a7}\label{classCamera_a5b8263e4ef0b14f12d0129b3aba588a7}} 
-int {\bfseries block\+Size} = 7
-\item 
+int \mbox{\hyperlink{classCamera_a5b8263e4ef0b14f12d0129b3aba588a7}{block\+Size}} = 7
+\begin{DoxyCompactList}\small\item\em Size of the left images. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classCamera_ac14ad6d9ec3e1edf3b10021763ba0fd3}\label{classCamera_ac14ad6d9ec3e1edf3b10021763ba0fd3}} 
 int {\bfseries min\+\_\+disp} = 0
 \item 
@@ -187,17 +193,17 @@ int {\bfseries speckle\+Range} = 2
 int {\bfseries disp12\+Max\+Diff} = 0
 \item 
 \mbox{\Hypertarget{classCamera_ad1b44903cfadb4e8d7a098980dfa8728}\label{classCamera_ad1b44903cfadb4e8d7a098980dfa8728}} 
-int {\bfseries i\+P1} = 8 $\ast$ 1 $\ast$ block\+Size $\ast$ block\+Size
+int {\bfseries i\+P1} = 8 $\ast$ 1 $\ast$ \mbox{\hyperlink{classCamera_a5b8263e4ef0b14f12d0129b3aba588a7}{block\+Size}} $\ast$ \mbox{\hyperlink{classCamera_a5b8263e4ef0b14f12d0129b3aba588a7}{block\+Size}}
 \item 
 \mbox{\Hypertarget{classCamera_af6c9c03b79982f64dfc06b99dc899b57}\label{classCamera_af6c9c03b79982f64dfc06b99dc899b57}} 
-int {\bfseries i\+P2} = 16 $\ast$ 1 $\ast$ block\+Size $\ast$ block\+Size
+int {\bfseries i\+P2} = 16 $\ast$ 1 $\ast$ \mbox{\hyperlink{classCamera_a5b8263e4ef0b14f12d0129b3aba588a7}{block\+Size}} $\ast$ \mbox{\hyperlink{classCamera_a5b8263e4ef0b14f12d0129b3aba588a7}{block\+Size}}
 \item 
 \mbox{\Hypertarget{classCamera_ad82ccda409bba5414ce96600d2883e2b}\label{classCamera_ad82ccda409bba5414ce96600d2883e2b}} 
 float {\bfseries m\+\_\+square\+Size} = 3.\+1
 \item 
 \mbox{\Hypertarget{classCamera_ae8448fc63a0e82d64c1d2c615635ecfa}\label{classCamera_ae8448fc63a0e82d64c1d2c615635ecfa}} 
-double {\bfseries m\+\_\+baseline} = 6.\+3
-\item 
+double \mbox{\hyperlink{classCamera_ae8448fc63a0e82d64c1d2c615635ecfa}{m\+\_\+baseline}} = 6.\+3
+\begin{DoxyCompactList}\small\item\em Size of the pattern used to calibrate. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classCamera_ab6a27b7a88b3f236337066ccb4148806}\label{classCamera_ab6a27b7a88b3f236337066ccb4148806}} 
 double {\bfseries m\+\_\+focal\+Length} = 2.\+8
 \item 
@@ -205,8 +211,8 @@ double {\bfseries m\+\_\+focal\+Length} = 2.\+8
 double {\bfseries m\+\_\+rms\+\_\+error}
 \item 
 \mbox{\Hypertarget{classCamera_a1af92eb015157bda610ff6a510282510}\label{classCamera_a1af92eb015157bda610ff6a510282510}} 
-double {\bfseries m\+\_\+cx}
-\item 
+double \mbox{\hyperlink{classCamera_a1af92eb015157bda610ff6a510282510}{m\+\_\+cx}}
+\begin{DoxyCompactList}\small\item\em Calibration root-\/mean-\/square error. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classCamera_a4f3fd163cec52638fa4d847f430e0b35}\label{classCamera_a4f3fd163cec52638fa4d847f430e0b35}} 
 double {\bfseries m\+\_\+cy}
 \item 
@@ -223,10 +229,143 @@ double {\bfseries pitch}
 double {\bfseries roll}
 \item 
 \mbox{\Hypertarget{classCamera_a75406cf56aa6413208ec3bf3bebbeaf3}\label{classCamera_a75406cf56aa6413208ec3bf3bebbeaf3}} 
-double {\bfseries depth\+\_\+factor} = 1.\+5
-\end{DoxyCompactItemize}
+double \mbox{\hyperlink{classCamera_a75406cf56aa6413208ec3bf3bebbeaf3}{depth\+\_\+factor}} = 1.\+5
+\begin{DoxyCompactList}\small\item\em Pose coordinates of the target (position and orientation). \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This class uses Open\+CV. 
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classCamera_a01f94c3543f56ede7af49dc778f19331}\label{classCamera_a01f94c3543f56ede7af49dc778f19331}} 
+\index{Camera@{Camera}!Camera@{Camera}}
+\index{Camera@{Camera}!Camera@{Camera}}
+\doxysubsubsection{\texorpdfstring{Camera()}{Camera()}}
+{\footnotesize\ttfamily Camera\+::\+Camera (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Sets up the block-\/matching algorithm and creates useful publishers. Tries to open the stereo camera, calibrates it and rectifies the images. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classCamera_af5b96b337adfb5bac839f819ae46fcbe}\label{classCamera_af5b96b337adfb5bac839f819ae46fcbe}} 
+\index{Camera@{Camera}!get\_angles@{get\_angles}}
+\index{get\_angles@{get\_angles}!Camera@{Camera}}
+\doxysubsubsection{\texorpdfstring{get\_angles()}{get\_angles()}}
+{\footnotesize\ttfamily void Camera\+::get\+\_\+angles (\begin{DoxyParamCaption}\item[{vector$<$ vector$<$ cv\+::\+Point $>$$>$ \&}]{contours }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Finds the fittest line with respect to the contour of the target and computes its orientation. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em contours} & The set of detected contours in the binarized image. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classCamera_a75cad3459676975399a909d83e58b821}\label{classCamera_a75cad3459676975399a909d83e58b821}} 
+\index{Camera@{Camera}!get\_banana\_and\_angles@{get\_banana\_and\_angles}}
+\index{get\_banana\_and\_angles@{get\_banana\_and\_angles}!Camera@{Camera}}
+\doxysubsubsection{\texorpdfstring{get\_banana\_and\_angles()}{get\_banana\_and\_angles()}}
+{\footnotesize\ttfamily void Camera\+::get\+\_\+banana\+\_\+and\+\_\+angles (\begin{DoxyParamCaption}\item[{geometry\+\_\+msgs\+::msg\+::\+Point}]{coord\+\_\+msg,  }\item[{geometry\+\_\+msgs\+::msg\+::\+Vector3}]{angles\+\_\+msg }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Binarizes the image to find the banana, finds it, computes its area, computes its centroid\textquotesingle{}s coordinates, gets its orientation and publish this data. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em coord\+\_\+msg} & Message to publish the position of the banana. \\
+\hline
+{\em angles\+\_\+msg} & Message to publish the orientation of the banana. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classCamera_ad24264a56f7dbef2ddd202b65e8a8cde}\label{classCamera_ad24264a56f7dbef2ddd202b65e8a8cde}} 
+\index{Camera@{Camera}!init\_camera@{init\_camera}}
+\index{init\_camera@{init\_camera}!Camera@{Camera}}
+\doxysubsubsection{\texorpdfstring{init\_camera()}{init\_camera()}}
+{\footnotesize\ttfamily void Camera\+::init\+\_\+camera (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Tries to open the stereo camera, then calibrates it and rectifies the views. 
+
+\mbox{\Hypertarget{classCamera_aebcc15cf7ec6424b35e7c111ec1113fc}\label{classCamera_aebcc15cf7ec6424b35e7c111ec1113fc}} 
+\index{Camera@{Camera}!init\_interfaces@{init\_interfaces}}
+\index{init\_interfaces@{init\_interfaces}!Camera@{Camera}}
+\doxysubsubsection{\texorpdfstring{init\_interfaces()}{init\_interfaces()}}
+{\footnotesize\ttfamily void Camera\+::init\+\_\+interfaces (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Creates an object to use the block-\/matching algorithm and publishers to display useful images and coordinates. 
+
+\mbox{\Hypertarget{classCamera_a8a3769f370ab087b8681357b91ba3e5e}\label{classCamera_a8a3769f370ab087b8681357b91ba3e5e}} 
+\index{Camera@{Camera}!stereo\_calibration@{stereo\_calibration}}
+\index{stereo\_calibration@{stereo\_calibration}!Camera@{Camera}}
+\doxysubsubsection{\texorpdfstring{stereo\_calibration()}{stereo\_calibration()}}
+{\footnotesize\ttfamily void Camera\+::stereo\+\_\+calibration (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Uses stereo images with easy-\/to-\/detect points on a chessboard and applies correspondence algorithms to compute the intrinsic and extrinsic parameters of the stereo camera. It will look for an inner pattern. 
+
+\mbox{\Hypertarget{classCamera_aea5c4aacd244c8a48526c17c48b5bcd5}\label{classCamera_aea5c4aacd244c8a48526c17c48b5bcd5}} 
+\index{Camera@{Camera}!stereo\_get\_depth@{stereo\_get\_depth}}
+\index{stereo\_get\_depth@{stereo\_get\_depth}!Camera@{Camera}}
+\doxysubsubsection{\texorpdfstring{stereo\_get\_depth()}{stereo\_get\_depth()}}
+{\footnotesize\ttfamily void Camera\+::stereo\+\_\+get\+\_\+depth (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Computes depth from disparity. 
+
+\mbox{\Hypertarget{classCamera_adf6c4c20dc68e1aafabe1c6b194b559d}\label{classCamera_adf6c4c20dc68e1aafabe1c6b194b559d}} 
+\index{Camera@{Camera}!stereo\_get\_disparity@{stereo\_get\_disparity}}
+\index{stereo\_get\_disparity@{stereo\_get\_disparity}!Camera@{Camera}}
+\doxysubsubsection{\texorpdfstring{stereo\_get\_disparity()}{stereo\_get\_disparity()}}
+{\footnotesize\ttfamily void Camera\+::stereo\+\_\+get\+\_\+disparity (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Performs horizontal block matching between the views to compute disparity. 
+
+\mbox{\Hypertarget{classCamera_ae48b7ecd7b43154800e55294448ef8ec}\label{classCamera_ae48b7ecd7b43154800e55294448ef8ec}} 
+\index{Camera@{Camera}!stereo\_rectification@{stereo\_rectification}}
+\index{stereo\_rectification@{stereo\_rectification}!Camera@{Camera}}
+\doxysubsubsection{\texorpdfstring{stereo\_rectification()}{stereo\_rectification()}}
+{\footnotesize\ttfamily void Camera\+::stereo\+\_\+rectification (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Computes rectification parameters. Computes the rotation matrices for each camera that (virtually) make both camera image planes the same plane. Computes the joint undistortion and rectification transformation. 
+
+\mbox{\Hypertarget{classCamera_af48e09e5122454cea4c697b332d7e476}\label{classCamera_af48e09e5122454cea4c697b332d7e476}} 
+\index{Camera@{Camera}!stereo\_split\_views@{stereo\_split\_views}}
+\index{stereo\_split\_views@{stereo\_split\_views}!Camera@{Camera}}
+\doxysubsubsection{\texorpdfstring{stereo\_split\_views()}{stereo\_split\_views()}}
+{\footnotesize\ttfamily void Camera\+::stereo\+\_\+split\+\_\+views (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Splits the stereo image (concatenation of the left and right views) into two separate images. 
+
+\mbox{\Hypertarget{classCamera_a70904622004e46e451887da8c3dea1b5}\label{classCamera_a70904622004e46e451887da8c3dea1b5}} 
+\index{Camera@{Camera}!timer\_callback@{timer\_callback}}
+\index{timer\_callback@{timer\_callback}!Camera@{Camera}}
+\doxysubsubsection{\texorpdfstring{timer\_callback()}{timer\_callback()}}
+{\footnotesize\ttfamily void Camera\+::timer\+\_\+callback (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Work loop. Splits the views, computes the banana\textquotesingle{}s pose(position and orientation), computes the disparity map of the scene, computes the depth map of the scene and publishes this data. 
+
 
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-src/ros\+\_\+interface\+\_\+umi\+\_\+rtx/include/ros\+\_\+interface\+\_\+umi\+\_\+rtx/node\+\_\+camera.\+hpp\end{DoxyCompactItemize}
+src/ros\+\_\+interface\+\_\+umi\+\_\+rtx/include/ros\+\_\+interface\+\_\+umi\+\_\+rtx/\mbox{\hyperlink{node__camera_8hpp}{node\+\_\+camera.\+hpp}}\end{DoxyCompactItemize}

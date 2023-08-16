@@ -81,8 +81,8 @@ Inheritance diagram for InvKin_node:</div>
 <div class="dyncontent">
 <div class="center"><img src="classInvKin__node__inherit__graph.png" border="0" usemap="#InvKin__node_inherit__map" alt="Inheritance graph"/></div>
 <map name="InvKin__node_inherit__map" id="InvKin__node_inherit__map">
-<area shape="rect" title="This node processes the inverse kinematics, in order to get the joints&#39; states required to reach the ..." alt="" coords="5,80,100,107"/>
-<area shape="rect" title=" " alt="" coords="26,5,79,32"/>
+<area shape="rect" title="This node processes the inverse kinematics, in order to get the joints&#39; states required to reach the ..." alt="" coords="5,80,108,107"/>
+<area shape="rect" title=" " alt="" coords="29,5,85,32"/>
 </map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <div class="dynheader">
@@ -90,8 +90,8 @@ Collaboration diagram for InvKin_node:</div>
 <div class="dyncontent">
 <div class="center"><img src="classInvKin__node__coll__graph.png" border="0" usemap="#InvKin__node_coll__map" alt="Collaboration graph"/></div>
 <map name="InvKin__node_coll__map" id="InvKin__node_coll__map">
-<area shape="rect" title="This node processes the inverse kinematics, in order to get the joints&#39; states required to reach the ..." alt="" coords="5,80,100,107"/>
-<area shape="rect" title=" " alt="" coords="26,5,79,32"/>
+<area shape="rect" title="This node processes the inverse kinematics, in order to get the joints&#39; states required to reach the ..." alt="" coords="5,80,108,107"/>
+<area shape="rect" title=" " alt="" coords="29,5,85,32"/>
 </map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
@@ -111,12 +111,9 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classInvKin__node.html#ad3585199cc81eb72cb160d26b51a3dc1">timer_callback</a> ()</td></tr>
 <tr class="memdesc:ad3585199cc81eb72cb160d26b51a3dc1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Timer callback, actions that will be done at every iterations. <br /></td></tr>
 <tr class="separator:ad3585199cc81eb72cb160d26b51a3dc1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a90293733a2cddfe1527340b61b487db0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classInvKin__node.html#a90293733a2cddfe1527340b61b487db0">get_position</a> (const geometry_msgs::msg::Point::SharedPtr msg)</td></tr>
-<tr class="memdesc:a90293733a2cddfe1527340b61b487db0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the targeted position.  <a href="classInvKin__node.html#a90293733a2cddfe1527340b61b487db0">More...</a><br /></td></tr>
-<tr class="separator:a90293733a2cddfe1527340b61b487db0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1a94abbdf9a686e28e5fa393217c167b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classInvKin__node.html#a1a94abbdf9a686e28e5fa393217c167b">get_angles</a> (const geometry_msgs::msg::Vector3::SharedPtr msg)</td></tr>
-<tr class="memdesc:a1a94abbdf9a686e28e5fa393217c167b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the targeted orientation.  <a href="classInvKin__node.html#a1a94abbdf9a686e28e5fa393217c167b">More...</a><br /></td></tr>
-<tr class="separator:a1a94abbdf9a686e28e5fa393217c167b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:add2d606fbb003ec4f1bba5f83a52d644"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classInvKin__node.html#add2d606fbb003ec4f1bba5f83a52d644">get_pose</a> (const geometry_msgs::msg::Pose::SharedPtr msg)</td></tr>
+<tr class="memdesc:add2d606fbb003ec4f1bba5f83a52d644"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the targeted position.  <a href="classInvKin__node.html#add2d606fbb003ec4f1bba5f83a52d644">More...</a><br /></td></tr>
+<tr class="separator:add2d606fbb003ec4f1bba5f83a52d644"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afe4b94559a4a51da10a4c28ca189f0ab"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classInvKin__node.html#afe4b94559a4a51da10a4c28ca189f0ab">get_grip</a> (const std_msgs::msg::Float32::SharedPtr msg)</td></tr>
 <tr class="memdesc:afe4b94559a4a51da10a4c28ca189f0ab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the targeted grip.  <a href="classInvKin__node.html#afe4b94559a4a51da10a4c28ca189f0ab">More...</a><br /></td></tr>
 <tr class="separator:afe4b94559a4a51da10a4c28ca189f0ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -210,12 +207,9 @@ Eigen::VectorXd&#160;</td><td class="memItemRight" valign="bottom"><b>q</b></td>
 <tr class="memitem:a445334266920e92b266823068b559a0a"><td class="memItemLeft" align="right" valign="top"><a id="a445334266920e92b266823068b559a0a"></a>
 rclcpp::TimerBase::SharedPtr&#160;</td><td class="memItemRight" valign="bottom"><b>timer_</b></td></tr>
 <tr class="separator:a445334266920e92b266823068b559a0a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8a179a52607d7c77b4a304a1ce728ee1"><td class="memItemLeft" align="right" valign="top"><a id="a8a179a52607d7c77b4a304a1ce728ee1"></a>
-rclcpp::Subscription&lt; geometry_msgs::msg::Point &gt;::SharedPtr&#160;</td><td class="memItemRight" valign="bottom"><b>position_subscription</b></td></tr>
-<tr class="separator:a8a179a52607d7c77b4a304a1ce728ee1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad48b7cc4149fb14d68c33dc709b7f3d7"><td class="memItemLeft" align="right" valign="top"><a id="ad48b7cc4149fb14d68c33dc709b7f3d7"></a>
-rclcpp::Subscription&lt; geometry_msgs::msg::Vector3 &gt;::SharedPtr&#160;</td><td class="memItemRight" valign="bottom"><b>angles_subscription</b></td></tr>
-<tr class="separator:ad48b7cc4149fb14d68c33dc709b7f3d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a188713a45a6f38bd2404f178b22627d9"><td class="memItemLeft" align="right" valign="top"><a id="a188713a45a6f38bd2404f178b22627d9"></a>
+rclcpp::Subscription&lt; geometry_msgs::msg::Pose &gt;::SharedPtr&#160;</td><td class="memItemRight" valign="bottom"><b>pose_subscription</b></td></tr>
+<tr class="separator:a188713a45a6f38bd2404f178b22627d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab9abf82dabd452b212471144fce55cca"><td class="memItemLeft" align="right" valign="top"><a id="ab9abf82dabd452b212471144fce55cca"></a>
 rclcpp::Subscription&lt; std_msgs::msg::Float32 &gt;::SharedPtr&#160;</td><td class="memItemRight" valign="bottom"><b>grip_subscription</b></td></tr>
 <tr class="separator:ab9abf82dabd452b212471144fce55cca"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -288,40 +282,6 @@ rclcpp::Publisher&lt; sensor_msgs::msg::JointState &gt;::SharedPtr&#160;</td><td
 
 </div>
 </div>
-<a id="a1a94abbdf9a686e28e5fa393217c167b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1a94abbdf9a686e28e5fa393217c167b">&#9670;&nbsp;</a></span>get_angles()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void InvKin_node::get_angles </td>
-          <td>(</td>
-          <td class="paramtype">const geometry_msgs::msg::Vector3::SharedPtr&#160;</td>
-          <td class="paramname"><em>msg</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Get the targeted orientation. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">msg</td><td></td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
 <a id="afe4b94559a4a51da10a4c28ca189f0ab"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#afe4b94559a4a51da10a4c28ca189f0ab">&#9670;&nbsp;</a></span>get_grip()</h2>
 
@@ -356,8 +316,8 @@ rclcpp::Publisher&lt; sensor_msgs::msg::JointState &gt;::SharedPtr&#160;</td><td
 
 </div>
 </div>
-<a id="a90293733a2cddfe1527340b61b487db0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a90293733a2cddfe1527340b61b487db0">&#9670;&nbsp;</a></span>get_position()</h2>
+<a id="add2d606fbb003ec4f1bba5f83a52d644"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#add2d606fbb003ec4f1bba5f83a52d644">&#9670;&nbsp;</a></span>get_pose()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -366,9 +326,9 @@ rclcpp::Publisher&lt; sensor_msgs::msg::JointState &gt;::SharedPtr&#160;</td><td
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void InvKin_node::get_position </td>
+          <td class="memname">void InvKin_node::get_pose </td>
           <td>(</td>
-          <td class="paramtype">const geometry_msgs::msg::Point::SharedPtr&#160;</td>
+          <td class="paramtype">const geometry_msgs::msg::Pose::SharedPtr&#160;</td>
           <td class="paramname"><em>msg</em></td><td>)</td>
           <td></td>
         </tr>

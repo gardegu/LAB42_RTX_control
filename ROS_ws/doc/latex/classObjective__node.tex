@@ -11,8 +11,7 @@ Node that works in pair with the G\+UI, manage the targeted pose and the command
 
 
 
-Inheritance diagram for Objective\+\_\+node\+:
-\nopagebreak
+Inheritance diagram for Objective\+\_\+node\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -21,8 +20,7 @@ Inheritance diagram for Objective\+\_\+node\+:
 \end{figure}
 
 
-Collaboration diagram for Objective\+\_\+node\+:
-\nopagebreak
+Collaboration diagram for Objective\+\_\+node\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -43,8 +41,11 @@ void \mbox{\hyperlink{classObjective__node_af59654500616e7950746d761b4a19547}{up
 \mbox{\Hypertarget{classObjective__node_aa23aa29aef11fb4fba3646dd135175a2}\label{classObjective__node_aa23aa29aef11fb4fba3646dd135175a2}} 
 string {\bfseries mode} =\char`\"{}manual\char`\"{}
 \item 
-\mbox{\Hypertarget{classObjective__node_a8a4d604577a2522b1e7ce4cd4e738a49}\label{classObjective__node_a8a4d604577a2522b1e7ce4cd4e738a49}} 
-cv\+::\+Mat {\bfseries frame}
+\mbox{\Hypertarget{classObjective__node_a6363a8cfbfa6bdb2d10593e4ea51c03b}\label{classObjective__node_a6363a8cfbfa6bdb2d10593e4ea51c03b}} 
+cv\+::\+Mat {\bfseries processed\+\_\+frame}
+\item 
+\mbox{\Hypertarget{classObjective__node_afa551b43b3580c55d77890ef4746cdc3}\label{classObjective__node_afa551b43b3580c55d77890ef4746cdc3}} 
+cv\+::\+Mat {\bfseries depth\+\_\+frame}
 \item 
 \mbox{\Hypertarget{classObjective__node_add2421a8b5d1df8b71ce9ef5310f4781}\label{classObjective__node_add2421a8b5d1df8b71ce9ef5310f4781}} 
 double {\bfseries x} =0.
@@ -76,15 +77,12 @@ void \mbox{\hyperlink{classObjective__node_a4551c645109d3558c9199d41fb178e5e}{in
 \mbox{\Hypertarget{classObjective__node_a50cde468c869dde93201b5ebd0d07717}\label{classObjective__node_a50cde468c869dde93201b5ebd0d07717}} 
 void \mbox{\hyperlink{classObjective__node_a50cde468c869dde93201b5ebd0d07717}{timer\+\_\+callback}} ()
 \begin{DoxyCompactList}\small\item\em Timer callback, actions that will be done at every iterations. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{classObjective__node_aedc074b9451057279b10f0f37902e90f}\label{classObjective__node_aedc074b9451057279b10f0f37902e90f}} 
-void \mbox{\hyperlink{classObjective__node_aedc074b9451057279b10f0f37902e90f}{Lissajou}} ()
-\begin{DoxyCompactList}\small\item\em Lissajou\textquotesingle{}s trajectory for the target, function to delete. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classObjective__node_ad25f590c05a4065b3460f2de8f92f2c6}{get\+\_\+processed\+\_\+position}} (const geometry\+\_\+msgs\+::msg\+::\+Point\+::\+Shared\+Ptr msg)
+void \mbox{\hyperlink{classObjective__node_ad520ebfb82892cd4196fbb149de68b66}{get\+\_\+processed\+\_\+pose}} (const geometry\+\_\+msgs\+::msg\+::\+Pose\+::\+Shared\+Ptr msg)
 \begin{DoxyCompactList}\small\item\em Get the targeted position processed by the camera. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classObjective__node_aedb3e18a445335af1bfaf1c70dace9d2}{get\+\_\+processed\+\_\+angles}} (const geometry\+\_\+msgs\+::msg\+::\+Vector3\+::\+Shared\+Ptr msg)
-\begin{DoxyCompactList}\small\item\em Get the targeted angles processed by the camera. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classObjective__node_a88c37158402cd0f3fb8e1ff004e3aedf}{get\+\_\+image}} (const sensor\+\_\+msgs\+::msg\+::\+Image\+::\+Shared\+Ptr msg)
-\begin{DoxyCompactList}\small\item\em Get the images published. \end{DoxyCompactList}\end{DoxyCompactItemize}
+void \mbox{\hyperlink{classObjective__node_aea0c5f38349afd3a01dfeefcdd92b7db}{get\+\_\+processed\+\_\+image}} (const sensor\+\_\+msgs\+::msg\+::\+Image\+::\+Shared\+Ptr msg)
+\begin{DoxyCompactList}\small\item\em Get the processed images published. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classObjective__node_a3446fc82a833039ddffd5e66cfe9812f}{get\+\_\+depth\+\_\+image}} (const sensor\+\_\+msgs\+::msg\+::\+Image\+::\+Shared\+Ptr msg)
+\begin{DoxyCompactList}\small\item\em Get the depth images published. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -136,29 +134,44 @@ double {\bfseries processed\+\_\+pitch}
 \mbox{\Hypertarget{classObjective__node_aadca213867f58d4e17c98d03b6686b11}\label{classObjective__node_aadca213867f58d4e17c98d03b6686b11}} 
 double {\bfseries processed\+\_\+roll}
 \item 
+\mbox{\Hypertarget{classObjective__node_ad1825ad30d0dd963fa44ab492290398c}\label{classObjective__node_ad1825ad30d0dd963fa44ab492290398c}} 
+double {\bfseries target\+\_\+x}
+\item 
+\mbox{\Hypertarget{classObjective__node_ae7bfb12e19b123d565ffe852f756012f}\label{classObjective__node_ae7bfb12e19b123d565ffe852f756012f}} 
+double {\bfseries target\+\_\+y}
+\item 
+\mbox{\Hypertarget{classObjective__node_aab6deacf92f6abe808589634fda49a61}\label{classObjective__node_aab6deacf92f6abe808589634fda49a61}} 
+double {\bfseries target\+\_\+z}
+\item 
+\mbox{\Hypertarget{classObjective__node_a12c889464374e76f9d4d78421a833cd3}\label{classObjective__node_a12c889464374e76f9d4d78421a833cd3}} 
+double {\bfseries final\+\_\+x}
+\item 
+\mbox{\Hypertarget{classObjective__node_abd15fb2a5acb52f4d8ac69f15b4644eb}\label{classObjective__node_abd15fb2a5acb52f4d8ac69f15b4644eb}} 
+double {\bfseries final\+\_\+y}
+\item 
+\mbox{\Hypertarget{classObjective__node_a32030d52a513cdafabd672c95ffa9104}\label{classObjective__node_a32030d52a513cdafabd672c95ffa9104}} 
+double {\bfseries final\+\_\+z}
+\item 
+\mbox{\Hypertarget{classObjective__node_a832e50cf4e1ffd05d1f04f2f3cd601ff}\label{classObjective__node_a832e50cf4e1ffd05d1f04f2f3cd601ff}} 
+bool {\bfseries is\+\_\+initialized} =false
+\item 
 \mbox{\Hypertarget{classObjective__node_aab3f1460fb035632ec13f5fefea741df}\label{classObjective__node_aab3f1460fb035632ec13f5fefea741df}} 
 rclcpp\+::\+Timer\+Base\+::\+Shared\+Ptr {\bfseries timer\+\_\+}
 \item 
-\mbox{\Hypertarget{classObjective__node_a0a3142350d43a299873a3f51990c9cd4}\label{classObjective__node_a0a3142350d43a299873a3f51990c9cd4}} 
-rclcpp\+::\+Publisher$<$ geometry\+\_\+msgs\+::msg\+::\+Point $>$\+::Shared\+Ptr {\bfseries objective\+\_\+publisher}
-\item 
-\mbox{\Hypertarget{classObjective__node_a62491f590a2cafe375351917f1d595cf}\label{classObjective__node_a62491f590a2cafe375351917f1d595cf}} 
-rclcpp\+::\+Publisher$<$ geometry\+\_\+msgs\+::msg\+::\+Vector3 $>$\+::Shared\+Ptr {\bfseries angles\+\_\+publisher}
-\item 
-\mbox{\Hypertarget{classObjective__node_a46f561bcede221a4e83bbd4fa2da6fcb}\label{classObjective__node_a46f561bcede221a4e83bbd4fa2da6fcb}} 
-rclcpp\+::\+Publisher$<$ std\+\_\+msgs\+::msg\+::\+String $>$\+::Shared\+Ptr {\bfseries mission\+\_\+publisher}
+\mbox{\Hypertarget{classObjective__node_aed251e6d43ed53df70184d665b689e0a}\label{classObjective__node_aed251e6d43ed53df70184d665b689e0a}} 
+rclcpp\+::\+Publisher$<$ geometry\+\_\+msgs\+::msg\+::\+Pose $>$\+::Shared\+Ptr {\bfseries pose\+\_\+publisher}
 \item 
 \mbox{\Hypertarget{classObjective__node_ad065742047ac8af4508eef5bb7282f92}\label{classObjective__node_ad065742047ac8af4508eef5bb7282f92}} 
 rclcpp\+::\+Publisher$<$ std\+\_\+msgs\+::msg\+::\+Float32 $>$\+::Shared\+Ptr {\bfseries grip\+\_\+publisher}
 \item 
-\mbox{\Hypertarget{classObjective__node_a0c9d4abb329719daf1a38c574ebad3a6}\label{classObjective__node_a0c9d4abb329719daf1a38c574ebad3a6}} 
-rclcpp\+::\+Subscription$<$ geometry\+\_\+msgs\+::msg\+::\+Point $>$\+::Shared\+Ptr {\bfseries position\+\_\+subscriber}
+\mbox{\Hypertarget{classObjective__node_a762eaf770d6d447bf8b8a0f67bd81488}\label{classObjective__node_a762eaf770d6d447bf8b8a0f67bd81488}} 
+rclcpp\+::\+Subscription$<$ geometry\+\_\+msgs\+::msg\+::\+Pose $>$\+::Shared\+Ptr {\bfseries pose\+\_\+subscriber}
 \item 
-\mbox{\Hypertarget{classObjective__node_aadcfe5ee3b4e356a49ca96aea14336b7}\label{classObjective__node_aadcfe5ee3b4e356a49ca96aea14336b7}} 
-rclcpp\+::\+Subscription$<$ geometry\+\_\+msgs\+::msg\+::\+Vector3 $>$\+::Shared\+Ptr {\bfseries angles\+\_\+subscriber}
+\mbox{\Hypertarget{classObjective__node_a8d64b6d3dfbb9ba72aa8ca76a8cef5a5}\label{classObjective__node_a8d64b6d3dfbb9ba72aa8ca76a8cef5a5}} 
+rclcpp\+::\+Subscription$<$ sensor\+\_\+msgs\+::msg\+::\+Image $>$\+::Shared\+Ptr {\bfseries processed\+\_\+image\+\_\+subscriber}
 \item 
-\mbox{\Hypertarget{classObjective__node_acf2ea49da4efee6efb4d7e93f5fa4746}\label{classObjective__node_acf2ea49da4efee6efb4d7e93f5fa4746}} 
-rclcpp\+::\+Subscription$<$ sensor\+\_\+msgs\+::msg\+::\+Image $>$\+::Shared\+Ptr {\bfseries image\+\_\+subscriber}
+\mbox{\Hypertarget{classObjective__node_a0bdfb4f9e160bd083e1d0363b89025d3}\label{classObjective__node_a0bdfb4f9e160bd083e1d0363b89025d3}} 
+rclcpp\+::\+Subscription$<$ sensor\+\_\+msgs\+::msg\+::\+Image $>$\+::Shared\+Ptr {\bfseries depth\+\_\+image\+\_\+subscriber}
 \end{DoxyCompactItemize}
 
 
@@ -166,41 +179,41 @@ rclcpp\+::\+Subscription$<$ sensor\+\_\+msgs\+::msg\+::\+Image $>$\+::Shared\+Pt
 Node that works in pair with the G\+UI, manage the targeted pose and the command we send to the arm. 
 
 \doxysubsection{Member Function Documentation}
-\mbox{\Hypertarget{classObjective__node_a88c37158402cd0f3fb8e1ff004e3aedf}\label{classObjective__node_a88c37158402cd0f3fb8e1ff004e3aedf}} 
-\index{Objective\_node@{Objective\_node}!get\_image@{get\_image}}
-\index{get\_image@{get\_image}!Objective\_node@{Objective\_node}}
-\doxysubsubsection{\texorpdfstring{get\_image()}{get\_image()}}
-{\footnotesize\ttfamily void Objective\+\_\+node\+::get\+\_\+image (\begin{DoxyParamCaption}\item[{const sensor\+\_\+msgs\+::msg\+::\+Image\+::\+Shared\+Ptr}]{msg }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+\mbox{\Hypertarget{classObjective__node_a3446fc82a833039ddffd5e66cfe9812f}\label{classObjective__node_a3446fc82a833039ddffd5e66cfe9812f}} 
+\index{Objective\_node@{Objective\_node}!get\_depth\_image@{get\_depth\_image}}
+\index{get\_depth\_image@{get\_depth\_image}!Objective\_node@{Objective\_node}}
+\doxysubsubsection{\texorpdfstring{get\_depth\_image()}{get\_depth\_image()}}
+{\footnotesize\ttfamily void Objective\+\_\+node\+::get\+\_\+depth\+\_\+image (\begin{DoxyParamCaption}\item[{const sensor\+\_\+msgs\+::msg\+::\+Image\+::\+Shared\+Ptr}]{msg }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
-Get the images published. 
-
-
-\begin{DoxyParams}{Parameters}
-{\em msg} & \\
-\hline
-\end{DoxyParams}
-\mbox{\Hypertarget{classObjective__node_aedb3e18a445335af1bfaf1c70dace9d2}\label{classObjective__node_aedb3e18a445335af1bfaf1c70dace9d2}} 
-\index{Objective\_node@{Objective\_node}!get\_processed\_angles@{get\_processed\_angles}}
-\index{get\_processed\_angles@{get\_processed\_angles}!Objective\_node@{Objective\_node}}
-\doxysubsubsection{\texorpdfstring{get\_processed\_angles()}{get\_processed\_angles()}}
-{\footnotesize\ttfamily void Objective\+\_\+node\+::get\+\_\+processed\+\_\+angles (\begin{DoxyParamCaption}\item[{const geometry\+\_\+msgs\+::msg\+::\+Vector3\+::\+Shared\+Ptr}]{msg }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
-
-
-
-Get the targeted angles processed by the camera. 
+Get the depth images published. 
 
 
 \begin{DoxyParams}{Parameters}
 {\em msg} & \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{classObjective__node_ad25f590c05a4065b3460f2de8f92f2c6}\label{classObjective__node_ad25f590c05a4065b3460f2de8f92f2c6}} 
-\index{Objective\_node@{Objective\_node}!get\_processed\_position@{get\_processed\_position}}
-\index{get\_processed\_position@{get\_processed\_position}!Objective\_node@{Objective\_node}}
-\doxysubsubsection{\texorpdfstring{get\_processed\_position()}{get\_processed\_position()}}
-{\footnotesize\ttfamily void Objective\+\_\+node\+::get\+\_\+processed\+\_\+position (\begin{DoxyParamCaption}\item[{const geometry\+\_\+msgs\+::msg\+::\+Point\+::\+Shared\+Ptr}]{msg }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+\mbox{\Hypertarget{classObjective__node_aea0c5f38349afd3a01dfeefcdd92b7db}\label{classObjective__node_aea0c5f38349afd3a01dfeefcdd92b7db}} 
+\index{Objective\_node@{Objective\_node}!get\_processed\_image@{get\_processed\_image}}
+\index{get\_processed\_image@{get\_processed\_image}!Objective\_node@{Objective\_node}}
+\doxysubsubsection{\texorpdfstring{get\_processed\_image()}{get\_processed\_image()}}
+{\footnotesize\ttfamily void Objective\+\_\+node\+::get\+\_\+processed\+\_\+image (\begin{DoxyParamCaption}\item[{const sensor\+\_\+msgs\+::msg\+::\+Image\+::\+Shared\+Ptr}]{msg }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Get the processed images published. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em msg} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classObjective__node_ad520ebfb82892cd4196fbb149de68b66}\label{classObjective__node_ad520ebfb82892cd4196fbb149de68b66}} 
+\index{Objective\_node@{Objective\_node}!get\_processed\_pose@{get\_processed\_pose}}
+\index{get\_processed\_pose@{get\_processed\_pose}!Objective\_node@{Objective\_node}}
+\doxysubsubsection{\texorpdfstring{get\_processed\_pose()}{get\_processed\_pose()}}
+{\footnotesize\ttfamily void Objective\+\_\+node\+::get\+\_\+processed\+\_\+pose (\begin{DoxyParamCaption}\item[{const geometry\+\_\+msgs\+::msg\+::\+Pose\+::\+Shared\+Ptr}]{msg }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
