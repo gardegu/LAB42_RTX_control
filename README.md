@@ -27,8 +27,7 @@ A documentation of the code can be found in [/ROS_ws/doc/](/ROS_ws/doc/). To ope
 
 ### Configuration
 This project is built and tested with **Ubuntu 20.04** and **ROS2 Foxy**. In case these settings are not supported, see [this part](#docker).
-To use the SDK, a powerful [_Nvidia_](https://www.nvidia.com/fr-fr/) Graphics Processing Unit (GPU) is required. See [here](https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html#system-requirements) for a compatibility check.
-Otherwise, we recommend using a computer with a standard-capacity processor (an Intel Core i7, for instance).
+
 
 Used material in this project:
 * A UMI-RTX robotic arm
@@ -43,11 +42,13 @@ Used material in this project:
 
   ![The banana plush](Media/Banana.jpg)
 
-* An Intel Core i9 processor and a ...
+* An Intel Core i9 processor and a Nvidia GPU (Geforce **RTX**)
 
 **Note**: The ZED Mini cable needs to be plugged into the device with its incurved arrows on the same side as the lenses.
 
 ### Requirements
+To use the SDK, a powerful [_Nvidia_](https://www.nvidia.com/fr-fr/) Graphics Processing Unit (GPU) is required. See [here](https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html#system-requirements) for a compatibility check and installation.
+
 If you plan not to use [Docker](#docker), you need to download and install the SDK as well as Nvidia drivers.
 See [here](https://www.stereolabs.com/docs/installation/linux/) to install the SDK on linux. If you followed all the steps, the Nvidia drivers should be installed.
 
@@ -97,7 +98,7 @@ and then :
 As told earlier, this project works under Ubuntu 20.04 and ROS2 Foxy. However, the usage of the interface is not limited to this configuration thanks to a custom Docker image that allows to use our interface with a different configuration.
 
 #### Installation
-The only requirements are to have Docker installed on your computer, to have a NVIDIA GPU with the necessary drivers for which the installation process is described [earlier](), and having installed the [nvidia-docker-toolkit](https://github.com/NVIDIA/nvidia-docker). 
+The only requirements are to have Docker installed on your computer (see [here](https://docs.docker.com/get-docker/) to install Docker), to have a NVIDIA GPU with the necessary drivers for which the installation process is described [earlier](#requirements), and having installed the [nvidia-docker-toolkit](https://github.com/NVIDIA/nvidia-docker). 
 
     distribution=$(. /etc/os-release;echo $ID$VERSION_ID)
     curl -s -L https://nvidia.github.io/nvidia-docker/gpgkey | sudo apt-key add -
