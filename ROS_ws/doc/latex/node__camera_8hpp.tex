@@ -1,0 +1,51 @@
+\hypertarget{node__camera_8hpp}{}\doxysection{src/ros\+\_\+interface\+\_\+umi\+\_\+rtx/include/ros\+\_\+interface\+\_\+umi\+\_\+rtx/node\+\_\+camera.hpp File Reference}
+\label{node__camera_8hpp}\index{src/ros\_interface\_umi\_rtx/include/ros\_interface\_umi\_rtx/node\_camera.hpp@{src/ros\_interface\_umi\_rtx/include/ros\_interface\_umi\_rtx/node\_camera.hpp}}
+
+
+This node is dedicated to the computer vision part of this project. It allows to detect the targeted banana, gets its centroid\textquotesingle{}s 2D coordinates and tries to compute the depth maps of the scene.  
+
+
+{\ttfamily \#include \char`\"{}rclcpp/rclcpp.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}sensor\+\_\+msgs/msg/image.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}geometry\+\_\+msgs/msg/point.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}geometry\+\_\+msgs/msg/vector3.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}std\+\_\+msgs/msg/float64.\+hpp\char`\"{}}\newline
+{\ttfamily \#include $<$cv\+\_\+bridge/cv\+\_\+bridge.\+h$>$}\newline
+{\ttfamily \#include $<$opencv2/opencv.\+hpp$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include $<$math.\+h$>$}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$chrono$>$}\newline
+{\ttfamily \#include $<$opencv2/core.\+hpp$>$}\newline
+{\ttfamily \#include $<$opencv2/imgproc.\+hpp$>$}\newline
+{\ttfamily \#include $<$opencv2/calib3d.\+hpp$>$}\newline
+{\ttfamily \#include $<$opencv2/highgui.\+hpp$>$}\newline
+{\ttfamily \#include $<$opencv2/ximgproc.\+hpp$>$}\newline
+{\ttfamily \#include $<$ament\+\_\+index\+\_\+cpp/get\+\_\+package\+\_\+share\+\_\+directory.\+hpp$>$}\newline
+Include dependency graph for node\+\_\+camera.\+hpp\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{node__camera_8hpp__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classCamera}{Camera}}
+\begin{DoxyCompactList}\small\item\em This class uses Open\+CV. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This node is dedicated to the computer vision part of this project. It allows to detect the targeted banana, gets its centroid\textquotesingle{}s 2D coordinates and tries to compute the depth maps of the scene. 
+
+\begin{DoxyAuthor}{Author}
+Guillaume G\+A\+R\+DE (\href{mailto:guillaume.garde@ensta-bretagne.org}{\texttt{ guillaume.\+garde@ensta-\/bretagne.\+org}}) 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2023-\/08-\/15 
+\end{DoxyDate}

@@ -18,8 +18,6 @@ The different nodes of the ROS architecture correspond to:
 * simulation
 * custom Graphic User Interface (GUI)
 
-The computer vision part is split into two versions. One using only _OpenCV_, which is still in progress and therefore not used; the other using _OpenCV_ and [Stereolabs](https://www.stereolabs.com/)' Software Development Kit (SDK).
-
 A vast majority of this project's code is in C++.
 
 ### Documentation
@@ -47,7 +45,12 @@ Used material in this project:
 **Note**: The ZED Mini cable needs to be plugged into the device with its incurved arrows on the same side as the lenses.
 
 ### Requirements
+The computer vision node uses _OpenCV_ and [Stereolabs](https://www.stereolabs.com/)' Software Development Kit (SDK).
 To use the SDK, a powerful [_Nvidia_](https://www.nvidia.com/fr-fr/) Graphics Processing Unit (GPU) is required. See [here](https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html#system-requirements) for a compatibility check and installation.
+
+**Note**: Two versions of the computer vision node are provided here but only one will be launched. This version uses
+the SDK and _OpenCV_. The other version is the first we wrote and only uses _OpenCV_.
+However, it is not performant enough and gives bad results.
 
 If you plan not to use [Docker](#docker), you need to download and install the SDK as well as Nvidia drivers.
 See [here](https://www.stereolabs.com/docs/installation/linux/) to install the SDK on linux. If you followed all the steps, the Nvidia drivers should be installed.
@@ -76,9 +79,6 @@ If you want to monitor the nodes and topics or interact with them, all you have 
 And then sourcing ROS:
 
     source /opt/ros/foxy/setup.bash
-
-#### Computer vision
-They are two computer vision nodes
 
 #### Simulation
 In order to start only the simulation, just place yourself in LAB42_RTX_control and do:
