@@ -18,7 +18,7 @@ The different nodes of the ROS architecture correspond to:
 * simulation
 * custom Graphic User Interface (GUI)
 
-The computer vision part is split into two versions. One using only _OpenCV_, which is still in progress; the other using _OpenCV_ and [Stereolabs](https://www.stereolabs.com/)' Software Development Kit (SDK).
+The computer vision part is split into two versions. One using only _OpenCV_, which is still in progressn and therefore not used; the other using _OpenCV_ and [Stereolabs](https://www.stereolabs.com/)' Software Development Kit (SDK).
 
 A vast majority of this project's code is in C++.
 
