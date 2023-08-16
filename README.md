@@ -7,7 +7,7 @@
 This project was made during an internship at the [_University of Amsterdam_](https://www.uva.nl/en) under the supervision of Arnoud Visser PhD - <A.Visser@uva.nl>
 
 ### Description
-![The UMI-RTX robotic arm](/umi-rtx/images/UMI-RTX-photo.png)
+![The UMI-RTX robotic arm](Media/UMI-RTX-photo.png)
 
 This repository provides tools to set up a ROS 2 interface for controlling the UMI-RTX robotic arm.
 The different nodes of the ROS architecture correspond to:
@@ -30,21 +30,21 @@ Otherwise, we recommend using a computer with a standard-capacity processor (an 
 Used material in this project:
 * A UMI-RTX robotic arm
 
-    ![UMI-RTX robotic arm](/umi-rtx/images/UMI-RTX-Arm.png)
+  ![UMI-RTX robotic arm](Media/UMI-RTX-Arm.png)
 
 * A Stereolabs [_ZED Mini_](https://www.stereolabs.com/zed-mini/) stereo camera and its cable
     
-    ![The ZED Mini camera](/umi-rtx/images/ZEDM.png)
+  ![The ZED Mini camera](Media/ZEDM.png)
 
 * A standard banana plush
 
-    ![The banana plush](/umi-rtx/images/Banana.jpg)
+  ![The banana plush](Media/Banana.jpg)
 
 * An Intel Core i9 processor and a ...
 
 **Note**: The ZED Mini cable needs to be plugged into the device with its incurved arrows on the same side as the lenses.
 
-### Installing Stereolabs' SDK
+### Requirements
 If you plan not to use [Docker](#docker), you need to download and install the SDK as well as Nvidia drivers.
 See [here](https://www.stereolabs.com/docs/installation/linux/) to install the SDK on linux. If you followed all the steps, the Nvidia drivers should be installed.
 
