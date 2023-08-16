@@ -53,7 +53,7 @@ and then :
 As told earlier, this project works under Ubuntu 20.04 and ROS2 Foxy. However, the usage of the interface is not limited only to this configuration thanks to a custom Docker image, that allow to use our interface with a different configuration.
 
 #### Installation
-The only requirement is to have Docker installed on your computer, of course, to have a NVIDIA GPU with the necessary drivers for which the installation process is described [earlier](### TODO), and having installed the [nvidia-docker-toolkit](https://github.com/NVIDIA/nvidia-docker). 
+The only requirement is to have Docker installed on your computer, to have a NVIDIA GPU with the necessary drivers for which the installation process is described [earlier](), and having installed the [nvidia-docker-toolkit](https://github.com/NVIDIA/nvidia-docker). 
 
     distribution=$(. /etc/os-release;echo $ID$VERSION_ID)
     curl -s -L https://nvidia.github.io/nvidia-docker/gpgkey | sudo apt-key add -
