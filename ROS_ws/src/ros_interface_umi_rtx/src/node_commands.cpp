@@ -22,7 +22,7 @@ void Objective_node::timer_callback(){
         - Close the grip to grab the object
         - Go back to initial place
         - Wait
-        - Same trajectory but we put the object back at his place
+        - We put the object to a predifined position
     */
     if (mode != "manual"){  
         // Lissajou();

@@ -48,3 +48,6 @@ If you are on zsh:
 and then :
 
     ros2 launch ros_interface_umi_rtx simu.launch.py
+
+### Docker
+As told earlier, this project works under Ubuntu 20.04 and ROS2 Foxy.
