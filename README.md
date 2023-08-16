@@ -1,14 +1,52 @@
 # ROS2 Interface for the UMI-RTX Arm
 
 ### Autors
-* GARDE Guillaume guillaume.garde@ensta-bretagne.org (Promotion ENSTA Bretagne 2024 - Spécialité Robotique Autonome)
-* MASSA Théo theo.massa@ensta-bretagne.org (Promotion ENSTA Bretagne 2024 - Spécialité Robotique Autonome)
+* GARDE Guillaume - <guillaume.garde@ensta-bretagne.org> (Promotion [_ENSTA Bretagne_](https://www.ensta-bretagne.fr) 2024 - Spécialité Robotique Autonome)
+* MASSA Théo - <theo.massa@ensta-bretagne.org> (Promotion [_ENSTA Bretagne_](https://www.ensta-bretagne.fr) 2024 - Spécialité Robotique Autonome)
+
+This project was made during an internship at the [_University of Amsterdam_](https://www.uva.nl/en) under the supervision of Arnoud Visser PhD - <A.Visser@uva.nl>
 
 ### Description
-This repository has for purpose to set up a ROS2 interface in order to use the UMI-RTX Arm.
+![The UMI-RTX robotic arm](/umi-rtx/images/UMI-RTX-photo.png)
+
+This repository provides tools to set up a ROS 2 interface for controlling the UMI-RTX robotic arm.
+The different nodes of the ROS architecture correspond to:
+* inverse kinematics
+* arm control 
+* computer vision
+* simulation
+* custom Graphic User Interface (GUI)
+
+The computer vision part is split into two versions. One using only _OpenCV_, which is still in progress; the other using _OpenCV_ and [Stereolabs](https://www.stereolabs.com/)' Software Development Kit (SDK).
+
+A vast majority of this project's code is in C++.
+
 
 ### Configuration
-This project is built and tested with **Ubuntu 20.04** and **ROS2 Foxy**.
+This project is built and tested with **Ubuntu 20.04** and **ROS2 Foxy**. In case these settings are not supported, see [this part](#docker).
+To use the SDK, a powerful [_Nvidia_](https://www.nvidia.com/fr-fr/) Graphics Processing Unit (GPU) is required. See [here](https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html#system-requirements) for a compatibility check.
+Otherwise, we recommend using a computer with a standard-capacity processor (an Intel Core i7, for instance).
+
+Used material in this project:
+* A UMI-RTX robotic arm
+
+    ![UMI-RTX robotic arm](/umi-rtx/images/UMI-RTX-Arm.png)
+
+* A Stereolabs [_ZED Mini_](https://www.stereolabs.com/zed-mini/) stereo camera and its cable
+    
+    ![The ZED Mini camera](/umi-rtx/images/ZEDM.png)
+
+* A standard banana plush
+
+    ![The banana plush](/umi-rtx/images/Banana.jpg)
+
+* An Intel Core i9 processor and a ...
+
+**Note**: The ZED Mini cable needs to be plugged into the device with its incurved arrows on the same side as the lenses.
+
+### Installing Stereolabs' SDK
+If you plan not to use [Docker](#docker), you need to download and install the SDK as well as Nvidia drivers.
+See [here](https://www.stereolabs.com/docs/installation/linux/) to install the SDK on linux. If you followed all the steps, the Nvidia drivers should be installed.
 
 ### Usage
 #### Real arm
