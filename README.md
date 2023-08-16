@@ -52,6 +52,43 @@ and then :
 ### Docker
 As told earlier, this project works under Ubuntu 20.04 and ROS2 Foxy. However, the usage of the interface is not limited only to this configuration thanks to a custom Docker image, that allow to use our interface with a different configuration.
 
-The only requirement is to have Docker installed on your computer, of course, to have a NVIDIA GPU with the necessary drivers for which the installation process is described earlier, and having downloaded a Stereolab custom image.
+#### Installation
+The only requirement is to have Docker installed on your computer, of course, to have a NVIDIA GPU with the necessary drivers for which the installation process is described [earlier](### TODO), and having installed the [nvidia-docker-toolkit](https://github.com/NVIDIA/nvidia-docker). 
 
+    distribution=$(. /etc/os-release;echo $ID$VERSION_ID)
+    curl -s -L https://nvidia.github.io/nvidia-docker/gpgkey | sudo apt-key add -
+    curl -s -L https://nvidia.github.io/nvidia-docker/$distribution/nvidia-docker.list | sudo tee /etc/apt/sources.list.d/nvidia-docker.list
+
+    sudo apt-get update && sudo apt-get install -y nvidia-docker2 nvidia-container-toolkit
+    sudo systemctl daemon-reload
+    sudo systemctl restart docker
+
+Once this is done, you can build the docker image with the command:
+
+    # Place yourself in LAB42_RTX_CONTROL
+    docker build -t "name" .
+
+Be careful to replace "name" with the name you want, and everything is ready !
+#### Usage
+To run our image into a container, run :
+
+    # Give the permission to use the screen
+    xhost +
+
+    # Launch the container (replace "name" with the name you chose)
+    docker run --gpus all -it --privileged -e DISPLAY=$DISPLAY -v \\
+                /tmp/.X11-unix:/tmp/.X11-unix --rm "name":latest
+
+Once the container is running, the process is similar as the one descibed [here](#usage)
+
+    cd ROS_ws/
+    colcon build
+    source install/setup.bash
+    cd ..
+
+    # If you want to use the real arm
+    ./start_arm.sh
+
+    # If you want to launch only the simulation
+    ros2 launch ros_interace_umi_rtx simu.launch.py
 
