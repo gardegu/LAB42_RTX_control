@@ -50,4 +50,8 @@ and then :
     ros2 launch ros_interface_umi_rtx simu.launch.py
 
 ### Docker
-As told earlier, this project works under Ubuntu 20.04 and ROS2 Foxy.
+As told earlier, this project works under Ubuntu 20.04 and ROS2 Foxy. However, the usage of the interface is not limited only to this configuration thanks to a custom Docker image, that allow to use our interface with a different configuration.
+
+The only requirement is to have Docker installed on your computer, of course, to have a NVIDIA GPU with the necessary drivers for which the installation process is described earlier, and having downloaded a Stereolab custom image.
+
+
