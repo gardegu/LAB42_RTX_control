@@ -1,6 +1,6 @@
 /**
  * @file node_camera_API.hpp
- * @author Guillaume Garde (guillaume.garde@ensta-bretagne.org)
+ * @author Guillaume GARDE (guillaume.garde@ensta-bretagne.org)
  * @brief This node is dedicated to the computer vision part of this project. 
  * It allows to detect the targeted banana, get its 3D position in the work frame of the UMI-RTX
  * and publish its coordinates for the inverse kinematics node.
@@ -43,10 +43,11 @@ using namespace sl;
  */
 class Camera_API : public rclcpp::Node{
 public:
-    Camera_API() : Node("API_node") { /**
+    /**
      * @brief Creates the publishers, sets up the camera.
      * 
      */
+    Camera_API() : Node("API_node") { 
         init_interfaces();
         init_camera(); 
     };
