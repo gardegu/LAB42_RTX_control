@@ -131,9 +131,11 @@ Once the container is running, the process is similar as the one descibed [here]
     source install/setup.bash
     cd ..
 
-    # If you want to use the arm
+If you want to use the arm, do
+
     ./start_arm.sh
 
-    # If you want to launch only the simulation
+If you want to launch only the simulation, do
+
     ros2 launch ros_interace_umi_rtx simu.launch.py
 
