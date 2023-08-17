@@ -1,10 +1,10 @@
 # ROS2 Interface for the UMI-RTX Arm
 
 ### Autors
-* GARDE Guillaume - <guillaume.garde@ensta-bretagne.org> (Promotion [_ENSTA Bretagne_](https://www.ensta-bretagne.fr) 2024 - Spécialité Robotique Autonome)
-* MASSA Théo - <theo.massa@ensta-bretagne.org> (Promotion [_ENSTA Bretagne_](https://www.ensta-bretagne.fr) 2024 - Spécialité Robotique Autonome)
+* GARDE Guillaume (Promotion [_ENSTA Bretagne_](https://www.ensta-bretagne.fr) 2024 - Spécialité Robotique Autonome).
+* MASSA Théo (Promotion [_ENSTA Bretagne_](https://www.ensta-bretagne.fr) 2024 - Spécialité Robotique Autonome).
 
-This project was made during an internship at the [_University of Amsterdam_](https://www.uva.nl/en) under the supervision of Arnoud Visser PhD - <A.Visser@uva.nl>
+This project was made during an internship at the [_University of Amsterdam_](https://www.uva.nl/en) under the supervision of Arnoud Visser PhD.
 
 ### Description
 ![The UMI-RTX robotic arm](Media/UMI-RTX-photo.png)
