@@ -118,9 +118,9 @@ void umi_init()
          */
         //cuserid(user_name);
         getlogin_r(user_name,L_cuserid);
-        // uis = UserIsSpecial(user_name);
-        char *temp="root";
-        uis = UserIsSpecial(temp);
+        uis = UserIsSpecial(user_name);
+        // char *temp="root";
+        // uis = UserIsSpecial(temp);
 
         if(!uis) {
           cout << "No access rights for "<< user_name << endl;
