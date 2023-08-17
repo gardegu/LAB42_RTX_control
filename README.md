@@ -56,6 +56,17 @@ If you plan not to use [Docker](#docker), you need to download and install the S
 See [here](https://www.stereolabs.com/docs/installation/linux/) to install the SDK on linux. If you followed all the steps, the Nvidia drivers should be installed.
 
 ### Usage
+#### Testing
+To test the computer vision node separatly, follow the commands bellow:
+    
+    git pull
+    cd ROS_ws
+    colcon build
+    source install/setup.bash
+    ros2 run ros_interface_umi_rtx nodeCameraAPI
+
+Do not forget to source ROS 2 if need be.
+
 #### Real arm
 To use the interface, all you have to do is :
 
