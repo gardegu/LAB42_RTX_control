@@ -92,11 +92,11 @@ If you are on zsh:
     source install/setup.zsh
 
 #### Testing
-To test the computer vision node separatly, follow the commands bellow:
+To test the computer vision node separatly, follow the commands below:
 
     ros2 run ros_interface_umi_rtx nodeCameraAPI
 
-Once the node is running, you can interact with its output thanks to diverse tools like [RQt](https://docs.ros.org/en/foxy/Concepts/About-RQt.html) or RViz.
+Once the node is running, you can interact with its output thanks to diverses tools like [RQt](https://docs.ros.org/en/foxy/Concepts/About-RQt.html) or RViz.
 
 #### Real arm
 To use the interface, all you have to do is :
