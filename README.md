@@ -6,6 +6,21 @@
 
 This project was made during an internship at the [_University of Amsterdam_](https://www.uva.nl/en) under the supervision of Arnoud Visser PhD.
 
+# Table of Contents
+
+- [Description](#description)
+- [Documentation](#documentation)
+- [Configuration](#configuration)
+- [Requirements](#requirements)
+- [Usage](#usage)
+    - [Testing](#testing)
+    - [Real Arm](#real-arm)
+    - [Simulation](#simulation)
+    - [Docker](#docker)
+        - [Installation](#installation)
+        - [Usage](#usage-1)
+- [Demonstration](#demonstration)
+
 ### Description
 ![The UMI-RTX robotic arm](Media/UMI-RTX-photo.png)
 
