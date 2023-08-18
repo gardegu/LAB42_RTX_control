@@ -148,6 +148,9 @@ If you want to use the arm, do
 
     ./start_arm.sh
 
+### Demonstration
+[Here](https://www.youtube.com/playlist?list=PLr7kwtXen7-Se0UGnNa_Y2hR0W9sA3iEf) is a link to a Youtube playlist where you can find dome trials and demonstration of the interface.
+
 If you want to launch only the simulation, do
 
     ros2 launch ros_interace_umi_rtx simu.launch.py
