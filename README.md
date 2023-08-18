@@ -23,6 +23,8 @@ A vast majority of this project's code is in C++.
 ### Documentation
 A documentation of the code can be found in [/ROS_ws/doc/](/ROS_ws/doc/). To open the doc in html, just launch *index.html*.
 
+You can find the original drivers in /umi-rtx or on this [repository](https://github.com/physar/umi-rtx)
+
 ### Configuration
 This project is built and tested with **Ubuntu 20.04** and **ROS2 Foxy**. In case these settings are not supported, see [this part](#docker).
 
