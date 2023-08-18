@@ -13,6 +13,7 @@ This project was made during an internship at the [_University of Amsterdam_](ht
 - [Configuration](#configuration)
 - [Requirements](#requirements)
 - [Usage](#usage)
+    - [Build the package](#build-the-package)
     - [Testing](#testing)
     - [Real Arm](#real-arm)
     - [Simulation](#simulation)
@@ -73,28 +74,34 @@ If you plan not to use [Docker](#docker), you need to download and install the S
 See [here](https://www.stereolabs.com/docs/installation/linux/) to install the SDK on linux. If you followed all the steps, the Nvidia drivers should be installed.
 
 ### Usage
-#### Testing
-To test the computer vision node separatly, follow the commands bellow:
-    
-    git pull
-    cd ROS_ws
-    colcon build
-    source install/setup.bash
-    ros2 run ros_interface_umi_rtx nodeCameraAPI
+#### Build the package
+In order to use the interface, you will need to build the ROS 2 package (don't forget to source ROS 2 beforehand).
 
-Do not forget to source ROS 2 if need be.
-
-#### Real arm
-To use the interface, all you have to do is :
-
-    git clone https://github.com/gardegu/LAB42_RTX_control
-    cd LAB42_RTX_control
     ## install the required dependencies
     ./install_dependencies.sh
     cd ROS_ws
     ## Build the package
     colcon build
-    cd..
+
+If you are on bash:
+
+    source install/setup.bash
+    
+If you are on zsh:
+
+    source install/setup.zsh
+
+#### Testing
+To test the computer vision node separatly, follow the commands bellow:
+
+    ros2 run ros_interface_umi_rtx nodeCameraAPI
+
+Once the node is running, you can interact with its output thanks to diverse tools like [RQt](https://docs.ros.org/en/foxy/Concepts/About-RQt.html) or RViz.
+
+#### Real arm
+To use the interface, all you have to do is :
+
+    cd LAB42_RTX_control
     ## Launch the arm
     ./start_arm
 
@@ -109,16 +116,7 @@ And then sourcing ROS:
     source /opt/ros/foxy/setup.bash
 
 #### Simulation
-In order to start only the simulation, just place yourself in LAB42_RTX_control and do:
-
-If you are on bash:
-
-    source ROS_ws/install/setup.bash
-If you are on zsh:
-
-    source ROS_ws/install/setup.zsh
-
-and then :
+In order to start only the simulation, just run:
 
     ros2 launch ros_interface_umi_rtx simu.launch.py
 
@@ -169,4 +167,4 @@ If you want to launch only the simulation, do
 
 
 ### Demonstration
-[Here](https://www.youtube.com/playlist?list=PLr7kwtXen7-Se0UGnNa_Y2hR0W9sA3iEf) is a link to a Youtube playlist where you can find dome trials and demonstration of the interface.
+[Here](https://www.youtube.com/playlist?list=PLr7kwtXen7-Se0UGnNa_Y2hR0W9sA3iEf) is a link to a Youtube playlist where you can find some trials and demonstration of the interface.
