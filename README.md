@@ -34,7 +34,7 @@ The different nodes of the ROS architecture correspond to:
 * simulation
 * custom Graphic User Interface (GUI)
 
-A vast majority of this project's code is in C++.
+A vast majority of this project's code (the one we wrote) is in C++.
 
 ### Documentation
 A documentation of the code can be found in [/ROS_ws/doc/](/ROS_ws/doc/). To open the doc in html, just launch *index.html*.
@@ -71,7 +71,7 @@ the SDK and _OpenCV_. The other version is the first we wrote and only uses _Ope
 However, it is not performant enough and gives bad results.
 
 If you plan not to use [Docker](#docker), you need to download and install the SDK as well as Nvidia drivers.
-See [here](https://www.stereolabs.com/docs/installation/linux/) to install the SDK on linux. If you followed all the steps, the Nvidia drivers should be installed.
+See [here](https://www.stereolabs.com/docs/installation/linux/) to install the SDK on Linux. If you followed all the steps, the Nvidia drivers should be installed.
 
 ### Usage
 #### Build the package
