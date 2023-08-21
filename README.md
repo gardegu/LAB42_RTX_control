@@ -42,6 +42,8 @@ A documentation of the code can be found in [/ROS_ws/doc/](/ROS_ws/doc/). To ope
 
 You can find the original drivers in [/umi-rtx](/umi-rtx) or on this [repository](https://github.com/physar/umi-rtx)
 
+[Here](https://staff.fnwi.uva.nl/a.visser/education/ZSB/2023/UmiRtxRos2interface.pdf) is the internship report related to this project.
+
 ### Configuration
 This project is built and tested with **Ubuntu 20.04** and **ROS2 Foxy**. In case these settings are not supported, see [this part](#docker).
 
