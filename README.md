@@ -241,5 +241,5 @@ Delete
         name='camera_api',
         )
 
-Then replace _nodeCameraAPI_ by _nodeCamera_ in _LaunchDescription_.
+Then replace _nodeCameraAPI_ by _nodeCamera_ in _ return LaunchDescription_( ... ).
 You are now all set and can follow the building section.
