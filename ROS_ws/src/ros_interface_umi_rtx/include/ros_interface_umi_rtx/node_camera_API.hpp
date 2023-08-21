@@ -79,7 +79,7 @@ private:
      * 
      * @param msg Message to publish the pose of the banana.
      */
-    void get_banana_and_angles(geometry_msgs::msg::Pose msg);
+    void get_banana_and_angles(geometry_msgs::msg::Pose &msg);
 
     /**
      * @brief Finds the fittest line with respect to the contour of the target and
