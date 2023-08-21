@@ -168,3 +168,77 @@ If you want to launch only the simulation, do
 
 ### Demonstration
 [Here](https://www.youtube.com/playlist?list=PLr7kwtXen7-Se0UGnNa_Y2hR0W9sA3iEf) is a link to a Youtube playlist where you can find some trials and demonstration of the interface.
+
+## Fallback method
+An other way to manage the computer vision part is to have a look at the following files:
+
+    ROS_ws/src/ros_interface_umi_rtx/include/ros_interface_umi_rtx/node_camera.hpp
+    ROS_ws/src/ros_interface_umi_rtx/src/node_camera.cpp
+
+This code does not require the SDK to work but needs to be improved and corrected.
+
+### Procedure
+In the _CMakeLists.txt_ file, comment these two lines
+
+    find_package(ZED 3 REQUIRED)
+    find_package(CUDA ${ZED_CUDA_VERSION} REQUIRED)
+
+In _include_directories()_, also comment
+
+    ${CUDA_INCLUDE_DIRS}
+    ${ZED_INCLUDE_DIRS}
+
+Comment this whole section
+
+    ##################################### Node camera API
+    add_executable(nodeCameraAPI
+        src/node_camera_API.cpp
+        )
+
+    ament_target_dependencies(nodeCameraAPI
+        rclcpp
+        sensor_msgs
+        OpenCV
+        cv_bridge
+        geometry_msgs
+        ament_index_cpp
+        std_msgs
+        ZED
+        CUDA
+        )
+
+    target_link_libraries(nodeCameraAPI "${cpp_typesupport_target}" ${OpenCV_LIBS} ${ZED_LIBRARY_DIR} ${CUDA_LIBRARY_DIRS})
+    target_include_directories(nodeCameraAPI PUBLIC
+        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+        $<INSTALL_INTERFACE:include>)
+
+Replace the line
+
+    install(TARGETS nodeCamera nodeArm nodeInverseKinematics nodeSimu GUI nodeCameraAPI
+    DESTINATION lib/${PROJECT_NAME})
+
+By
+
+    install(TARGETS nodeCamera nodeArm nodeInverseKinematics nodeSimu GUI
+    DESTINATION lib/${PROJECT_NAME})
+
+In _package.xml_, comment
+
+    <depend>sl</depend>
+
+In the launch files
+
+    ROS_ws/src/ros_interface_umi_rtx/launch/arm.launch.py
+    ROS_ws/src/ros_interface_umi_rtx/launch/simu.launch.py
+
+Delete
+
+    nodeCameraAPI = Node(
+        package = 'ros_interface_umi_rtx',
+        namespace='',
+        executable='nodeCameraAPI',
+        name='camera_api',
+        )
+
+Then replace _nodeCameraAPI_ by _nodeCamera_ in _LaunchDescription_.
+You are now all set and can follow the building section.
