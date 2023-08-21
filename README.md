@@ -21,6 +21,7 @@ This project was made during an internship at the [_University of Amsterdam_](ht
         - [Installation](#installation)
         - [Usage](#usage-1)
 - [Demonstration](#demonstration)
+- [Fallback method](#fallback-method)
 
 ### Description
 ![The UMI-RTX robotic arm](Media/UMI-RTX-photo.png)
