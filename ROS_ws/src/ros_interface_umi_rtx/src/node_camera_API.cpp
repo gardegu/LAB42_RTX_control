@@ -80,7 +80,7 @@ void Camera_API::timer_callback(){
 
 }
 
-void Camera_API::get_banana_and_angles(geometry_msgs::msg::Pose &msg){
+void Camera_API::get_banana_and_angles(geometry_msgs::msg::Pose msg){
     cv::Mat hsv_img;
     cv::cvtColor(cv_image_left,hsv_img,cv::COLOR_BGR2HSV);
 
@@ -146,7 +146,7 @@ void Camera_API::get_banana_and_angles(geometry_msgs::msg::Pose &msg){
     msg.orientation.z = roll;
 }
 
-void Camera_API::get_angles(vector<vector<cv::Point>> contours){
+void Camera_API::get_angles(vector<vector<cv::Point>> &contours){
     vector<cv::Point> longest_contour;
     double max_area = 0.0;
     for (const auto& contour : contours) {
